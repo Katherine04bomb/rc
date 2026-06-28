@@ -17,22 +17,22 @@
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ──────────────────────────────
   {
-    date: 'June 2025',
+    date: 'June 2026',
     tag: 'tip',
     title: '☀️ Summer in China — what to pack for June–August',
-    body: `It gets HOT. Beijing and Shanghai regularly hit 35°C+ in summer. My honest packing list: light cotton clothes, a small portable fan (everyone here uses them — seriously), sunscreen, and a reusable water bottle. Try to avoid being outside between 11am and 3pm. The good news? Everything indoors is air-conditioned — sometimes aggressively so. Bring a light layer for museums and the metro.`
+    body: `It gets HOT. Beijing and Shanghai regularly hit 35°C+ in summer. My honest packing list: light cotton clothes for nights, a small portable fan (or you can buy one in China:p), sunscreen, and a pair of comfortable shoes. Try to avoid being outside between 12pm and 3pm. The good news? Everything indoors is air-conditioned — sometimes aggressively so. Bring a light layer for museums and the metro.`
   },
   {
-    date: 'May 2025',
+    date: 'May 2026',
     tag: 'tip',
-    title: '💳 Alipay just got a lot easier for foreigners',
+    title: '💳 Check out the foreigner-friendly Alipay',
     body: `Big update — Alipay now lets you link a foreign Visa or Mastercard directly, without needing a Chinese bank account as an intermediate step. Download the International version, go to Settings → Bank Cards, and you're done in about 5 minutes. Do this before you land — it makes everything so much easier from day one.`
   },
   {
     date: 'April 2025',
     tag: 'visa',
     title: '🇦🇺 Australian travelers still need a visa — but transit is available',
-    body: `Just a reminder for my Australian friends: you still need to apply for a tourist (L) visa before entering China. Processing takes 4–7 business days, so don't leave it until the last minute. That said, if you're transiting through Shanghai, Beijing, or Guangzhou with an onward ticket to a third country, you can enter visa-free for up to 144 hours. Check the Get Ready section above for more details.`
+    body: `Just a reminder for my lovely Australian friends: you still need to apply for a tourist (L) visa before entering China. Processing takes 4–7 business days, so don't leave it until the last minute. That said, if you're transiting through Shanghai, Beijing, or Guangzhou with an onward ticket to a third country, you can enter visa-free for up to 144 hours. Check the Get Ready section above for more details.`
   }
   // ── END OF POSTS ──────────────────────────────────────────
 ];

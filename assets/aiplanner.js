@@ -59,7 +59,7 @@ function loadPlanner() {
             <div class="feat-item"><span class="feat-icon">💸</span>Budget, mid-range or luxury versions</div>
             <div class="feat-item"><span class="feat-icon">❤️</span>Pick your interests: food · history · nature · nightlife</div>
             <div class="feat-item"><span class="feat-icon">🚄</span>Optimized routes between cities</div>
-            <div class="feat-item"><span class="feat-icon">📥</span>Export &amp; share with your travel group</div>
+            <div class="feat-item"><span class="feat-icon">📥</span>Export &amp; share with your travel group! Its all free!</div>
           </div>
           <p style="font-size:12px;color:var(--text-muted);margin-bottom:14px">
             Be first to know when it launches 👇
