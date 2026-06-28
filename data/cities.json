@@ -1,0 +1,342 @@
+[
+  {
+    "emoji": "🏯",
+    "nameZh": "北京",
+    "nameEn": "Beijing",
+    "difficulty": "★☆☆☆☆",
+    "days": "4–6 days",
+    "bestFor": "History, culture, Great Wall, Chinese civilization",
+    "tags": [
+      "Foreigner-friendly",
+      "English signs",
+      "Must visit"
+    ],
+    "attractions": [
+      "Great Wall — Mutianyu section (less crowded)",
+      "Forbidden City — book tickets online in advance",
+      "Tiananmen Square at sunrise",
+      "Temple of Heaven & morning exercise culture",
+      "Summer Palace & Kunming Lake",
+      "Hutong alleyways (Nanluogu Xiang)",
+      "Wangfujing Street food market",
+      "798 Art District — modern China",
+      "Peking duck dinner at Quanjude",
+      "Ming Tombs day trip"
+    ],
+    "photos": [
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460303/great-wall_bczdqe.jpg",
+        "alt": "Great Wall of China"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460301/forbidden-city_lqd2ds.jpg",
+        "alt": "Forbidden City"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460300/hutong_iqtqyy.jpg",
+        "alt": "Beijing Hutong alleyways"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460301/peking-duck_dh1zfb.webp",
+        "alt": "Peking Duck dinner"
+      }
+    ]
+  },
+  {
+    "emoji": "🌃",
+    "nameZh": "上海",
+    "nameEn": "Shanghai",
+    "difficulty": "★☆☆☆☆",
+    "days": "3–4 days",
+    "bestFor": "Futuristic skyline, international food, modernity",
+    "tags": [
+      "Most international",
+      "Easy for beginners"
+    ],
+    "attractions": [
+      "The Bund — colonial buildings facing the futuristic skyline",
+      "Yu Garden — classical Chinese garden in the city",
+      "French Concession — cafés, trees, architecture",
+      "Shanghai Museum — free, world-class",
+      "Tianzifang — artsy alleyway with shops",
+      "Shanghai Tower observation deck (632m!)",
+      "Xintiandi — modern dining & nightlife",
+      "Zhujiajiao water town (day trip, 1hr away)",
+      "Xiaolongbao at Din Tai Fung",
+      "Lujiazui skyline walk at night"
+    ],
+    "photos": [
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460304/bund_vqnbql.jpg",
+        "alt": "The Bund at night"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460304/yu-garden_bh3jqo.jpg",
+        "alt": "Yu Garden"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460322/skyline_yvmkfu.jpg",
+        "alt": "Shanghai skyline"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460304/xiaolongbao_ndfdw3.jpg",
+        "alt": "Xiaolongbao soup dumplings"
+      }
+    ]
+  },
+  {
+    "emoji": "🐼",
+    "nameZh": "成都",
+    "nameEn": "Chengdu",
+    "difficulty": "★★☆☆☆",
+    "days": "3–5 days",
+    "bestFor": "Pandas, hotpot, chill vibes, authentic local life",
+    "tags": [
+      "Pandas!",
+      "Best food city",
+      "Laid-back"
+    ],
+    "attractions": [
+      "Giant Panda Base — go at 8am for feeding time",
+      "Jinli Street — food, culture, lanterns",
+      "Authentic Chengdu hotpot dinner",
+      "People's Park teahouse — real local life",
+      "Wuhou Shrine — Three Kingdoms history",
+      "Kuanzhai Alley — old architecture",
+      "Leshan Giant Buddha (day trip, 2hrs)",
+      "Dujiangyan irrigation system (UNESCO)",
+      "Jiuzhaigou rainbow lakes (2-day trip)",
+      "Sichuan Opera face-changing show"
+    ],
+    "photos": [
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460328/panda_yyeilx.jpg",
+        "alt": "Giant Panda Base"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460327/leshan-giant-buddha_oxwmke.jpg",
+        "alt": "Leshan Giant Buddha"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460323/sichuan-opera_tugsbh.jpg",
+        "alt": "Sichuan Opera face-changing show"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460324/hotpot_p0amdn.jpg",
+        "alt": "Chengdu hotpot"
+      }
+    ]
+  },
+  {
+    "emoji": "🏺",
+    "nameZh": "西安",
+    "nameEn": "Xi'an",
+    "difficulty": "★★☆☆☆",
+    "days": "2–3 days",
+    "bestFor": "Ancient history, Terracotta Army, Silk Road",
+    "tags": [
+      "Unmissable history",
+      "Street food heaven"
+    ],
+    "attractions": [
+      "Terracotta Army — one of the world's greatest sights",
+      "Ancient City Wall — rent a bike and ride around it",
+      "Muslim Quarter food street (Huimin Jie)",
+      "Big Wild Goose Pagoda",
+      "Shaanxi History Museum (free!)",
+      "Huaqing Hot Springs (near Terracotta Army)",
+      "Bell Tower & Drum Tower at night",
+      "Rou jia mo (Chinese \"burger\") — must eat",
+      "Biang biang noodles in the old city",
+      "Tang Dynasty music & dance show"
+    ],
+    "photos": [
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460318/terracotta-army_pp8yhk.jpg",
+        "alt": "Terracotta Warriors & Horses Museum"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460305/big-wild-goose-pagoda_bofjs4.jpg",
+        "alt": "Big Wild Goose Pagoda"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460305/xi_an-city-ride_tydbkn.jpg",
+        "alt": "Xi'an city walk- bike ride on top"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460306/roujiamo-chinese-burger_kowuyb.jpg",
+        "alt": "roujiamo (Chinese \"burger\")"
+      }
+    ]
+  },
+  {
+    "emoji": "🔥",
+    "nameZh": "重庆",
+    "nameEn": "Chongqing",
+    "difficulty": "★★★☆☆",
+    "days": "2–3 days",
+    "bestFor": "Cyberpunk city, hotpot capital, mountain drama",
+    "tags": [
+      "Unique architecture",
+      "Best hotpot",
+      "Spicy!"
+    ],
+    "attractions": [
+      "Hongya Cave — stacked riverside buildings lit up at night",
+      "Jiefangbei Liberation Monument area",
+      "Chongqing hotpot — original spicy broth",
+      "Light rail through Liziba apartment building",
+      "Ciqikou Ancient Town",
+      "Yangtze River cable car crossing",
+      "Nanshan Mountain city panorama",
+      "Three Gorges cruise departure",
+      "Dazu Rock Carvings (UNESCO, day trip)",
+      "Night market — eat absolutely everything"
+    ],
+    "photos": [
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460321/hongya-cave_kb6jvj.jpg",
+        "alt": "Hongya Cave"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460327/yangtze-river-cableway_mqkfka.jpg",
+        "alt": "Yangtze River Cable Car"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460322/wulong-karst_mct3kz.jpg",
+        "alt": "Wulong Karst"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460321/hotpot_gsk4di.jpg",
+        "alt": "Chongqing hotpot"
+      }
+    ]
+  },
+  {
+    "emoji": "🏔️",
+    "nameZh": "桂林",
+    "nameEn": "Guilin",
+    "difficulty": "★★☆☆☆",
+    "days": "3–4 days",
+    "bestFor": "Nature, karst mountains, Li River scenery",
+    "tags": [
+      "Jaw-dropping views",
+      "Outdoor adventure"
+    ],
+    "attractions": [
+      "Li River cruise to Yangshuo (4–5 hours)",
+      "Yangshuo countryside — bike through rice paddies",
+      "Elephant Trunk Hill",
+      "Reed Flute Cave",
+      "Longji Rice Terraces (Longsheng, 2hrs)",
+      "Moon Hill hike near Yangshuo",
+      "Impression Liu Sanjie outdoor show",
+      "West Street in Yangshuo",
+      "Guilin rice noodle cooking class",
+      "Sunrise kayak on Yulong River"
+    ],
+    "photos": [
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460324/li-river_lpbtrp.jpg",
+        "alt": "Li River Cruise"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460327/longji-rice-terraces_wxtjnl.jpg",
+        "alt": "Longji Rice Terraces"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460326/yu-long-rafting_kuxreh.jpg",
+        "alt": "Yulong River Rafting"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782635742/guilin-rice-noodle_czaxkw.jpg",
+        "alt": "Guilin Rice Noodles"
+      }
+    ]
+  },
+  {
+    "emoji": "🌸",
+    "nameZh": "泉州",
+    "nameEn": "Quanzhou",
+    "difficulty": "★★★★☆",
+    "days": "2–3 days",
+    "bestFor": "Hidden gem, Maritime Silk Road, authentic local China",
+    "tags": [
+      "K's hometown! 🏠",
+      "UNESCO 2021",
+      "Off the beaten path"
+    ],
+    "attractions": [
+      "Kaiyuan Temple — 1,300-year-old Buddhist temple",
+      "Zhongshan Road — most beautiful old street in south China",
+      "Maritime Silk Road Museum",
+      "Qingjing Mosque — China's oldest standing mosque",
+      "Guandi Temple",
+      "Chongwu Ancient Stone City (coastal)",
+      "Minnan oyster omelette & satay noodles",
+      "Nan'an Tianzhu Mountain",
+      "Quanzhou Puppet Theatre show",
+      "Xiamen day trip (1hr train) — Gulangyu Island"
+    ],
+    "photos": [
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460308/kaiyuan-temple_sgbmat.jpg",
+        "alt": "Kaiyuan Temple"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460310/guandi-temple_qrt1ax.jpg",
+        "alt": "Guandi Temple"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460322/hairpin-flowers_nl6lcw.jpg",
+        "alt": "Hairpin Flowers-Zanhua"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460305/minnan-oyster-pancake_a9hfl1.jpg",
+        "alt": "Minnan Oyster Pancake"
+      }
+    ]
+  },
+  {
+    "emoji": "🌊",
+    "nameZh": "杭州",
+    "nameEn": "Hangzhou",
+    "difficulty": "★☆☆☆☆",
+    "days": "2–3 days",
+    "bestFor": "Serenity, West Lake, tea culture, easy day trips",
+    "tags": [
+      "Beautiful & calm",
+      "Near Shanghai"
+    ],
+    "attractions": [
+      "West Lake — walk, cycle, or take a boat",
+      "Lingyin Temple- the place help you get rich",
+      "Longjing Tea Village — pick your own tea",
+      "Hefang Street old culture zone",
+      "Leifeng Pagoda at sunset",
+      "Song Dynasty Town",
+      "Alibaba campus area (Xixi)",
+      "Dragon Well tea ceremony",
+      "Suzhou day trip (30min by train)",
+      "Qiantang tidal bore (autumn only)"
+    ],
+    "photos": [
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460323/west-lake_dslidh.jpg",
+        "alt": "West Lake"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460319/lingyin-temple_ja3zuc.jpg",
+        "alt": "Lingyin Temple"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460315/song-dynasty-town_av372v.jpg",
+        "alt": "Song Dynasty Town"
+      },
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460313/dongpo-pork_wajz0k.jpg",
+        "alt": "Dongpo Pork"
+      }
+    ]
+  }
+]

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G3C5T1WRB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3G3C5T1WRB');
+</script>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ready? China! — Survive &amp; Thrive with Kat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-area" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="cursor:pointer" title="Back to top">
+    <div class="logo-travelers">
+      <div class="traveler">
+        <svg width="20" height="32" viewBox="0 0 20 32" fill="none">
+          <circle cx="10" cy="4.5" r="3.5" fill="#c0392b" opacity=".85"/>
+          <rect x="6" y="9" width="8" height="13" rx="2" fill="#c0392b" opacity=".85"/>
+          <rect x="12.5" y="10" width="5" height="7" rx="1.5" fill="#9a7b2f" opacity=".9"/>
+          <line x1="7.5" y1="22" x2="5.5" y2="31" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round" opacity=".85"/>
+          <line x1="12.5" y1="22" x2="14.5" y2="31" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round" opacity=".85"/>
+        </svg>
+      </div>
+      <div class="traveler">
+        <svg width="18" height="30" viewBox="0 0 18 30" fill="none">
+          <circle cx="9" cy="4" r="3" fill="#9a7b2f" opacity=".8"/>
+          <rect x="5.5" y="8" width="7" height="12" rx="2" fill="#9a7b2f" opacity=".8"/>
+          <rect x="11" y="9" width="4.5" height="6.5" rx="1.5" fill="#c0392b" opacity=".7"/>
+          <line x1="7" y1="20" x2="5.5" y2="29" stroke="#9a7b2f" stroke-width="2.2" stroke-linecap="round" opacity=".8"/>
+          <line x1="11" y1="20" x2="12.5" y2="29" stroke="#9a7b2f" stroke-width="2.2" stroke-linecap="round" opacity=".8"/>
+        </svg>
+      </div>
+      <div class="traveler">
+        <svg width="16" height="28" viewBox="0 0 16 28" fill="none">
+          <circle cx="8" cy="3.5" r="2.8" fill="#4a3c28" opacity=".6"/>
+          <rect x="5" y="7" width="6" height="11" rx="2" fill="#4a3c28" opacity=".6"/>
+          <rect x="9.5" y="8" width="4" height="6" rx="1.5" fill="#c0392b" opacity=".55"/>
+          <line x1="6.5" y1="18" x2="5" y2="27" stroke="#4a3c28" stroke-width="2" stroke-linecap="round" opacity=".6"/>
+          <line x1="9.5" y1="18" x2="11" y2="27" stroke="#4a3c28" stroke-width="2" stroke-linecap="round" opacity=".6"/>
+        </svg>
+      </div>
+    </div>
+    <div class="logo-text">
+      <div class="logo-main">Ready? China!</div>
+      <div class="logo-sub">Survive &amp; Thrive with Kat</div>
+    </div>
+  </div>
+  <nav>
+    <button class="nav-link" onclick="scrollToSection('ready-section')">What to Prepare</button>
+    <button class="nav-link" onclick="scrollToSection('cities-section')">Where to Go</button>
+    <button class="nav-link" onclick="scrollToSection('community-section')">Things to Know</button>
+    <button class="nav-link nav-cta" onclick="openModal('planning-modal')">
+      <span class="soon-tag">SOON</span>AI Itinerary
+    </button>
+  </nav>
+</header>
+
+<!-- FLOATING MENU -->
+<button id="menu-btn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+<div id="menu-dropdown">
+  <div class="menu-item" onclick="scrollToSection('ready-section');closeMenu()">
+    <div class="menu-icon">✅</div>
+    <div><div class="menu-item-title">Get Ready with Me</div><div class="menu-item-sub">Step-by-step checklist</div></div>
+    <span class="mbadge mbadge-red">START</span>
+  </div>
+  <div class="menu-item" onclick="scrollToSection('cities-section');closeMenu()">
+    <div class="menu-icon">🗺️</div>
+    <div><div class="menu-item-title">Cities</div><div class="menu-item-sub">Where to explore?</div></div>
+  </div>
+  <div class="menu-item" onclick="scrollToSection('map-section');closeMenu()">
+    <div class="menu-icon">📍</div>
+    <div><div class="menu-item-title">Explore the Map</div><div class="menu-item-sub">All 31 provinces</div></div>
+  </div>
+  <div class="menu-item" onclick="scrollToSection('community-section');closeMenu()">
+    <div class="menu-icon">👥</div>
+    <div><div class="menu-item-title">Community</div><div class="menu-item-sub">Tips and News for you when traveling to China</div></div>
+    <span class="mbadge mbadge-gray">SOON</span>
+  </div>
+  <div class="menu-item" onclick="openModal('planning-modal');closeMenu()">
+    <div class="menu-icon">🤖</div>
+    <div><div class="menu-item-title">AI Trip Planner</div><div class="menu-item-sub">Auto itinerary</div></div>
+    <span class="mbadge mbadge-gray">SOON</span>
+  </div>
+  <div class="menu-item" onclick="openModal('about-modal');closeMenu()">
+    <div class="menu-icon">🙋‍♀️</div>
+    <div><div class="menu-item-title">Meet Katherine</div><div class="menu-item-sub">Who built this &amp; why</div></div>
+  </div>
+</div>
+
+<!-- MAP TOOLTIP -->
+<div id="prov-tip">
+  <div class="tzh" id="tip-zh"></div>
+  <div class="ten" id="tip-en"></div>
+  <div class="tdesc" id="tip-desc"></div>
+</div>
+
+<main>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="hero-badge">🇨🇳 Made by a local, for curious friends</div>
+  <h1 class="hero-title">Your friend in China is waiting.<br>Let's get you there <em>ready</em>.</h1>
+  <p class="hero-sub">You've never been to China. You don't know where to start. Don't worry — I've got you, step by step, from passport check to your first hotpot.</p>
+  <div class="hero-actions">
+    <button class="btn-primary" onclick="scrollToSection('ready-section')">Get Ready with Me →</button>
+    <button class="btn-secondary" onclick="scrollToSection('cities-section')">Where should I go?</button>
+  </div>
+  <div class="hero-story">
+    <div class="story-quote">"China sounds amazing — but where do I even start?" I've heard this from every single foreign friend before their first visit. So I built this."</div>
+    <div class="story-examples">
+      <div class="story-ex"><div class="story-ex-icon">📶</div><div>My Australian friend Michael landed in Shanghai and couldn't contact his hotel because he had no mobile data. He spent two hours trying to connect to airport WiFi.</div></div>
+      <div class="story-ex"><div class="story-ex-icon">💳</div><div>Another friend Kory couldn't pay for dinner. She assumed credit cards worked everywhere but China runs on WeChat Pay and Alipay face-scan payments.</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════ GET READY WITH ME — injected by getready.js ═══════════ -->
+<div id="ready-container"></div>
+
+<hr class="section-divider">
+
+<!-- ═══════════ CITIES — injected by cities.js ═══════════ -->
+<section class="section" id="cities-section">
+  <div class="section-eyebrow">Where to Go · 城市推荐</div>
+  <h2 class="section-title">As a first-timer, where should I go?</h2>
+  <p class="section-sub">Don't just follow the crowd. Here's an honest guide — best for what, how long to stay, and how hard it is to navigate as a foreigner. Click any city for Top 10 spots.</p>
+  <div class="city-grid" id="cities-container"></div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════ MAP — injected by map.js ═══════════ -->
+<div id="map-container"></div>
+
+<hr class="section-divider">
+
+<!-- ═══════════ COMMUNITY — injected by community.js ═══════════ -->
+<div id="community-container"></div>
+
+</main>
+
+<footer>
+  <div>
+    <div class="footer-brand">Ready? China!</div>
+    <div>Survive &amp; Thrive with Kat · Made for You</div>
+  </div>
+  <div style="text-align:right;line-height:1.8">
+    <div>AI Planner · Community · Coming Soon</div>
+    <div style="opacity:.5;margin-top:4px">© 2026 Ready? China!</div>
+  </div>
+</footer>
+
+<!-- MODALS — injected by their respective JS modules -->
+<div id="ready-modals-container"></div>
+<div id="about-container"></div>
+<div id="planner-container"></div>
+
+<!-- PHOTO LIGHTBOX — shared gallery modal, controlled by cities.js -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo gallery">
+  <button id="lb-close" onclick="closeLightbox()" aria-label="Close gallery">&#x2715;</button>
+  <button id="lb-prev"  onclick="navigateLightbox(-1)" aria-label="Previous photo">&#8592;</button>
+  <div id="lb-inner">
+    <img id="lb-img" src="" alt="">
+    <div id="lb-caption"></div>
+    <div id="lb-counter"></div>
+  </div>
+  <button id="lb-next"  onclick="navigateLightbox(1)" aria-label="Next photo">&#8594;</button>
+</div>
+
+<!-- SCRIPTS — ui.js must be first (provides global functions) -->
+<script src="assets/ui.js"></script>
+<script src="assets/cities.js"></script>
+<script src="assets/about.js"></script>
+<script src="assets/community.js"></script>
+<script src="assets/aiplanner.js"></script>
+<script src="assets/getready.js"></script>
+<script src="assets/map.js"></script>
+</body>
+</html>
