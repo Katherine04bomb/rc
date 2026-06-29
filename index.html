@@ -181,6 +181,40 @@
   <button id="lb-next"  onclick="navigateLightbox(1)" aria-label="Next photo">&#8594;</button>
 </div>
 
+
+<!-- COMMUNITY POST MODAL — controlled by community.js -->
+<div id="comm-modal" class="modal-overlay">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="comm-modal-meta">
+          <span id="comm-modal-tag"></span>
+          <span class="comm-modal-date" id="comm-modal-date"></span>
+        </div>
+        <div class="modal-title" id="comm-modal-title"></div>
+      </div>
+      <button class="modal-close" onclick="commCloseCard()">×</button>
+    </div>
+    <div class="modal-body">
+      <p class="comm-modal-body" id="comm-modal-body"></p>
+      <div class="comm-modal-reactions">
+        <button class="comm-react-btn" id="cm-react-helpful">
+          👍 <span class="comm-react-label">Helpful</span>
+          <span class="comm-react-count" id="cm-react-helpful-count"></span>
+        </button>
+        <button class="comm-react-btn" id="cm-react-nope">
+          👎 <span class="comm-react-label">Not Helpful</span>
+          <span class="comm-react-count" id="cm-react-nope-count"></span>
+        </button>
+        <button class="comm-react-btn" id="cm-react-confused">
+          ❓ <span class="comm-react-label">Confused</span>
+          <span class="comm-react-count" id="cm-react-confused-count"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- SCRIPTS — ui.js must be first (provides global functions) -->
 <script src="assets/ui.js"></script>
 <script src="assets/cities.js"></script>

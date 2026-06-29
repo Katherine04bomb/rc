@@ -1,73 +1,292 @@
 // ============================================================
-//  assets/community.js — Community section
+//  assets/community.js — Community Knowledge Hub
 //
-//  HOW TO ADD A POST:
-//  1. Copy one POST object from the POSTS array below
-//  2. Paste it at the TOP of the array (newest posts first)
-//  3. Fill in: date, tag, title, body
+//  HOW TO ADD A POST (takes 2 minutes):
+//  1. Copy any post object below
+//  2. Paste it at the TOP of the POSTS array
+//  3. Fill in:
+//       id:       'post-XXX'  ← increment the number (post-011, post-012...)
+//       category: 'lifehacks' | 'qa' | 'updates'
+//       date:     'July 2026'
+//       tag:      'tip' | 'visa' | 'news'
+//       title:    'Your title'
+//       body:     `Your content`
 //  4. Save → git add . → git commit -m "new post" → git push
-//  Done in 2 minutes. Live in 30 seconds.
-//
-//  TAG OPTIONS:
-//  'tip'  → gold  — Kat's personal tips
-//  'visa' → red   — visa & entry news
-//  'news' → grey  — general China news
+//  Done. Live in 30 seconds.
 // ============================================================
 
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ──────────────────────────────
+
+  // ── LIFE HACKS ────────────────────────────────────────────
   {
+    id: 'post-001',
+    category: 'lifehacks',
     date: 'June 2026',
     tag: 'tip',
     title: '☀️ Summer in China — what to pack for June–August',
-    body: `It gets HOT. Beijing and Shanghai regularly hit 35°C+ in summer. My honest packing list: light cotton clothes for nights, a small portable fan (or you can buy one in China:p), sunscreen, and a pair of comfortable shoes. Try to avoid being outside between 12pm and 3pm. The good news? Everything indoors is air-conditioned — sometimes aggressively so. Bring a light layer for museums and the metro.`
+    body: `It gets HOT. Beijing and Shanghai regularly hit 35°C+ in summer. My honest packing list: light cotton clothes for nights, a small portable fan (or you can buy one in China :p), sunscreen, and a pair of walking shoes. Try to avoid being outside between 12pm and 3pm. The good news? Everything indoors is air-conditioned — sometimes aggressively so. Bring a light layer for museums and the metro.`
   },
   {
+    id: 'post-002',
+    category: 'lifehacks',
     date: 'May 2026',
     tag: 'tip',
     title: '💳 Check out the foreigner-friendly Alipay',
     body: `Big update — Alipay now lets you link a foreign Visa or Mastercard directly, without needing a Chinese bank account as an intermediate step. Download the International version, go to Settings → Bank Cards, and you're done in about 5 minutes. Do this before you land — it makes everything so much easier from day one.`
   },
   {
-    date: 'April 2025',
+    id: 'post-003',
+    category: 'lifehacks',
+    date: 'April 2026',
+    tag: 'tip',
+    title: '🚰 Why restaurants give you hot water — and why it\'s actually great',
+    body: `You'll notice that most Chinese restaurants serve hot or warm water instead of cold. This comes from traditional Chinese medicine — hot water is believed to aid digestion and balance the body. Don't ask for ice; embrace it. Bonus: hot water is free everywhere, even on trains. Bring a small thermos and you'll never pay for drinks again.`
+  },
+  {
+    id: 'post-004',
+    category: 'lifehacks',
+    date: 'March 2026',
+    tag: 'tip',
+    title: '🚽 toilet culture',
+    body: `There are many traditional squat toilets in China. Practice your Asian squat at home! You will need to straddle the pan with one foot on each side and squat down. <strong>And dont forget to bring some tissues with you!</strong>`
+  },
+
+  // ── Q&A ───────────────────────────────────────────────────
+  {
+    id: 'post-005',
+    category: 'qa',
+    date: 'June 2026',
+    tag: 'tip',
+    title: '❓ Why don\'t restaurants serve ice water?--Amma',
+    body: `This is one of the most asked questions from first-timers! In traditional Chinese culture, cold drinks — especially ice water — are considered bad for digestion and the body's "气qi" (energy balance). Most locals drink warm or hot water year-round. You can ask for cold water (冷水, lěng shuǐ) and most modern restaurants will accommodate you, but don't be surprised if it arrives at room temperature.`
+  },
+  {
+    id: 'post-006',
+    category: 'qa',
+    date: 'May 2026',
+    tag: 'tip',
+    title: '❓ Can I use Google Maps in China?-- Nick',
+    body: `No — Google is blocked in China. Use these instead: Amap (高德地图, Gaode) for navigation — it's what locals use and it's excellent. Baidu Maps works too but is entirely in Chinese. Apple Maps actually works reasonably well in China since Apple uses local data. Download Amap before you arrive. For transit specifically, the Metro app for each city (Beijing Metro, Shanghai Metro) is very accurate.`
+  },
+  {
+    id: 'post-007',
+    category: 'qa',
+    date: 'April 2026',
+    tag: 'tip',
+    title: '❓ Is it safe to drink tap water in China?--Lily',
+    body: `No — tap water in China is not safe to drink directly. Always drink bottled water or water that has been boiled. The good news: bottled water is extremely cheap (¥1–2 for 500ml everywhere), and hotels always provide hot water flasks or kettles. Hot water from thermoses at restaurants and on trains has been boiled and is safe. Never use tap water to brush your teeth without boiling it first.`
+  },
+
+  // ── UPDATES ───────────────────────────────────────────────
+  {
+    id: 'post-008',
+    category: 'updates',
+    date: 'June 2026',
     tag: 'visa',
     title: '🇦🇺 Australian travelers still need a visa — but transit is available',
     body: `Just a reminder for my lovely Australian friends: you still need to apply for a tourist (L) visa before entering China. Processing takes 4–7 business days, so don't leave it until the last minute. That said, if you're transiting through Shanghai, Beijing, or Guangzhou with an onward ticket to a third country, you can enter visa-free for up to 144 hours. Check the Get Ready section above for more details.`
+  },
+  {
+    id: 'post-009',
+    category: 'updates',
+    date: 'May 2026',
+    tag: 'news',
+    title: '💧 Some parks now provide 直饮水 drinking fountains',
+    body: `Good news for budget travelers! Several major parks in Beijing, Shanghai and Chengdu have installed 直饮水 (zhí yǐn shuǐ) — direct drinking water fountains with purified water. Look for the blue tap icons on park maps. This is part of a citywide initiative to reduce plastic waste. Bring a reusable bottle — it saves money and the environment.`
+  },
+  {
+    id: 'post-010',
+    category: 'updates',
+    date: 'April 2026',
+    tag: 'news',
+    title: '🚄 High-speed rail now accepts foreign bank cards at ticket machines',
+    body: `Major update for independent travelers: as of early 2026, most high-speed rail ticket machines at major stations now accept foreign Visa and Mastercard. Previously you needed a Chinese ID card or UnionPay card. You'll still need your passport. Recommended: book on the Trip.com app instead — you can reserve seats in advance, choose your carriage, and collect at the machine with your passport.`
   }
+
   // ── END OF POSTS ──────────────────────────────────────────
 ];
 
+// ── TAG STYLES ────────────────────────────────────────────────
+// Same as before — untouched
 const TAG_STYLES = {
-  tip:  { label: "KAT'S TIP",    bg: 'var(--gold-soft)',  color: 'var(--gold)',   border: 'var(--gold-border)' },
-  visa: { label: 'VISA UPDATE',  bg: 'var(--red-soft)',   color: 'var(--accent)', border: 'var(--red-border)'  },
-  news: { label: 'CHINA NEWS',   bg: 'var(--surface2)',   color: 'var(--text-muted)', border: 'var(--border)' }
+  tip:  { label: "KAT'S TIP",   bg: 'var(--gold-soft)',  color: 'var(--gold)',       border: 'var(--gold-border)' },
+  visa: { label: 'VISA UPDATE', bg: 'var(--red-soft)',   color: 'var(--accent)',     border: 'var(--red-border)'  },
+  news: { label: 'CHINA NEWS',  bg: 'var(--surface2)',   color: 'var(--text-muted)', border: 'var(--border)'      }
 };
 
-function buildPost(post) {
-  const t = TAG_STYLES[post.tag] || TAG_STYLES.news;
-  return `
-    <div class="news-card">
-      <div class="news-meta">
-        <span class="news-date">${post.date}</span>
-        <span class="news-tag" style="background:${t.bg};color:${t.color};border:1px solid ${t.border}">${t.label}</span>
-      </div>
-      <div class="news-headline">${post.title}</div>
-      <div class="news-body">${post.body}</div>
-    </div>`;
+// ── STATE ─────────────────────────────────────────────────────
+let _commTab      = 'lifehacks';  // active tab
+let _commQuery    = '';            // active search query
+let _commReacts   = {};            // { postId: { helpful:0, nope:0, confused:0 } }
+
+// ── HELPERS ───────────────────────────────────────────────────
+function _getReacts(id) {
+  if (!_commReacts[id]) _commReacts[id] = { helpful: 0, nope: 0, confused: 0 };
+  return _commReacts[id];
 }
 
-function loadCommunity() {
-  const postsHTML = POSTS.map(buildPost).join('');
+// ── SEARCH ────────────────────────────────────────────────────
+// Searches title + body across ALL categories
+function commSearch(query) {
+  _commQuery = query.trim().toLowerCase();
+  _commRenderCards();
+}
 
+// ── TAB SWITCH ────────────────────────────────────────────────
+function commShowTab(tab) {
+  _commTab   = tab;
+  _commQuery = '';
+  document.getElementById('comm-search').value = '';
+
+  // Update tab active state
+  document.querySelectorAll('.comm-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.tab === tab);
+  });
+
+  _commRenderCards();
+}
+
+// ── RENDER CARDS ──────────────────────────────────────────────
+function _commRenderCards() {
+  const list = document.getElementById('comm-card-list');
+  if (!list) return;
+
+  let filtered;
+  if (_commQuery.length > 0) {
+    // Search mode: show ALL categories, filter by query
+    filtered = POSTS.filter(p =>
+      p.title.toLowerCase().includes(_commQuery) ||
+      p.body.toLowerCase().includes(_commQuery)
+    );
+  } else {
+    // Tab mode: show only active category
+    filtered = POSTS.filter(p => p.category === _commTab);
+  }
+
+  if (filtered.length === 0) {
+    list.innerHTML = `<div class="comm-empty">No posts found for "<strong>${_commQuery}</strong>" — try a different word.</div>`;
+    return;
+  }
+
+  // If searching, show a category label above each card
+  const showCategory = _commQuery.length > 0;
+  const catLabels    = { lifehacks: 'Life Hacks', qa: 'Q&A', updates: 'Updates' };
+
+  list.innerHTML = filtered.map(post => {
+    const t   = TAG_STYLES[post.tag] || TAG_STYLES.news;
+    const r   = _getReacts(post.id);
+    const cat = showCategory
+      ? `<span class="comm-cat-label">${catLabels[post.category]}</span>` : '';
+
+    return `
+      <div class="news-card comm-card" onclick="commOpenCard('${post.id}')">
+        <div class="news-meta">
+          ${cat}
+          <span class="news-date">${post.date}</span>
+          <span class="news-tag" style="background:${t.bg};color:${t.color};border:1px solid ${t.border}">${t.label}</span>
+        </div>
+        <div class="news-headline">${post.title}</div>
+        <div class="news-body comm-body-preview">${post.body}</div>
+        <div class="comm-reactions" onclick="event.stopPropagation()">
+          <button class="comm-react-btn" onclick="commReact('${post.id}','helpful')">
+            👍 <span class="comm-react-label">Helpful</span>
+            <span class="comm-react-count" id="r-${post.id}-helpful">${r.helpful || ''}</span>
+          </button>
+          <button class="comm-react-btn" onclick="commReact('${post.id}','nope')">
+            👎 <span class="comm-react-label">Not Helpful</span>
+            <span class="comm-react-count" id="r-${post.id}-nope">${r.nope || ''}</span>
+          </button>
+          <button class="comm-react-btn" onclick="commReact('${post.id}','confused')">
+            ❓ <span class="comm-react-label">Confused</span>
+            <span class="comm-react-count" id="r-${post.id}-confused">${r.confused || ''}</span>
+          </button>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// ── MODAL OPEN ────────────────────────────────────────────────
+function commOpenCard(id) {
+  const post = POSTS.find(p => p.id === id);
+  if (!post) return;
+  const t = TAG_STYLES[post.tag] || TAG_STYLES.news;
+  const r = _getReacts(id);
+
+  document.getElementById('comm-modal-tag').textContent   = t.label;
+  document.getElementById('comm-modal-tag').style.cssText =
+    `background:${t.bg};color:${t.color};border:1px solid ${t.border};` +
+    `font-size:9px;font-weight:700;letter-spacing:1px;padding:3px 10px;border-radius:8px;`;
+  document.getElementById('comm-modal-date').textContent  = post.date;
+  document.getElementById('comm-modal-title').textContent = post.title;
+  document.getElementById('comm-modal-body').textContent  = post.body;
+
+  // Wire reactions inside modal
+  ['helpful','nope','confused'].forEach(type => {
+    const btn = document.getElementById(`cm-react-${type}`);
+    if (btn) btn.onclick = () => { commReact(id, type); _syncModalReacts(id); };
+  });
+  _syncModalReacts(id);
+
+  document.getElementById('comm-modal').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function _syncModalReacts(id) {
+  const r = _getReacts(id);
+  document.getElementById('cm-react-helpful-count').textContent  = r.helpful  || '';
+  document.getElementById('cm-react-nope-count').textContent     = r.nope     || '';
+  document.getElementById('cm-react-confused-count').textContent = r.confused || '';
+}
+
+// ── MODAL CLOSE ───────────────────────────────────────────────
+function commCloseCard() {
+  document.getElementById('comm-modal').classList.remove('show');
+  document.body.style.overflow = '';
+  _commRenderCards(); // refresh counts on cards
+}
+
+// ── REACTIONS (UI only — no backend) ─────────────────────────
+function commReact(id, type) {
+  const r = _getReacts(id);
+  r[type] = (r[type] || 0) + 1;
+  // Update inline card count if visible
+  const el = document.getElementById(`r-${id}-${type}`);
+  if (el) el.textContent = r[type];
+}
+
+// ── MAIN RENDER ───────────────────────────────────────────────
+function loadCommunity() {
   const html = `
   <section class="section" id="community-section">
     <div class="section-eyebrow">Community · 旅行者社区</div>
-    <h2 class="section-title">Latest from Kat</h2>
-    <p class="section-sub">Real updates on visa changes, seasonal tips, and things I wish someone had told me before my friends visited. I post here whenever something important comes up.</p>
+    <h2 class="section-title">Know Before You Go</h2>
+    <p class="section-sub">Life hacks, honest Q&As, and real updates from Kat — everything I wish someone had told my friends before they visited China.</p>
 
-    ${postsHTML}
+    <!-- Search -->
+    <div class="comm-search-wrap">
+      <span class="comm-search-icon">🔍</span>
+      <input
+        id="comm-search"
+        class="comm-search-input"
+        type="text"
+        placeholder="Search across all topics… try 'water' or 'payment'"
+        oninput="commSearch(this.value)"
+      />
+    </div>
 
-    <div class="community-coming">
+    <!-- Tabs -->
+    <div class="comm-tabs">
+      <button class="comm-tab active" data-tab="lifehacks" onclick="commShowTab('lifehacks')">💡 Life Hacks</button>
+      <button class="comm-tab"        data-tab="qa"        onclick="commShowTab('qa')">❓ Q&amp;A</button>
+      <button class="comm-tab"        data-tab="updates"   onclick="commShowTab('updates')">📢 Updates</button>
+    </div>
+
+    <!-- Card list -->
+    <div id="comm-card-list" class="comm-card-list"></div>
+
+    <!-- Email notify -->
+    <div class="community-coming" style="margin-top:32px">
       <div class="comm-icon">🏮</div>
       <div class="comm-title">Want to be notified when I post?</div>
       <div class="comm-sub">Leave your email and I'll reach out personally whenever there's something new — visa policy changes, seasonal tips, or just a good story from a traveler who made it through.</div>
@@ -90,8 +309,10 @@ function loadCommunity() {
   </section>`;
 
   document.getElementById('community-container').innerHTML = html;
+  _commRenderCards();
 }
 
+// ── FORM HANDLER — untouched from original ────────────────────
 function handleCommunityForm(e) {
   e.preventDefault();
   const form = e.target;

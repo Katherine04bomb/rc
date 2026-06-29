@@ -34,9 +34,8 @@ function loadAbout() {
           </div>
           <div class="about-body">
             <div class="about-story">
-              Born in the Philippines, grew up between Hong Kong, Quanzhou China,
-              studied in Australia and traveled around Australia, New Zealand and Asian
-              countries — I've lived in many places and carry a little piece of all of them.<br><br>
+              Born in the Philippines, I grew up between Hong Kong and Quanzhou China and I have studied and traveled all around Australia, New Zealand and Asia. Safe to say I’ve lived in many different places and have carried a little piece of each with me.
+<br><br>
               Now I'm back in China, and I keep inviting my friends to come visit me.
               The problem? Every single one of them panics when they start planning.
               "I don't know where to start." "Will I survive without Google?"

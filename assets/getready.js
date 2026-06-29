@@ -503,7 +503,7 @@ function loadGetReady() {
             <div class="app-tip">🔑 A little hack: send your driver a <strong>photo of where you are</strong> + "我是外国人，不会讲中文"(copy paste this sentence and send to the driver, it means 'I am a foreigner and I cant speak Mandarin') — works every time.</div>
             <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
               <a href="https://apps.apple.com/app/didi/id554499054" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;background:#000;color:#fff;padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none">🍎 App Store</a>
-              <a href="https://play.google.com/store/apps/details?id=com.sdu.didi.gsui" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;background:#01875f;color:#fff;padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none">▶ Google Play</a>
+              <a href="https://play.google.com/store/apps/details?id=com.sdu.didi.psnger" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;background:#01875f;color:#fff;padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none">▶ Google Play</a>
             </div>
           </div>
         </div>
