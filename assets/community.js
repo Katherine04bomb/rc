@@ -49,7 +49,7 @@ const POSTS = [
     date: 'March 2026',
     tag: 'tip',
     title: '🚽 toilet culture',
-    body: `There are many traditional squat toilets in China. Practice your Asian squat at home! You will need to straddle the pan with one foot on each side and squat down. <strong>And dont forget to bring some tissues with you!</strong>`
+    body: `There are many traditional squat toilets in China. Practice your Asian squat at home! You will need to straddle the pan with one foot on each side and squat down. And dont forget to bring some tissues with you!🧻`
   },
 
   // ── Q&A ───────────────────────────────────────────────────
