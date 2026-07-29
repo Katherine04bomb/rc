@@ -6,7 +6,7 @@
 //  2. Paste it at the TOP of the POSTS array
 //  3. Fill in:
 //       id:       'post-XXX'  ← increment the number (post-011, post-012...)
-//       category: 'lifehacks' | 'qa' | 'updates'
+//       category: 'lifehacks' | 'qa' | 'news'
 //       date:     'July 2026'
 //       tag:      'tip' | 'visa' | 'news'
 //       title:    'Your title'
@@ -78,10 +78,10 @@ const POSTS = [
     body: `No — tap water in China is not safe to drink directly. Always drink bottled water or water that has been boiled. The good news: bottled water is extremely cheap (¥1–2 for 500ml everywhere), and hotels always provide hot water flasks or kettles. Hot water from thermoses at restaurants and on trains has been boiled and is safe. Never use tap water to brush your teeth without boiling it first.`
   },
 
-  // ── UPDATES ───────────────────────────────────────────────
+  // ── NEWS ───────────────────────────────────────────────
   {
     id: 'post-008',
-    category: 'updates',
+    category: 'news',
     date: 'June 2026',
     tag: 'visa',
     title: '🇦🇺 Australian travelers still need a visa — but transit is available',
@@ -89,7 +89,7 @@ const POSTS = [
   },
   {
     id: 'post-009',
-    category: 'updates',
+    category: 'news',
     date: 'May 2026',
     tag: 'news',
     title: '💧 Some parks now provide 直饮水 drinking fountains',
@@ -97,7 +97,7 @@ const POSTS = [
   },
   {
     id: 'post-010',
-    category: 'updates',
+    category: 'news',
     date: 'April 2026',
     tag: 'news',
     title: '🚄 High-speed rail now accepts foreign bank cards at ticket machines',
@@ -171,7 +171,7 @@ function _commRenderCards() {
 
   // If searching, show a category label above each card
   const showCategory = _commQuery.length > 0;
-  const catLabels    = { lifehacks: 'Life Hacks', qa: 'Q&A', updates: 'Updates' };
+  const catLabels    = { lifehacks: 'Life Hacks', qa: 'Q&A', news: 'News' };
 
   list.innerHTML = filtered.map(post => {
     const t   = TAG_STYLES[post.tag] || TAG_STYLES.news;
@@ -279,7 +279,7 @@ function loadCommunity() {
     <div class="comm-tabs">
       <button class="comm-tab active" data-tab="lifehacks" onclick="commShowTab('lifehacks')">💡 Life Hacks</button>
       <button class="comm-tab"        data-tab="qa"        onclick="commShowTab('qa')">❓ Q&amp;A</button>
-      <button class="comm-tab"        data-tab="updates"   onclick="commShowTab('updates')">📢 Updates</button>
+      <button class="comm-tab"        data-tab="news"   onclick="commShowTab('news')">📢 News</button>
     </div>
 
     <!-- Card list -->

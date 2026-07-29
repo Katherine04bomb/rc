@@ -200,19 +200,19 @@ const STEPS = [
   {
     id:'step-payment', num:'Step 5', phase:'fly',
     title:'💳 Set Up Payments',
-    desc:"China is almost entirely cashless — street food stalls, taxis, supermarkets, all QR code. My friend Kory couldn't pay for dinner on her first night. Set up Alipay or WeChat before you land.",
+    desc:"China is almost entirely cashless — street food stalls, taxis, supermarkets, all QR code. My friend Kory couldn't pay for dinner on her first night using her credit card. Set up Alipay or WeChat before you land.",
     modal:{id:'payment-modal', label:'How to set up →'}
   },
   {
     id:'step-network', num:'Step 6', phase:'fly',
     title:'🌐 Understand the Firewall & VPN',
-    desc:"Google, Instagram, WhatsApp, and ChatGPT are all blocked in China. Download and test a VPN before you fly — you can't download VPN apps once you're inside China.",
+    desc:"Google, Instagram, WhatsApp, and ChatGPT are all blocked in China. Download and test a VPN before you fly.",
     modal:{id:'network-modal', label:'VPN guide →'}
   },
   {
     id:'step-apps', num:'Step 7', phase:'fly',
     title:'📱 Download Your Apps',
-    desc:"WeChat, Alipay, Didi, Amap, Dianping, Trip.com. Set them up at home — some need verification that's much easier to do before you arrive.",
+    desc:"There are 6 apps I would highly recommend you to download in advance. Set them up at home — some need verification that's much easier to do before you arrive.",
     modal:{id:'apps-modal', label:'See app guide →'}
   },
   {
@@ -244,7 +244,7 @@ const STEPS = [
   {
     id:'step-hotel-transfer', num:'Step 12', phase:'arrive',
     title:'🚕 Get to Your Hotel',
-    desc:"From arrivals hall to your front door — Didi, airport metro, or airport bus. Don't get into an unlicensed taxi. Here's exactly what to do the moment you walk out of baggage claim.",
+    desc:"From arrivals hall to your front door — Didi, airport metro, hotel bus or airport bus. Don't get into an unlicensed taxi. Here's exactly what to do the moment you walk out of baggage claim.",
     modal:{id:'hotel-transfer-modal', label:'How to get there →'}
   },
   {
@@ -268,7 +268,7 @@ const STEPS = [
   {
     id:'step-locals', num:'Step 16', phase:'arrive',
     title:'🗣️ Talk with Locals',
-    desc:"You don't need to speak Mandarin to have meaningful interactions. Ten phrases will take you surprisingly far — and locals absolutely love when you try.",
+    desc:"You don't have to speak Mandarin to have meaningful interactions - but these 10 phrases will take you surprisingly far, and locals absolutely love when you try.",
     modal:{id:'locals-modal', label:'Key phrases →'}
   },
   {
@@ -296,12 +296,12 @@ const statusMsgs = [
   'Travel insurance sorted — smart move 🏥',
   '✈️ PRE-TRIP COMPLETE! Now let\'s land safely…',
   'Immigration done — welcome to China! 🇨🇳',
-  'Made it to the hotel — first mission complete 🏨',
+  'Made it to the hotel — first mission complete, have a good rest! 🏨',
   'Getting around like a pro 🚇',
   'Payments working — scan away 📲',
   'Fed and happy 🍜',
   'Making friends with locals 🗣️',
-  '100% CHINA READY! You\'ve got this! 🇨🇳🎊'
+  '100% CHINA READY! You\'ve got this! Ni hao! 🇨🇳🎊'
 ];
 
 function toggleStep(id) {
@@ -433,26 +433,26 @@ function loadGetReady() {
       <button class="modal-close" onclick="closeModal('sim-modal')">×</button>
     </div>
     <div class="modal-body">
-      <div class="modal-note" style="margin-bottom:16px"><strong>Heads up:</strong> Getting a SIM or eSIM makes your trip funnier - you can order food, make reservations at restaurants or buy entrance tickets for specific places.</div>
+      <div class="modal-note" style="margin-bottom:16px"><strong>Heads up:</strong> The eSIM is the choice most people make, but getting a SIM card makes your trip funnier - you can order food, ride a shared bike, make reservations at restaurants or buy entrance tickets for specific places.</div>
       <div class="info-grid">
         <div class="info-card"><div class="info-card-title">📲 eSIM — Best for most travelers</div><ul class="info-list">
           <li><strong>Best for</strong> stays of 5–15 days where you mainly need chat, maps, and social media</li>
-          <li>Buy on Nomad, Airalo, Holafly, or China Unicom International before you fly</li>
-          <li>Scan QR code → activate → works the moment you land ✅</li>
-          <li>Around ¥100 ($13 USD) for 10GB / 30 days</li>
+          <li><strong>Buy</strong> on Nomad, Airalo, Holafly, or China Unicom International before you fly</li>
+          <li><strong>Activate:</strong> Scan QR code → activate → works the moment you land ✅</li>
+          <li><strong>Cost</strong>around ¥100 ($13 USD) for 10GB / 30 days</li>
           <li>To check if your phone is compatible: dial <strong>*#06#</strong> — if you see EID, you're good ✅</li>
         </ul></div>
         <div class="info-card"><div class="info-card-title">💳 Physical SIM — Best for longer stays</div><ul class="info-list">
-          <li><strong>Best</strong> if you're staying 2+ weeks or need a real Chinese phone number</li>
-          <li>Needed for registering certain apps, receiving bank codes, and hotel check-in</li>
-          <li>Buy at China Mobile / Unicom / Telecom counters at airports</li>
+          <li><strong>Best</strong> if you're staying 2+ weeks or need a real Chinese phone number for registering certain apps, receiving bank codes, and hotel check-in</li>
+          <li><strong>Buy</strong> at China Mobile / Unicom / Telecom counters at airports or visit carrier shops in the city</li>
+          <li><strong>Register:</strong>Bring your passport → Go to a counter → choose a plan → ask staff to help you activate your plan → done</li>
+          <li><strong>Cost</strong>around ¥250 ($35 USD) for 80GB + 300 mins calls / 30 days</li>
           <li>⚠️ Passport is required by law to register a Chinese SIM card</li>
-          <li>Around ¥250 ($35 USD) for 80GB + 300 mins / 30 days</li>
         </ul></div>
         <div class="info-card"><div class="info-card-title">📡 Pocket WiFi — Best as a backup</div><ul class="info-list">
-          <li>Great if your phone isn't eSIM compatible or you want to share data</li>
-          <li>Rent at the airport or pre-book online — around $4 USD/day</li>
-          <li>Return at the end of your trip (refundable deposit required)</li>
+          <li>Great if your phone isn't eSIM compatible or you want to share data with your companions.</li>
+          <li>Rent at the airport or pre-book online and return at the end of your trip (refundable deposit required)</li>
+          <li><strong>Cost</strong>around $4 USD/day</li>
           <li>Not ideal if you're travelling solo or moving between cities a lot</li>
         </ul></div>
       </div>
@@ -477,13 +477,13 @@ function loadGetReady() {
         </div></div>
         <div class="app-item"><div class="app-icon-box">💬</div><div>
           <div class="app-name">WeChat Pay 微信支付 — Great backup</div>
-          <div class="app-desc">Built into WeChat and also accepts foreign cards. Since you need WeChat for everything anyway, set up your account in advance.</div>
+          <div class="app-desc">Built into WeChat and also accepts foreign cards. You probably need WeChat for everything - mini programs, messaging and menu check, set up your account in advance.</div>
           <div class="app-tip">✅ WeChat has thousands of mini-programs — great for booking and ordering.</div>
         </div></div>
         <div class="app-item"><div class="app-icon-box">💵</div><div>
           <div class="app-name">Cash — Bring some, just in case</div>
-          <div class="app-desc">Bring ¥100–500 RMB as backup. Some older vendors and rural areas still prefer cash. Exchange at Bank of China for the best rates.</div>
-          <div class="app-tip">⚠️ Let your bank know you're travelling so they don't block your card at ATMs.</div>
+          <div class="app-desc">Bring ¥100–500 RMB as backup if theres any internet issue. <strong>Refusing to accept RMB(Chinese Yuan) cash is illegal in China</strong>. Exchange at Bank of China for the best rates.</div>
+          <div class="app-tip">⚠️ Let your bank know you're travelling so they don't block your card at ATMs.(ATMs with UnionPay/Visa logos work for foreign cards).</div>
         </div></div>
       </div>
     </div></div>
@@ -506,7 +506,7 @@ function loadGetReady() {
         </div></div>
         <div class="app-item"><div class="app-icon-box">🔐</div><div>
           <div class="app-name">VPN — The one rule you must follow</div>
-          <div class="app-desc">Download and <strong>test</strong> your VPN before you fly. Once in China, the App Store and Play Store are filtered — you can't download VPN apps after arrival. This is the #1 mistake first-time visitors make.</div>
+          <div class="app-desc">Download and <strong>test</strong> your VPN before you fly. Once in China, the App Store and Play Store are filtered — you can't easily download VPN apps after arrival. This is the #1 mistake first-time visitors make.</div>
           <div class="app-tip">Free VPNs almost never work reliably in China. Invest in a paid one.</div>
         </div></div>
         <div class="app-item"><div class="app-icon-box">✅</div><div>
@@ -529,8 +529,8 @@ function loadGetReady() {
     <div class="modal-body">
       <div class="app-list">
         <div class="app-item">
-          <div class="app-icon-box" style="background:#07C160;border-color:#07C160">
-            <img src="https://upload.wikimedia.org/wikipedia/en/a/af/WeChat_logo.svg" alt="WeChat" style="width:28px;height:28px;object-fit:contain" onerror="this.parentElement.innerHTML='💬'">
+          <div class="app-icon-box" style="background:#faf6ef;border-color:#07C160">
+            <img src="https://sgnewres.wechat.com/t/ofs-wechat/newsroom-web/res/_next/static/media/weChatWhite.5b5eb6c1.png" alt="WeChat" style="width:28px;height:28px;object-fit:contain" onerror="this.parentElement.innerHTML='💬'">
           </div>
           <div style="flex:1">
             <div class="app-name">WeChat 微信 — Your everything app</div>
@@ -543,13 +543,15 @@ function loadGetReady() {
           </div>
         </div>
         <div class="app-item">
-          <div class="app-icon-box" style="background:#1677FF;border-color:#1677FF">
+          <div class="app-icon-box" style="background:#faf6ef;border-color:#1677FF">
             <img src="https://upload.wikimedia.org/wikipedia/en/c/c7/Alipay_logo_%282020%29.svg" alt="Alipay" style="width:28px;height:28px;object-fit:contain" onerror="this.parentElement.innerHTML='💳'">
           </div>
           <div style="flex:1">
             <div class="app-name">Alipay 支付宝 — Pay for everything</div>
-            <div class="app-desc">China's dominant payment app. Foreign Visa and Mastercard now accepted directly.</div>
-            <div class="app-tip">✅ Download the International version. Settings → Bank Cards. Do this before you land.</div>
+            <div class="app-desc">China's dominant payment app. Foreign Visa and Mastercard now accepted directly — no Chinese bank account needed.</div>
+            <div class="app-tip">✅ Download the International version, turn on the translation to explore everything. Settings → Verify. Do this before you land.</div>
+            <!-- ✏️ Add your YouTube tutorial link here when ready:
+            <a href="https://youtube.com/YOUR_VIDEO_ID" target="_blank" class="yt-link">▶ Watch: How to set up Alipay</a> -->
             <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
               <a href="https://apps.apple.com/app/alipay/id333206289" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;background:#000;color:#fff;padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none">🍎 App Store</a>
               <a href="https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;background:#01875f;color:#fff;padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none">▶ Google Play</a>
@@ -557,7 +559,7 @@ function loadGetReady() {
           </div>
         </div>
         <div class="app-item">
-          <div class="app-icon-box" style="background:#FF5A00;border-color:#FF5A00">
+          <div class="app-icon-box" style="background:#faf6ef;border-color:#FF5A00">
             <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/DiDi_Logo.svg" alt="Didi" style="width:28px;height:28px;object-fit:contain" onerror="this.parentElement.innerHTML='🚗'">
           </div>
           <div style="flex:1">
@@ -571,13 +573,13 @@ function loadGetReady() {
           </div>
         </div>
         <div class="app-item">
-          <div class="app-icon-box" style="background:#3274F5;border-color:#3274F5">
+          <div class="app-icon-box" style="background:#faf6ef;border-color:#3274F5">
             <img src="https://upload.wikimedia.org/wikipedia/en/e/e7/AutoNaviLogo.png" alt="AMAP" style="width:28px;height:28px;object-fit:contain" onerror="this.parentElement.innerHTML='🗺️'">
           </div>
           <div style="flex:1">
             <div class="app-name">Amap 高德地图 — Navigation</div>
             <div class="app-desc">Google Maps doesn't work well in China. Amap is the most accurate option — English mode, works offline.</div>
-            <div class="app-tip">✅ Switch to English in Settings. Far more accurate than Baidu Maps for foreigners.</div>
+            <div class="app-tip">✅ Switch to English in Settings. Far more accurate than Google Maps for foreigners.</div>
             <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
               <a href="https://apps.apple.com/app/amap/id461703208" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;background:#000;color:#fff;padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none">🍎 App Store</a>
               <a href="https://play.google.com/store/apps/details?id=com.autonavi.minimap" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;background:#01875f;color:#fff;padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none">▶ Google Play</a>
@@ -585,20 +587,21 @@ function loadGetReady() {
           </div>
         </div>
         <div class="app-item">
-          <div class="app-icon-box" style="background:#CC0000;border-color:#CC0000">
-            <span style="font-size:22px">🍽️</span>
+          <div class="app-icon-box" style="background:#faf6ef;border-color:#CC0000">
+            <img src="data:image/png;base64,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" alt="点评" style="width:28px;height:28px;object-fit:contain" onerror="this.parentElement.innerHTML='🍽️'">
           </div>
           <div style="flex:1">
             <div class="app-name">大众点评 Dianping — Where to eat</div>
-            <div class="app-desc">China's Yelp + TripAdvisor. Every restaurant rated and reviewed. Filter by "English menu" or "foreigner-friendly".</div>
+            <div class="app-desc">China's Yelp + TripAdvisor. Every restaurant and café rated and reviewed. Filter by "English menu" or "foreigner-friendly".</div>
             <div class="app-tip">✅ This is how locals decide where to eat. The ratings are very trustworthy.</div>
             <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
               <a href="https://apps.apple.com/app/id351091731" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;background:#000;color:#fff;padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none">🍎 App Store</a>
+              <a href="https://play.google.com/store/apps/details?id=com.dianping.v1" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;background:#01875f;color:#fff;padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none">▶ Google Play</a>
             </div>
           </div>
         </div>
         <div class="app-item">
-          <div class="app-icon-box" style="background:#EF4D38;border-color:#EF4D38">
+          <div class="app-icon-box" style="background:#faf6ef;border-color:#EF4D38">
             <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Trip.com_logo.svg" alt="Trip" style="width:28px;height:28px;object-fit:contain" onerror="this.parentElement.innerHTML='✈️'">
           </div>
           <div style="flex:1">
@@ -627,14 +630,14 @@ function loadGetReady() {
       <div class="info-grid">
         <div class="info-card"><div class="info-card-title">🚄 High-Speed Rail (高铁)</div><ul class="info-list">
           <li>The backbone of China travel — fast, cheap, punctual</li>
-          <li>Beijing → Shanghai: 4.5 hours (~¥550 / $75 USD)</li>
+          <li>Beijing → Shanghai: 4.5 hours (~¥550 / $75 USD for second-class seats)</li>
           <li>Book with your passport on Trip.com or the 12306 app</li>
           <li>G trains fastest, D trains slightly slower, C trains are city rail</li>
-          <li>🥚 Easter egg: you can order food delivery to your seat!</li>
+          <li>🥚 Easter egg: you can order food delivery to your seat by scanning the QR code!</li>
         </ul></div>
         <div class="info-card"><div class="info-card-title">🚇 Metro (地铁)</div><ul class="info-list">
           <li>Every major city has a modern, extensive metro network</li>
-          <li>Ticket machines have English — or scan WeChat / Alipay QR at the gate</li>
+          <li>The most ticket machines have English — or scan WeChat / Alipay QR at the gate</li>
           <li>Fares: ¥3–15 per journey — extremely affordable</li>
           <li>Covers all major tourist spots in every big city</li>
         </ul></div>
@@ -642,12 +645,12 @@ function loadGetReady() {
           <li>Works in English — set pickup and destination in the app</li>
           <li>Most city rides: ¥20–40 (~$3–6 USD)</li>
           <li>Much cheaper and safer than street taxis</li>
-          <li>Avoid unlicensed "taxi" offers at airports</li>
+          <li>Avoid unlicensed "taxi" offers at airports (that charge extra fees)</li>
         </ul></div>
         <div class="info-card"><div class="info-card-title">✈️ Domestic Flights</div><ul class="info-list">
           <li>Worth it for very long distances (e.g. Beijing → Yunnan)</li>
           <li>Book on Trip.com for English + foreign card support</li>
-          <li>Arrive at least 2 hours early — security is thorough</li>
+          <li>Arrive at least 1 hour early — security is thorough</li>
           <li>Budget options: Xiamen Air, Shenzhen Airlines</li>
         </ul></div>
       </div>

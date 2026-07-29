@@ -580,8 +580,16 @@ main { padding-top: 70px; position: relative; z-index: 1; }
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
-.map-container { max-width: 860px; margin: 0 auto; }
-#china-map-svg { width: 100%; height: auto; display: block; margin-top: 20px; }
+.map-container { max-width: 800px; margin: 0 auto; }
+#china-map-svg-wrap {
+  width: 100%;
+  margin-top: 20px;
+}
+#china-map-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 #china-map-svg .province {
   fill: var(--province-default);
   stroke: var(--province-stroke);
@@ -635,6 +643,16 @@ main { padding-top: 70px; position: relative; z-index: 1; }
 .map-pill-zh { font-family: 'Noto Serif SC', serif; font-size: 17px; color: var(--accent); }
 .map-pill-en { font-size: 11px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; }
 .map-pill-btn { font-size: 10px; color: var(--text-muted); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+
+
+/* Decorative regions (Taiwan, HK, Macau, South Sea) — styled but no hover/click */
+#china-map-svg .province-decor {
+  fill: var(--province-default);
+  stroke: var(--province-stroke);
+  stroke-width: .6;
+  opacity: .5;
+  pointer-events: none;
+}
 
 /* ── 11. COMMUNITY & POSTS ───────────────────────────────── */
 .news-card {

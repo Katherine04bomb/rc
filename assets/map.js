@@ -1,16 +1,19 @@
 // ============================================================
-//  assets/map.js — Interactive China Map component
+//  assets/map.js — Interactive China Map
+//
+//  Uses assets/china-Map.svg (pre-cropped viewBox, no internal
+//  styles or text — map.js adds all labels and interactions).
 //
 //  HOW TO EDIT:
-//  • Change a province description → find the province in
-//    PROVINCES array below, edit the desc field
-//  • Change section heading/subtext → edit SECTION_HEADER
-//  • The SVG polygon coordinates should NOT be changed
-//    (they define the actual shape of each province)
+//  • Province tooltip text → edit desc in PROVINCE_MAP below
+//  • Province label on map  → edit label field
+//  • Section heading        → edit html string in loadMap()
+//  DO NOT edit china-Map.svg path data.
+//
+//  REQUIRES: Live Server or any http server (fetch needs http)
 // ============================================================
 
 // ── TOOLTIP ─────────────────────────────────────────────────
-// Called from SVG onmousemove / onmouseleave attrs generated below
 function showTip(e, el) {
   const t = document.getElementById('prov-tip');
   document.getElementById('tip-zh').textContent   = el.dataset.zh   || '';
@@ -34,7 +37,6 @@ function hideTip() {
 }
 
 // ── PROVINCE SELECT ──────────────────────────────────────────
-// Called from SVG onclick attrs generated below
 let activeProv = null;
 
 function selectProv(el) {
@@ -51,286 +53,92 @@ function selectProv(el) {
   document.getElementById('map-pill').style.display = 'inline-flex';
 }
 
-// ────────────────────────────────────────────────────────────
+// ── PROVINCE DATA ────────────────────────────────────────────
+// idx   = <path> index in china-Map.svg (0-based, do not change)
+// lx/ly = label position (original SVG coordinate space)
+// label = text shown on the map
+const PROVINCE_MAP = [
+  {idx:0,  id:'beijing',        zh:'北京', en:'Beijing',       lx:488, ly:143, label:'京',
+   desc:"China's capital. Great Wall, Forbidden City, Tiananmen. Essential first stop."},
+  {idx:1,  id:'tianjin',        zh:'天津', en:'Tianjin',       lx:500, ly:157, label:'津',
+   desc:'Historic port city near Beijing. European architecture, famous Goubuli buns.'},
+  {idx:2,  id:'hebei',          zh:'河北', en:'Hebei',         lx:476, ly:168, label:'河北',
+   desc:'Surrounds Beijing & Tianjin. Chengde Summer Palace, Zhangjiakou ski mountains.'},
+  {idx:3,  id:'shanxi',         zh:'山西', en:'Shanxi',        lx:449, ly:178, label:'山西',
+   desc:'Ancient culture. Pingyao old city (UNESCO), Yungang Grottoes.'},
+  {idx:4,  id:'inner-mongolia', zh:'内蒙古',en:'Inner Mongolia',lx:430, ly:102, label:'内蒙古',
+   desc:'Vast steppes, nomadic culture, horse riding, incredible starry skies.'},
+  {idx:5,  id:'liaoning',       zh:'辽宁', en:'Liaoning',      lx:546, ly:143, label:'辽宁',
+   desc:"Dalian's coastline, Shenyang Imperial Palace. Gateway to Northeast China."},
+  {idx:6,  id:'jilin',          zh:'吉林', en:'Jilin',         lx:575, ly:116, label:'吉林',
+   desc:'Changchun & Jilin City. Ski resorts, rime ice scenery, Korean cultural heritage.'},
+  {idx:7,  id:'heilongjiang',   zh:'黑龙江',en:'Heilongjiang',  lx:578, ly:65,  label:'黑龙江',
+   desc:"China's northernmost province. Ice & Snow Festival, Siberian tigers, vast forests."},
+  {idx:8,  id:'shanghai',       zh:'上海', en:'Shanghai',      lx:532, ly:230, label:'沪',
+   desc:"China's global metropolis. Iconic Bund, world-class dining, fashion."},
+  {idx:9,  id:'jiangsu',        zh:'江苏', en:'Jiangsu',       lx:513, ly:212, label:'江苏',
+   desc:"Suzhou gardens, Nanjing history, water towns — China's Venice."},
+  {idx:10, id:'zhejiang',       zh:'浙江', en:'Zhejiang',      lx:527, ly:246, label:'浙江',
+   desc:"Hangzhou West Lake, tea culture, water towns. Alibaba's home."},
+  {idx:11, id:'anhui',          zh:'安徽', en:'Anhui',         lx:499, ly:224, label:'安徽',
+   desc:'Yellow Mountain (Huangshan) — the most photographed peak in China.'},
+  {idx:12, id:'fujian',         zh:'福建', en:'Fujian',        lx:508, ly:273, label:'福建',
+   desc:"Tea country, Tulou buildings, Quanzhou Maritime Silk Road. K's hometown!"},
+  {idx:13, id:'jiangxi',        zh:'江西', en:'Jiangxi',       lx:487, ly:261, label:'江西',
+   desc:'Jingdezhen porcelain, Lushan Mountain, Wuyuan golden fields.'},
+  {idx:14, id:'shandong',       zh:'山东', en:'Shandong',      lx:511, ly:185, label:'山东',
+   desc:'Birthplace of Confucius. Mount Tai, Qingdao beer, beautiful coastline.'},
+  {idx:15, id:'henan',          zh:'河南', en:'Henan',         lx:475, ly:207, label:'河南',
+   desc:'Heart of ancient China. Shaolin Temple, Longmen Grottoes, Yellow River.'},
+  {idx:16, id:'hubei',          zh:'湖北', en:'Hubei',         lx:460, ly:232, label:'湖北',
+   desc:'Three Gorges Dam, Wuhan, Yangtze River heartland.'},
+  {idx:17, id:'hunan',          zh:'湖南', en:'Hunan',         lx:458, ly:263, label:'湖南',
+   desc:"Avatar Mountains (Zhangjiajie), Mao's birthplace, fiercely spicy cuisine."},
+  {idx:18, id:'guangdong',      zh:'广东', en:'Guangdong',     lx:480, ly:297, label:'广东',
+   desc:'Shenzhen tech hub, Cantonese cuisine, Pearl River Delta, dim sum culture.'},
+  {idx:19, id:'guangxi',        zh:'广西', en:'Guangxi',       lx:434, ly:290, label:'广西',
+   desc:"Guilin's karst mountains & Li River cruise. Zhuang ethnic culture."},
+  {idx:20, id:'hainan',         zh:'海南', en:'Hainan',        lx:448, ly:360, label:'海南',
+   desc:"China's tropical paradise. Sanya beaches, palm trees, duty-free shopping."},
+  {idx:21, id:'chongqing',      zh:'重庆', en:'Chongqing',     lx:428, ly:241, label:'渝',
+   desc:'Mountain megacity. Hotpot capital, cyberpunk skyline, Three Gorges cruise.'},
+  {idx:22, id:'sichuan',        zh:'四川', en:'Sichuan',       lx:393, ly:235, label:'四川',
+   desc:'Panda paradise! Spicy food, Jiuzhaigou lakes, Leshan Giant Buddha.'},
+  {idx:23, id:'guizhou',        zh:'贵州', en:'Guizhou',       lx:423, ly:266, label:'贵州',
+   desc:'Hidden waterfalls, Huangguoshu Falls, Miao & Dong ethnic culture.'},
+  {idx:24, id:'yunnan',         zh:'云南', en:'Yunnan',        lx:385, ly:278, label:'云南',
+   desc:'Lijiang, Shangri-La, rice terraces, 25 ethnic groups. Backpacker paradise.'},
+  {idx:25, id:'tibet',          zh:'西藏', en:'Tibet',         lx:291, ly:228, label:'西藏',
+   desc:'Potala Palace, Mt. Everest Base Camp. The roof of the world.'},
+  {idx:26, id:'shaanxi',        zh:'陕西', en:'Shaanxi',       lx:436, ly:195, label:'陕西',
+   desc:"Terracotta Army, ancient Xi'an. The Silk Road begins here!"},
+  {idx:27, id:'gansu',          zh:'甘肃', en:'Gansu',         lx:374, ly:165, label:'甘肃',
+   desc:'Silk Road corridor. Dunhuang Mogao Caves, Rainbow Mountains, Jiayuguan Fort.'},
+  {idx:28, id:'qinghai',        zh:'青海', en:'Qinghai',       lx:342, ly:196, label:'青海',
+   desc:'Qinghai Lake, Tibetan plateau, breathtaking high-altitude scenery.'},
+  {idx:29, id:'ningxia',        zh:'宁夏', en:'Ningxia',       lx:422, ly:178, label:'宁',
+   desc:'Desert meets oasis. Shapotou sand dunes, Hui Muslim culture.'},
+  {idx:30, id:'xinjiang',       zh:'新疆', en:'Xinjiang',      lx:252, ly:142, label:'新疆',
+   desc:"China's largest region. Taklamakan Desert, Silk Road oases, Kashgar bazaar."},
+];
+
+// ── MAP LOADER ────────────────────────────────────────────────
 function loadMap() {
 
-  // ── PROVINCE DATA ────────────────────────────────────────
-  // To edit a province tooltip: change desc only
-  // labelX/labelY = where the text label sits on the map
-  // label = what appears on the map (zh + en or just zh for tiny provinces)
-  const PROVINCES = [
-    {
-      id: 'heilongjiang',
-      zh: '黑龙江', en: 'Heilongjiang',
-      desc: "China's northernmost province. Ice & Snow Festival, Siberian tigers, vast forests.",
-      points: '600,30 725,28 762,58 742,100 700,122 658,132 628,112 590,80',
-      labels: [
-        { x: 672, y: 74, cls: 'plzh', text: '黑龙江' },
-        { x: 672, y: 83, cls: 'plen', text: 'Heilongjiang' }
-      ]
-    },
-    {
-      id: 'jilin',
-      zh: '吉林', en: 'Jilin',
-      desc: 'Changchun & Jilin City. Ski resorts, rime ice scenery, Korean cultural heritage.',
-      points: '628,112 700,122 722,152 680,172 638,156 614,136',
-      labels: [{ x: 665, y: 143, cls: 'plzh', text: '吉林 Jilin' }]
-    },
-    {
-      id: 'liaoning',
-      zh: '辽宁', en: 'Liaoning',
-      desc: "Dalian's coastline, Shenyang Imperial Palace. Gateway to Northeast China.",
-      points: '614,136 638,156 680,172 692,202 650,218 614,202 594,176 600,156',
-      labels: [{ x: 638, y: 186, cls: 'plzh', text: '辽宁 Liaoning' }]
-    },
-    {
-      id: 'inner-mongolia',
-      zh: '内蒙古', en: 'Inner Mongolia',
-      desc: 'Vast steppes, nomadic culture, horse riding, incredible starry skies.',
-      points: '278,62 600,30 590,80 628,112 614,136 594,176 558,172 498,162 438,152 378,157 328,142 288,122 258,92',
-      labels: [
-        { x: 438, y: 112, cls: 'plzh', text: '内蒙古' },
-        { x: 438, y: 122, cls: 'plen', text: 'Inner Mongolia' }
-      ]
-    },
-    {
-      id: 'beijing',
-      zh: '北京', en: 'Beijing',
-      desc: "China's capital. Great Wall, Forbidden City, Tiananmen. Essential first stop.",
-      points: '548,172 570,162 584,177 580,194 559,197 543,187',
-      labels: [{ x: 562, y: 184, cls: 'plzh', text: '京' }]
-    },
-    {
-      id: 'tianjin',
-      zh: '天津', en: 'Tianjin',
-      desc: 'Historic port city near Beijing. European architecture, famous Goubuli buns.',
-      points: '568,192 584,186 596,202 580,212 564,207',
-      labels: [{ x: 580, y: 203, cls: 'plzh', text: '津' }]
-    },
-    {
-      id: 'hebei',
-      zh: '河北', en: 'Hebei',
-      desc: 'Surrounds Beijing & Tianjin. Chengde Summer Palace, Zhangjiakou ski mountains.',
-      points: '498,162 548,172 543,187 559,197 580,212 564,242 528,258 488,252 458,232 448,202 468,177',
-      labels: [{ x: 508, y: 218, cls: 'plzh', text: '河北 Hebei' }]
-    },
-    {
-      id: 'shanxi',
-      zh: '山西', en: 'Shanxi',
-      desc: 'Ancient culture. Pingyao old city (UNESCO), Yungang Grottoes.',
-      points: '448,202 488,252 478,287 453,302 428,287 418,257 428,227',
-      labels: [{ x: 450, y: 255, cls: 'plzh', text: '山西 Shanxi' }]
-    },
-    {
-      id: 'shandong',
-      zh: '山东', en: 'Shandong',
-      desc: 'Birthplace of Confucius. Mount Tai, Qingdao beer, beautiful coastline.',
-      points: '564,242 618,237 632,257 622,282 590,297 558,287 538,267 528,258',
-      labels: [{ x: 582, y: 264, cls: 'plzh', text: '山东 Shandong' }]
-    },
-    {
-      id: 'henan',
-      zh: '河南', en: 'Henan',
-      desc: 'Heart of ancient China. Shaolin Temple, Longmen Grottoes, Yellow River.',
-      points: '478,287 528,258 558,287 553,322 518,342 483,332 463,312',
-      labels: [{ x: 508, y: 307, cls: 'plzh', text: '河南 Henan' }]
-    },
-    {
-      id: 'shaanxi',
-      zh: '陕西', en: 'Shaanxi',
-      desc: 'Terracotta Army, ancient Xi\'an. The Silk Road begins here!',
-      points: '378,157 438,152 448,202 428,227 418,257 428,287 408,312 378,322 358,302 353,267 363,232 368,197',
-      labels: [{ x: 394, y: 245, cls: 'plzh', text: '陕西 Shaanxi' }]
-    },
-    {
-      id: 'gansu',
-      zh: '甘肃', en: 'Gansu',
-      desc: 'Silk Road corridor. Dunhuang Mogao Caves, Rainbow Mountains, Jiayuguan Fort.',
-      points: '198,142 278,62 288,122 328,142 378,157 368,197 353,267 328,292 298,282 268,262 238,232 198,202 188,172',
-      labels: [{ x: 272, y: 195, cls: 'plzh', text: '甘肃 Gansu' }]
-    },
-    {
-      id: 'ningxia',
-      zh: '宁夏', en: 'Ningxia',
-      desc: 'Desert meets oasis. Shapotou sand dunes, Hui Muslim culture.',
-      points: '353,267 363,232 368,197 383,202 388,232 383,262 366,277',
-      labels: [{ x: 372, y: 242, cls: 'plzh', text: '宁夏' }]
-    },
-    {
-      id: 'qinghai',
-      zh: '青海', en: 'Qinghai',
-      desc: 'Qinghai Lake, Tibetan plateau, breathtaking high-altitude scenery.',
-      points: '148,252 198,202 238,232 268,262 298,282 308,322 278,362 238,372 198,362 168,332 143,297',
-      labels: [{ x: 224, y: 298, cls: 'plzh', text: '青海 Qinghai' }]
-    },
-    {
-      id: 'xinjiang',
-      zh: '新疆', en: 'Xinjiang',
-      desc: "China's largest region. Taklamakan Desert, Silk Road oases, Kashgar bazaar.",
-      points: '28,82 198,82 198,142 188,172 198,202 148,252 143,297 98,312 58,292 28,252 18,182 22,122',
-      labels: [{ x: 108, y: 188, cls: 'plzh', text: '新疆 Xinjiang' }]
-    },
-    {
-      id: 'tibet',
-      zh: '西藏', en: 'Tibet',
-      desc: 'Potala Palace, Mt. Everest Base Camp. The roof of the world.',
-      points: '98,312 143,297 148,252 198,362 238,372 258,412 218,442 168,452 128,432 93,402 78,362 83,332',
-      labels: [{ x: 154, y: 388, cls: 'plzh', text: '西藏 Tibet' }]
-    },
-    {
-      id: 'sichuan',
-      zh: '四川', en: 'Sichuan',
-      desc: 'Panda paradise! Spicy food, Jiuzhaigou lakes, Leshan Giant Buddha.',
-      points: '298,282 328,292 353,267 366,277 383,262 388,312 378,352 353,382 318,392 288,372 268,342 258,312 268,292',
-      labels: [{ x: 322, y: 334, cls: 'plzh', text: '四川 Sichuan' }]
-    },
-    {
-      id: 'chongqing',
-      zh: '重庆', en: 'Chongqing',
-      desc: 'Mountain megacity. Hotpot capital, cyberpunk skyline, Three Gorges cruise.',
-      points: '388,312 408,312 418,332 413,357 393,362 378,352',
-      labels: [{ x: 397, y: 337, cls: 'plzh', text: '渝' }]
-    },
-    {
-      id: 'guizhou',
-      zh: '贵州', en: 'Guizhou',
-      desc: 'Hidden waterfalls, Huangguoshu Falls, Miao & Dong ethnic culture.',
-      points: '413,357 428,347 453,357 468,377 458,402 433,417 408,402 398,382',
-      labels: [{ x: 434, y: 385, cls: 'plzh', text: '贵州 Guizhou' }]
-    },
-    {
-      id: 'yunnan',
-      zh: '云南', en: 'Yunnan',
-      desc: 'Lijiang, Shangri-La, rice terraces, 25 ethnic groups. Backpacker paradise.',
-      points: '258,412 288,372 318,392 353,382 378,402 393,422 383,457 353,472 308,482 278,462 258,442',
-      labels: [{ x: 313, y: 432, cls: 'plzh', text: '云南 Yunnan' }]
-    },
-    {
-      id: 'guangxi',
-      zh: '广西', en: 'Guangxi',
-      desc: "Guilin's karst mountains & Li River cruise. Zhuang ethnic culture.",
-      points: '458,402 478,382 508,377 533,392 543,422 523,447 488,457 458,447 443,427',
-      labels: [{ x: 493, y: 420, cls: 'plzh', text: '广西 Guangxi' }]
-    },
-    {
-      id: 'guangdong',
-      zh: '广东', en: 'Guangdong',
-      desc: 'Shenzhen tech hub, Cantonese cuisine, Pearl River Delta, dim sum culture.',
-      points: '533,392 568,377 598,382 613,407 603,432 573,447 543,452 523,447',
-      labels: [{ x: 565, y: 414, cls: 'plzh', text: '广东 Guangdong' }]
-    },
-    {
-      id: 'hainan',
-      zh: '海南', en: 'Hainan',
-      desc: "China's tropical paradise. Sanya beaches, palm trees, duty-free shopping.",
-      points: '528,492 558,482 578,497 568,517 543,522 523,510',
-      labels: [{ x: 550, y: 504, cls: 'plzh', text: '海南 Hainan' }]
-    },
-    {
-      id: 'hunan',
-      zh: '湖南', en: 'Hunan',
-      desc: "Avatar Mountains (Zhangjiajie), Mao's birthplace, fiercely spicy cuisine.",
-      points: '478,332 518,342 543,357 543,392 508,377 478,382 458,402 433,417 428,392 438,367 453,357 463,342',
-      labels: [{ x: 487, y: 372, cls: 'plzh', text: '湖南 Hunan' }]
-    },
-    {
-      id: 'hubei',
-      zh: '湖北', en: 'Hubei',
-      desc: 'Three Gorges Dam, Wuhan, Yangtze River heartland.',
-      points: '453,312 483,297 518,302 538,317 543,357 518,342 478,332 463,342 453,330',
-      labels: [{ x: 495, y: 325, cls: 'plzh', text: '湖北 Hubei' }]
-    },
-    {
-      id: 'jiangsu',
-      zh: '江苏', en: 'Jiangsu',
-      desc: "Suzhou gardens, Nanjing history, water towns — China's Venice.",
-      points: '558,287 588,297 618,302 618,327 593,342 568,347 553,322',
-      labels: [{ x: 585, y: 318, cls: 'plzh', text: '江苏 Jiangsu' }]
-    },
-    {
-      id: 'shanghai',
-      zh: '上海', en: 'Shanghai',
-      desc: "China's global metropolis. Iconic Bund, world-class dining, fashion.",
-      points: '608,322 626,320 630,332 620,342 607,337',
-      labels: [{ x: 618, y: 331, cls: 'plzh', text: '沪' }]
-    },
-    {
-      id: 'zhejiang',
-      zh: '浙江', en: 'Zhejiang',
-      desc: 'Hangzhou West Lake, tea culture, water towns. Alibaba\'s home.',
-      points: '593,342 623,332 638,347 633,372 608,382 588,372 583,352',
-      labels: [{ x: 610, y: 360, cls: 'plzh', text: '浙江 Zhejiang' }]
-    },
-    {
-      id: 'fujian',
-      zh: '福建', en: 'Fujian',
-      desc: "Tea country, Tulou buildings, Quanzhou's Maritime Silk Road. K's hometown!",
-      points: '608,382 633,372 658,377 663,402 643,422 613,417 598,402',
-      labels: [{ x: 630, y: 398, cls: 'plzh', text: '福建 Fujian' }]
-    },
-    {
-      id: 'jiangxi',
-      zh: '江西', en: 'Jiangxi',
-      desc: 'Jingdezhen porcelain, Lushan Mountain, Wuyuan golden fields.',
-      points: '568,347 593,342 583,352 588,372 608,382 598,402 573,412 553,397 543,372 548,352',
-      labels: [{ x: 572, y: 378, cls: 'plzh', text: '江西 Jiangxi' }]
-    },
-    {
-      id: 'anhui',
-      zh: '安徽', en: 'Anhui',
-      desc: 'Yellow Mountain (Huangshan) — the most photographed peak in China.',
-      points: '538,297 558,287 553,322 568,347 548,352 528,342 518,322 523,302',
-      labels: [{ x: 540, y: 322, cls: 'plzh', text: '安徽 Anhui' }]
-    }
-  ];
-
-  // ── BUILD SVG PROVINCES ──────────────────────────────────
-  const provinceSVG = PROVINCES.map(p => {
-    const labelsHTML = p.labels.map(l =>
-      `<text class="prov-lbl" x="${l.x}" y="${l.y}">
-        <tspan class="${l.cls}" text-anchor="middle">${l.text}</tspan>
-      </text>`
-    ).join('');
-
-    return `
-      <g id="${p.id}" class="province"
-         data-zh="${p.zh}" data-en="${p.en}" data-desc="${p.desc}"
-         onmousemove="showTip(event,this)" onmouseleave="hideTip()" onclick="selectProv(this)">
-        <polygon points="${p.points}"/>
-      </g>
-      ${labelsHTML}`;
-  }).join('');
-
-  // ── FULL SECTION HTML ────────────────────────────────────
   const html = `
   <section class="map-section-wrap" id="map-section">
     <div class="map-container">
       <div class="section-eyebrow" style="text-align:center">Explore · 探索中国</div>
       <h2 class="section-title" style="text-align:center">Click any province to learn more</h2>
       <p class="section-sub" style="text-align:center;margin-bottom:0">
-        All 31 provinces, bilingual — hover for a preview, click to light it up
+        All 31 provinces — hover for a preview, click to light it up
       </p>
-
-      <svg id="china-map-svg" viewBox="0 0 900 760" xmlns="http://www.w3.org/2000/svg">
-        ${provinceSVG}
-
-        <!-- Taiwan -->
-        <ellipse cx="670" cy="432" rx="14" ry="22"
-          fill="var(--province-default)" stroke="var(--province-stroke)"
-          stroke-width=".8" opacity=".6"/>
-        <text class="prov-lbl" x="670" y="435">
-          <tspan class="plzh" text-anchor="middle" font-size="5.5">台湾</tspan>
-        </text>
-
-        <!-- South China Sea islands -->
-        <rect x="638" y="488" width="54" height="64" fill="none"
-          stroke="var(--province-stroke)" stroke-width=".5"
-          stroke-dasharray="3,3" rx="2" opacity=".4"/>
-        <text x="665" y="524" fill="var(--text-muted)" font-size="5"
-          text-anchor="middle" pointer-events="none" opacity=".5">南海诸岛</text>
-      </svg>
-
-      <div id="map-active-strip" style="margin-top:8px">
+      <div id="china-map-svg-wrap">
+        <div id="map-loading" style="text-align:center;padding:60px;color:var(--text-muted);font-size:13px">
+          Loading map…
+        </div>
+      </div>
+      <div id="map-active-strip" style="margin-top:12px">
         <div id="map-pill" class="map-pill" style="display:none">
           <span class="map-pill-zh" id="map-zh"></span>
           <span class="map-pill-en" id="map-en"></span>
@@ -342,15 +150,119 @@ function loadMap() {
 
   document.getElementById('map-container').innerHTML = html;
 
-  // Re-attach map SVG mousemove listener after injection
-  const svg = document.getElementById('china-map-svg');
-  if (svg) {
-    svg.addEventListener('mousemove', e => {
-      if (document.getElementById('prov-tip').style.display === 'block') {
-        moveTip(e);
-      }
+  fetch('assets/china-Map.svg')
+    .then(r => {
+      if (!r.ok) throw new Error('SVG fetch failed ' + r.status);
+      return r.text();
+    })
+    .then(svgText => {
+      const parser = new DOMParser();
+      const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
+      const svgEl  = svgDoc.querySelector('svg');
+
+      // Remove any leftover style/text nodes (pre-cropped SVG is already clean,
+      // this is just a safety net)
+      svgDoc.querySelectorAll('style, text').forEach(n => n.remove());
+
+      const allPaths = Array.from(svgEl.querySelectorAll('path'));
+
+      // ── Annotate interactive provinces ──────────────────
+      PROVINCE_MAP.forEach(p => {
+        const path = allPaths[p.idx];
+        if (!path) return;
+        path.setAttribute('id',           p.id);
+        path.setAttribute('class',        'province');
+        path.setAttribute('data-zh',      p.zh);
+        path.setAttribute('data-en',      p.en);
+        path.setAttribute('data-desc',    p.desc);
+        path.setAttribute('onmousemove',  'showTip(event,this)');
+        path.setAttribute('onmouseleave', 'hideTip()');
+        path.setAttribute('onclick',      'selectProv(this)');
+      });
+
+      // ── Decorative paths ────────────────────────────────
+      // path[31]=Taiwan  path[32]=HK  path[33]=Macau detail  path[34]=South Sea
+      [31, 32, 33, 34].forEach(i => {
+        const p = allPaths[i];
+        if (p) p.setAttribute('class', 'province-decor');
+      });
+
+      // ── Add province text labels ─────────────────────────
+      PROVINCE_MAP.forEach(p => {
+        const t = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
+        t.setAttribute('x',              p.lx);
+        t.setAttribute('y',              p.ly);
+        t.setAttribute('text-anchor',    'middle');
+        t.setAttribute('pointer-events', 'none');
+        t.setAttribute('class',          'prov-lbl');
+        t.textContent = p.label;
+        svgEl.appendChild(t);
+      });
+
+      // ── Taiwan label ─────────────────────────────────────
+      const addText = (x, y, txt, size, fill, anchor='middle') => {
+        const t = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
+        t.setAttribute('x', x); t.setAttribute('y', y);
+        t.setAttribute('text-anchor', anchor);
+        t.setAttribute('font-size', size);
+        t.setAttribute('fill', fill);
+        t.setAttribute('pointer-events', 'none');
+        t.textContent = txt;
+        svgEl.appendChild(t);
+      };
+
+      addText(528, 288, '台湾', 7, 'rgba(26,18,8,0.4)');
+
+      // ── Hong Kong & Macau dots + labels ─────────────────
+      const addDot = (cx, cy, r, fill) => {
+        const c = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        c.setAttribute('cx', cx); c.setAttribute('cy', cy);
+        c.setAttribute('r',  r);
+        c.setAttribute('fill', fill);
+        c.setAttribute('pointer-events', 'none');
+        svgEl.appendChild(c);
+      };
+
+      addDot(472, 297, 2.5, 'var(--accent)');
+      addText(478, 298, '香港 HK', 6.5, 'var(--accent)', 'start');
+      addDot(468, 302, 1.8, 'rgba(26,18,8,0.5)');
+      addText(474, 303, '澳門', 5.5, 'rgba(26,18,8,0.45)', 'start');
+
+      // ── South China Sea dashed box ────────────────────────
+      const rect = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      rect.setAttribute('x', '630'); rect.setAttribute('y', '325');
+      rect.setAttribute('width', '60'); rect.setAttribute('height', '75');
+      rect.setAttribute('fill', 'none');
+      rect.setAttribute('stroke', 'var(--province-stroke)');
+      rect.setAttribute('stroke-width', '0.8');
+      rect.setAttribute('stroke-dasharray', '3,3');
+      rect.setAttribute('rx', '2');
+      rect.setAttribute('opacity', '0.45');
+      rect.setAttribute('pointer-events', 'none');
+      svgEl.appendChild(rect);
+      addText(660, 368, '南海诸岛', 6.5, 'rgba(26,18,8,0.35)');
+
+      // ── Final SVG attributes ─────────────────────────────
+      svgEl.setAttribute('id',     'china-map-svg');
+      svgEl.setAttribute('width',  '100%');
+      svgEl.setAttribute('height', '100%');
+      svgEl.removeAttribute('style');
+
+      // Inject
+      const wrap = document.getElementById('china-map-svg-wrap');
+      document.getElementById('map-loading').remove();
+      wrap.appendChild(svgEl);
+
+      // Tooltip follow
+      svgEl.addEventListener('mousemove', e => {
+        if (document.getElementById('prov-tip').style.display === 'block') moveTip(e);
+      });
+    })
+    .catch(err => {
+      console.error('Map error:', err);
+      const loading = document.getElementById('map-loading');
+      if (loading) loading.textContent = 'Map unavailable — please open with Live Server.';
     });
-  }
 }
 
 loadMap();
