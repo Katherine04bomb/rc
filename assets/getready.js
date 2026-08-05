@@ -305,7 +305,10 @@ const statusMsgs = [
 ];
 
 function toggleStep(id) {
-  document.getElementById(id).classList.toggle('done');
+  const el = document.getElementById(id);
+  el.classList.toggle('done');
+  // Persist each step independently — refresh-safe
+  localStorage.setItem('rc_' + id, el.classList.contains('done') ? '1' : '0');
   updateProgress();
 }
 
@@ -326,6 +329,11 @@ function buildStep(s) {
         <div class="step-num-label">${s.num}</div>
         <div class="step-title-main">${s.title}</div>
         <div class="step-desc-main">${s.desc}</div>
+        ${s.guide ? `<a href="${s.guide}" style="display:inline-flex;align-items:center;gap:5px;
+          font-size:11px;color:var(--gold);margin-top:6px;text-decoration:none;
+          font-weight:500;letter-spacing:.3px" title="Full step-by-step guide">
+          📖 Full guide →
+        </a>` : ''}
       </div>
       ${s.modal ? `<div class="step-action">
         <button class="step-btn" onclick="openModal('${s.modal.id}')">${s.modal.label}</button>
@@ -555,6 +563,7 @@ function loadGetReady() {
             <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
               <a href="https://apps.apple.com/app/alipay/id333206289" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;background:#000;color:#fff;padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none">🍎 App Store</a>
               <a href="https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;background:#01875f;color:#fff;padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none">▶ Google Play</a>
+              <a href="../alipay" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500">📖 How to register →</a>
             </div>
           </div>
         </div>
@@ -979,6 +988,17 @@ function loadGetReady() {
 
   document.getElementById('ready-container').innerHTML = sectionHTML;
   document.getElementById('ready-modals-container').innerHTML = modalsHTML;
+
+  // ── RESTORE CHECKLIST STATE FROM LOCALSTORAGE ──────────
+  // Each step is saved independently — ticking Step 5 only
+  // marks Step 5, never affects other steps.
+  STEPS.forEach(s => {
+    if (localStorage.getItem('rc_' + s.id) === '1') {
+      const el = document.getElementById(s.id);
+      if (el) el.classList.add('done');
+    }
+  });
+  updateProgress();
 }
 
 loadGetReady();
