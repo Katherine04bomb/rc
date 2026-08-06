@@ -34,7 +34,7 @@ function loadAbout() {
           </div>
           <div class="about-body">
             <div class="about-story">
-              Born in the Philippines, I grew up between Hong Kong and Quanzhou China and I have studied and traveled all around Australia, New Zealand and Asia. Safe to say I’ve lived in many different places and have carried a little piece of each with me.
+              Born in the Philippines, I grew up between Hong Kong and China, and I have studied and traveled all around Australia, New Zealand and Asia countries. Safe to say I’ve lived in many different places and have carried a little piece of each with me.
 <br><br>
               Now I'm back in China, and I keep inviting my friends to come visit me.
               The problem? Every single one of them panics when they start planning.
@@ -54,7 +54,7 @@ function loadAbout() {
                 <div class="about-ex-icon">💳</div>
                 <div class="about-ex-text">Another friend <strong>couldn't pay for dinner</strong>
                   — she thought credit cards worked everywhere. The restaurant only took
-                  WeChat Pay. A stranger finally helped her. She was so embarrassed.</div>
+                  WeChat or Alipay pay. A stranger finally helped her. She was so embarrassed.</div>
               </div>
               <div class="about-ex">
                 <div class="about-ex-icon">🗺️</div>
