@@ -32,6 +32,87 @@
   <!-- Styles — main site design + guide-only layout -->
   <link rel="stylesheet" href="../assets/style.css">
   <link rel="stylesheet" href="../assets/guide.css">
+
+  <!-- Layout fixes: smaller text area, screenshots top-aligned, all in one row -->
+  <style>
+    /* Two-column layout: heading+text on left, screenshots on right at heading level */
+    .guide-step {
+      display: grid !important;
+      grid-template-columns: minmax(180px, 1fr) auto !important;
+      gap: 24px !important;
+      align-items: start !important;
+    }
+    .guide-step-header {
+      margin-bottom: 0 !important;
+      grid-column: 1 !important;
+      grid-row: 1 !important;
+    }
+    .guide-step-body {
+      display: contents !important;
+    }
+    .guide-step-body > div:first-child {
+      grid-column: 1 !important;
+      grid-row: 2 !important;
+      max-width: 350px !important;
+      padding-right: 12px !important;
+    }
+    .guide-step-body > div:last-child,
+    .guide-step-body > .screenshot-wrap {
+      grid-column: 2 !important;
+      grid-row: 1 / span 2 !important;
+      justify-self: center !important;
+    }
+
+    /* Screenshot sizing */
+    .screenshot-wrap {
+      max-width: 150px !important;
+      margin: 0 auto !important;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .screenshot-wrap img {
+      width: 100% !important;
+      height: auto !important;
+      display: block !important;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 18px rgba(0,0,0,.08);
+    }
+    .screenshot-row {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      gap: 8px !important;
+      justify-content: center !important;
+    }
+    .screenshot-row .screenshot-wrap {
+      flex: 0 0 auto !important;
+      max-width: 130px !important;
+      margin: 0 !important;
+    }
+
+    /* Mobile: stack text above screenshots */
+    @media (max-width: 640px) {
+      .guide-step {
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+      }
+      .guide-step-body > div:first-child {
+        grid-column: 1 !important;
+        grid-row: 2 !important;
+        max-width: 100% !important;
+        padding-right: 0 !important;
+      }
+      .guide-step-body > div:last-child,
+      .guide-step-body > .screenshot-wrap {
+        grid-column: 1 !important;
+        grid-row: 3 !important;
+        justify-self: center !important;
+      }
+      .screenshot-row { flex-wrap: wrap !important; gap: 8px !important; }
+      .screenshot-wrap { max-width: 140px !important; }
+      .screenshot-row .screenshot-wrap { max-width: 130px !important; }
+    }
+  </style>
 </head>
 <body>
 
@@ -142,7 +223,7 @@
           Replace the div below with:
           <img src="YOUR_CLOUDINARY_URL" alt="Alipay app in the App Store">
         -->
-        <img src="https://res.cloudinary.com/dosiqd0h4/image/upload/v1785920743/alipay_appstore_b4sstw.jpg" alt="Alipay app in App Store">
+        <img src="https://res.cloudinary.com/dosiqd0h4/image/upload/c_scale,w_300/v1785920743/alipay_appstore_b4sstw.jpg" alt="Alipay app in App Store">
       </div>
     </div>
   </article>
@@ -195,14 +276,14 @@
               TO ADD YOUR SCREENSHOT:
               <img src="YOUR_CLOUDINARY_URL" alt="Alipay Sign Up screen">
             -->
-            <img src="https://res.cloudinary.com/dosiqd0h4/image/upload/v1785921337/IMG_0456_ikok7x.png" alt="Alipay Sign Up screen">
+            <img src="https://res.cloudinary.com/dosiqd0h4/image/upload/c_scale,w_300/v1785921337/IMG_0456_ikok7x.png" alt="Alipay Sign Up screen">
           </div>
           <div class="screenshot-wrap">
             <!--
               TO ADD YOUR SCREENSHOT:
               <img src="YOUR_CLOUDINARY_URL" alt="Alipay Enter Code screen">
             -->
-            <img src="https://res.cloudinary.com/dosiqd0h4/image/upload/v1785921330/458_p39mkh.png" alt="Alipay Enter Code screen">
+            <img src="https://res.cloudinary.com/dosiqd0h4/image/upload/c_scale,w_300/v1785921330/458_p39mkh.png" alt="Alipay Enter Code screen">
           </div>
         </div>
       </div>
@@ -258,22 +339,21 @@
               TO ADD YOUR SCREENSHOT:
               <img src="YOUR_CLOUDINARY_URL" alt="Alipay Me tab">
             -->
-            <img src="https://res.cloudinary.com/dosiqd0h4/image/upload/v1785921683/460_jzjqjj.png" alt="Me tab in Alipay app">
+            <img src="https://res.cloudinary.com/dosiqd0h4/image/upload/c_scale,w_300/v1785921683/460_jzjqjj.png" alt="Me tab in Alipay app">
           </div>
           <div class="screenshot-wrap">
             <!--
               TO ADD YOUR SCREENSHOT:
               <img src="YOUR_CLOUDINARY_URL" alt="Alipay Settings screen">
             -->
-            <img src="https://res.cloudinary.com/dosiqd0h4/image/upload/v1785921683/461_wl4ffk.png" alt="Alipay Settings screen">
-          </div>
+            <img src="https://res.cloudinary.com/dosiqd0h4/image/upload/c_scale,w_300/v1785921683/461_wl4ffk.png" alt="Alipay Settings screen">
           </div>
           <div class="screenshot-wrap">
             <!--
               TO ADD YOUR SCREENSHOT:
               <img src="YOUR_CLOUDINARY_URL" alt="Identity Verification screen">
             -->
-            <img src="https://res.cloudinary.com/dosiqd0h4/image/upload/v1785921683/462_l1dinq.png" alt="Alipay Account screen">
+            <img src="https://res.cloudinary.com/dosiqd0h4/image/upload/c_scale,w_300/v1785921683/462_l1dinq.png" alt="Alipay Account screen">
           </div>
         </div>
       </div>
@@ -336,14 +416,14 @@
               TO ADD YOUR SCREENSHOT:
               <img src="YOUR_CLOUDINARY_URL" alt="Alipay Bank Cards screen">
             -->
-            <img src="https://res.cloudinary.com/dosiqd0h4/image/upload/v1785922048/464_2_yzocbr.png" alt="Alipay Bank Cards screen">
+            <img src="https://res.cloudinary.com/dosiqd0h4/image/upload/c_scale,w_300/v1785922048/464_2_yzocbr.png" alt="Alipay Bank Cards screen">
           </div>
           <div class="screenshot-wrap">
             <!--
               TO ADD YOUR SCREENSHOT:
               <img src="YOUR_CLOUDINARY_URL" alt="Add Bank Card screen">
             -->
-            <img src="https://res.cloudinary.com/dosiqd0h4/image/upload/v1785922048/465_2_vjyphx.png" alt="Alipay Bank Card screen">
+            <img src="https://res.cloudinary.com/dosiqd0h4/image/upload/c_scale,w_300/v1785922048/465_2_vjyphx.png" alt="Alipay Bank Card screen">
           </div>
         </div>
       </div>

@@ -40,60 +40,212 @@
 .breadcrumb-sep { opacity: .4; }
 .breadcrumb-current { color: var(--text-mid); }
 
-/* ── 2. GUIDE HERO ──────────────────────────────────────── */
-.guide-hero {
+/* ── 2. GUIDE HERO BANNER ───────────────────────────────── */
+.guide-hero-banner {
+  position: relative;
+  min-height: 420px;
+  border-radius: 20px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 36px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+}
+.guide-hero-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.7) 100%);
+  pointer-events: none;
+}
+.hero-back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+  background: rgba(255,255,255,0.9);
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  backdrop-filter: blur(8px);
+  transition: all .2s;
+}
+.hero-back-btn:hover {
+  background: white;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+.hero-banner-content {
+  position: relative;
+  z-index: 1;
+  padding: 40px 36px 32px;
+  color: white;
+  width: 100%;
+}
+.hero-city-emoji { font-size: 40px; margin-bottom: 8px; }
+.hero-city-zh {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  opacity: 0.85;
+  letter-spacing: 3px;
+  margin-bottom: 6px;
+}
+.hero-city-en {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+.hero-city-sub {
+  font-size: 15px;
+  opacity: 0.85;
+  line-height: 1.6;
+  max-width: 560px;
+  margin-bottom: 16px;
+}
+.hero-city-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.hero-meta-tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(4px);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* ── 2b. SECTION TITLES ─────────────────────────────────── */
+.guide-section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  color: var(--text);
+  margin: 0 0 18px;
+  font-weight: 700;
+}
+
+/* ── 2c. PHOTO GALLERY ──────────────────────────────────── */
+.guide-photo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+.gallery-item {
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  cursor: pointer;
+  transition: transform .25s, box-shadow .25s;
+}
+.gallery-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── 2d. ATTRACTION CARDS ───────────────────────────────── */
+.attraction-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 36px;
+}
+.attraction-card {
   background: white;
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 36px 40px;
-  margin-bottom: 32px;
-  display: flex;
-  gap: 28px;
-  align-items: flex-start;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all .25s;
 }
-.guide-hero-icon {
-  font-size: 52px;
-  flex-shrink: 0;
-  line-height: 1;
+.attraction-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px rgba(192,57,43,0.1);
+  transform: translateY(-3px);
 }
-.guide-hero-eyebrow {
-  font-size: 11px;
-  color: var(--gold);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 8px;
+.attraction-img-wrap {
+  position: relative;
+  aspect-ratio: 3/2;
+  overflow: hidden;
+  background: var(--surface);
 }
-.guide-hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(24px, 3.5vw, 36px);
-  color: var(--text);
-  line-height: 1.2;
-  margin-bottom: 10px;
+.attraction-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s;
 }
-.guide-hero-sub {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.7;
-  margin-bottom: 18px;
+.attraction-card:hover .attraction-img-wrap img {
+  transform: scale(1.06);
 }
-.guide-meta {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  font-size: 11px;
-  color: var(--text-muted);
-  margin-bottom: 20px;
-}
-.guide-meta span {
+.attraction-num {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 28px;
+  height: 28px;
+  background: var(--accent);
+  color: white;
+  border-radius: 8px;
   display: flex;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'DM Sans', sans-serif;
 }
-.guide-actions {
+.attraction-info {
+  padding: 12px 14px;
+}
+.attraction-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+}
+.attraction-card.no-img {
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+}
+.attraction-num-badge {
+  width: 32px;
+  height: 32px;
+  background: var(--accent);
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'DM Sans', sans-serif;
+  flex-shrink: 0;
+}
+
+/* ── 2e. STAY / EAT GRID ────────────────────────────────── */
+.stay-eat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+  margin-bottom: 8px;
 }
 .guide-btn-primary {
   display: inline-flex;
@@ -429,33 +581,57 @@
 .related-card {
   background: white;
   border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 16px;
+  border-radius: 12px;
+  overflow: hidden;
   text-decoration: none;
-  transition: all .2s;
+  transition: all .25s;
   display: block;
 }
 .related-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 4px 16px rgba(192,57,43,0.08);
-  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(192,57,43,0.1);
+  transform: translateY(-3px);
 }
-.related-card-icon { font-size: 24px; margin-bottom: 8px; }
+.related-card-img {
+  height: 120px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px;
+}
+.related-card-emoji {
+  font-size: 28px;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.3));
+}
+.related-card-body { padding: 14px; }
 .related-card-title {
   font-size: 13px;
   font-weight: 600;
   color: var(--text);
   margin-bottom: 4px;
 }
-.related-card-desc { font-size: 11px; color: var(--text-muted); }
+.related-card-desc { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
 
 /* ── 10. RESPONSIVE ─────────────────────────────────────── */
 @media (max-width: 640px) {
-  .guide-wrap { padding: 70px 16px 40px; }
-  .guide-hero  { flex-direction: column; padding: 24px 20px; gap: 16px; }
-  .guide-hero-icon { font-size: 40px; }
+  .guide-wrap { padding: 0 0 40px; }
+  .guide-hero-banner {
+    border-radius: 0 0 16px 16px;
+    min-height: 320px;
+  }
+  .hero-banner-content { padding: 32px 20px 24px; }
+  .hero-city-en { font-size: 30px; }
+  .guide-photo-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+  .gallery-item { border-radius: 8px; }
+  .attraction-cards { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stay-eat-grid { grid-template-columns: 1fr; }
   .guide-step-body { grid-template-columns: 1fr; }
   .guide-email-capture { padding: 28px 20px; }
   .guide-email-input { width: 100%; }
   .steps-overview { grid-template-columns: repeat(2, 1fr); }
+  .guide-section-title { padding: 0 20px; }
+  .guide-photo-grid, .attraction-cards, .stay-eat-grid,
+  .substep-list, .callout, .related-guides { margin-left: 20px; margin-right: 20px; }
+  hr.guide-section-divider { margin-left: 20px; margin-right: 20px; }
 }

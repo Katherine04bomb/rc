@@ -1249,6 +1249,7 @@ footer {
 }
 #lightbox.open {
   display: flex;
+  z-index: 10001;
 }
 @keyframes lbFadeIn {
   from { opacity: 0; }
@@ -1358,4 +1359,371 @@ footer {
   #lb-close { top: 12px; right: 12px; width: 38px; height: 38px; font-size: 18px; }
   #lb-img { max-height: 70vh; border-radius: 6px; }
   #lb-caption { font-size: 12px; }
+}
+
+/* ── 21. CITY FLIP CARDS ─────────────────────────────────── */
+/* ── Card hover hint ── */
+.card-hint {
+  position: absolute;
+  bottom: 10px;
+  right: 14px;
+  font-size: 10px;
+  color: var(--text-muted);
+  opacity: 0;
+  transition: opacity .2s;
+}
+.city-card:hover .card-hint { opacity: 0.7; }
+
+/* ── Flip Overlay ── */
+.flip-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+.flip-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Flip Card Container ── */
+.flip-card {
+  width: 380px;
+  height: 460px;
+  perspective: 1000px;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform .6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.flip-card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+/* ── Shared Face ── */
+.flip-front,
+.flip-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+
+/* ── Front Face ── */
+.flip-front {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  border: 1px solid var(--border);
+}
+.flip-front-emoji {
+  font-size: 64px;
+  margin-bottom: 16px;
+  animation: floatEmoji 3s ease-in-out infinite;
+}
+@keyframes floatEmoji {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.flip-front-name-zh {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 28px;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.flip-front-name-en {
+  font-size: 13px;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.flip-front-teaser {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.5;
+}
+.flip-front-tap {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 20px;
+  opacity: 0.6;
+  animation: pulseHint 2s ease-in-out infinite;
+}
+@keyframes pulseHint {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+/* ── Back Face ── */
+.flip-back {
+  background: white;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+}
+
+/* ── Back Photo Strip ── */
+.flip-back-photo-strip {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 12px 20px 0;
+  flex-shrink: 0;
+  -webkit-overflow-scrolling: touch;
+}
+.flip-back-photo-strip::-webkit-scrollbar { height: 3px; }
+.flip-back-photo-strip::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+.flip-back-photo {
+  width: 100px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: opacity .2s, transform .2s;
+}
+.flip-back-photo:hover {
+  opacity: 0.85;
+  transform: scale(1.04);
+}
+
+/* ── Back Body ── */
+.flip-back-body {
+  padding: 14px 20px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.flip-back-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.flip-back-name-zh {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 24px;
+  color: var(--text);
+}
+.flip-back-name-en {
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.flip-back-stats {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.flip-back-stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--text-mid);
+}
+.flip-back-stars {
+  color: var(--gold-light);
+  letter-spacing: 1px;
+  font-size: 12px;
+}
+.flip-back-best {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.flip-back-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: auto;
+}
+.flip-back-tag {
+  font-size: 9px;
+  padding: 3px 10px;
+  background: var(--surface);
+  color: var(--text-mid);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+/* ── Read More Button ── */
+.flip-back-btn {
+  display: block;
+  width: 100%;
+  margin-top: 14px;
+  padding: 12px 0;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: background .2s, transform .15s;
+}
+.flip-back-btn:hover {
+  background: var(--accent2);
+  transform: scale(1.02);
+}
+
+/* ── Close Button ── */
+.flip-close {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  font-size: 22px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s;
+  line-height: 1;
+  z-index: 10001;
+}
+.flip-close:hover { background: rgba(255,255,255,0.3); }
+
+/* ── Top 5 Spots on Flip Back ── */
+.flip-top5 {
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+  flex-shrink: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+.flip-top5-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gold);
+  margin-bottom: 6px;
+  font-family: 'Playfair Display', serif;
+}
+.flip-top5-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.flip-top5-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--text);
+}
+.flip-top5-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── Responsive Flip ── */
+@media (max-width: 480px) {
+  .flip-card { width: 90vw; height: 420px; }
+  .flip-back-photo { width: 80px; height: 60px; }
+  .flip-top5-num { width: 16px; height: 16px; font-size: 9px; }
+  .flip-top5-list li { font-size: 11px; }
+}
+
+/* ── 22. HERO KAT SIGNATURE ── */
+.hero-kat-sig {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto 20px;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(8px);
+  border: 0.5px solid var(--border);
+  border-radius: 40px;
+  padding: 6px 18px 6px 6px;
+  transition: all 0.25s;
+  cursor: pointer;
+}
+.hero-kat-sig:hover {
+  background: rgba(255,255,255,0.95);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(192,57,43,0.12);
+}
+.kat-sig-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  flex-shrink: 0;
+  font-family: 'Playfair Display', serif;
+}
+.kat-sig-text {
+  text-align: left;
+  line-height: 1.3;
+}
+.kat-sig-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+.kat-sig-role {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 640px) {
+  .hero-kat-sig { padding: 5px 14px 5px 5px; gap: 8px; }
+  .kat-sig-avatar { width: 30px; height: 30px; font-size: 12px; }
+  .kat-sig-name { font-size: 12px; }
+  .kat-sig-role { font-size: 10px; }
 }
