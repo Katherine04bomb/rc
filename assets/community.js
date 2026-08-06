@@ -115,15 +115,104 @@ const TAG_STYLES = {
   news: { label: 'CHINA NEWS',  bg: 'var(--surface2)',   color: 'var(--text-muted)', border: 'var(--border)'      }
 };
 
+// ── OPTIONAL FIREBASE CONFIG ──────────────────────────────────
+// Fill this in to enable cross-user reaction counts.
+// See the setup note at the bottom of this file.
+const FIREBASE_CONFIG = {
+  // apiKey: "YOUR_API_KEY",
+  // authDomain: "YOUR_PROJECT.firebaseapp.com",
+  // databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
+  // projectId: "YOUR_PROJECT",
+  // storageBucket: "YOUR_PROJECT.appspot.com",
+  // messagingSenderId: "YOUR_SENDER_ID",
+  // appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyDzooV1gIT4l7qvPx8hlMsjCV74ptpHZcE",
+  authDomain: "readychinawithme.firebaseapp.com",
+  databaseURL: "https://readychinawithme-default-rtdb.asia-southeast1.firebasedatabase.app/",
+  projectId: "readychinawithme",
+  storageBucket: "readychinawithme.firebasestorage.app",
+  messagingSenderId: "208317204929",
+  appId: "1:208317204929:web:aedfee479a2d7f81c80740"
+};
+
 // ── STATE ─────────────────────────────────────────────────────
 let _commTab      = 'lifehacks';  // active tab
 let _commQuery    = '';            // active search query
 let _commReacts   = {};            // { postId: { helpful:0, nope:0, confused:0 } }
+let _userVotes    = {};            // { postId: 'helpful'|'nope'|'confused'|null }
+let _firebaseReady= false;
+
+const LS_VOTES_KEY = 'rc-community-votes';
+const LS_COUNTS_KEY= 'rc-community-counts';
+const REACT_TYPES  = ['helpful','nope','confused'];
 
 // ── HELPERS ───────────────────────────────────────────────────
 function _getReacts(id) {
   if (!_commReacts[id]) _commReacts[id] = { helpful: 0, nope: 0, confused: 0 };
   return _commReacts[id];
+}
+
+function _loadLocalState() {
+  try {
+    _userVotes = JSON.parse(localStorage.getItem(LS_VOTES_KEY)) || {};
+  } catch (e) { _userVotes = {}; }
+  try {
+    _commReacts = JSON.parse(localStorage.getItem(LS_COUNTS_KEY)) || {};
+  } catch (e) { _commReacts = {}; }
+}
+
+function _saveLocalVotes() {
+  try { localStorage.setItem(LS_VOTES_KEY, JSON.stringify(_userVotes)); } catch (e) {}
+}
+
+function _saveLocalCounts() {
+  if (_firebaseReady) return; // Firebase is the source of truth
+  try { localStorage.setItem(LS_COUNTS_KEY, JSON.stringify(_commReacts)); } catch (e) {}
+}
+
+function _getUserVote(id) {
+  return _userVotes[id] || null;
+}
+
+function _setUserVote(id, type) {
+  if (type) _userVotes[id] = type;
+  else delete _userVotes[id];
+  _saveLocalVotes();
+}
+
+// ── FIREBASE ──────────────────────────────────────────────────
+function _initFirebase() {
+  if (typeof firebase === 'undefined') return false;
+  if (!FIREBASE_CONFIG.apiKey) return false;
+  try {
+    firebase.initializeApp(FIREBASE_CONFIG);
+    _firebaseReady = true;
+  } catch (e) {
+    console.warn('Firebase init failed:', e);
+    _firebaseReady = false;
+  }
+  return _firebaseReady;
+}
+
+function _watchPostReacts(id) {
+  if (!_firebaseReady) return;
+  firebase.database().ref('reactions/' + id).on('value', snapshot => {
+    const data = snapshot.val() || { helpful: 0, nope: 0, confused: 0 };
+    // Ensure all keys exist
+    REACT_TYPES.forEach(t => { if (typeof data[t] !== 'number') data[t] = 0; });
+    _commReacts[id] = data;
+    _updateReactUI(id);
+    _syncModalReacts(id);
+  });
+}
+
+function _commitReactDelta(id, type, delta) {
+  if (!_firebaseReady) return;
+  const ref = firebase.database().ref('reactions/' + id + '/' + type);
+  ref.transaction(current => {
+    const val = (current || 0) + delta;
+    return val < 0 ? 0 : val;
+  });
 }
 
 // ── SEARCH ────────────────────────────────────────────────────
@@ -176,6 +265,7 @@ function _commRenderCards() {
   list.innerHTML = filtered.map(post => {
     const t   = TAG_STYLES[post.tag] || TAG_STYLES.news;
     const r   = _getReacts(post.id);
+    const vote= _getUserVote(post.id);
     const cat = showCategory
       ? `<span class="comm-cat-label">${catLabels[post.category]}</span>` : '';
 
@@ -189,15 +279,15 @@ function _commRenderCards() {
         <div class="news-headline">${post.title}</div>
         <div class="news-body comm-body-preview">${post.body}</div>
         <div class="comm-reactions" onclick="event.stopPropagation()">
-          <button class="comm-react-btn" onclick="commReact('${post.id}','helpful')">
+          <button class="comm-react-btn ${vote === 'helpful' ? 'active' : ''}" id="rb-${post.id}-helpful" onclick="commReact('${post.id}','helpful')">
             👍 <span class="comm-react-label">Helpful</span>
             <span class="comm-react-count" id="r-${post.id}-helpful">${r.helpful || ''}</span>
           </button>
-          <button class="comm-react-btn" onclick="commReact('${post.id}','nope')">
+          <button class="comm-react-btn ${vote === 'nope' ? 'active' : ''}" id="rb-${post.id}-nope" onclick="commReact('${post.id}','nope')">
             👎 <span class="comm-react-label">Not Helpful</span>
             <span class="comm-react-count" id="r-${post.id}-nope">${r.nope || ''}</span>
           </button>
-          <button class="comm-react-btn" onclick="commReact('${post.id}','confused')">
+          <button class="comm-react-btn ${vote === 'confused' ? 'active' : ''}" id="rb-${post.id}-confused" onclick="commReact('${post.id}','confused')">
             ❓ <span class="comm-react-label">Confused</span>
             <span class="comm-react-count" id="r-${post.id}-confused">${r.confused || ''}</span>
           </button>
@@ -222,9 +312,9 @@ function commOpenCard(id) {
   document.getElementById('comm-modal-body').textContent  = post.body;
 
   // Wire reactions inside modal
-  ['helpful','nope','confused'].forEach(type => {
+  REACT_TYPES.forEach(type => {
     const btn = document.getElementById(`cm-react-${type}`);
-    if (btn) btn.onclick = () => { commReact(id, type); _syncModalReacts(id); };
+    if (btn) btn.onclick = () => { commReact(id, type); };
   });
   _syncModalReacts(id);
 
@@ -234,25 +324,73 @@ function commOpenCard(id) {
 
 function _syncModalReacts(id) {
   const r = _getReacts(id);
+  const vote = _getUserVote(id);
   document.getElementById('cm-react-helpful-count').textContent  = r.helpful  || '';
   document.getElementById('cm-react-nope-count').textContent     = r.nope     || '';
   document.getElementById('cm-react-confused-count').textContent = r.confused || '';
+
+  REACT_TYPES.forEach(type => {
+    const btn = document.getElementById(`cm-react-${type}`);
+    if (btn) btn.classList.toggle('active', vote === type);
+  });
 }
 
 // ── MODAL CLOSE ───────────────────────────────────────────────
 function commCloseCard() {
   document.getElementById('comm-modal').classList.remove('show');
   document.body.style.overflow = '';
-  _commRenderCards(); // refresh counts on cards
+  _commRenderCards(); // refresh counts and active states on cards
 }
 
-// ── REACTIONS (UI only — no backend) ─────────────────────────
+// ── REACTIONS ─────────────────────────────────────────────────
 function commReact(id, type) {
+  const previousVote = _getUserVote(id);
   const r = _getReacts(id);
-  r[type] = (r[type] || 0) + 1;
-  // Update inline card count if visible
-  const el = document.getElementById(`r-${id}-${type}`);
-  if (el) el.textContent = r[type];
+
+  if (previousVote === type) {
+    // Same button clicked again → cancel the vote
+    r[type] = Math.max(0, (r[type] || 0) - 1);
+    _setUserVote(id, null);
+    if (_firebaseReady) {
+      _commitReactDelta(id, type, -1);
+    }
+  } else {
+    // Remove previous vote if user is switching reactions
+    if (previousVote) {
+      r[previousVote] = Math.max(0, (r[previousVote] || 0) - 1);
+      if (_firebaseReady) {
+        _commitReactDelta(id, previousVote, -1);
+      }
+    }
+    // Add new vote
+    r[type] = (r[type] || 0) + 1;
+    _setUserVote(id, type);
+    if (_firebaseReady) {
+      _commitReactDelta(id, type, +1);
+    }
+  }
+
+  // If not using Firebase, persist counts locally
+  _saveLocalCounts();
+
+  // Update UI immediately
+  _updateReactUI(id);
+  _syncModalReacts(id);
+}
+
+function _updateReactUI(id) {
+  const r = _getReacts(id);
+  const vote = _getUserVote(id);
+
+  REACT_TYPES.forEach(type => {
+    // Inline card count
+    const countEl = document.getElementById(`r-${id}-${type}`);
+    if (countEl) countEl.textContent = r[type] || '';
+
+    // Inline card button active state
+    const btnEl = document.getElementById(`rb-${id}-${type}`);
+    if (btnEl) btnEl.classList.toggle('active', vote === type);
+  });
 }
 
 // ── MAIN RENDER ───────────────────────────────────────────────
@@ -328,4 +466,45 @@ function handleCommunityForm(e) {
   });
 }
 
+// ── INITIALIZE ────────────────────────────────────────────────
+_loadLocalState();
+_initFirebase();
+POSTS.forEach(p => {
+  _getReacts(p.id);       // ensure object exists
+  _watchPostReacts(p.id); // start Firebase listener if available
+});
 loadCommunity();
+
+/*
+  ── SETUP NOTE: Cross-user reaction counts ──────────────────────
+  GitHub Pages only serves static files, so reaction counts cannot
+  be shared between different visitors without a small database.
+
+  This file is ready to use Firebase Realtime Database for that.
+  To enable it:
+
+  1. Go to https://console.firebase.google.com and create a project.
+  2. In the project, add a Web app and copy the firebaseConfig object.
+  3. Paste those values into the FIREBASE_CONFIG object near the top
+     of this file (uncomment the fields and replace the placeholders).
+  4. In Firebase Console → Build → Realtime Database → Create Database,
+     choose "Start in test mode" or use these rules:
+
+        {
+          "rules": {
+            "reactions": {
+              ".read": true,
+              "$postId": {
+                ".write": true
+              }
+            }
+          }
+        }
+
+  5. Make sure index.html loads the Firebase SDKs before community.js:
+        <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+
+  Until Firebase is configured, each browser will keep its own counts
+  in localStorage (so a user can still toggle/cancel their own vote).
+*/
