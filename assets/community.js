@@ -5,20 +5,72 @@
 //  1. Copy any post object below
 //  2. Paste it at the TOP of the POSTS array
 //  3. Fill in:
-//       id:       'post-XXX'  ← increment the number (post-011, post-012...)
+//       id:       'post-XXX'  ← increment the number
 //       category: 'lifehacks' | 'qa' | 'news'
-//       date:     'July 2026'
+//       date:     'August 2026'
 //       tag:      'tip' | 'visa' | 'news'
 //       title:    'Your title'
 //       body:     `Your content`
-//  4. Save → git add . → git commit -m "new post" → git push
-//  Done. Live in 30 seconds.
+//  4. Save → git push
+//  Both index.html and community.html auto-update — no extra steps.
 // ============================================================
 
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ──────────────────────────────
 
-  // ── LIFE HACKS ────────────────────────────────────────────
+  // ── August 2026 ───────────────────────────────────────────
+  {
+    id: 'post-016',
+    category: 'news',
+    date: 'August 2026',
+    tag: 'news',
+    title: '📱 WeChat Pay expands international card support — now covers 80% of foreign visitors',
+    body: `Another win for foreign travelers. WeChat Pay has quietly added support for 6 more international card issuers this month, bringing total coverage to roughly 80% of foreign-issued Visa and Mastercard. Previously, many European and Southeast Asian cards were hit-or-miss. If you tried linking your card a few months ago and it failed — try again now, it might just work. Remember: link before you land.`
+  },
+  {
+    id: 'post-015',
+    category: 'qa',
+    date: 'August 2026',
+    tag: 'tip',
+    title: '❓ Can I book hotels on Booking.com in China? — Tom',
+    body: `Not reliably. Booking.com and Agoda technically list Chinese hotels, but many smaller properties only appear on Chinese platforms like Trip.com (formerly Ctrip), Meituan, or Fliggy. The best strategy: use Trip.com — it has a full English interface, accepts foreign cards, and lists both international chains AND local boutique hotels. If you're looking for something really unique (like a courtyard hotel in a Beijing hutong), Trip.com will have options that Booking.com won't show you.`
+  },
+  {
+    id: 'post-014',
+    category: 'lifehacks',
+    date: 'August 2026',
+    tag: 'tip',
+    title: '🧊 How to stay cool in China\'s August heat — without spending a cent',
+    body: `August is brutal. But there are secret ways to stay cool for free: (1) Big shopping malls blast AC all day and have plenty of seating — MixC and Joy City chains are everywhere. (2) Most museums are heavily air-conditioned and entry is often free or under ¥30. (3) Public libraries are another hidden gem — quiet, freezing cold, and free WiFi. (4) Starbucks in China has AC and you can sit for hours without buying a second drink. Just don't plan outdoor sightseeing between 11am and 3pm and you'll survive.`
+  },
+
+  // ── July 2026 ─────────────────────────────────────────────
+  {
+    id: 'post-013',
+    category: 'news',
+    date: 'July 2026',
+    tag: 'visa',
+    title: '🇩🇪 Germany now eligible for 15-day visa-free entry to China',
+    body: `Big update for my German friends — as of July 2026, German passport holders can enter China visa-free for up to 15 days. This joins the growing list of countries that China has opened visa-free access to over the past year, including France, Switzerland, Italy, Spain, the Netherlands, Malaysia, and Singapore. The full list now covers over 15 countries. No visa application, no paperwork — just show up with your passport. Check your country's status before booking.`
+  },
+  {
+    id: 'post-012',
+    category: 'qa',
+    date: 'July 2026',
+    tag: 'tip',
+    title: '❓ Do I need a VPN to access Instagram and WhatsApp? — Sophie',
+    body: `Yes — Instagram, WhatsApp, Facebook, Google, and most Western social media are blocked in China without a VPN. You MUST download and configure your VPN BEFORE you arrive, because VPN provider websites are also blocked inside China. I recommend ExpressVPN or Astrill — they've been the most reliable for my friends. Set it up at home, test it, and don't turn your phone's VPN off once you land. One more thing: don't post about your VPN on Chinese social media; just use it quietly.`
+  },
+  {
+    id: 'post-011',
+    category: 'lifehacks',
+    date: 'July 2026',
+    tag: 'tip',
+    title: '🚇 Chinese metro apps now support English — here are the 15 cities',
+    body: `Good news for anyone who's ever stared at a Chinese subway map with no clue where to go. As of mid-2026, metro apps for 15 major cities now have a full English toggle: Beijing, Shanghai, Guangzhou, Shenzhen, Chengdu, Hangzhou, Xi'an, Nanjing, Wuhan, Chongqing, Suzhou, Qingdao, Changsha, Kunming, and Xiamen. Download the city's official metro app before you arrive — they're on both the App Store and local Android stores (but not Google Play, since it's blocked). The apps show routes, transfer times, and last-train schedules in English.`
+  },
+
+  // ── ORIGINAL POSTS (June–March 2026) ─────────────────────
   {
     id: 'post-001',
     category: 'lifehacks',
@@ -108,24 +160,14 @@ const POSTS = [
 ];
 
 // ── TAG STYLES ────────────────────────────────────────────────
-// Same as before — untouched
 const TAG_STYLES = {
   tip:  { label: "KAT'S TIP",   bg: 'var(--gold-soft)',  color: 'var(--gold)',       border: 'var(--gold-border)' },
   visa: { label: 'VISA UPDATE', bg: 'var(--red-soft)',   color: 'var(--accent)',     border: 'var(--red-border)'  },
   news: { label: 'CHINA NEWS',  bg: 'var(--surface2)',   color: 'var(--text-muted)', border: 'var(--border)'      }
 };
 
-// ── OPTIONAL FIREBASE CONFIG ──────────────────────────────────
-// Fill this in to enable cross-user reaction counts.
-// See the setup note at the bottom of this file.
+// ── FIREBASE CONFIG ────────────────────────────────────────
 const FIREBASE_CONFIG = {
-  // apiKey: "YOUR_API_KEY",
-  // authDomain: "YOUR_PROJECT.firebaseapp.com",
-  // databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
-  // projectId: "YOUR_PROJECT",
-  // storageBucket: "YOUR_PROJECT.appspot.com",
-  // messagingSenderId: "YOUR_SENDER_ID",
-  // appId: "YOUR_APP_ID"
   apiKey: "AIzaSyDzooV1gIT4l7qvPx8hlMsjCV74ptpHZcE",
   authDomain: "readychinawithme.firebaseapp.com",
   databaseURL: "https://readychinawithme-default-rtdb.asia-southeast1.firebasedatabase.app/",
@@ -135,11 +177,15 @@ const FIREBASE_CONFIG = {
   appId: "1:208317204929:web:aedfee479a2d7f81c80740"
 };
 
+// ── PAGE DETECTION ─────────────────────────────────────────
+// true on community.html (full page), false on index.html (preview)
+const _isCommunityPage = window.location.pathname.toLowerCase().includes('community');
+
 // ── STATE ─────────────────────────────────────────────────────
-let _commTab      = 'lifehacks';  // active tab
-let _commQuery    = '';            // active search query
-let _commReacts   = {};            // { postId: { helpful:0, nope:0, confused:0 } }
-let _userVotes    = {};            // { postId: 'helpful'|'nope'|'confused'|null }
+let _commTab      = 'lifehacks';
+let _commQuery    = '';
+let _commReacts   = {};
+let _userVotes    = {};
 let _firebaseReady= false;
 
 const LS_VOTES_KEY = 'rc-community-votes';
@@ -153,12 +199,8 @@ function _getReacts(id) {
 }
 
 function _loadLocalState() {
-  try {
-    _userVotes = JSON.parse(localStorage.getItem(LS_VOTES_KEY)) || {};
-  } catch (e) { _userVotes = {}; }
-  try {
-    _commReacts = JSON.parse(localStorage.getItem(LS_COUNTS_KEY)) || {};
-  } catch (e) { _commReacts = {}; }
+  try { _userVotes = JSON.parse(localStorage.getItem(LS_VOTES_KEY)) || {}; } catch (e) { _userVotes = {}; }
+  try { _commReacts = JSON.parse(localStorage.getItem(LS_COUNTS_KEY)) || {}; } catch (e) { _commReacts = {}; }
 }
 
 function _saveLocalVotes() {
@@ -166,17 +208,14 @@ function _saveLocalVotes() {
 }
 
 function _saveLocalCounts() {
-  if (_firebaseReady) return; // Firebase is the source of truth
+  if (_firebaseReady) return;
   try { localStorage.setItem(LS_COUNTS_KEY, JSON.stringify(_commReacts)); } catch (e) {}
 }
 
-function _getUserVote(id) {
-  return _userVotes[id] || null;
-}
+function _getUserVote(id) { return _userVotes[id] || null; }
 
 function _setUserVote(id, type) {
-  if (type) _userVotes[id] = type;
-  else delete _userVotes[id];
+  if (type) _userVotes[id] = type; else delete _userVotes[id];
   _saveLocalVotes();
 }
 
@@ -184,13 +223,8 @@ function _setUserVote(id, type) {
 function _initFirebase() {
   if (typeof firebase === 'undefined') return false;
   if (!FIREBASE_CONFIG.apiKey) return false;
-  try {
-    firebase.initializeApp(FIREBASE_CONFIG);
-    _firebaseReady = true;
-  } catch (e) {
-    console.warn('Firebase init failed:', e);
-    _firebaseReady = false;
-  }
+  try { firebase.initializeApp(FIREBASE_CONFIG); _firebaseReady = true; }
+  catch (e) { console.warn('Firebase init failed:', e); _firebaseReady = false; }
   return _firebaseReady;
 }
 
@@ -198,7 +232,6 @@ function _watchPostReacts(id) {
   if (!_firebaseReady) return;
   firebase.database().ref('reactions/' + id).on('value', snapshot => {
     const data = snapshot.val() || { helpful: 0, nope: 0, confused: 0 };
-    // Ensure all keys exist
     REACT_TYPES.forEach(t => { if (typeof data[t] !== 'number') data[t] = 0; });
     _commReacts[id] = data;
     _updateReactUI(id);
@@ -209,14 +242,10 @@ function _watchPostReacts(id) {
 function _commitReactDelta(id, type, delta) {
   if (!_firebaseReady) return;
   const ref = firebase.database().ref('reactions/' + id + '/' + type);
-  ref.transaction(current => {
-    const val = (current || 0) + delta;
-    return val < 0 ? 0 : val;
-  });
+  ref.transaction(current => { const val = (current || 0) + delta; return val < 0 ? 0 : val; });
 }
 
 // ── SEARCH ────────────────────────────────────────────────────
-// Searches title + body across ALL categories
 function commSearch(query) {
   _commQuery = query.trim().toLowerCase();
   _commRenderCards();
@@ -226,9 +255,9 @@ function commSearch(query) {
 function commShowTab(tab) {
   _commTab   = tab;
   _commQuery = '';
-  document.getElementById('comm-search').value = '';
+  const searchEl = document.getElementById('comm-search');
+  if (searchEl) searchEl.value = '';
 
-  // Update tab active state
   document.querySelectorAll('.comm-tab').forEach(t => {
     t.classList.toggle('active', t.dataset.tab === tab);
   });
@@ -237,32 +266,36 @@ function commShowTab(tab) {
 }
 
 // ── RENDER CARDS ──────────────────────────────────────────────
-function _commRenderCards() {
+// limit=0 means show all. On homepage limit=3.
+function _commRenderCards(limit) {
   const list = document.getElementById('comm-card-list');
   if (!list) return;
 
+  // Default limit: 3 on homepage (preview mode), 0 (all) on community page
+  if (limit === undefined) limit = _isCommunityPage ? 0 : 3;
+
   let filtered;
   if (_commQuery.length > 0) {
-    // Search mode: show ALL categories, filter by query
     filtered = POSTS.filter(p =>
       p.title.toLowerCase().includes(_commQuery) ||
       p.body.toLowerCase().includes(_commQuery)
     );
   } else {
-    // Tab mode: show only active category
     filtered = POSTS.filter(p => p.category === _commTab);
   }
+
+  // Only slice if limit > 0 (i.e. homepage preview mode)
+  const displayed = limit > 0 ? filtered.slice(0, limit) : filtered;
 
   if (filtered.length === 0) {
     list.innerHTML = `<div class="comm-empty">No posts found for "<strong>${_commQuery}</strong>" — try a different word.</div>`;
     return;
   }
 
-  // If searching, show a category label above each card
   const showCategory = _commQuery.length > 0;
   const catLabels    = { lifehacks: 'Life Hacks', qa: 'Q&A', news: 'News' };
 
-  list.innerHTML = filtered.map(post => {
+  list.innerHTML = displayed.map(post => {
     const t   = TAG_STYLES[post.tag] || TAG_STYLES.news;
     const r   = _getReacts(post.id);
     const vote= _getUserVote(post.id);
@@ -311,7 +344,6 @@ function commOpenCard(id) {
   document.getElementById('comm-modal-title').textContent = post.title;
   document.getElementById('comm-modal-body').textContent  = post.body;
 
-  // Wire reactions inside modal
   REACT_TYPES.forEach(type => {
     const btn = document.getElementById(`cm-react-${type}`);
     if (btn) btn.onclick = () => { commReact(id, type); };
@@ -328,7 +360,6 @@ function _syncModalReacts(id) {
   document.getElementById('cm-react-helpful-count').textContent  = r.helpful  || '';
   document.getElementById('cm-react-nope-count').textContent     = r.nope     || '';
   document.getElementById('cm-react-confused-count').textContent = r.confused || '';
-
   REACT_TYPES.forEach(type => {
     const btn = document.getElementById(`cm-react-${type}`);
     if (btn) btn.classList.toggle('active', vote === type);
@@ -339,7 +370,7 @@ function _syncModalReacts(id) {
 function commCloseCard() {
   document.getElementById('comm-modal').classList.remove('show');
   document.body.style.overflow = '';
-  _commRenderCards(); // refresh counts and active states on cards
+  _commRenderCards();
 }
 
 // ── REACTIONS ─────────────────────────────────────────────────
@@ -348,32 +379,20 @@ function commReact(id, type) {
   const r = _getReacts(id);
 
   if (previousVote === type) {
-    // Same button clicked again → cancel the vote
     r[type] = Math.max(0, (r[type] || 0) - 1);
     _setUserVote(id, null);
-    if (_firebaseReady) {
-      _commitReactDelta(id, type, -1);
-    }
+    if (_firebaseReady) _commitReactDelta(id, type, -1);
   } else {
-    // Remove previous vote if user is switching reactions
     if (previousVote) {
       r[previousVote] = Math.max(0, (r[previousVote] || 0) - 1);
-      if (_firebaseReady) {
-        _commitReactDelta(id, previousVote, -1);
-      }
+      if (_firebaseReady) _commitReactDelta(id, previousVote, -1);
     }
-    // Add new vote
     r[type] = (r[type] || 0) + 1;
     _setUserVote(id, type);
-    if (_firebaseReady) {
-      _commitReactDelta(id, type, +1);
-    }
+    if (_firebaseReady) _commitReactDelta(id, type, +1);
   }
 
-  // If not using Firebase, persist counts locally
   _saveLocalCounts();
-
-  // Update UI immediately
   _updateReactUI(id);
   _syncModalReacts(id);
 }
@@ -381,13 +400,9 @@ function commReact(id, type) {
 function _updateReactUI(id) {
   const r = _getReacts(id);
   const vote = _getUserVote(id);
-
   REACT_TYPES.forEach(type => {
-    // Inline card count
     const countEl = document.getElementById(`r-${id}-${type}`);
     if (countEl) countEl.textContent = r[type] || '';
-
-    // Inline card button active state
     const btnEl = document.getElementById(`rb-${id}-${type}`);
     if (btnEl) btnEl.classList.toggle('active', vote === type);
   });
@@ -395,10 +410,17 @@ function _updateReactUI(id) {
 
 // ── MAIN RENDER ───────────────────────────────────────────────
 function loadCommunity() {
+  // "Check All Posts" link — only on homepage (not community.html)
+  const readMoreLink = _isCommunityPage ? '' : `
+    <a href="community.html" class="comm-checkall-btn">Check All Posts &rarr;</a>`;
+
   const html = `
   <section class="section" id="community-section">
     <div class="section-eyebrow">Community · 旅行者社区</div>
-    <h2 class="section-title">Know Before You Go</h2>
+    <div class="comm-title-row">
+      <h2 class="section-title">Know Before You Go</h2>
+      ${readMoreLink}
+    </div>
     <p class="section-sub">Life hacks, honest Q&As, and real updates from Kat — everything I wish someone had told my friends before they visited China.</p>
 
     <!-- Search -->
@@ -450,7 +472,7 @@ function loadCommunity() {
   _commRenderCards();
 }
 
-// ── FORM HANDLER — untouched from original ────────────────────
+// ── FORM HANDLER ──────────────────────────────────────────────
 function handleCommunityForm(e) {
   e.preventDefault();
   const form = e.target;
@@ -470,41 +492,7 @@ function handleCommunityForm(e) {
 _loadLocalState();
 _initFirebase();
 POSTS.forEach(p => {
-  _getReacts(p.id);       // ensure object exists
-  _watchPostReacts(p.id); // start Firebase listener if available
+  _getReacts(p.id);
+  _watchPostReacts(p.id);
 });
 loadCommunity();
-
-/*
-  ── SETUP NOTE: Cross-user reaction counts ──────────────────────
-  GitHub Pages only serves static files, so reaction counts cannot
-  be shared between different visitors without a small database.
-
-  This file is ready to use Firebase Realtime Database for that.
-  To enable it:
-
-  1. Go to https://console.firebase.google.com and create a project.
-  2. In the project, add a Web app and copy the firebaseConfig object.
-  3. Paste those values into the FIREBASE_CONFIG object near the top
-     of this file (uncomment the fields and replace the placeholders).
-  4. In Firebase Console → Build → Realtime Database → Create Database,
-     choose "Start in test mode" or use these rules:
-
-        {
-          "rules": {
-            "reactions": {
-              ".read": true,
-              "$postId": {
-                ".write": true
-              }
-            }
-          }
-        }
-
-  5. Make sure index.html loads the Firebase SDKs before community.js:
-        <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-
-  Until Firebase is configured, each browser will keep its own counts
-  in localStorage (so a user can still toggle/cancel their own vote).
-*/
