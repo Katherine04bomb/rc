@@ -183,31 +183,36 @@ const STEPS = [
     id:'step-visa', num:'Step 2', phase:'fly',
     title:'📋 Sort Your Visa',
     desc:"Requirements vary by nationality — some countries are visa-free for 15–30 days, others need to apply in advance. Some might need your flight tickets and hotel booking when applying. Click below to find out exactly what you need.",
-    modal:{id:'visa-modal', label:'Check my visa →'}
+    modal:{id:'visa-modal', label:'Check my visa →'},
+    guide:'../visa'
   },
   {
     id:'step-flights', num:'Step 3', phase:'fly',
     title:'✈️ Book Flights & Hotel',
     desc:"Heads up: not all hotels in China accept foreign guests — international chains like IHG, Marriott, and Hilton are always a safe bet. If you're flying with a Chinese airline, Tuesdays tend to have lower prices!",
-    modal:null
+    modal:null,
+    guide:'../flights-hotels'
   },
   {
     id:'step-esim', num:'Step 4', phase:'fly',
     title:'📶 Get a SIM or eSIM',
     desc:"You'll need data from the moment you land. Four options: eSIM, Chinese SIM card, pocket WiFi, or international roaming. Sort this before you board.",
-    modal:{id:'sim-modal', label:'Compare options →'}
+    modal:{id:'sim-modal', label:'Compare options →'},
+    guide:'../esim'
   },
   {
     id:'step-payment', num:'Step 5', phase:'fly',
     title:'💳 Set Up Payments',
     desc:"China is almost entirely cashless — street food stalls, taxis, supermarkets, all QR code. My friend Kory couldn't pay for dinner on her first night using her credit card. Set up Alipay or WeChat before you land.",
-    modal:{id:'payment-modal', label:'How to set up →'}
+    modal:{id:'payment-modal', label:'How to set up →'},
+    guide:'../alipay'
   },
   {
     id:'step-network', num:'Step 6', phase:'fly',
     title:'🌐 Understand the Firewall & VPN',
     desc:"Google, Instagram, WhatsApp, and ChatGPT are all blocked in China. Download and test a VPN before you fly.",
-    modal:{id:'network-modal', label:'VPN guide →'}
+    modal:{id:'network-modal', label:'VPN guide →'},
+    guide:'../vpn'
   },
   {
     id:'step-apps', num:'Step 7', phase:'fly',
@@ -219,19 +224,22 @@ const STEPS = [
     id:'step-transport-intro', num:'Step 8', phase:'fly',
     title:'🚄 Know Your Transport Options',
     desc:"China's high-speed rail, metro, Didi, and domestic flights — each has a different use case. Know which one to use before you land so you're not figuring it out jet-lagged at the airport.",
-    modal:{id:'transport-intro-modal', label:'Overview →'}
+    modal:{id:'transport-intro-modal', label:'Overview →'},
+    guide:'../high-speed-train'
   },
   {
     id:'step-emergency', num:'Step 9', phase:'fly',
     title:'🆘 Save Emergency Numbers',
     desc:"Screenshot or save these numbers in your phone before you land. You probably won't need them — but you'll be glad you have them if you do.",
-    modal:{id:'emergency-modal', label:'View numbers →'}
+    modal:{id:'emergency-modal', label:'View numbers →'},
+    guide:'../emergency'
   },
   {
     id:'step-insurance', num:'Step 10', phase:'fly',
     title:'🏥 Get Travel Insurance',
     desc:"A single hospital visit in China without insurance can cost $2,000+. This is the step most travelers skip and later regret. Spend 10 minutes on this — it's worth every penny.",
-    modal:{id:'insurance-modal', label:'What to look for →'}
+    modal:{id:'insurance-modal', label:'What to look for →'},
+    guide:'../travel-insurance'
   },
 
   // ── AFTER YOU ARRIVE ──────────────────────────────────────
@@ -239,43 +247,50 @@ const STEPS = [
     id:'step-immigration', num:'Step 11', phase:'arrive',
     title:'🛃 Immigration & Arrival',
     desc:"What to expect at the border — which queue to join, what they'll ask, what to declare at customs. You can even fill in your Arrival Card online up to 3 days before you land.",
-    modal:{id:'customs-modal', label:'Arrival guide →'}
+    modal:{id:'customs-modal', label:'Arrival guide →'},
+    guide:'../immigration'
   },
   {
     id:'step-hotel-transfer', num:'Step 12', phase:'arrive',
     title:'🚕 Get to Your Hotel',
     desc:"From arrivals hall to your front door — Didi, airport metro, hotel bus or airport bus. Don't get into an unlicensed taxi. Here's exactly what to do the moment you walk out of baggage claim.",
-    modal:{id:'hotel-transfer-modal', label:'How to get there →'}
+    modal:{id:'hotel-transfer-modal', label:'How to get there →'},
+    guide:'../didi'
   },
   {
     id:'step-getaround', num:'Step 13', phase:'arrive',
     title:'🚇 Get Around Like a Local',
     desc:"Metro tickets, bullet train classes, Didi tips, domestic flights — the complete guide to moving around China once you're here.",
-    modal:{id:'transport-modal', label:'Full transport guide →'}
+    modal:{id:'transport-modal', label:'Full transport guide →'},
+    guide:'../metro-guide'
   },
   {
     id:'step-qrpay', num:'Step 14', phase:'arrive',
     title:'📲 Using QR Payments',
     desc:"In China you scan with Alipay or WeChat — NOT your phone's camera app. Sounds small but this trips up almost everyone on day one. Here's exactly how it works.",
-    modal:{id:'qrpay-modal', label:'How to pay →'}
+    modal:{id:'qrpay-modal', label:'How to pay →'},
+    guide:'../qr-payments'
   },
   {
     id:'step-food', num:'Step 15', phase:'arrive',
     title:'🍜 Order Food Confidently',
     desc:"Picture menus, QR code menus, translation apps, how to ask for no spice — everything you need to eat well without speaking Mandarin.",
-    modal:{id:'food-modal', label:'Food guide →'}
+    modal:{id:'food-modal', label:'Food guide →'},
+    guide:'../food-guide'
   },
   {
     id:'step-locals', num:'Step 16', phase:'arrive',
     title:'🗣️ Talk with Locals',
     desc:"You don't have to speak Mandarin to have meaningful interactions - but these 10 phrases will take you surprisingly far, and locals absolutely love when you try.",
-    modal:{id:'locals-modal', label:'Key phrases →'}
+    modal:{id:'locals-modal', label:'Key phrases →'},
+    guide:'../phrases'
   },
   {
     id:'step-wrong', num:'Step 17', phase:'arrive',
     title:'🆘 If Something Goes Wrong',
     desc:"Lost passport, missed train, got sick, scammed, or just completely lost — here's the calm, step-by-step guide for when things don't go to plan.",
-    modal:{id:'wrong-modal', label:'Emergency guide →'}
+    modal:{id:'wrong-modal', label:'Emergency guide →'},
+    guide:'../emergency'
   }
 ];
 
@@ -318,6 +333,12 @@ function updateProgress() {
   document.getElementById('prog-bar').style.width    = pct + '%';
   document.getElementById('pct-label').textContent   = pct + '%';
   document.getElementById('prog-status').textContent = statusMsgs[done] || statusMsgs[0];
+
+  // 🎆 Celebration — fires once when ALL steps complete
+  if (done === steps.length && !localStorage.getItem('rc_celebrated')) {
+    localStorage.setItem('rc_celebrated', '1');
+    setTimeout(() => openModal('celebrate-modal'), 600);
+  }
 }
 
 // ── RENDER HELPERS ───────────────────────────────────────────
@@ -330,8 +351,9 @@ function buildStep(s) {
         <div class="step-title-main">${s.title}</div>
         <div class="step-desc-main">${s.desc}</div>
         ${s.guide ? `<a href="${s.guide}" style="display:inline-flex;align-items:center;gap:5px;
-          font-size:11px;color:var(--gold);margin-top:6px;text-decoration:none;
-          font-weight:500;letter-spacing:.3px" title="Full step-by-step guide">
+          font-size:11px;color:var(--gold);margin-top:7px;text-decoration:none;
+          font-weight:500;letter-spacing:.3px;transition:opacity .2s"
+          onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">
           📖 Full guide →
         </a>` : ''}
       </div>
@@ -563,7 +585,7 @@ function loadGetReady() {
             <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
               <a href="https://apps.apple.com/app/alipay/id333206289" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;background:#000;color:#fff;padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none">🍎 App Store</a>
               <a href="https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;background:#01875f;color:#fff;padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none">▶ Google Play</a>
-              <a href="alipay" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500">📖 How to register →</a>
+              <a href="../alipay" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500">📖 How to register →</a>
             </div>
           </div>
         </div>
@@ -987,7 +1009,37 @@ function loadGetReady() {
   </div>`;
 
   document.getElementById('ready-container').innerHTML = sectionHTML;
-  document.getElementById('ready-modals-container').innerHTML = modalsHTML;
+  document.getElementById('ready-modals-container').innerHTML = modalsHTML + `
+
+  <!-- CELEBRATION MODAL — fires when all 17 steps complete -->
+  <div class="modal-overlay" id="celebrate-modal" style="z-index:400">
+    <div class="modal-box" style="max-width:500px;text-align:center;overflow:hidden">
+      <div style="background:linear-gradient(135deg,var(--accent),#8b1a1a);padding:36px 32px 28px;position:relative">
+        <div style="font-size:52px;margin-bottom:12px;animation:bounce 1s ease infinite alternate">🎆</div>
+        <h2 style="font-family:'Playfair Display',serif;font-size:26px;color:white;margin-bottom:8px">You're 100% China Ready!</h2>
+        <p style="font-size:13px;color:rgba(255,255,255,.8);line-height:1.7">Every step complete. You've done more pre-trip preparation than 95% of first-time visitors to China. I'm genuinely proud of you.</p>
+        <button class="modal-close" onclick="closeModal('celebrate-modal')" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.3);color:white">×</button>
+      </div>
+      <div style="padding:28px 32px">
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;line-height:1.7">
+          Get your free <strong>China Ready Checklist PDF</strong> — a printable version of everything you've just completed, perfect for offline reference during your trip.
+        </p>
+        <form id="celebrate-form" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:14px"
+          action="https://formspree.io/f/mnjypvzn" method="POST"
+          onsubmit="handleCelebForm(event)">
+          <input type="hidden" name="guide" value="china-ready-checklist">
+          <input type="email" name="email" placeholder="your@email.com" required
+            style="flex:1;min-width:200px;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;background:var(--surface);color:var(--text)">
+          <button type="submit" style="background:var(--accent);color:white;border:none;padding:10px 20px;border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;white-space:nowrap">Send me the PDF 🇨🇳</button>
+        </form>
+        <div id="celebrate-ok" style="display:none;font-size:13px;color:var(--gold);margin-bottom:12px">✅ On its way! Check your inbox.</div>
+        <p style="font-size:11px;color:var(--text-muted)">No spam. Kat reads every email personally.</p>
+      </div>
+    </div>
+  </div>
+  <style>
+    @keyframes bounce { from { transform:translateY(0); } to { transform:translateY(-8px); } }
+  </style>`;
 
   // ── RESTORE CHECKLIST STATE FROM LOCALSTORAGE ──────────
   // Each step is saved independently — ticking Step 5 only
@@ -1002,3 +1054,11 @@ function loadGetReady() {
 }
 
 loadGetReady();
+
+function handleCelebForm(e) {
+  e.preventDefault();
+  const form = document.getElementById('celebrate-form');
+  fetch(form.action, { method:'POST', body:new FormData(form), headers:{'Accept':'application/json'} })
+    .then(r => { if(r.ok) { form.style.display='none'; document.getElementById('celebrate-ok').style.display='block'; }})
+    .catch(() => { document.getElementById('celebrate-ok').style.display='block'; });
+}

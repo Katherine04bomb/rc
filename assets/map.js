@@ -1,19 +1,27 @@
 // ============================================================
-//  assets/map.js — Interactive China Map
+//  assets/map.js — Interactive China Map (v2)
 //
-//  Uses assets/china-Map.svg (pre-cropped viewBox, no internal
-//  styles or text — map.js adds all labels and interactions).
+//  WHAT THIS FILE DOES
+//  - Renders the province map from assets/china-Map.svg (compliant:
+//    includes Taiwan, Hong Kong, Macau, South Sea Islands).
+//  - Adds: interest filter chips, clickable CITY PINS, a travel-card
+//    drawer, a "My Trip" planner panel, a badge wall, a Surprise
+//    button, and a full-itinerary modal.
+//  - Remembers the visitor's trip & badges in localStorage.
 //
-//  HOW TO EDIT:
-//  • Province tooltip text → edit desc in PROVINCE_MAP below
-//  • Province label on map  → edit label field
-//  • Section heading        → edit html string in loadMap()
+//  HOW TO EDIT (for the site owner)
+//  • Add / edit a city  → edit data/cities.json ONLY (add x,y,
+//    provinceId, interests). The pins, badges and trip panel read
+//    from that one file. No code change needed.
+//  • Add a filter chip  → edit FILTERS below.
+//  • Province tooltip    → edit PROVINCE_MAP (don't change idx / lx / ly).
+//  • Section heading     → edit the html string inside loadMap().
 //  DO NOT edit china-Map.svg path data.
 //
-//  REQUIRES: Live Server or any http server (fetch needs http)
+//  REQUIRES: a local http server (fetch + SVG injection need http).
 // ============================================================
 
-// ── TOOLTIP ─────────────────────────────────────────────────
+// ── TOOLTIP (province hover) ────────────────────────────────
 function showTip(e, el) {
   const t = document.getElementById('prov-tip');
   document.getElementById('tip-zh').textContent   = el.dataset.zh   || '';
@@ -22,7 +30,6 @@ function showTip(e, el) {
   t.style.display = 'block';
   moveTip(e);
 }
-
 function moveTip(e) {
   const t = document.getElementById('prov-tip');
   let x = e.clientX + 16, y = e.clientY - 10;
@@ -31,14 +38,12 @@ function moveTip(e) {
   t.style.left = x + 'px';
   t.style.top  = y + 'px';
 }
-
 function hideTip() {
   document.getElementById('prov-tip').style.display = 'none';
 }
 
-// ── PROVINCE SELECT ──────────────────────────────────────────
+// ── PROVINCE SELECT (click a province → light it up) ────────
 let activeProv = null;
-
 function selectProv(el) {
   if (activeProv) activeProv.classList.remove('active');
   if (activeProv === el) {
@@ -122,113 +127,238 @@ const PROVINCE_MAP = [
    desc:"China's largest region. Taklamakan Desert, Silk Road oases, Kashgar bazaar."},
 ];
 
-// ── MAP LOADER ────────────────────────────────────────────────
+// ── INTEREST FILTER CHIPS ───────────────────────────────────
+// 想加一个新标签：在下面加一行 {key, emoji, label} 即可。
+// key 必须和 cities.json 里每个城市的 interests 数组值一致。
+const FILTERS = [
+  { key: 'food',    emoji: '🍜', label: 'Food' },
+  { key: 'nature',  emoji: '🏔️', label: 'Nature' },
+  { key: 'history', emoji: '🏛️', label: 'History' },
+  { key: 'city',    emoji: '🌆', label: 'Cities' },
+  { key: 'wildlife',emoji: '🐼', label: 'Wildlife' },
+  { key: 'art',     emoji: '🎨', label: 'Art' },
+  { key: 'nightlife', emoji: '🌃', label: 'Nightlife' },
+];
+
+// ── TRANSPORT LOOKUP (between two cities, by nameEn key) ─────
+// 没列出的组合会回退到按地图距离估算的 HSR/Flight 时间。
+const TRANSPORT = {
+  'beijing|chengdu':'HSR · ~7h', 'beijing|chongqing':'HSR · ~7h',
+  'beijing|guilin':'Flight · ~3h', 'beijing|hangzhou':'HSR · ~5h',
+  'beijing|quanzhou':'Flight · ~2.5h', 'beijing|shanghai':'HSR · ~4.5h',
+  'beijing|xian':'HSR · ~4.5h',
+  'chengdu|chongqing':'HSR · ~1h', 'chengdu|guilin':'Flight · ~2h',
+  'chengdu|hangzhou':'Flight · ~2.5h', 'chengdu|quanzhou':'Flight · ~3h',
+  'chengdu|shanghai':'Flight · ~2.5h', 'chengdu|xian':'HSR · ~3h',
+  'chongqing|guilin':'Flight · ~1.5h', 'chongqing|hangzhou':'Flight · ~2h',
+  'chongqing|quanzhou':'Flight · ~2h', 'chongqing|shanghai':'Flight · ~2.5h',
+  'chongqing|xian':'HSR · ~5h',
+  'guilin|hangzhou':'Flight · ~2h', 'guilin|quanzhou':'Flight · ~1.5h',
+  'guilin|shanghai':'Flight · ~2.5h', 'guilin|xian':'Flight · ~2h',
+  'hangzhou|quanzhou':'HSR · ~3h', 'hangzhou|shanghai':'HSR · ~1h',
+  'quanzhou|shanghai':'Flight · ~1.5h', 'quanzhou|xian':'Flight · ~2.5h',
+  'shanghai|xian':'Flight · ~2h'
+};
+
+// ── RUNTIME STATE ───────────────────────────────────────────
+let CITIES = [];                 // filled from cities.json
+const provEls = {};              // id → <path> element (for filter highlight)
+let activeFilter = null;
+
+const LS_TRIP   = 'rc_trip';     // localStorage key: array of nameEn
+const LS_BADGES = 'rc_badges';   // localStorage key: {nameEn: 'been'|'interested'}
+
+function loadTrip()   { try { return JSON.parse(localStorage.getItem(LS_TRIP)) || []; } catch(e){ return []; } }
+function saveTrip(t)  { localStorage.setItem(LS_TRIP, JSON.stringify(t)); }
+function loadBadges() { try { return JSON.parse(localStorage.getItem(LS_BADGES)) || {}; } catch(e){ return {}; } }
+function saveBadges(b){ localStorage.setItem(LS_BADGES, JSON.stringify(b)); }
+
+function cityByName(nameEn) { return CITIES.find(c => c.nameEn === nameEn); }
+
+// parse leading integer from "4–6 days" → 4
+function dayCount(city) {
+  const m = String(city.days).match(/\d+/);
+  return m ? parseInt(m[0], 10) : 3;
+}
+// sort trip north→south (smaller y = further north)
+function geoSort(list) {
+  return list.slice().sort((a, b) => (a.y || 999) - (b.y || 999));
+}
+function transportFor(a, b) {
+  const key = [a.nameEn.toLowerCase(), b.nameEn.toLowerCase()].sort().join('|');
+  if (TRANSPORT[key]) return TRANSPORT[key];
+
+  // 根据 SVG 坐标距离估算，新增城市也能自动有合理交通
+  const dx = (a.x || 0) - (b.x || 0);
+  const dy = (a.y || 0) - (b.y || 0);
+  const d = Math.sqrt(dx * dx + dy * dy);
+  if (d < 50)  return 'HSR · ~1h';
+  if (d < 100) return 'HSR · ~2h';
+  if (d < 150) return 'HSR · ~4h';
+  if (d < 220) return 'Flight · ~1.5h';
+  if (d < 300) return 'Flight · ~2.5h';
+  return 'Flight · ~3.5h';
+}
+
+// ── MAP LOADER ───────────────────────────────────────────────
 function loadMap() {
+  const chipHTML = FILTERS.map(f =>
+    `<button class="map-chip" data-filter="${f.key}">${f.emoji} ${f.label}</button>`
+  ).join('');
 
   const html = `
   <section class="map-section-wrap" id="map-section">
     <div class="map-container">
       <div class="section-eyebrow" style="text-align:center">Explore · 探索中国</div>
-      <h2 class="section-title" style="text-align:center">Click any province to learn more</h2>
-      <p class="section-sub" style="text-align:center;margin-bottom:0">
-        All 31 provinces — hover for a preview, click to light it up
+      <h2 class="section-title" style="text-align:center">Plan your China, city by city</h2>
+      <p class="section-sub" style="text-align:center;margin-bottom:10px">
+        Pick a vibe to light up the map, tap a <b>city pin</b>, and build your trip.
       </p>
-      <div id="china-map-svg-wrap">
-        <div id="map-loading" style="text-align:center;padding:60px;color:var(--text-muted);font-size:13px">
-          Loading map…
+
+      <!-- INTEREST FILTER CHIPS -->
+      <div class="map-chips" id="map-chips">${chipHTML}</div>
+
+      <div class="map-layout">
+        <!-- LEFT: the map -->
+        <div class="map-canvas">
+          <div id="china-map-svg-wrap">
+            <div id="map-loading" style="text-align:center;padding:60px;color:var(--text-muted);font-size:13px">
+              Loading map…
+            </div>
+          </div>
+          <div id="map-active-strip" style="margin-top:12px">
+            <div id="map-pill" class="map-pill" style="display:none">
+              <span class="map-pill-zh" id="map-zh"></span>
+              <span class="map-pill-en" id="map-en"></span>
+              <span class="map-pill-btn" onclick="scrollToSection('cities-section')">→ See city guide</span>
+            </div>
+          </div>
         </div>
+
+        <!-- RIGHT: My Trip → Can't decide → Badges -->
+        <aside class="map-side">
+          <div class="trip-panel">
+            <div class="trip-head">
+              <span>🧳 My Trip</span>
+              <span class="trip-count" id="trip-count">0</span>
+            </div>
+            <div class="trip-list" id="trip-list"></div>
+            <div class="interested-mini" id="interested-mini"></div>
+            <button class="trip-btn" id="trip-itin" onclick="openItinerary()">📋 Get full itinerary</button>
+          </div>
+
+          <button class="surprise-btn" onclick="surpriseCity()">🎁 Can't decide? Surprise me</button>
+
+          <div class="badge-wall">
+            <div class="badge-head">🏅 My badges <span style="opacity:.6;font-weight:400">(tap a pin → ★ / ✓)</span></div>
+            <div class="badge-grid" id="badge-grid"></div>
+          </div>
+        </aside>
       </div>
-      <div id="map-active-strip" style="margin-top:12px">
-        <div id="map-pill" class="map-pill" style="display:none">
-          <span class="map-pill-zh" id="map-zh"></span>
-          <span class="map-pill-en" id="map-en"></span>
-          <span class="map-pill-btn" onclick="scrollToSection('cities-section')">→ See city guide</span>
+    </div>
+
+    <!-- TRAVEL CARD DRAWER (slides up when a pin is tapped) -->
+    <div class="travel-card" id="travel-card">
+      <button class="tc-close" onclick="closeTravelCard()">×</button>
+      <div class="tc-emoji" id="tc-emoji"></div>
+      <div class="tc-body">
+        <div class="tc-name"><span id="tc-zh"></span> <span id="tc-en"></span></div>
+        <ul class="tc-bullets" id="tc-bullets"></ul>
+        <div class="tc-actions">
+          <button class="tc-btn tc-interested" id="tc-interested" onclick="tcToggle('interested')">★ Interested</button>
+          <button class="tc-btn tc-been" id="tc-been" onclick="tcToggle('been')">✓ Been there</button>
+          <button class="tc-btn tc-add" id="tc-add" onclick="tcAddTrip()">＋ Add to trip</button>
+          <a class="tc-btn tc-read" id="tc-read" href="#">Read guide →</a>
         </div>
       </div>
     </div>
+
+    <!-- ITINERARY MODAL -->
+    <div class="modal-overlay" id="itinerary-modal">
+      <div class="modal-box itin-box">
+        <div class="modal-header">
+          <div>
+            <div class="modal-title" id="itin-title">Your China itinerary</div>
+            <div class="modal-subtitle" id="itin-route"></div>
+            <div class="itin-total" id="itin-total"></div>
+          </div>
+          <button class="modal-close" onclick="closeItinerary()">×</button>
+        </div>
+        <div class="modal-body" id="itin-body"></div>
+        <div class="itin-footer">
+          <button class="trip-btn trip-btn-ghost" onclick="copyItineraryText()">Copy text</button>
+          <a class="trip-btn" id="email-itin" href="#" target="_blank">Email me this itinerary</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- tiny toast -->
+    <div class="map-toast" id="map-toast"></div>
   </section>`;
 
   document.getElementById('map-container').innerHTML = html;
 
+  // ── fetch + build the SVG ──
   fetch('assets/china-Map.svg')
-    .then(r => {
-      if (!r.ok) throw new Error('SVG fetch failed ' + r.status);
-      return r.text();
-    })
+    .then(r => { if (!r.ok) throw new Error('SVG fetch failed ' + r.status); return r.text(); })
     .then(svgText => {
-      const parser = new DOMParser();
-      const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
-      const svgEl  = svgDoc.querySelector('svg');
-
-      // Remove any leftover style/text nodes (pre-cropped SVG is already clean,
-      // this is just a safety net)
+      const svgDoc   = new DOMParser().parseFromString(svgText, 'image/svg+xml');
+      const svgEl    = svgDoc.querySelector('svg');
       svgDoc.querySelectorAll('style, text').forEach(n => n.remove());
-
       const allPaths = Array.from(svgEl.querySelectorAll('path'));
 
-      // ── Annotate interactive provinces ──────────────────
+      // annotate interactive provinces
       PROVINCE_MAP.forEach(p => {
         const path = allPaths[p.idx];
         if (!path) return;
-        path.setAttribute('id',           p.id);
-        path.setAttribute('class',        'province');
-        path.setAttribute('data-zh',      p.zh);
-        path.setAttribute('data-en',      p.en);
-        path.setAttribute('data-desc',    p.desc);
-        path.setAttribute('onmousemove',  'showTip(event,this)');
+        path.setAttribute('id', p.id);
+        path.setAttribute('class', 'province');
+        path.setAttribute('data-zh', p.zh);
+        path.setAttribute('data-en', p.en);
+        path.setAttribute('data-desc', p.desc);
+        path.setAttribute('onmousemove', 'showTip(event,this)');
         path.setAttribute('onmouseleave', 'hideTip()');
-        path.setAttribute('onclick',      'selectProv(this)');
+        path.setAttribute('onclick', 'selectProv(this)');
+        provEls[p.id] = path;
       });
 
-      // ── Decorative paths ────────────────────────────────
-      // path[31]=Taiwan  path[32]=HK  path[33]=Macau detail  path[34]=South Sea
+      // decorative paths: Taiwan(31) HK(32) Macau(33) South Sea(34)
       [31, 32, 33, 34].forEach(i => {
         const p = allPaths[i];
         if (p) p.setAttribute('class', 'province-decor');
       });
 
-      // ── Add province text labels ─────────────────────────
+      // province text labels
       PROVINCE_MAP.forEach(p => {
         const t = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
-        t.setAttribute('x',              p.lx);
-        t.setAttribute('y',              p.ly);
-        t.setAttribute('text-anchor',    'middle');
+        t.setAttribute('x', p.lx); t.setAttribute('y', p.ly);
+        t.setAttribute('text-anchor', 'middle');
         t.setAttribute('pointer-events', 'none');
-        t.setAttribute('class',          'prov-lbl');
+        t.setAttribute('class', 'prov-lbl');
         t.textContent = p.label;
         svgEl.appendChild(t);
       });
 
-      // ── Taiwan label ─────────────────────────────────────
+      // Taiwan / HK / Macau / South Sea labels (keep compliant)
       const addText = (x, y, txt, size, fill, anchor='middle') => {
         const t = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'text');
         t.setAttribute('x', x); t.setAttribute('y', y);
         t.setAttribute('text-anchor', anchor);
-        t.setAttribute('font-size', size);
-        t.setAttribute('fill', fill);
+        t.setAttribute('font-size', size); t.setAttribute('fill', fill);
         t.setAttribute('pointer-events', 'none');
-        t.textContent = txt;
-        svgEl.appendChild(t);
+        t.textContent = txt; svgEl.appendChild(t);
       };
-
-      addText(528, 288, '台湾', 7, 'rgba(26,18,8,0.4)');
-
-      // ── Hong Kong & Macau dots + labels ─────────────────
       const addDot = (cx, cy, r, fill) => {
         const c = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        c.setAttribute('cx', cx); c.setAttribute('cy', cy);
-        c.setAttribute('r',  r);
-        c.setAttribute('fill', fill);
-        c.setAttribute('pointer-events', 'none');
+        c.setAttribute('cx', cx); c.setAttribute('cy', cy); c.setAttribute('r', r);
+        c.setAttribute('fill', fill); c.setAttribute('pointer-events', 'none');
         svgEl.appendChild(c);
       };
-
+      addText(528, 288, '台湾', 7, 'rgba(26,18,8,0.4)');
       addDot(472, 297, 2.5, 'var(--accent)');
       addText(478, 298, '香港 HK', 6.5, 'var(--accent)', 'start');
       addDot(468, 302, 1.8, 'rgba(26,18,8,0.5)');
       addText(474, 303, '澳門', 5.5, 'rgba(26,18,8,0.45)', 'start');
-
-      // ── South China Sea dashed box ────────────────────────
       const rect = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'rect');
       rect.setAttribute('x', '630'); rect.setAttribute('y', '325');
       rect.setAttribute('width', '60'); rect.setAttribute('height', '75');
@@ -236,33 +366,345 @@ function loadMap() {
       rect.setAttribute('stroke', 'var(--province-stroke)');
       rect.setAttribute('stroke-width', '0.8');
       rect.setAttribute('stroke-dasharray', '3,3');
-      rect.setAttribute('rx', '2');
-      rect.setAttribute('opacity', '0.45');
+      rect.setAttribute('rx', '2'); rect.setAttribute('opacity', '0.45');
       rect.setAttribute('pointer-events', 'none');
       svgEl.appendChild(rect);
       addText(660, 368, '南海诸岛', 6.5, 'rgba(26,18,8,0.35)');
 
-      // ── Final SVG attributes ─────────────────────────────
-      svgEl.setAttribute('id',     'china-map-svg');
-      svgEl.setAttribute('width',  '100%');
+      // final svg attributes
+      svgEl.setAttribute('id', 'china-map-svg');
+      svgEl.setAttribute('width', '100%');
       svgEl.setAttribute('height', '100%');
       svgEl.removeAttribute('style');
 
-      // Inject
       const wrap = document.getElementById('china-map-svg-wrap');
       document.getElementById('map-loading').remove();
       wrap.appendChild(svgEl);
 
-      // Tooltip follow
       svgEl.addEventListener('mousemove', e => {
         if (document.getElementById('prov-tip').style.display === 'block') moveTip(e);
       });
+
+      // ── load cities, then build pins + panels ──
+      return fetch('./data/cities.json');
+    })
+    .then(r => r.json())
+    .then(cities => {
+      CITIES = cities;
+      buildCityPins();
+      setupChips();
+      renderTrip();
+      renderBadges();
     })
     .catch(err => {
       console.error('Map error:', err);
       const loading = document.getElementById('map-loading');
-      if (loading) loading.textContent = 'Map unavailable — please open with Live Server.';
+      if (loading) loading.textContent = 'Map unavailable — please open with a local server.';
     });
+}
+
+// ── BUILD CITY PINS (overlay on the SVG) ────────────────────
+function buildCityPins() {
+  const svg = document.getElementById('china-map-svg');
+  if (!svg) return;
+  const NS = 'http://www.w3.org/2000/svg';
+
+  CITIES.filter(c => c.x != null && c.y != null).forEach(c => {
+    const g = document.createElementNS(NS, 'g');
+    g.setAttribute('class', 'city-pin');
+    g.setAttribute('data-city', c.nameEn);
+    g.setAttribute('transform', `translate(${c.x},${c.y})`);
+
+    const c1 = document.createElementNS(NS, 'circle');
+    c1.setAttribute('r', '7'); c1.setAttribute('class', 'city-pin-halo');
+    const c2 = document.createElementNS(NS, 'circle');
+    c2.setAttribute('r', '4.5'); c2.setAttribute('class', 'city-pin-dot');
+    const e = document.createElementNS(NS, 'text');
+    e.setAttribute('class', 'city-pin-emoji');
+    e.setAttribute('text-anchor', 'middle');
+    e.setAttribute('dy', '3.2');
+    e.textContent = c.emoji;
+    const l = document.createElementNS(NS, 'text');
+    l.setAttribute('class', 'city-pin-lbl');
+    l.setAttribute('text-anchor', 'middle');
+    l.setAttribute('y', '13');
+    l.textContent = c.nameEn;
+
+    g.appendChild(c1); g.appendChild(c2); g.appendChild(e); g.appendChild(l);
+    g.addEventListener('click', (ev) => { ev.stopPropagation(); openCityPin(c.nameEn); });
+    svg.appendChild(g);
+  });
+}
+
+// ── FILTER CHIPS ────────────────────────────────────────────
+function setupChips() {
+  document.querySelectorAll('#map-chips .map-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.filter;
+      if (activeFilter === key) { clearFilter(); return; }
+      activeFilter = key;
+      document.querySelectorAll('#map-chips .map-chip').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilter(key);
+    });
+  });
+}
+function applyFilter(key) {
+  const matchProv = new Set();
+  const matchCity = new Set();
+  CITIES.forEach(c => {
+    if ((c.interests || []).includes(key)) {
+      matchCity.add(c.nameEn);
+      if (c.provinceId) matchProv.add(c.provinceId);
+    }
+  });
+  // provinces: highlight matches, fade the rest
+  Object.keys(provEls).forEach(id => {
+    const p = provEls[id];
+    p.classList.toggle('prov-match', matchProv.has(id));
+    p.classList.toggle('prov-faded', !matchProv.has(id));
+  });
+  // pins: dim non-matching
+  document.querySelectorAll('.city-pin').forEach(g => {
+    g.classList.toggle('pin-dim', !matchCity.has(g.dataset.city));
+  });
+}
+function clearFilter() {
+  activeFilter = null;
+  document.querySelectorAll('#map-chips .map-chip').forEach(b => b.classList.remove('active'));
+  Object.values(provEls).forEach(p => p.classList.remove('prov-match', 'prov-faded'));
+  document.querySelectorAll('.city-pin').forEach(g => g.classList.remove('pin-dim'));
+}
+
+// ── TRAVEL CARD DRAWER ──────────────────────────────────────
+function openCityPin(nameEn) {
+  const c = cityByName(nameEn);
+  if (!c) return;
+  document.getElementById('tc-emoji').textContent = c.emoji;
+  document.getElementById('tc-zh').textContent = c.nameZh;
+  document.getElementById('tc-en').textContent = c.nameEn;
+  const bullets = (c.attractions || []).slice(0, 3).map(a => `<li>${a}</li>`).join('');
+  document.getElementById('tc-bullets').innerHTML = bullets;
+  const slug = c.nameEn.toLowerCase().replace(/'/g, '').replace(/\s+/g, '-');
+  document.getElementById('tc-read').setAttribute('href', './guides/' + slug + '.html');
+
+  // sync button states with saved badges
+  const badges = loadBadges();
+  const state = badges[c.nameEn];
+  document.getElementById('tc-interested').classList.toggle('on', state === 'interested');
+  document.getElementById('tc-been').classList.toggle('on', state === 'been');
+  const trip = loadTrip();
+  document.getElementById('tc-add').classList.toggle('on', trip.includes(c.nameEn));
+
+  document.getElementById('travel-card').classList.add('open');
+}
+function closeTravelCard() {
+  document.getElementById('travel-card').classList.remove('open');
+}
+function tcToggle(kind) {
+  const en = document.getElementById('tc-en').textContent;
+  const badges = loadBadges();
+  if (badges[en] === kind) { delete badges[en]; }      // toggle off
+  else { badges[en] = kind; }                          // set (overwrites the other)
+  saveBadges(badges);
+  document.getElementById('tc-interested').classList.toggle('on', badges[en] === 'interested');
+  document.getElementById('tc-been').classList.toggle('on', badges[en] === 'been');
+  renderBadges();
+  renderInterested();
+  toast(kind === 'been' ? '🏅 Badge earned: Been there!' : '⭐ Saved as Interested');
+}
+function tcAddTrip() {
+  const en = document.getElementById('tc-en').textContent;
+  const trip = loadTrip();
+  if (!trip.includes(en)) {
+    trip.push(en);
+    saveTrip(trip);
+    document.getElementById('tc-add').classList.add('on');
+    renderTrip();
+    toast('＋ Added ' + en + ' to your trip');
+  } else {
+    toast(en + ' is already in your trip');
+  }
+}
+
+// ── MY TRIP PANEL ───────────────────────────────────────────
+function renderTrip() {
+  const trip = loadTrip();
+  const list = document.getElementById('trip-list');
+  const count = document.getElementById('trip-count');
+  if (!list) return;
+  count.textContent = trip.length;
+  if (trip.length === 0) {
+    list.innerHTML = '<div class="trip-empty">Tap a city pin → “＋ Add to trip”.<br>Your route appears here.</div>';
+  } else {
+    const ordered = geoSort(trip.map(cityByName).filter(Boolean));
+    list.innerHTML = ordered.map(c => `
+      <div class="trip-item">
+        <span class="trip-item-emoji">${c.emoji}</span>
+        <span class="trip-item-name">${c.nameEn}</span>
+        <span class="trip-item-days">${c.days}</span>
+        <button class="trip-item-x" onclick="removeFromTrip('${c.nameEn}')">×</button>
+      </div>`).join('');
+  }
+  renderInterested();
+}
+function addToTrip(nameEn) {
+  const trip = loadTrip();
+  if (!trip.includes(nameEn)) { trip.push(nameEn); saveTrip(trip); renderTrip(); }
+}
+function removeFromTrip(nameEn) {
+  let trip = loadTrip();
+  trip = trip.filter(n => n !== nameEn);
+  saveTrip(trip);
+  renderTrip();
+  // keep the travel-card "Add" state in sync if open
+  if (document.getElementById('tc-en') &&
+      document.getElementById('tc-en').textContent === nameEn) {
+    document.getElementById('tc-add').classList.remove('on');
+  }
+}
+
+// Show a small "Interested" wishlist inside My Trip panel so visitors
+// know what "Saved to Interested" actually means.
+function renderInterested() {
+  const wrap = document.getElementById('interested-mini');
+  if (!wrap) return;
+  const badges = loadBadges();
+  const cities = CITIES.filter(c => badges[c.nameEn] === 'interested');
+  if (cities.length === 0) {
+    wrap.innerHTML = '';
+    return;
+  }
+  const chips = cities.map(c =>
+    `<button class="interested-chip" onclick="openCityPin('${c.nameEn}')">${c.emoji} ${c.nameEn}</button>`
+  ).join('');
+  wrap.innerHTML = `
+    <div class="interested-head">⭐ Interested (${cities.length})</div>
+    <div class="interested-hint">A wishlist, not part of your trip yet.</div>
+    <div class="interested-list">${chips}</div>
+  `;
+}
+
+// ── BADGE WALL ──────────────────────────────────────────────
+function renderBadges() {
+  const grid = document.getElementById('badge-grid');
+  if (!grid) return;
+  const badges = loadBadges();
+  grid.innerHTML = CITIES.map(c => {
+    const st = badges[c.nameEn] ? badges[c.nameEn] : '';
+    return `<button class="badge ${st}" data-city="${c.nameEn}" title="${c.nameEn}">
+      <span class="badge-emoji">${c.emoji}</span>
+      <span class="badge-name">${c.nameEn}</span>
+    </button>`;
+  }).join('');
+  grid.querySelectorAll('.badge').forEach(b => {
+    b.addEventListener('click', () => openCityPin(b.dataset.city));
+  });
+}
+
+// ── SURPRISE ────────────────────────────────────────────────
+function surpriseCity() {
+  if (CITIES.length === 0) return;
+  const c = CITIES[Math.floor(Math.random() * CITIES.length)];
+  openCityPin(c.nameEn);
+  toast('🎁 Surprise: ' + c.nameEn + '!');
+}
+
+// ── ITINERARY MODAL ─────────────────────────────────────────
+function openItinerary() {
+  const trip = loadTrip();
+  if (trip.length === 0) { toast('Add cities to your trip first 🧳'); return; }
+  const ordered = geoSort(trip.map(cityByName).filter(Boolean));
+  const routeLine = ordered.map(c => c.nameEn).join(' → ');
+
+  let day = 1;
+  let bodyHtml = '';
+  ordered.forEach((c, i) => {
+    const d = dayCount(c);
+    const end = day + d - 1;
+    const bullets = (c.attractions || []).slice(0, 3)
+      .map(a => `<li>${a}</li>`).join('');
+    let next = '';
+    if (i < ordered.length - 1) {
+      const nxt = ordered[i + 1];
+      next = `<div class="itin-next">Next: Travel to ${nxt.nameEn}</div>`;
+    }
+    bodyHtml += `
+      <div class="itin-day">
+        <div class="itin-day-head">Day ${day}–${end}: ${c.emoji} ${c.nameZh} ${c.nameEn}</div>
+        <ul class="itin-bullets">${bullets}</ul>
+        ${next}
+      </div>`;
+    day = end + 1;
+  });
+  const totalDays = day - 1;
+
+  document.getElementById('itin-title').textContent = `Your ${totalDays}-day China itinerary`;
+  document.getElementById('itin-route').textContent = 'Route: ' + routeLine;
+  document.getElementById('itin-body').innerHTML = bodyHtml;
+  document.getElementById('itin-total').textContent =
+    `${ordered.length} stops · ${totalDays} days total`;
+
+  // prepare email body
+  const textLines = [];
+  textLines.push(`My ${totalDays}-day China route: ${routeLine}`);
+  textLines.push('');
+  day = 1;
+  ordered.forEach((c, i) => {
+    const d = dayCount(c);
+    const end = day + d - 1;
+    textLines.push(`Day ${day}–${end}: ${c.nameZh} ${c.nameEn}`);
+    (c.attractions || []).slice(0, 3).forEach(a => textLines.push('• ' + a));
+    if (i < ordered.length - 1) {
+      textLines.push(`Next: Travel to ${ordered[i + 1].nameEn}`);
+    }
+    textLines.push('');
+    day = end + 1;
+  });
+  const subject = encodeURIComponent('My China itinerary from Ready? China!');
+  const body = encodeURIComponent(textLines.join('\n'));
+  document.getElementById('email-itin').href = `mailto:?subject=${subject}&body=${body}`;
+
+  document.getElementById('itinerary-modal').classList.add('show');
+}
+function closeItinerary() {
+  document.getElementById('itinerary-modal').classList.remove('show');
+}
+function copyItineraryText() {
+  const trip = loadTrip();
+  if (trip.length === 0) { toast('Your trip is empty 🧳'); return; }
+  const ordered = geoSort(trip.map(cityByName).filter(Boolean));
+  let day = 1;
+  const lines = [];
+  lines.push(`My ${day - 1 + ordered.reduce((sum, c) => sum + dayCount(c), 0)}-day China route: ${ordered.map(c => c.nameEn).join(' → ')}`);
+  lines.push('');
+  ordered.forEach((c, i) => {
+    const d = dayCount(c);
+    const end = day + d - 1;
+    lines.push(`Day ${day}–${end}: ${c.nameZh} ${c.nameEn}`);
+    (c.attractions || []).slice(0, 3).forEach(a => lines.push('• ' + a));
+    if (i < ordered.length - 1) lines.push(`Next: Travel to ${ordered[i + 1].nameEn}`);
+    lines.push('');
+    day = end + 1;
+  });
+  const text = lines.join('\n');
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => toast('📋 Itinerary copied!'),
+      () => toast('Copy failed'));
+  } else {
+    toast(text);
+  }
+}
+
+// ── TOAST ───────────────────────────────────────────────────
+let toastTimer = null;
+function toast(msg) {
+  const t = document.getElementById('map-toast');
+  if (!t) return;
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
 }
 
 loadMap();

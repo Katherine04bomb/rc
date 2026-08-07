@@ -1756,3 +1756,222 @@ footer {
   .kat-sig-name { font-size: 12px; }
   .kat-sig-role { font-size: 10px; }
 }
+
+/* ============================================================
+   INTERACTIVE MAP — filter chips, city pins, trip panel,
+   badge wall, travel-card drawer, itinerary modal, toast
+   (added on top of the province map; reuses site variables)
+   ============================================================ */
+
+/* ── Filter chips ── */
+.map-chips {
+  display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+  margin: 4px 0 16px;
+}
+.map-chip {
+  font-family: 'DM Sans', sans-serif; font-size: 12px;
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 7px 13px; border-radius: 999px;
+  background: var(--surface); color: var(--text-mid);
+  border: 1px solid var(--border); cursor: pointer;
+  transition: all .18s ease;
+}
+.map-chip:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-soft); }
+.map-chip.active {
+  background: var(--accent); color: #fff; border-color: var(--accent);
+  box-shadow: 0 4px 14px rgba(192,57,43,.25);
+}
+
+/* ── Two-column layout: map + side panel ── */
+.map-layout {
+  display: grid; grid-template-columns: minmax(0,1fr) 310px;
+  gap: 22px; align-items: start; margin-top: 4px;
+}
+.map-canvas { min-width: 0; }
+
+/* ── Province filter states (added by map.js) ── */
+#china-map-svg .province.prov-match {
+  fill: var(--gold-light);
+  filter: drop-shadow(0 0 7px rgba(201,168,76,.7));
+}
+#china-map-svg .province.prov-faded { opacity: .28; }
+
+/* ── City pins (overlay) ── */
+.city-pin { cursor: pointer; transition: opacity .2s ease; }
+.city-pin-halo {
+  fill: var(--gold-soft); stroke: var(--gold); stroke-width: .8;
+  opacity: .9; transition: r .15s ease;
+}
+.city-pin-dot { fill: var(--accent); stroke: #fff; stroke-width: 1.2; }
+.city-pin-emoji { font-size: 8px; pointer-events: none; }
+.city-pin-lbl {
+  font-family: 'DM Sans', sans-serif; font-size: 5.5px; fill: var(--text);
+  pointer-events: none; opacity: .6; transition: opacity .2s, fill .2s;
+}
+.city-pin:hover .city-pin-halo { r: 9; }
+.city-pin:hover .city-pin-dot { fill: var(--gold); }
+.city-pin:hover .city-pin-lbl { opacity: 1; fill: var(--accent); }
+.city-pin.pin-dim { opacity: .18; pointer-events: none; }
+
+/* ── Side panel: trip + badges ── */
+.map-side { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 14px; }
+
+.trip-panel {
+  background: #fff; border: 1px solid var(--border); border-radius: 16px;
+  padding: 16px; box-shadow: 0 6px 22px rgba(0,0,0,.05);
+}
+.trip-head {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 10px;
+}
+.trip-count {
+  background: var(--accent); color: #fff; font-size: 12px;
+  min-width: 22px; height: 22px; border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center; padding: 0 6px;
+}
+.trip-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+.trip-empty {
+  font-size: 11.5px; color: var(--text-muted); line-height: 1.6;
+  background: var(--surface); border-radius: 10px; padding: 12px;
+}
+.trip-item {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--surface); border-radius: 10px; padding: 7px 10px;
+}
+.trip-item-emoji { font-size: 15px; }
+.trip-item-name { font-size: 12.5px; font-weight: 500; flex: 1; color: var(--text); }
+.trip-item-days { font-size: 10.5px; color: var(--text-muted); }
+.trip-item-x {
+  border: none; background: transparent; color: var(--text-muted);
+  font-size: 15px; cursor: pointer; line-height: 1; padding: 0 2px;
+}
+.trip-item-x:hover { color: var(--accent); }
+.trip-btn {
+  width: 100%; font-family: 'DM Sans', sans-serif; font-size: 12.5px;
+  padding: 9px; border-radius: 10px; cursor: pointer; margin-top: 8px;
+  background: var(--accent); color: #fff; border: 1px solid var(--accent);
+  transition: background .18s ease;
+}
+.trip-btn:hover { background: var(--accent2); }
+.trip-btn-ghost { background: #fff; color: var(--text-mid); border-color: var(--border); }
+.trip-btn-ghost:hover { border-color: var(--accent); color: var(--accent); background: #fff; }
+
+/* ── Badge wall ── */
+.badge-wall {
+  background: #fff; border: 1px solid var(--border); border-radius: 16px;
+  padding: 16px; box-shadow: 0 6px 22px rgba(0,0,0,.05);
+}
+.badge-head { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 12px; }
+.badge-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.badge {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 8px 4px; border-radius: 12px; cursor: pointer;
+  background: var(--surface); border: 1px solid transparent;
+  transition: all .18s ease; font-family: 'DM Sans', sans-serif;
+}
+.badge-emoji { font-size: 17px; filter: grayscale(1); opacity: .5; transition: all .18s ease; }
+.badge-name { font-size: 8.5px; color: var(--text-muted); text-align: center; line-height: 1.1; }
+.badge:hover { border-color: var(--gold); }
+.badge.interested { background: var(--gold-soft); border-color: var(--gold-border); }
+.badge.interested .badge-emoji { filter: none; opacity: 1; }
+.badge.been { background: var(--red-soft); border-color: var(--red-border); }
+.badge.been .badge-emoji { filter: none; opacity: 1; }
+.badge.been .badge-name { color: var(--accent); font-weight: 600; }
+
+/* ── Surprise button ── */
+.surprise-btn {
+  width: 100%; font-family: 'DM Sans', sans-serif; font-size: 13px;
+  padding: 11px; border-radius: 12px; cursor: pointer;
+  background: var(--gold-soft); color: var(--gold); border: 1px dashed var(--gold-border);
+  transition: all .18s ease;
+}
+.surprise-btn:hover { background: var(--gold); color: #fff; }
+
+/* ── Travel-card drawer (slides up) ── */
+.travel-card {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+  background: #fff; border-top: 1px solid var(--border);
+  box-shadow: 0 -10px 40px rgba(0,0,0,.18);
+  transform: translateY(110%); transition: transform .3s cubic-bezier(.2,.8,.2,1);
+  padding: 18px 20px 22px; max-width: 560px; margin: 0 auto;
+  border-radius: 18px 18px 0 0;
+}
+.travel-card.open { transform: translateY(0); }
+.tc-close {
+  position: absolute; top: 12px; right: 14px; border: none; background: transparent;
+  font-size: 22px; color: var(--text-muted); cursor: pointer; line-height: 1;
+}
+.travel-card { display: flex; gap: 14px; align-items: flex-start; }
+.tc-emoji { font-size: 40px; line-height: 1; }
+.tc-body { flex: 1; min-width: 0; }
+.tc-name { font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.tc-name span:first-child { font-family: 'Noto Serif SC', serif; }
+.tc-name span:last-child { color: var(--gold); font-size: 13px; letter-spacing: 1px; }
+.tc-bullets { margin: 0 0 12px; padding-left: 18px; }
+.tc-bullets li { font-size: 12.5px; color: var(--text-mid); line-height: 1.6; }
+.tc-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.tc-btn {
+  font-family: 'DM Sans', sans-serif; font-size: 12px; cursor: pointer;
+  padding: 8px 12px; border-radius: 9px; text-decoration: none;
+  border: 1px solid var(--border); background: #fff; color: var(--text-mid);
+  transition: all .16s ease;
+}
+.tc-interested.on { background: var(--gold-soft); color: var(--gold); border-color: var(--gold-border); }
+.tc-been.on { background: var(--red-soft); color: var(--accent); border-color: var(--red-border); }
+.tc-add.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+.tc-read { background: var(--text); color: #fff; border-color: var(--text); }
+.tc-read:hover { opacity: .88; }
+
+/* ── Itinerary modal ── */
+.itin-box { max-width: 560px; max-height: 80vh; overflow-y: auto; }
+.itin-total { font-size: 12px; color: var(--gold); margin-top: 2px; }
+.itin-day { padding: 14px 0; border-bottom: 1px solid var(--border); }
+.itin-day:last-child { border-bottom: none; }
+.itin-day-head { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+.itin-bullets { margin: 0 0 8px; padding-left: 18px; }
+.itin-bullets li { font-size: 12.5px; color: var(--text-mid); line-height: 1.6; }
+.itin-next {
+  font-size: 12px; color: var(--text-muted); font-weight: 500;
+  padding: 6px 0; display: inline-block;
+}
+
+#itin-route { font-size: 12.5px; margin-bottom: 2px; }
+
+/* ── Itinerary modal footer (Copy text + Email) ── */
+.itin-footer {
+  display: flex; gap: 12px; padding: 16px 26px;
+  border-top: 1px solid var(--border); background: #fff;
+  border-radius: 0 0 16px 16px;
+}
+.itin-footer .trip-btn { flex: 1; margin-top: 0; }
+
+/* ── Interested mini wishlist inside My Trip panel ── */
+.interested-mini { margin-top: 10px; }
+.interested-mini:empty { display: none; }
+.interested-head { font-size: 11.5px; color: var(--gold); font-weight: 600; margin-bottom: 3px; }
+.interested-hint { font-size: 10.5px; color: var(--text-muted); margin-bottom: 7px; line-height: 1.4; }
+.interested-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.interested-chip {
+  font-size: 11px; padding: 5px 9px; border-radius: 999px;
+  background: var(--gold-soft); border: 1px solid var(--gold-border);
+  color: var(--text); cursor: pointer; transition: all .16s ease;
+}
+.interested-chip:hover { background: var(--gold); color: #fff; }
+
+/* ── Toast ── */
+.map-toast {
+  position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px);
+  background: var(--text); color: #fff; font-size: 12.5px;
+  padding: 10px 16px; border-radius: 999px; z-index: 80;
+  opacity: 0; pointer-events: none; transition: all .25s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,.25);
+}
+.map-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ── Mobile: stack side panel under the map ── */
+@media (max-width: 860px) {
+  .map-layout { grid-template-columns: 1fr; }
+  .map-side { position: static; }
+  .badge-grid { grid-template-columns: repeat(4, 1fr); }
+}
+

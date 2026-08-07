@@ -3,6 +3,15 @@
     "emoji": "🏯",
     "nameZh": "北京",
     "nameEn": "Beijing",
+    "provinceId": "beijing",
+    "x": 490,
+    "y": 152,
+    "interests": [
+      "art",
+      "city",
+      "history",
+      "nightlife"
+    ],
     "difficulty": "★☆☆☆☆",
     "days": "4–6 days",
     "bestFor": "History, culture, Great Wall, Chinese civilization",
@@ -46,6 +55,14 @@
     "emoji": "🌃",
     "nameZh": "上海",
     "nameEn": "Shanghai",
+    "provinceId": "shanghai",
+    "x": 534,
+    "y": 238,
+    "interests": [
+      "art",
+      "city",
+      "nightlife"
+    ],
     "difficulty": "★☆☆☆☆",
     "days": "3–4 days",
     "bestFor": "Futuristic skyline, international food, modernity",
@@ -88,6 +105,16 @@
     "emoji": "🐼",
     "nameZh": "成都",
     "nameEn": "Chengdu",
+    "provinceId": "sichuan",
+    "x": 393,
+    "y": 246,
+    "interests": [
+      "art",
+      "city",
+      "food",
+      "nightlife",
+      "wildlife"
+    ],
     "difficulty": "★★☆☆☆",
     "days": "3–5 days",
     "bestFor": "Pandas, hotpot, chill vibes, authentic local life",
@@ -131,6 +158,14 @@
     "emoji": "🏺",
     "nameZh": "西安",
     "nameEn": "Xi'an",
+    "provinceId": "shaanxi",
+    "x": 438,
+    "y": 203,
+    "interests": [
+      "food",
+      "history",
+      "nightlife"
+    ],
     "difficulty": "★★☆☆☆",
     "days": "2–3 days",
     "bestFor": "Ancient history, Terracotta Army, Silk Road",
@@ -173,6 +208,14 @@
     "emoji": "🔥",
     "nameZh": "重庆",
     "nameEn": "Chongqing",
+    "provinceId": "chongqing",
+    "x": 430,
+    "y": 252,
+    "interests": [
+      "city",
+      "food",
+      "nightlife"
+    ],
     "difficulty": "★★★☆☆",
     "days": "2–3 days",
     "bestFor": "Cyberpunk city, hotpot capital, mountain drama",
@@ -216,6 +259,12 @@
     "emoji": "🏔️",
     "nameZh": "桂林",
     "nameEn": "Guilin",
+    "provinceId": "guangxi",
+    "x": 441,
+    "y": 300,
+    "interests": [
+      "nature"
+    ],
     "difficulty": "★★☆☆☆",
     "days": "3–4 days",
     "bestFor": "Nature, karst mountains, Li River scenery",
@@ -258,6 +307,14 @@
     "emoji": "🌸",
     "nameZh": "泉州",
     "nameEn": "Quanzhou",
+    "provinceId": "fujian",
+    "x": 511,
+    "y": 282,
+    "interests": [
+      "art",
+      "city",
+      "history"
+    ],
     "difficulty": "★★★★☆",
     "days": "2–3 days",
     "bestFor": "Hidden gem, Maritime Silk Road, authentic local China",
@@ -301,6 +358,15 @@
     "emoji": "🌊",
     "nameZh": "杭州",
     "nameEn": "Hangzhou",
+    "provinceId": "zhejiang",
+    "x": 530,
+    "y": 254,
+    "interests": [
+      "art",
+      "city",
+      "nature",
+      "nightlife"
+    ],
     "difficulty": "★☆☆☆☆",
     "days": "2–3 days",
     "bestFor": "Serenity, West Lake, tea culture, easy day trips",
@@ -338,5 +404,255 @@
         "alt": "Dongpo Pork"
       }
     ]
+  },
+  {
+    "emoji": "🕌",
+    "nameZh": "敦煌",
+    "nameEn": "Dunhuang",
+    "provinceId": "gansu",
+    "x": 330,
+    "y": 175,
+    "interests": [
+      "art",
+      "history",
+      "nature"
+    ],
+    "difficulty": "★★★☆☆",
+    "days": "3–4 days",
+    "bestFor": "Silk Road art, Mogao Caves, desert landscapes",
+    "tags": [
+      "UNESCO caves",
+      "Silk Road",
+      "Desert"
+    ],
+    "attractions": [
+      "Mogao Caves — 1,000 years of Buddhist art",
+      "Mingsha Mountain & Crescent Moon Spring",
+      "Yumen Pass (Jade Gate)",
+      "Dunhuang Night Market",
+      "Camel ride at sunset"
+    ],
+    "photos": []
+  },
+  {
+    "emoji": "🏔️",
+    "nameZh": "丽江",
+    "nameEn": "Lijiang",
+    "provinceId": "yunnan",
+    "x": 365,
+    "y": 295,
+    "interests": [
+      "nature",
+      "nightlife",
+      "art"
+    ],
+    "difficulty": "★★★☆☆",
+    "days": "2–3 days",
+    "bestFor": "Naxi culture, cobblestone old town, Jade Dragon Snow Mountain",
+    "tags": [
+      "Old town charm",
+      "Nightlife",
+      "Snow mountain"
+    ],
+    "attractions": [
+      "Lijiang Old Town — UNESCO cobblestone maze",
+      "Jade Dragon Snow Mountain day trip",
+      "Black Dragon Pool",
+      "Naxi Dongba culture show",
+      "Bar street at night"
+    ],
+    "photos": []
+  },
+  {
+    "emoji": "🏛️",
+    "nameZh": "喀什古城",
+    "nameEn": "Kashgar",
+    "provinceId": "xinjiang",
+    "x": 240,
+    "y": 175,
+    "interests": [
+      "art",
+      "history",
+      "food"
+    ],
+    "difficulty": "★★★★★",
+    "days": "2–3 days",
+    "bestFor": "Uyghur craft bazaar, Silk Road living museum",
+    "tags": [
+      "Silk Road bazaar",
+      "Ethnic culture",
+      "Off the beaten path"
+    ],
+    "attractions": [
+      "Kashgar Old City — maze of adobe alleyways",
+      "Id Kah Mosque & Sunday livestock market",
+      "Handicraft Street — copper, carpets, instruments",
+      "Karim's Bakery for fresh naan",
+      "Street food: lamb kebabs & hand-pulled noodles"
+    ],
+    "photos": []
+  },
+  {
+    "emoji": "🦅",
+    "nameZh": "平武白马藏族乡",
+    "nameEn": "Pingwu Baima",
+    "provinceId": "sichuan",
+    "x": 405,
+    "y": 240,
+    "interests": [
+      "nature",
+      "art"
+    ],
+    "difficulty": "★★★★☆",
+    "days": "2 days",
+    "bestFor": "Baima Tibetan culture, mountain villages, feather headdress",
+    "tags": [
+      "Hidden ethnic gem",
+      "Mountain escape"
+    ],
+    "attractions": [
+      "Baima Tibetan villages with white feather headdresses",
+      "Panda habitat in Wanglang National Nature Reserve",
+      "Baima folk song & dance performances",
+      "Handmade Baima embroidery",
+      "Hiking in dense forests"
+    ],
+    "photos": []
+  },
+  {
+    "emoji": "🛒",
+    "nameZh": "义乌",
+    "nameEn": "Yiwu",
+    "provinceId": "zhejiang",
+    "x": 535,
+    "y": 262,
+    "interests": [
+      "city"
+    ],
+    "difficulty": "★★☆☆☆",
+    "days": "1–2 days",
+    "bestFor": "World's small-commodities market, crazy shopping",
+    "tags": [
+      "Shopping paradise",
+      "Wholesale market"
+    ],
+    "attractions": [
+      "Yiwu International Trade City — world's largest small-goods market",
+      "District 1 toys & decorations",
+      "District 2 bags & jewelry",
+      "Night market street food",
+      "Bulk-buy souvenirs for friends"
+    ],
+    "photos": []
+  },
+  {
+    "emoji": "🐎",
+    "nameZh": "鄂尔多斯",
+    "nameEn": "Ordos",
+    "provinceId": "inner-mongolia",
+    "x": 420,
+    "y": 135,
+    "interests": [
+      "nature",
+      "art",
+      "history"
+    ],
+    "difficulty": "★★★☆☆",
+    "days": "2–3 days",
+    "bestFor": "Grasslands, Mongolian culture, futuristic Ordos city",
+    "tags": [
+      "Grasslands",
+      "Mongolian culture"
+    ],
+    "attractions": [
+      "Xiangshawan Singing Sand Bay",
+      "Genghis Khan Mausoleum",
+      "Ordos Grassland horse riding & yurt stay",
+      "Kangbashi (ghost city) architecture",
+      "Mongolian roast lamb dinner"
+    ],
+    "photos": []
+  },
+  {
+    "emoji": "🎢",
+    "nameZh": "横琴",
+    "nameEn": "Hengqin",
+    "provinceId": "guangdong",
+    "x": 470,
+    "y": 315,
+    "interests": [
+      "city",
+      "nightlife"
+    ],
+    "difficulty": "★★☆☆☆",
+    "days": "1–2 days",
+    "bestFor": "Chimelong resort, Macau neighbor, entertainment island",
+    "tags": [
+      "Theme parks",
+      "Night shows",
+      "Near Macau"
+    ],
+    "attractions": [
+      "Chimelong Ocean Kingdom — one of the world's largest aquariums",
+      "Hengqin International Tennis Center",
+      "Evening fountain & light shows",
+      "Walk to Macau via Lotus Bridge",
+      "Duty-free shopping"
+    ],
+    "photos": []
+  },
+  {
+    "emoji": "🍵",
+    "nameZh": "长兴",
+    "nameEn": "Changxing",
+    "provinceId": "zhejiang",
+    "x": 532,
+    "y": 244,
+    "interests": [
+      "nature",
+      "food"
+    ],
+    "difficulty": "★★☆☆☆",
+    "days": "1–2 days",
+    "bestFor": "Tea plantations, quiet lakes, local farm food",
+    "tags": [
+      "Tea culture",
+      "Peaceful escape"
+    ],
+    "attractions": [
+      "Guniujiang Scenic Area tea terraces",
+      "Changxing Wetland Park",
+      "Changxing ancient tea culture town",
+      "Bamboo forest walks",
+      "Fresh farm-to-table Zhejiang cuisine"
+    ],
+    "photos": []
+  },
+  {
+    "emoji": "🏞️",
+    "nameZh": "张家界",
+    "nameEn": "Zhangjiajie",
+    "provinceId": "hunan",
+    "x": 450,
+    "y": 270,
+    "interests": [
+      "nature"
+    ],
+    "difficulty": "★★☆☆☆",
+    "days": "2–3 days",
+    "bestFor": "Avatar mountains, glass bridge, sandstone pillars",
+    "tags": [
+      "Avatar mountains",
+      "Glass bridge",
+      "National park"
+    ],
+    "attractions": [
+      "Zhangjiajie National Forest Park — Avatar Hallelujah Mountain",
+      "Tianmen Mountain glass skywalk",
+      "Zhangjiajie Grand Canyon glass bridge",
+      "Bailong Elevator — world's tallest outdoor lift",
+      "Ten-mile Gallery scenic train"
+    ],
+    "photos": []
   }
 ]
