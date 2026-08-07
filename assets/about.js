@@ -34,7 +34,7 @@ function loadAbout() {
           </div>
           <div class="about-body">
             <div class="about-story">
-              Born in the Philippines, I grew up between Hong Kong and China, and I have studied and traveled all around Australia, New Zealand and Asia countries. Safe to say I’ve lived in many different places and have carried a little piece of each with me.
+              Born in the Philippines, I grew up between Hong Kong and Fujian China, and I have studied and traveled all around Australia, New Zealand and Asia countries. Safe to say I’ve lived in many different places and have carried a little piece of each with me.
 <br><br>
               Now I'm back in China, and I keep inviting my friends to come visit me.
               The problem? Every single one of them panics when they start planning.
@@ -46,19 +46,19 @@ function loadAbout() {
             <div class="about-examples">
               <div class="about-ex">
                 <div class="about-ex-icon">📶</div>
-                <div class="about-ex-text">My Australian friend landed in Shanghai and spent
+                <div class="about-ex-text">My Australian friend Michael landed in Shanghai and spent
                   <strong>2 hours at the airport</strong> trying to get wifi. His phone had
                   no signal and he couldn't contact the hotel. He was stuck.</div>
               </div>
               <div class="about-ex">
                 <div class="about-ex-icon">💳</div>
-                <div class="about-ex-text">Another friend <strong>couldn't pay for dinner</strong>
+                <div class="about-ex-text">Katty <strong>couldn't pay for dinner</strong>
                   — she thought credit cards worked everywhere. The restaurant only took
                   WeChat or Alipay pay. A stranger finally helped her. She was so embarrassed.</div>
               </div>
               <div class="about-ex">
                 <div class="about-ex-icon">🗺️</div>
-                <div class="about-ex-text">A third friend wanted to go somewhere "off the
+                <div class="about-ex-text">Sarah wanted to go somewhere "off the
                   tourist path" but had no idea where. She ended up following everyone to
                   Shanghai and Chengdu, missing <strong>so many hidden gems</strong>.</div>
               </div>
