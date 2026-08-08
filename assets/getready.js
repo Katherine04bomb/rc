@@ -514,7 +514,7 @@ function loadGetReady() {
           <div class="app-name">Alipay 支付宝 — Do this first</div>
           <div class="app-desc">Now officially supports foreign Visa, Mastercard, and Amex — no Chinese bank account needed. Used absolutely everywhere.</div>
           <div class="app-tip">✅ Use the International version. Settings → Bank Cards. Set this up before you land.</div>
-          <a href="../alipay" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 How to set up Alipay →</a>
+          <a href="alipay" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 How to set up Alipay →</a>
         </div></div>
         <div class="app-item"><div class="app-icon-box">💬</div><div>
           <div class="app-name">WeChat Pay 微信支付 — Great backup</div>
