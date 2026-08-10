@@ -304,11 +304,16 @@ const statusMsgs = [
   '100% CHINA READY! You\'ve got this! Ni hao! 🇨🇳🎊'
 ];
 
+let lastClickedStepIdx = -1;
+
 function toggleStep(id) {
   const el = document.getElementById(id);
   el.classList.toggle('done');
-  // Persist each step independently — refresh-safe
-  localStorage.setItem('rc_' + id, el.classList.contains('done') ? '1' : '0');
+  // Track which step was last clicked (for accurate status message)
+  lastClickedStepIdx = steps.indexOf(id);
+  // Highlight the most recently clicked step
+  document.querySelectorAll('.check-step').forEach(s => s.classList.remove('last-clicked'));
+  if (el.classList.contains('done')) el.classList.add('last-clicked');
   updateProgress();
 }
 
@@ -317,12 +322,25 @@ function updateProgress() {
   const pct  = Math.round((done / steps.length) * 100);
   document.getElementById('prog-bar').style.width    = pct + '%';
   document.getElementById('pct-label').textContent   = pct + '%';
-  document.getElementById('prog-status').textContent = statusMsgs[done] || statusMsgs[0];
 
-  // 🎆 Celebration — fires once when ALL steps complete
-  if (done === steps.length && !localStorage.getItem('rc_celebrated')) {
-    localStorage.setItem('rc_celebrated', '1');
-    setTimeout(() => openModal('celebrate-modal'), 600);
+  // Status message based on the LAST CLICKED step (not done count)
+  if (done === steps.length) {
+    document.getElementById('prog-status').textContent = statusMsgs[statusMsgs.length - 1];
+  } else if (lastClickedStepIdx >= 0) {
+    // +1 because statusMsgs[0] = "just getting started", [1] = step index 0's message
+    document.getElementById('prog-status').textContent = statusMsgs[lastClickedStepIdx + 1] || statusMsgs[0];
+  } else {
+    document.getElementById('prog-status').textContent = 'Start ticking steps below — let\'s get you ready 👇';
+  }
+
+  // Show Start Over button when at least 1 step is done
+  const resetBtn = document.getElementById('reset-btn');
+  if (resetBtn) resetBtn.style.display = done > 0 ? '' : 'none';
+
+  // 🎆 Celebration — fires EVERY time all steps are complete (no localStorage lock)
+  if (done === steps.length) {
+    triggerFireworks();
+    setTimeout(() => openModal('celebrate-modal'), 1200);
   }
 }
 
@@ -370,7 +388,10 @@ function loadGetReady() {
     <div class="progress-area">
       <div class="progress-header">
         <div class="progress-label">🇨🇳 China Ready Score</div>
-        <div class="progress-pct" id="pct-label">0%</div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <button id="reset-btn" class="progress-reset-btn" onclick="resetChecklist()" style="display:none">↻ Start Over</button>
+          <div class="progress-pct" id="pct-label">0%</div>
+        </div>
       </div>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="prog-bar"></div></div>
       <div class="progress-status" id="prog-status">Start ticking steps below — let's get you ready 👇</div>
@@ -1072,15 +1093,7 @@ function loadGetReady() {
     @keyframes bounce { from { transform:translateY(0); } to { transform:translateY(-8px); } }
   </style>`;
 
-  // ── RESTORE CHECKLIST STATE FROM LOCALSTORAGE ──────────
-  // Each step is saved independently — ticking Step 5 only
-  // marks Step 5, never affects other steps.
-  STEPS.forEach(s => {
-    if (localStorage.getItem('rc_' + s.id) === '1') {
-      const el = document.getElementById(s.id);
-      if (el) el.classList.add('done');
-    }
-  });
+  // No localStorage — fresh start every page load
   updateProgress();
 }
 
@@ -1092,4 +1105,155 @@ function handleCelebForm(e) {
   fetch(form.action, { method:'POST', body:new FormData(form), headers:{'Accept':'application/json'} })
     .then(r => { if(r.ok) { form.style.display='none'; document.getElementById('celebrate-ok').style.display='block'; }})
     .catch(() => { document.getElementById('celebrate-ok').style.display='block'; });
+}
+
+// ── RESET CHECKLIST ──────────────────────────────────────────
+function resetChecklist() {
+  steps.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('done', 'last-clicked');
+  });
+  lastClickedStepIdx = -1;
+  updateProgress();
+}
+
+// ── CANVAS FIREWORKS (5-second show) ─────────────────────────
+function triggerFireworks() {
+  const old = document.getElementById('fireworks-canvas');
+  if (old) old.remove();
+
+  const canvas = document.createElement('canvas');
+  canvas.id = 'fireworks-canvas';
+  canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;';
+  document.body.appendChild(canvas);
+
+  const ctx = canvas.getContext('2d');
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const colors = ['#c0392b', '#e74c3c', '#f1c40f', '#e67e22', '#9b59b6', '#2ecc71', '#3498db', '#ff6b6b'];
+  const particles = [];
+  const rockets = [];
+
+  function createExplosion(x, y, color) {
+    const count = 55 + Math.floor(Math.random() * 25);
+    const c = color || colors[Math.floor(Math.random() * colors.length)];
+    for (let i = 0; i < count; i++) {
+      const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.3;
+      const speed = 2 + Math.random() * 5;
+      particles.push({
+        x: x, y: y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        life: 1.0,
+        decay: 0.006 + Math.random() * 0.01,
+        color: c,
+        size: 2 + Math.random() * 2.5
+      });
+    }
+  }
+
+  function launchRocket() {
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    rockets.push({
+      x: canvas.width * (0.15 + Math.random() * 0.7),
+      y: canvas.height,
+      vy: -(7 + Math.random() * 4),
+      targetY: canvas.height * (0.15 + Math.random() * 0.35),
+      color: color,
+      trail: []
+    });
+  }
+
+  let animationId;
+  function animate() {
+    // Fade trail effect (semi-transparent black overlay)
+    ctx.fillStyle = 'rgba(0,0,0,0.12)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Update rockets
+    for (let i = rockets.length - 1; i >= 0; i--) {
+      const r = rockets[i];
+      r.trail.push({ x: r.x, y: r.y });
+      if (r.trail.length > 10) r.trail.shift();
+      r.y += r.vy;
+      r.vy += 0.06;
+
+      // Draw rocket trail
+      r.trail.forEach(function(t, idx) {
+        var alpha = idx / r.trail.length;
+        ctx.beginPath();
+        ctx.arc(t.x, t.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = r.color;
+        ctx.globalAlpha = alpha * 0.7;
+        ctx.fill();
+      });
+      ctx.globalAlpha = 1;
+
+      // Explode when reaching peak
+      if (r.y <= r.targetY || r.vy >= 0) {
+        createExplosion(r.x, r.y, r.color);
+        rockets.splice(i, 1);
+      }
+    }
+
+    // Update particles
+    for (let i = particles.length - 1; i >= 0; i--) {
+      var p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.05;   // gravity
+      p.vx *= 0.99;   // air resistance
+      p.life -= p.decay;
+
+      if (p.life <= 0) {
+        particles.splice(i, 1);
+        continue;
+      }
+
+      // Particle core
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.life;
+      ctx.fill();
+
+      // Glow halo
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size * p.life * 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.life * 0.12;
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+
+    animationId = requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  // Launch rockets spread across ~4 seconds (show ends ~5s with particle fade)
+  var launchTimes = [0, 450, 900, 1400, 1900, 2400, 2950, 3500, 4000];
+  launchTimes.forEach(function(t) {
+    setTimeout(function() {
+      launchRocket();
+      // Sometimes launch a double
+      if (Math.random() > 0.5) setTimeout(launchRocket, 150);
+    }, t);
+  });
+
+  // Instant explosions at start for immediate impact
+  setTimeout(function() { createExplosion(canvas.width * 0.3, canvas.height * 0.3); }, 100);
+  setTimeout(function() { createExplosion(canvas.width * 0.7, canvas.height * 0.25); }, 300);
+
+  // Clean up after 5 seconds
+  setTimeout(function() {
+    cancelAnimationFrame(animationId);
+    window.removeEventListener('resize', resize);
+    canvas.remove();
+  }, 5500);
 }

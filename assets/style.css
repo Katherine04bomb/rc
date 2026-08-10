@@ -428,6 +428,40 @@ main { padding-top: 70px; position: relative; z-index: 1; }
 }
 .progress-status { font-size: 11px; color: var(--text-muted); margin-top: 8px; }
 
+/* Start Over button — appears next to progress % */
+.progress-reset-btn {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-family: 'DM Sans', sans-serif;
+  padding: 4px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all .2s;
+  white-space: nowrap;
+}
+.progress-reset-btn:hover {
+  background: var(--red-soft);
+  border-color: var(--red-border);
+  color: var(--accent);
+}
+
+/* Highlight the most recently clicked step */
+.check-step.last-clicked {
+  border-color: var(--gold-light);
+  box-shadow: 0 0 0 2px rgba(201,168,76,0.25), 0 4px 20px rgba(201,168,76,0.12);
+}
+
+/* Fireworks canvas — full screen overlay */
+#fireworks-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 99999;
+}
+
 
 /* ── 8b. GET READY — PHASE HEADINGS ─────────────────────── */
 /* Before You Fly / After You Arrive subsection headers       */
