@@ -1,22 +1,36 @@
 // ============================================================
 //  assets/nav.js — Shared Header & Footer
 //
-//  Injected into every guide page. Change nav once → updates
-//  everywhere. Uses the same design as index.html.
+//  Works on BOTH GitHub Pages (/rc/) and custom domain (/)
+//  by using absolute paths from the repo root.
 //
 //  HOW TO USE on a guide page:
 //    <script src="../assets/nav.js"></script>
 //    <script>buildNav();</script>
 //
-//  HOW TO ADD a new nav link:
-//    Edit the NAV_LINKS array below.
-//
-//  rootPath: pass '../' for pages one level deep,
-//            '../../' for two levels deep, '' for homepage.
+//  REPO ROOT is auto-detected from window.location.
+//  No manual rootPath needed — just call buildNav().
 // ============================================================
 
 function buildNav(rootPath) {
-  rootPath = rootPath || '../';
+  // Auto-detect the repo root so links work on:
+  // GitHub Pages:   katherine04bomb.github.io/rc/
+  // Custom domain:  readychina.com/
+  // Local dev:      127.0.0.1:5500/
+  if (!rootPath) {
+    const path = window.location.pathname;
+    // If we're inside a subfolder like /rc/alipay/, go up to /rc/
+    // If we're at the root domain, stay at /
+    const parts = path.split('/').filter(Boolean);
+    // Detect GitHub Pages repo prefix (e.g. 'rc')
+    if (window.location.hostname.includes('github.io') && parts.length >= 1) {
+      rootPath = '/' + parts[0] + '/';
+    } else {
+      // Custom domain or local: calculate relative path back to root
+      const depth = parts.length;
+      rootPath = depth <= 1 ? '/' : '../'.repeat(depth - 1);
+    }
+  }
 
   // ── HEADER ────────────────────────────────────────────────
   const header = document.getElementById('site-header');

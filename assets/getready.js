@@ -388,7 +388,7 @@ function loadGetReady() {
   <div class="modal-overlay" id="visa-modal">
     <div class="modal-box">
       <div class="modal-header">
-        <div><div class="modal-title">📋 Visa Guide · 签证<a href="../visa" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
+        <div><div class="modal-title">📋 Visa Guide · 签证<a href="visa" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
         <div class="modal-subtitle">Click your country — I'll show you what you need and open the official page</div></div>
         <button class="modal-close" onclick="closeModal('visa-modal')">×</button>
       </div>
@@ -439,7 +439,7 @@ function loadGetReady() {
   <div class="modal-overlay" id="flights-modal">
     <div class="modal-box"><div class="modal-header">
       <div>
-        <div class="modal-title">✈️ Book Flights & Hotel · 订票订酒店<a href="../flights-hotels" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
+        <div class="modal-title">✈️ Book Flights & Hotel · 订票订酒店<a href="flights-hotels" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
         <div class="modal-subtitle">Best platforms for foreigners — foreign cards accepted</div>
       </div>
       <button class="modal-close" onclick="closeModal('flights-modal')">×</button>
@@ -468,7 +468,7 @@ function loadGetReady() {
   <!-- SIM MODAL — unchanged -->
   <div class="modal-overlay" id="sim-modal">
     <div class="modal-box"><div class="modal-header">
-      <div><div class="modal-title">📶 SIM Card & eSIM · 手机卡<a href="../esim" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
+      <div><div class="modal-title">📶 SIM Card & eSIM · 手机卡<a href="esim" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
       <div class="modal-subtitle">How to stay connected from the moment you land</div></div>
       <button class="modal-close" onclick="closeModal('sim-modal')">×</button>
     </div>
@@ -514,19 +514,19 @@ function loadGetReady() {
           <div class="app-name">Alipay 支付宝 — Do this first</div>
           <div class="app-desc">Now officially supports foreign Visa, Mastercard, and Amex — no Chinese bank account needed. Used absolutely everywhere.</div>
           <div class="app-tip">✅ Use the International version. Settings → Bank Cards. Set this up before you land.</div>
-          <a href="../alipay" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 How to set up Alipay →</a>
+          <a href="alipay" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 How to set up Alipay →</a>
         </div></div>
         <div class="app-item"><div class="app-icon-box">💬</div><div>
           <div class="app-name">WeChat Pay 微信支付 — Great backup</div>
           <div class="app-desc">Built into WeChat and also accepts foreign cards. You probably need WeChat for everything - mini programs, messaging and menu check, set up your account in advance.</div>
           <div class="app-tip">✅ WeChat has thousands of mini-programs — great for booking and ordering.</div>
-          <a href="../wechat" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 How to set up WeChat →</a>
+          <a href="wechat" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 How to set up WeChat →</a>
         </div></div>
         <div class="app-item"><div class="app-icon-box">💵</div><div>
           <div class="app-name">Cash — Bring some, just in case</div>
           <div class="app-desc">Bring ¥100–500 RMB as backup if theres any internet issue. <strong>Refusing to accept RMB(Chinese Yuan) cash is illegal in China</strong>. Exchange at Bank of China for the best rates.</div>
           <div class="app-tip">⚠️ Let your bank know you're travelling so they don't block your card at ATMs.(ATMs with UnionPay/Visa logos work for foreign cards).</div>
-          <a href="../currency" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">💱 Currency Converter →</a>
+          <a href="currency" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">💱 Currency Converter →</a>
         </div></div>
       </div>
     </div></div>
@@ -535,7 +535,7 @@ function loadGetReady() {
   <!-- NETWORK MODAL — unchanged -->
   <div class="modal-overlay" id="network-modal">
     <div class="modal-box"><div class="modal-header">
-      <div><div class="modal-title">🌐 The Firewall & VPN · 网络<a href="../vpn" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
+      <div><div class="modal-title">🌐 The Firewall & VPN · 网络<a href="vpn" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
       <div class="modal-subtitle">What's blocked, what works, and how to stay connected</div></div>
       <button class="modal-close" onclick="closeModal('network-modal')">×</button>
     </div>
@@ -582,7 +582,7 @@ function loadGetReady() {
             <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
               <a href="https://apps.apple.com/app/wechat/id414478124" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;background:#000;color:#fff;padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none">🍎 App Store</a>
               <a href="https://play.google.com/store/apps/details?id=com.tencent.mm" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;background:#01875f;color:#fff;padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none">▶ Google Play</a>
-              <a href="../wechat" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500">📖 How to register →</a>
+              <a href="wechat" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500">📖 How to register →</a>
             </div>
           </div>
         </div>
@@ -599,7 +599,7 @@ function loadGetReady() {
             <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
               <a href="https://apps.apple.com/app/alipay/id333206289" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;background:#000;color:#fff;padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none">🍎 App Store</a>
               <a href="https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;background:#01875f;color:#fff;padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none">▶ Google Play</a>
-              <a href="../alipay" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500">📖 How to register →</a>
+              <a href="alipay" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500">📖 How to register →</a>
             </div>
           </div>
         </div>
@@ -614,7 +614,7 @@ function loadGetReady() {
             <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
               <a href="https://apps.apple.com/app/didi/id554499054" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;background:#000;color:#fff;padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none">🍎 App Store</a>
               <a href="https://play.google.com/store/apps/details?id=com.sdu.didi.psnger" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;background:#01875f;color:#fff;padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none">▶ Google Play</a>
-              <a href="../didi" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500">📖 How to register →</a>
+              <a href="didi" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:6px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500">📖 How to register →</a>
             </div>
           </div>
         </div>
@@ -681,7 +681,7 @@ function loadGetReady() {
           <li>G trains fastest, D trains slightly slower, C trains are city rail</li>
           <li>🥚 Easter egg: you can order food delivery to your seat by scanning the QR code!</li>
         </ul>
-        <a href="../high-speed-train" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Full train guide →</a>
+        <a href="high-speed-train" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Full train guide →</a>
         </div>
         <div class="info-card"><div class="info-card-title">🚇 Metro (地铁)</div><ul class="info-list">
           <li>Every major city has a modern, extensive metro network</li>
@@ -689,7 +689,7 @@ function loadGetReady() {
           <li>Fares: ¥3–15 per journey — extremely affordable</li>
           <li>Covers all major tourist spots in every big city</li>
         </ul>
-        <a href="../metro-guide" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Metro guide →</a>
+        <a href="metro-guide" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Metro guide →</a>
         </div>
         <div class="info-card"><div class="info-card-title">🚗 Didi (滴滴)</div><ul class="info-list">
           <li>Works in English — set pickup and destination in the app</li>
@@ -697,7 +697,7 @@ function loadGetReady() {
           <li>Much cheaper and safer than street taxis</li>
           <li>Avoid unlicensed "taxi" offers at airports (that charge extra fees)</li>
         </ul>
-        <a href="../didi" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Didi guide →</a>
+        <a href="didi" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Didi guide →</a>
         </div>
         <div class="info-card"><div class="info-card-title">✈️ Domestic Flights</div><ul class="info-list">
           <li>Worth it for very long distances (e.g. Beijing → Yunnan)</li>
@@ -713,7 +713,7 @@ function loadGetReady() {
   <!-- EMERGENCY MODAL — unchanged -->
   <div class="modal-overlay" id="emergency-modal">
     <div class="modal-box"><div class="modal-header">
-      <div><div class="modal-title">🆘 Emergency Numbers · 紧急电话<a href="../emergency" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
+      <div><div class="modal-title">🆘 Emergency Numbers · 紧急电话<a href="emergency" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
       <div class="modal-subtitle">Screenshot this now and save it in your phone</div></div>
       <button class="modal-close" onclick="closeModal('emergency-modal')">×</button>
     </div>
@@ -734,7 +734,7 @@ function loadGetReady() {
   <!-- TRAVEL INSURANCE MODAL (new — Step 10) -->
   <div class="modal-overlay" id="insurance-modal">
     <div class="modal-box"><div class="modal-header">
-      <div><div class="modal-title">🏥 Travel Insurance · 旅行保险<a href="../travel-insurance" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
+      <div><div class="modal-title">🏥 Travel Insurance · 旅行保险<a href="travel-insurance" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
       <div class="modal-subtitle">The step most travelers skip — and later regret</div></div>
       <button class="modal-close" onclick="closeModal('insurance-modal')">×</button>
     </div>
@@ -767,7 +767,7 @@ function loadGetReady() {
   <!-- CUSTOMS / IMMIGRATION MODAL — unchanged (now Step 11) -->
   <div class="modal-overlay" id="customs-modal">
     <div class="modal-box"><div class="modal-header">
-      <div><div class="modal-title">🛃 Immigration & Arrival · 入关<a href="../immigration" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
+      <div><div class="modal-title">🛃 Immigration & Arrival · 入关<a href="immigration" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
       <div class="modal-subtitle">Here's exactly what to expect when you land in China</div></div>
       <button class="modal-close" onclick="closeModal('customs-modal')">×</button>
     </div>
@@ -819,7 +819,7 @@ function loadGetReady() {
           <li>Most airport→city rides: ¥60–150 (~$8–20 USD)</li>
           <li>Pay through the app — no cash needed</li>
         </ul>
-        <a href="../didi" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Didi setup guide →</a>
+        <a href="didi" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Didi setup guide →</a>
         </div>
         <div class="info-card"><div class="info-card-title">🚇 Option 2: Airport Metro</div><ul class="info-list">
           <li>Most major airports (Beijing, Shanghai, Chengdu, Guangzhou) have direct metro links</li>
@@ -827,7 +827,7 @@ function loadGetReady() {
           <li>Look for 地铁 signs in the arrivals hall</li>
           <li>Best if your hotel is near a metro station and you have light luggage</li>
         </ul>
-        <a href="../metro-guide" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Metro guide →</a>
+        <a href="metro-guide" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Metro guide →</a>
         </div>
         <div class="info-card"><div class="info-card-title">🚌 Option 3: Airport Bus (机场大巴)</div><ul class="info-list">
           <li>Cheap shuttles that run fixed routes to city hotels</li>
@@ -861,7 +861,7 @@ function loadGetReady() {
           <li>Rush hours: 7:30–9am and 5:30–7pm — expect crowding</li>
           <li>Need help? Go to 客服中心 (Customer Service) — staff are always there</li>
         </ul>
-        <a href="../metro-guide" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Full metro guide →</a>
+        <a href="metro-guide" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Full metro guide →</a>
         </div>
         <div class="info-card"><div class="info-card-title">🚄 Bullet Train Seat Classes</div><ul class="info-list">
           <li><strong>Business Class (商务座)</strong> — like business on a plane, fully flat seat, meals. Worth it on overnight routes.</li>
@@ -870,7 +870,7 @@ function loadGetReady() {
           <li><strong>Standing Ticket (无座)</strong> — no guaranteed seat, but you can often find one in second class. Only buy in emergencies.</li>
           <li>Book on Trip.com — use your passport number at the machine to collect</li>
         </ul>
-        <a href="../high-speed-train" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Full train guide →</a>
+        <a href="high-speed-train" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Full train guide →</a>
         </div>
         <div class="info-card"><div class="info-card-title">🚗 Didi Tips</div><ul class="info-list">
           <li>Set pickup precisely — pin your exact location on the map</li>
@@ -879,7 +879,7 @@ function loadGetReady() {
           <li>Check the driver's rating before accepting — 4.8+ is good</li>
           <li>Cheaper alternatives: 曹操出行 and 花小猪 (worth trying after your first trip)</li>
         </ul>
-        <a href="../didi" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Full Didi guide →</a>
+        <a href="didi" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Full Didi guide →</a>
         </div>
         <div class="info-card"><div class="info-card-title">✈️ Domestic Flights</div><ul class="info-list">
           <li>Best for distances over 1,000km (e.g. Beijing → Yunnan, Shanghai → Xinjiang)</li>
@@ -895,7 +895,7 @@ function loadGetReady() {
   <!-- QR PAYMENT MODAL (new — Step 14) -->
   <div class="modal-overlay" id="qrpay-modal">
     <div class="modal-box"><div class="modal-header">
-      <div><div class="modal-title">📲 QR Code Payments · 扫码支付<a href="../qr-payments" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
+      <div><div class="modal-title">📲 QR Code Payments · 扫码支付<a href="qr-payments" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
       <div class="modal-subtitle">Scan with Alipay or WeChat — NOT your phone's camera app</div></div>
       <button class="modal-close" onclick="closeModal('qrpay-modal')">×</button>
     </div>
@@ -934,7 +934,7 @@ function loadGetReady() {
   <!-- FOOD ORDERING MODAL (new — Step 15) -->
   <div class="modal-overlay" id="food-modal">
     <div class="modal-box"><div class="modal-header">
-      <div><div class="modal-title">🍜 Ordering Food · 点餐<a href="../food-guide" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
+      <div><div class="modal-title">🍜 Ordering Food · 点餐<a href="food-guide" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
       <div class="modal-subtitle">Eat confidently without speaking Mandarin</div></div>
       <button class="modal-close" onclick="closeModal('food-modal')">×</button>
     </div>
@@ -973,7 +973,7 @@ function loadGetReady() {
   <!-- LOCALS / PHRASES MODAL (new — Step 16) -->
   <div class="modal-overlay" id="locals-modal">
     <div class="modal-box"><div class="modal-header">
-      <div><div class="modal-title">🗣️ Talking with Locals · 和当地人交流<a href="../phrases" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
+      <div><div class="modal-title">🗣️ Talking with Locals · 和当地人交流<a href="phrases" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
       <div class="modal-subtitle">Ten phrases that take you surprisingly far</div></div>
       <button class="modal-close" onclick="closeModal('locals-modal')">×</button>
     </div>
@@ -1004,7 +1004,7 @@ function loadGetReady() {
   <!-- IF SOMETHING GOES WRONG MODAL (new — Step 17) -->
   <div class="modal-overlay" id="wrong-modal">
     <div class="modal-box"><div class="modal-header">
-      <div><div class="modal-title">🆘 If Something Goes Wrong · 紧急情况<a href="../emergency" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
+      <div><div class="modal-title">🆘 If Something Goes Wrong · 紧急情况<a href="emergency" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
       <div class="modal-subtitle">Stay calm — here's exactly what to do</div></div>
       <button class="modal-close" onclick="closeModal('wrong-modal')">×</button>
     </div>
