@@ -280,6 +280,9 @@ async function loadCities() {
     initFlipRefs();
     setupFlipOverlayEvents();
 
+    // Horizontal carousel arrows (homepage only; no-op on grid pages)
+    setupCityCarousel();
+
     // Event delegation for city card clicks
     container.addEventListener('click', function(e) {
       var card = e.target.closest ? e.target.closest('.city-card') : null;
@@ -295,6 +298,35 @@ async function loadCities() {
     container.innerHTML = '<p style="color:var(--text-muted);font-size:13px;padding:20px 0">' +
       'City guide is loading... if this persists, please refresh. \uD83D\uDD04</p>';
   }
+}
+
+// ── HORIZONTAL CAROUSEL (homepage) ────────────────────────
+function setupCityCarousel() {
+  var wrap = document.querySelector('.city-carousel-wrap');
+  if (!wrap) return;                       // grid pages have no carousel wrap
+  var carousel = document.getElementById('cities-container');
+  var prev = document.getElementById('cityPrev');
+  var next = document.getElementById('cityNext');
+  if (!carousel || !prev || !next) return;
+
+  var cardStep = function() {
+    var card = carousel.querySelector('.city-card');
+    return card ? card.offsetWidth + 16 : 300;
+  };
+  next.addEventListener('click', function(e) {
+    e.stopPropagation();
+    carousel.scrollBy({ left: cardStep() * 2, behavior: 'smooth' });
+  });
+  prev.addEventListener('click', function(e) {
+    e.stopPropagation();
+    carousel.scrollBy({ left: -cardStep() * 2, behavior: 'smooth' });
+  });
+  var updateBtns = function() {
+    prev.style.opacity = carousel.scrollLeft > 8 ? '1' : '0';
+    next.style.opacity = (carousel.scrollLeft + carousel.clientWidth < carousel.scrollWidth - 8) ? '1' : '0';
+  };
+  carousel.addEventListener('scroll', updateBtns, { passive: true });
+  updateBtns();
 }
 
 loadCities();
