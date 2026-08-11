@@ -65,7 +65,7 @@
 
     /* Screenshot sizing */
     .screenshot-wrap {
-      background:tranparent;
+      background:transparent;
       max-width: 200px !important;
       margin: 0 auto !important;
       border-radius: 0;
@@ -76,9 +76,9 @@
       width: 100% !important;
       height: auto !important;
       display: block !important;
-      border-radius: 0;
-      border: 0;
-      box-shadow: 0 6px 18px rgba(0,0,0,.08);
+      border-radius: 0 auto;
+      border: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,.08);
     }
     .screenshot-row {
       display: flex !important;
@@ -88,7 +88,7 @@
     }
     .screenshot-row .screenshot-wrap {
       flex: 0 0 auto !important;
-      max-width: 130px !important;
+      max-width: 150px !important;
       margin: 0 !important;
     }
 
@@ -114,6 +114,13 @@
       .screenshot-wrap { max-width: 140px !important; }
       .screenshot-row .screenshot-wrap { max-width: 130px !important; }
     }
+    .screenshot-wrap{
+  background: transparent;
+  border:none;
+  border-radius: 0;
+  overflow: visible;
+}
+</style>
   </style>
 </head>
 <body>
@@ -219,14 +226,12 @@
         </div>
       </div>
 
-      <div class="screenshot-wrap">
         <!--
           TO ADD YOUR SCREENSHOT:
           Replace the div below with:
           <img src="YOUR_CLOUDINARY_URL" alt="Alipay app in the App Store">
-        -->
-        <img src="https://res.cloudinary.com/dosiqd0h4/image/upload/c_scale,w_300/v1785920743/alipay_appstore_b4sstw.jpg" alt="Alipay app in App Store">
-      </div>
+-->
+       <div class="screenshot-wrap"><img src="https://res.cloudinary.com/dosiqd0h4/image/upload/c_scale,w_300/v1785920743/alipay_appstore_b4sstw.jpg" alt="Alipay app in App Store"></div>
     </div>
   </article>
 

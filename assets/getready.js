@@ -928,9 +928,8 @@ function triggerFireworks() {
 
   let animationId;
   function animate() {
-    // Fade trail effect (semi-transparent black overlay)
-    ctx.fillStyle = 'rgba(0,0,0,0.12)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // clear canvas (transparent background, show page underneath)
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Update rockets
     for (let i = rockets.length - 1; i >= 0; i--) {
@@ -993,8 +992,8 @@ function triggerFireworks() {
 
   animate();
 
-  // Launch rockets spread across ~4 seconds (show ends ~5s with particle fade)
-  var launchTimes = [0, 450, 900, 1400, 1900, 2400, 2950, 3500, 4000];
+  // Launch rockets spread across ~3 seconds (show ends ~4s with particle fade)
+  var launchTimes = [0, 350, 700, 1100, 1500, 1900, 2400, 2950];
   launchTimes.forEach(function(t) {
     setTimeout(function() {
       launchRocket();
@@ -1007,10 +1006,10 @@ function triggerFireworks() {
   setTimeout(function() { createExplosion(canvas.width * 0.3, canvas.height * 0.3); }, 100);
   setTimeout(function() { createExplosion(canvas.width * 0.7, canvas.height * 0.25); }, 300);
 
-  // Clean up after 5 seconds
+  // Clean up after 4 seconds
   setTimeout(function() {
     cancelAnimationFrame(animationId);
     window.removeEventListener('resize', resize);
     canvas.remove();
-  }, 5500);
+  }, 4000);
 }
