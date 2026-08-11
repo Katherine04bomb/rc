@@ -1956,3 +1956,55 @@ footer {
   .badge-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
+/* ── HORIZONTAL CITY CAROUSEL (homepage) ─────────────── */
+.city-carousel-wrap { position: relative; }
+.city-carousel {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 6px 2px 16px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.city-carousel .city-card {
+  flex: 0 0 260px;
+  scroll-snap-align: start;
+}
+.city-nav-btn {
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 6;
+  box-shadow: 0 4px 14px rgba(0,0,0,.12);
+  transition: background .2s, color .2s, opacity .25s;
+  opacity: 0;
+}
+.city-nav-prev { left: -8px; }
+.city-nav-next { right: -8px; }
+.city-nav-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.city-see-all-row { text-align: center; margin-top: 4px; }
+.city-see-all {
+  display: inline-block;
+  padding: 10px 26px;
+  border: 1.5px solid var(--accent);
+  border-radius: 999px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all .2s;
+}
+.city-see-all:hover { background: var(--accent); color: #fff; }
+@media (max-width: 600px) {
+  .city-nav-btn { display: none; }
+  .city-carousel .city-card { flex-basis: 78vw; }
+}
