@@ -483,7 +483,7 @@ function loadGetReady() {
           <div class="app-name">QR Code Payments — How it actually works</div>
           <div class="app-desc"><strong>Why QR codes?</strong> China runs on QR payments — from luxury malls to street food carts. Cash and credit cards are rarely accepted. Two ways to pay: (1) <strong>You scan the vendor's QR</strong> — open Alipay/WeChat, tap Scan, point at their code, enter amount, confirm. (2) <strong>Vendor scans your QR</strong> — open Alipay → Receive, show your barcode, they scan it. <strong>The #1 mistake:</strong> using your phone's camera app instead of the Alipay/WeChat scan feature inside the app.</div>
           <div class="app-tip">✅ Restaurant tables: scan the table QR with WeChat to see the menu + order + pay — all without talking to anyone.</div>
-          <a href="qr-payments" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--accent);color:#fff;padding:6px 14px;border-radius:8px;font-size:12px;text-decoration:none;font-weight:600;margin-top:10px">📲 How to use QR Code to pay →</a>
+          <a href="qr-payments" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:800;margin-top:8px">📲 How to use QR Code to pay →</a>
         </div></div>
       </div>
     </div></div>
@@ -724,6 +724,15 @@ function loadGetReady() {
     <div class="modal-body">
       <div class="modal-note" style="margin-bottom:16px">⚠️ <strong>First rule at the airport:</strong> Ignore anyone in arrivals who offers a "taxi" or "ride." These are unlicensed drivers who charge 3–5x the normal rate. Use Didi or the airport metro.</div>
       <div class="info-grid">
+        <div class="info-card"><div class="info-card-title">🚄 High-Speed Rail (高铁)</div><ul class="info-list">
+          <li>The backbone of China travel — fast, cheap, punctual</li>
+          <li>Beijing → Shanghai: 4.5 hours (~¥550 / $75 USD for second-class seats)</li>
+          <li>Book with your passport on Trip.com or the 12306 app</li>
+          <li>G trains fastest, D trains slightly slower, C trains are city rail</li>
+          <li>🥚 Easter egg: you can order food delivery to your seat by scanning the QR code!</li>
+        </ul>
+        <a href="high-speed-train" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Full train guide →</a>
+        </div>
         <div class="info-card"><div class="info-card-title">🚇 Metro — Day-to-day city travel</div><ul class="info-list">
           <li>Buy a single journey ticket at the machine — select English, enter destination, pay</li>
           <li>Or scan your Alipay / WeChat QR code directly at the gate (faster)</li>
@@ -760,6 +769,12 @@ function loadGetReady() {
         </ul>
         <a href="get-around-like-local" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Bike sharing guide →</a>
         </div>
+        <div class="info-card"><div class="info-card-title">✈️ Domestic Flights</div><ul class="info-list">
+          <li>Worth it for very long distances (e.g. Beijing → Yunnan)</li>
+          <li>Book on Trip.com for English + foreign card support</li>
+          <li>Arrive at least 1 hour early — security is thorough</li>
+          <li>Budget options: Xiamen Air, Shenzhen Airlines</li>
+        </ul></div>
       </div>
     </div></div>
   </div>
