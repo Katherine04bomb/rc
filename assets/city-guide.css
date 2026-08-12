@@ -997,3 +997,24 @@ html.attr-modal-open body {
    tabs/accordions/hidden blocks). JS only clones it into the modal on click.
    The [hidden] + !important guard ensures nothing ever overrides it visually. */
 .seo-hidden[hidden] { display: none !important; }
+
+/*去掉顶部标题横线*/
+body.guide-page header,
+.guide-page header{
+  border-bottom:none;
+}
+/*why photo*/
+.why-photo-wrap{
+  border-radius:16px;
+  overflow:hidden;
+  aspect-ratio:16/9;
+  margin-top:8px;
+}
+.why-photo-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+/*part line*/
+.guide-section-divider {display:none;}
