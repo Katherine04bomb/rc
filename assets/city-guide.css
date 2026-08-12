@@ -1,0 +1,999 @@
+/* ============================================================
+   Ready? China! — City Guide Page Styles (V2)
+   city-guide.css — loaded ONLY on guides/*.html city pages
+   NOT loaded on alipay / wechat / metro-guide / other subpages.
+
+   Replaces guide.css for city pages. Includes:
+   1.  Layout wrapper (with fixed-header offset)
+   2.  Hero banner (big photo + white text + glass back button)
+   3.  Section titles
+   4.  Photo gallery grid
+   5.  Top attractions cards
+   6.  Stay / Eat grid
+   7.  Kat's tips callouts
+   8.  Related city cards
+   9.  Back-to-home button
+   10. Responsive (mobile single/2-col)
+   All color variables come from style.css.
+============================================================ */
+
+/* ── 1. LAYOUT WRAPPER ─────────────────────────────────── */
+.guide-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 96px 24px 60px; /* top offset clears the fixed header */
+}
+
+/* ── 2. HERO BANNER ────────────────────────────────────── */
+.guide-hero-banner {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  min-height: 300px;
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.18);
+}
+
+/* glass back button (top-left of banner) */
+.hero-back-btn {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  transition: all .2s;
+}
+.hero-back-btn:hover {
+  background: rgba(0,0,0,0.55);
+  transform: translateX(-2px);
+}
+
+/* bottom content block */
+.hero-banner-content {
+  position: relative;
+  z-index: 2;
+  padding: 44px 32px 32px;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.62) 100%);
+}
+.hero-city-emoji {
+  font-size: 34px;
+  line-height: 1;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+}
+.hero-city-zh {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  color: rgba(255,255,255,0.92);
+  letter-spacing: 6px;
+  margin-bottom: 4px;
+}
+.hero-city-en {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 5vw, 44px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0 0 8px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+}
+.hero-city-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.9);
+  margin: 0 0 14px;
+  line-height: 1.6;
+}
+.hero-city-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.hero-meta-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .3px;
+}
+
+/* ── 3. SECTION TITLES ─────────────────────────────────── */
+.guide-section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 2.8vw, 26px);
+  color: var(--text);
+  margin: 36px 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.guide-section-title:first-of-type { margin-top: 8px; }
+
+/* ── 4. PHOTO GALLERY ──────────────────────────────────── */
+.guide-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.gallery-item {
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: var(--surface2);
+  cursor: pointer;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s ease;
+}
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.16);
+}
+.gallery-item:hover img { transform: scale(1.06); }
+
+/* ── 5. TOP ATTRACTIONS ────────────────────────────────── */
+.attraction-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 8px;
+}
+.attraction-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all .25s;
+  display: flex;
+  flex-direction: column;
+}
+.attraction-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 6px 22px rgba(192,57,43,0.12);
+  transform: translateY(-3px);
+}
+.attraction-img-wrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--surface2);
+}
+.attraction-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s ease;
+}
+.attraction-card:hover .attraction-img-wrap img { transform: scale(1.05); }
+.attraction-num {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.attraction-info {
+  padding: 12px 14px 14px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.attraction-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.45;
+}
+
+/* card without image (numbered badge) */
+.attraction-card.no-img {
+  padding: 18px 16px;
+  background: linear-gradient(135deg, var(--surface) 0%, #fff 100%);
+  justify-content: center;
+}
+.attraction-num-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--gold-light);
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+/* ── 6. STAY / EAT GRID ────────────────────────────────── */
+.stay-eat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 8px;
+}
+.stay-eat-grid .step-overview-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 18px;
+  text-align: left;
+  transition: all .2s;
+}
+.stay-eat-grid .step-overview-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 16px rgba(192,57,43,0.08);
+  transform: translateY(-2px);
+}
+.stay-eat-grid .step-ov-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.stay-eat-grid .step-ov-desc {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* ── 7. KAT'S TIPS CALLOUTS ────────────────────────────── */
+.callout {
+  border-radius: 12px;
+  padding: 15px 18px;
+  font-size: 13.5px;
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+.callout-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.callout-tip {
+  background: var(--gold-soft);
+  border-left: 3px solid var(--gold-light);
+  color: var(--text-mid);
+}
+.callout-tip .callout-label { color: var(--gold); }
+.callout-important {
+  background: rgba(230, 126, 34, 0.08);
+  border-left: 3px solid #e67e22;
+  color: var(--text-mid);
+}
+.callout-important .callout-label { color: #e67e22; }
+.callout-warning {
+  background: var(--red-soft);
+  border-left: 3px solid var(--accent);
+  color: var(--text-mid);
+}
+.callout-warning .callout-label { color: var(--accent); }
+.callout-info {
+  background: rgba(52, 152, 219, 0.08);
+  border-left: 3px solid #3498db;
+  color: var(--text-mid);
+}
+.callout-info .callout-label { color: #3498db; }
+
+/* ── 8. RELATED CITY CARDS ─────────────────────────────── */
+.related-guides { margin-top: 48px; }
+.related-guides h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+}
+.related-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: all .25s;
+  display: block;
+}
+.related-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 6px 22px rgba(192,57,43,0.12);
+  transform: translateY(-3px);
+}
+.related-card-img {
+  position: relative;
+  height: 110px;
+  background-size: cover;
+  background-position: center;
+}
+.related-card-emoji {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.related-card-body { padding: 12px 14px 14px; }
+.related-card-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.related-card-desc { font-size: 11.5px; color: var(--text-muted); line-height: 1.5; }
+
+/* ── 9. BACK-TO-HOME BUTTON ────────────────────────────── */
+.guide-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--accent);
+  color: white;
+  padding: 12px 26px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 500;
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  transition: all .2s;
+  border: none;
+  cursor: pointer;
+}
+.guide-btn-primary:hover {
+  background: var(--accent2);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(192,57,43,0.25);
+}
+
+/* ── 10. RESPONSIVE ────────────────────────────────────── */
+@media (max-width: 860px) {
+  .guide-photo-grid { grid-template-columns: repeat(2, 1fr); }
+  .stay-eat-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .guide-wrap { padding: 84px 16px 40px; }
+  .guide-hero-banner { min-height: 260px; border-radius: 16px; margin-bottom: 28px; }
+  .hero-banner-content { padding: 36px 20px 24px; }
+  .hero-city-emoji { font-size: 28px; }
+  .hero-city-en { font-size: 30px; }
+  .hero-meta-tag { font-size: 11px; padding: 4px 10px; }
+  .guide-photo-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .gallery-item { border-radius: 10px; }
+  .attraction-cards { grid-template-columns: 1fr; gap: 12px; }
+  .stay-eat-grid { grid-template-columns: 1fr; gap: 12px; }
+  .related-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .related-card-img { height: 90px; }
+  .guide-section-title { margin: 28px 0 14px; }
+  .hero-back-btn { top: 12px; left: 12px; padding: 7px 13px; font-size: 12px; }
+}
+
+/* ============================================================
+   V3 — Content-rich city blocks
+   Why Beijing · Top-5 accordion · District cards · Food grid
+============================================================ */
+
+/* title hint + section subtitle */
+.title-hint {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11.5px;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: .2px;
+  margin-left: auto;
+}
+.section-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: -8px 0 18px;
+  max-width: 640px;
+}
+
+/* ── WHY [CITY] ── */
+.why-beijing { margin-bottom: 8px; }
+.why-beijing p {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--text-mid);
+  margin: 0 0 16px;
+}
+.why-beijing p:last-of-type { margin-bottom: 20px; }
+.why-photo-placeholder {
+  border-radius: 16px;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  padding: 28px 24px;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255,255,255,.5), transparent 55%),
+    linear-gradient(135deg, #f0ead6 0%, #e3d5c0 100%);
+  border: 2px dashed #c9b896;
+  color: #8a7a5c;
+}
+.wpp-icon { font-size: 38px; line-height: 1; }
+.wpp-text { font-size: 14px; font-weight: 600; letter-spacing: .3px; color: #6f6042; }
+.wpp-sub { font-size: 12px; color: #9a8a6c; }
+
+/* ── TOP 5 ACCORDION (details/summary, pure HTML) ──
+   V3.1 — Vertical card: photo on top, title below, click to expand */
+.attraction-accordion { display: flex; flex-direction: column; gap: 14px; margin-bottom: 8px; }
+.attraction-item {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color .2s, box-shadow .2s;
+}
+.attraction-item[open] { border-color: var(--accent); box-shadow: 0 6px 22px rgba(192,57,43,0.10); }
+
+/* summary is VERTICAL: thumb (photo) on top, head (text) below */
+.attraction-summary {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+}
+.attraction-summary::-webkit-details-marker { display: none; }
+.attraction-summary::-moz-list-marker { display: none; }
+
+/* full-width photo card on top */
+.attraction-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--surface2);
+}
+.attraction-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
+}
+.attraction-item:hover .attraction-thumb img { transform: scale(1.04); }
+.attraction-thumb.no-img-thumb {
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
+}
+
+/* number badge floats top-left of photo */
+.attraction-num {
+  position: absolute;
+  top: 12px; left: 12px;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* text area below the photo */
+.attraction-head {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  padding: 16px 56px 18px 18px; /* right padding makes room for chevron */
+}
+.attraction-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+}
+.attraction-tag {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* chevron sits at bottom-right of the text area */
+.attraction-chevron {
+  position: absolute;
+  right: 18px;
+  bottom: 20px;
+  color: var(--text-muted);
+  transition: transform .25s ease, color .2s;
+}
+.attraction-item[open] .attraction-chevron { transform: rotate(180deg); color: var(--accent); }
+
+/* smooth expand: grid-rows 0fr → 1fr */
+.attraction-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .3s ease;
+}
+.attraction-item[open] .attraction-body { grid-template-rows: 1fr; }
+.attraction-body-inner { overflow: hidden; padding: 0 16px; }
+.attraction-item[open] .attraction-body-inner { padding: 4px 16px 16px; }
+.attraction-body p {
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--text-mid);
+  margin: 0 0 10px;
+}
+.attraction-body strong { color: var(--text); font-weight: 600; }
+.attraction-tip {
+  background: var(--gold-soft);
+  border-left: 3px solid var(--gold-light);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 12.5px;
+  line-height: 1.7;
+  margin: 6px 0 0;
+}
+.attraction-tip strong { color: var(--gold); }
+
+/* ── WHERE TO STAY (district cards) ── */
+.district-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 8px;
+}
+.district-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px 18px 16px;
+  transition: all .2s;
+}
+.district-card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(192,57,43,0.08); transform: translateY(-2px); }
+.district-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.district-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 16.5px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+}
+.district-name small { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 400; color: var(--text-muted); }
+.district-badge {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .3px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--gold-soft);
+  color: var(--gold);
+  border: 1px solid var(--gold-light);
+}
+.district-desc {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-mid);
+  margin: 0 0 12px;
+}
+.district-meta { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-bottom: 12px; }
+.dm-item { font-size: 11.5px; color: var(--text-muted); }
+.district-hotel {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+}
+
+/* ── WHAT TO EAT (food cards with photos) ── */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 8px;
+}
+.food-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all .2s;
+}
+.food-card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(192,57,43,0.08); transform: translateY(-2px); }
+.food-photo {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--surface2);
+}
+.food-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s ease; }
+.food-card:hover .food-photo img { transform: scale(1.04); }
+/* photo placeholder */
+.food-photo-ph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-align: center;
+}
+.ph-emoji { font-size: 38px; line-height: 1; }
+.ph-tag { font-size: 10px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; opacity: .7; }
+.ph-noodle { background: linear-gradient(135deg, #fff8e1, #ffe0b2); color: #b8860b; }
+.ph-crepe  { background: linear-gradient(135deg, #fff3e0, #ffccbc); color: #c4631a; }
+.ph-hotpot { background: linear-gradient(135deg, #ffebee, #ffcdd2); color: #b7384a; }
+.food-body { padding: 14px 16px 16px; }
+.food-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.food-zh {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-left: 4px;
+}
+.food-desc {
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--text-mid);
+  margin: 0 0 10px;
+}
+.food-where {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
+}
+
+/* ── V3 responsive ── */
+@media (max-width: 860px) {
+  .district-grid, .food-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .why-beijing p { font-size: 14px; }
+  .why-photo-placeholder { min-height: 180px; }
+  .wpp-icon { font-size: 30px; }
+  .attraction-thumb { aspect-ratio: 16 / 10; } /* slightly tighter on phones */
+  .attraction-num { width: 28px; height: 28px; font-size: 13px; top: 10px; left: 10px; }
+  .attraction-name { font-size: 15px; }
+  .attraction-tag { font-size: 11.5px; }
+  .attraction-head { padding: 14px 50px 16px 16px; }
+  .attraction-chevron { right: 16px; bottom: 18px; }
+  .attraction-body p { font-size: 13px; }
+  .district-grid, .food-grid { grid-template-columns: 1fr; }
+  .district-name { font-size: 15px; }
+  .title-hint { display: none; }
+}
+
+/* ── TOP 5 MUST-SEE (image tiles → click opens modal) ── */
+.attraction-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 8px;
+}
+.attraction-tile {
+  all: unset; /* reset button styles */
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  text-align: left;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.attraction-tile:hover,
+.attraction-tile:focus-visible {
+  transform: translateY(-3px);
+  border-color: rgba(192,57,43,0.35);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.10);
+  outline: none;
+}
+.attraction-tile-img {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--surface);
+}
+.attraction-tile-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s ease;
+}
+.attraction-tile:hover .attraction-tile-img img,
+.attraction-tile:focus-visible .attraction-tile-img img { transform: scale(1.06); }
+
+/* dark overlay that fades in on hover/focus, contains the "Read the story" pill */
+.attraction-tile-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 55%);
+  opacity: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 14px;
+  transition: opacity .3s ease;
+  pointer-events: none;
+}
+.attraction-tile:hover .attraction-tile-overlay,
+.attraction-tile:focus-visible .attraction-tile-overlay { opacity: 1; }
+.attraction-tile-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.95);
+  color: var(--accent);
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  letter-spacing: .2px;
+}
+
+/* placeholder (no image yet) */
+.attraction-tile-img-placeholder {
+  background: linear-gradient(135deg, #f4e4c1 0%, #e8c8a0 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #8a6a3a;
+}
+.attraction-tile-img-placeholder .ph-emoji { font-size: 44px; line-height: 1; }
+.attraction-tile-img-placeholder .ph-label {
+  font-size: 11.5px;
+  font-weight: 500;
+  opacity: .75;
+  letter-spacing: .3px;
+}
+
+.attraction-tile-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 13px 14px 14px;
+}
+.attraction-tile-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+}
+.attraction-tile-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 13.5px;
+}
+
+/* Ensure number badge stays correctly positioned on tiles that have it */
+.attraction-tile .attraction-num { top: 10px; left: 10px; }
+
+/* ── ATTRACTION MODAL ── */
+html.attr-modal-open,
+html.attr-modal-open body {
+  overflow: hidden;
+  /* avoid layout jump from scrollbar disappearing */
+  scrollbar-gutter: stable;
+}
+.attr-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: attrModalFade .2s ease-out;
+}
+.attr-modal[hidden] { display: none !important; }
+@keyframes attrModalFade { from { opacity: 0; } to { opacity: 1; } }
+
+.attr-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 17, 21, 0.62);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.attr-modal-box {
+  position: relative;
+  background: #fff;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 560px;
+  max-height: calc(100vh - 48px);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+  display: flex;
+  flex-direction: column;
+  animation: attrModalSlide .28s cubic-bezier(.2,.8,.2,1);
+}
+@keyframes attrModalSlide {
+  from { transform: translateY(20px) scale(.97); opacity: 0; }
+  to   { transform: translateY(0)    scale(1);   opacity: 1; }
+}
+.attr-modal-close {
+  position: absolute;
+  top: 12px; right: 12px;
+  z-index: 5;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.attr-modal-close:hover { background: rgba(0,0,0,0.78); transform: rotate(90deg); }
+.attr-modal-close:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.attr-modal-img-wrap {
+  flex-shrink: 0;
+  background: var(--surface);
+  width: 100%;
+  max-height: 280px;
+  overflow: hidden;
+}
+.attr-modal-img {
+  display: block;
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+.attr-modal-body {
+  padding: 22px 26px 26px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.attr-modal-tag {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .3px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: var(--gold-soft);
+  color: var(--gold);
+  border: 1px solid var(--gold-light);
+  margin-bottom: 10px;
+}
+.attr-modal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+  margin: 0 0 16px;
+}
+.attr-modal-sections p {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--text-mid);
+  margin: 0 0 12px;
+}
+.attr-modal-sections strong { color: var(--text); font-weight: 600; }
+.attr-modal-sections .attraction-tip {
+  background: var(--gold-soft);
+  border-left: 3px solid var(--gold-light);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  margin-top: 8px;
+  color: var(--text);
+}
+.attr-modal-sections .attraction-tip strong { color: var(--gold); }
+
+/* Mobile modal: full-screen feel */
+@media (max-width: 640px) {
+  .attr-modal { padding: 0; }
+  .attr-modal-box {
+    max-width: 100%;
+    max-height: 100vh;
+    border-radius: 0;
+    height: 100vh;
+  }
+  .attr-modal-img-wrap { max-height: 220px; }
+  .attr-modal-img { height: 220px; }
+  .attr-modal-title { font-size: 21px; }
+  .attr-modal-body { padding: 20px 20px 32px; }
+  .attr-modal-sections p { font-size: 14px; }
+  .attraction-tiles { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .attraction-tile-title { font-size: 14.5px; }
+  .attraction-tile-meta { padding: 11px 12px 13px; }
+}
+@media (max-width: 380px) {
+  .attraction-tiles { grid-template-columns: 1fr; }
+}
+
+/* ── SEO-safe hidden article blocks ──
+   Text lives in normal HTML (Google officially indexes content hidden in
+   tabs/accordions/hidden blocks). JS only clones it into the modal on click.
+   The [hidden] + !important guard ensures nothing ever overrides it visually. */
+.seo-hidden[hidden] { display: none !important; }
