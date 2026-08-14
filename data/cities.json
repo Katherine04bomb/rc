@@ -3,15 +3,6 @@
     "emoji": "🏯",
     "nameZh": "北京",
     "nameEn": "Beijing",
-    "provinceId": "beijing",
-    "x": 490,
-    "y": 152,
-    "interests": [
-      "art",
-      "city",
-      "history",
-      "nightlife"
-    ],
     "difficulty": "★☆☆☆☆",
     "days": "4–6 days",
     "bestFor": "History, culture, Great Wall, Chinese civilization",
@@ -55,14 +46,6 @@
     "emoji": "🌃",
     "nameZh": "上海",
     "nameEn": "Shanghai",
-    "provinceId": "shanghai",
-    "x": 534,
-    "y": 238,
-    "interests": [
-      "art",
-      "city",
-      "nightlife"
-    ],
     "difficulty": "★☆☆☆☆",
     "days": "3–4 days",
     "bestFor": "Futuristic skyline, international food, modernity",
@@ -105,16 +88,6 @@
     "emoji": "🐼",
     "nameZh": "成都",
     "nameEn": "Chengdu",
-    "provinceId": "sichuan",
-    "x": 393,
-    "y": 246,
-    "interests": [
-      "art",
-      "city",
-      "food",
-      "nightlife",
-      "wildlife"
-    ],
     "difficulty": "★★☆☆☆",
     "days": "3–5 days",
     "bestFor": "Pandas, hotpot, chill vibes, authentic local life",
@@ -158,14 +131,6 @@
     "emoji": "🏺",
     "nameZh": "西安",
     "nameEn": "Xi'an",
-    "provinceId": "shaanxi",
-    "x": 438,
-    "y": 203,
-    "interests": [
-      "food",
-      "history",
-      "nightlife"
-    ],
     "difficulty": "★★☆☆☆",
     "days": "2–3 days",
     "bestFor": "Ancient history, Terracotta Army, Silk Road",
@@ -208,14 +173,6 @@
     "emoji": "🔥",
     "nameZh": "重庆",
     "nameEn": "Chongqing",
-    "provinceId": "chongqing",
-    "x": 430,
-    "y": 252,
-    "interests": [
-      "city",
-      "food",
-      "nightlife"
-    ],
     "difficulty": "★★★☆☆",
     "days": "2–3 days",
     "bestFor": "Cyberpunk city, hotpot capital, mountain drama",
@@ -259,12 +216,6 @@
     "emoji": "🏔️",
     "nameZh": "桂林",
     "nameEn": "Guilin",
-    "provinceId": "guangxi",
-    "x": 441,
-    "y": 300,
-    "interests": [
-      "nature"
-    ],
     "difficulty": "★★☆☆☆",
     "days": "3–4 days",
     "bestFor": "Nature, karst mountains, Li River scenery",
@@ -307,14 +258,6 @@
     "emoji": "🌸",
     "nameZh": "泉州",
     "nameEn": "Quanzhou",
-    "provinceId": "fujian",
-    "x": 511,
-    "y": 282,
-    "interests": [
-      "art",
-      "city",
-      "history"
-    ],
     "difficulty": "★★★★☆",
     "days": "2–3 days",
     "bestFor": "Hidden gem, Maritime Silk Road, authentic local China",
@@ -358,15 +301,6 @@
     "emoji": "🌊",
     "nameZh": "杭州",
     "nameEn": "Hangzhou",
-    "provinceId": "zhejiang",
-    "x": 530,
-    "y": 254,
-    "interests": [
-      "art",
-      "city",
-      "nature",
-      "nightlife"
-    ],
     "difficulty": "★☆☆☆☆",
     "days": "2–3 days",
     "bestFor": "Serenity, West Lake, tea culture, easy day trips",
@@ -406,253 +340,132 @@
     ]
   },
   {
-    "emoji": "🕌",
-    "nameZh": "敦煌",
-    "nameEn": "Dunhuang",
-    "provinceId": "gansu",
-    "x": 330,
-    "y": 175,
-    "interests": [
-      "art",
-      "history",
-      "nature"
-    ],
-    "difficulty": "★★★☆☆",
+    "emoji": "🏮",
+    "nameZh": "广州",
+    "nameEn": "Guangzhou",
+    "difficulty": "★☆☆☆☆",
     "days": "3–4 days",
-    "bestFor": "Silk Road art, Mogao Caves, desert landscapes",
+    "bestFor": "Cantonese food capital, Pearl River delta, modern-meets-traditional",
     "tags": [
-      "UNESCO caves",
-      "Silk Road",
-      "Desert"
+      "Foodie paradise",
+      "Cantonese culture",
+      "Near Hong Kong"
     ],
     "attractions": [
-      "Mogao Caves — 1,000 years of Buddhist art",
-      "Mingsha Mountain & Crescent Moon Spring",
-      "Yumen Pass (Jade Gate)",
-      "Dunhuang Night Market",
-      "Camel ride at sunset"
+      "Canton Tower — 600m observation deck and bubble tram",
+      "Shamian Island — colonial architecture and cafés",
+      "Chen Clan Ancestral Hall — Lingnan architecture masterpiece",
+      "Pearl River Night Cruise — skyline lights",
+      "Beijing Road — ancient street layers and dim sum",
+      "Yuexiu Park — Five Rams Sculpture",
+      "Guangzhou Opera House — Zaha Hadid design",
+      "Temple of the Five Immortals — 1,400-year-old temple",
+      "Qingping Market — traditional medicine and dried goods",
+      "Cantonese roast goose and dim sum food tour"
     ],
-    "photos": []
+    "photos": [
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460304/bund_vqnbql.jpg",
+        "alt": "Guangzhou Pearl River skyline"
+      },
+      {
+        "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%23f5ede3' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='DM Sans' font-size='14' fill='%238a7a60'%3E🏮 Guangzhou — YOUR PHOTO%3C/text%3E%3C/svg%3E",
+        "alt": "Guangzhou cityscape"
+      },
+      {
+        "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%23f5ede3' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='DM Sans' font-size='14' fill='%238a7a60'%3E🥟 Dim Sum — YOUR PHOTO%3C/text%3E%3C/svg%3E",
+        "alt": "Cantonese dim sum"
+      },
+      {
+        "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%23f5ede3' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='DM Sans' font-size='14' fill='%238a7a60'%3E🏛️ Chen Clan Hall — YOUR PHOTO%3C/text%3E%3C/svg%3E",
+        "alt": "Chen Clan Ancestral Hall"
+      }
+    ]
   },
   {
-    "emoji": "🏔️",
-    "nameZh": "丽江",
-    "nameEn": "Lijiang",
-    "provinceId": "yunnan",
-    "x": 365,
-    "y": 295,
-    "interests": [
-      "nature",
-      "nightlife",
-      "art"
-    ],
-    "difficulty": "★★★☆☆",
+    "emoji": "🌆",
+    "nameZh": "深圳",
+    "nameEn": "Shenzhen",
+    "difficulty": "★☆☆☆☆",
     "days": "2–3 days",
-    "bestFor": "Naxi culture, cobblestone old town, Jade Dragon Snow Mountain",
+    "bestFor": "China's Silicon Valley, beaches, and skyscrapers",
     "tags": [
-      "Old town charm",
-      "Nightlife",
-      "Snow mountain"
+      "Tech & modern",
+      "Near Hong Kong",
+      "Beaches"
     ],
     "attractions": [
-      "Lijiang Old Town — UNESCO cobblestone maze",
-      "Jade Dragon Snow Mountain day trip",
-      "Black Dragon Pool",
-      "Naxi Dongba culture show",
-      "Bar street at night"
+      "Ping An Finance Centre — 599m observation deck",
+      "Dafen Oil Painting Village — 8,000 artists",
+      "OCT Loft Creative Park — street art and cafés",
+      "Window of the World — mini global landmarks",
+      "Dameisha Beach — city beach and seafood",
+      "Shenzhen Bay Park — coastal cycling",
+      "Huaqiangbei Electronics Market — gadget heaven",
+      "Tencent Seafront Towers — tech landmark",
+      "Shekou Sea World — waterfront dining",
+      "Day trip to Hong Kong via metro"
     ],
-    "photos": []
+    "photos": [
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460322/skyline_yvmkfu.jpg",
+        "alt": "Shenzhen skyline"
+      },
+      {
+        "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%23f5ede3' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='DM Sans' font-size='14' fill='%238a7a60'%3E🌆 Shenzhen — YOUR PHOTO%3C/text%3E%3C/svg%3E",
+        "alt": "Shenzhen cityscape"
+      },
+      {
+        "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%23f5ede3' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='DM Sans' font-size='14' fill='%238a7a60'%3E🎨 Dafen Village — YOUR PHOTO%3C/text%3E%3C/svg%3E",
+        "alt": "Dafen Oil Painting Village"
+      },
+      {
+        "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%23f5ede3' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='DM Sans' font-size='14' fill='%238a7a60'%3E🏖️ Dameisha Beach — YOUR PHOTO%3C/text%3E%3C/svg%3E",
+        "alt": "Dameisha Beach"
+      }
+    ]
   },
   {
-    "emoji": "🏛️",
-    "nameZh": "喀什古城",
-    "nameEn": "Kashgar",
-    "provinceId": "xinjiang",
-    "x": 240,
-    "y": 175,
-    "interests": [
-      "art",
-      "history",
-      "food"
-    ],
-    "difficulty": "★★★★★",
-    "days": "2–3 days",
-    "bestFor": "Uyghur craft bazaar, Silk Road living museum",
-    "tags": [
-      "Silk Road bazaar",
-      "Ethnic culture",
-      "Off the beaten path"
-    ],
-    "attractions": [
-      "Kashgar Old City — maze of adobe alleyways",
-      "Id Kah Mosque & Sunday livestock market",
-      "Handicraft Street — copper, carpets, instruments",
-      "Karim's Bakery for fresh naan",
-      "Street food: lamb kebabs & hand-pulled noodles"
-    ],
-    "photos": []
-  },
-  {
-    "emoji": "🦅",
-    "nameZh": "平武白马藏族乡",
-    "nameEn": "Pingwu Baima",
-    "provinceId": "sichuan",
-    "x": 405,
-    "y": 240,
-    "interests": [
-      "nature",
-      "art"
-    ],
-    "difficulty": "★★★★☆",
-    "days": "2 days",
-    "bestFor": "Baima Tibetan culture, mountain villages, feather headdress",
-    "tags": [
-      "Hidden ethnic gem",
-      "Mountain escape"
-    ],
-    "attractions": [
-      "Baima Tibetan villages with white feather headdresses",
-      "Panda habitat in Wanglang National Nature Reserve",
-      "Baima folk song & dance performances",
-      "Handmade Baima embroidery",
-      "Hiking in dense forests"
-    ],
-    "photos": []
-  },
-  {
-    "emoji": "🛒",
-    "nameZh": "义乌",
-    "nameEn": "Yiwu",
-    "provinceId": "zhejiang",
-    "x": 535,
-    "y": 262,
-    "interests": [
-      "city"
-    ],
+    "emoji": "❄️",
+    "nameZh": "哈尔滨",
+    "nameEn": "Harbin",
     "difficulty": "★★☆☆☆",
-    "days": "1–2 days",
-    "bestFor": "World's small-commodities market, crazy shopping",
+    "days": "3–4 days",
+    "bestFor": "Ice sculptures, Russian architecture, winter wonderland",
     "tags": [
-      "Shopping paradise",
-      "Wholesale market"
+      "Winter magic",
+      "Russian heritage",
+      "Ice & snow"
     ],
     "attractions": [
-      "Yiwu International Trade City — world's largest small-goods market",
-      "District 1 toys & decorations",
-      "District 2 bags & jewelry",
-      "Night market street food",
-      "Bulk-buy souvenirs for friends"
+      "Harbin Ice & Snow World — world's largest ice festival",
+      "St. Sophia Cathedral — Russian Orthodox gem",
+      "Central Street — cobblestone Russian heritage",
+      "Siberian Tiger Park — 500+ tigers",
+      "Sun Island Snow Sculpture Art Expo",
+      "Songhua River — frozen river activities",
+      "Volga Manor — Russian theme park",
+      "Heilongjiang Provincial Museum",
+      "Harbin Polarland — polar animals",
+      "Russian bread and red sausage food tour"
     ],
-    "photos": []
-  },
-  {
-    "emoji": "🐎",
-    "nameZh": "鄂尔多斯",
-    "nameEn": "Ordos",
-    "provinceId": "inner-mongolia",
-    "x": 420,
-    "y": 135,
-    "interests": [
-      "nature",
-      "art",
-      "history"
-    ],
-    "difficulty": "★★★☆☆",
-    "days": "2–3 days",
-    "bestFor": "Grasslands, Mongolian culture, futuristic Ordos city",
-    "tags": [
-      "Grasslands",
-      "Mongolian culture"
-    ],
-    "attractions": [
-      "Xiangshawan Singing Sand Bay",
-      "Genghis Khan Mausoleum",
-      "Ordos Grassland horse riding & yurt stay",
-      "Kangbashi (ghost city) architecture",
-      "Mongolian roast lamb dinner"
-    ],
-    "photos": []
-  },
-  {
-    "emoji": "🎢",
-    "nameZh": "横琴",
-    "nameEn": "Hengqin",
-    "provinceId": "guangdong",
-    "x": 470,
-    "y": 315,
-    "interests": [
-      "city",
-      "nightlife"
-    ],
-    "difficulty": "★★☆☆☆",
-    "days": "1–2 days",
-    "bestFor": "Chimelong resort, Macau neighbor, entertainment island",
-    "tags": [
-      "Theme parks",
-      "Night shows",
-      "Near Macau"
-    ],
-    "attractions": [
-      "Chimelong Ocean Kingdom — one of the world's largest aquariums",
-      "Hengqin International Tennis Center",
-      "Evening fountain & light shows",
-      "Walk to Macau via Lotus Bridge",
-      "Duty-free shopping"
-    ],
-    "photos": []
-  },
-  {
-    "emoji": "🍵",
-    "nameZh": "长兴",
-    "nameEn": "Changxing",
-    "provinceId": "zhejiang",
-    "x": 532,
-    "y": 244,
-    "interests": [
-      "nature",
-      "food"
-    ],
-    "difficulty": "★★☆☆☆",
-    "days": "1–2 days",
-    "bestFor": "Tea plantations, quiet lakes, local farm food",
-    "tags": [
-      "Tea culture",
-      "Peaceful escape"
-    ],
-    "attractions": [
-      "Guniujiang Scenic Area tea terraces",
-      "Changxing Wetland Park",
-      "Changxing ancient tea culture town",
-      "Bamboo forest walks",
-      "Fresh farm-to-table Zhejiang cuisine"
-    ],
-    "photos": []
-  },
-  {
-    "emoji": "🏞️",
-    "nameZh": "张家界",
-    "nameEn": "Zhangjiajie",
-    "provinceId": "hunan",
-    "x": 450,
-    "y": 270,
-    "interests": [
-      "nature"
-    ],
-    "difficulty": "★★☆☆☆",
-    "days": "2–3 days",
-    "bestFor": "Avatar mountains, glass bridge, sandstone pillars",
-    "tags": [
-      "Avatar mountains",
-      "Glass bridge",
-      "National park"
-    ],
-    "attractions": [
-      "Zhangjiajie National Forest Park — Avatar Hallelujah Mountain",
-      "Tianmen Mountain glass skywalk",
-      "Zhangjiajie Grand Canyon glass bridge",
-      "Bailong Elevator — world's tallest outdoor lift",
-      "Ten-mile Gallery scenic train"
-    ],
-    "photos": []
+    "photos": [
+      {
+        "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460303/great-wall_bczdqe.jpg",
+        "alt": "Harbin Ice and Snow World"
+      },
+      {
+        "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%23f5ede3' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='DM Sans' font-size='14' fill='%238a7a60'%3E❄️ Harbin Ice World — YOUR PHOTO%3C/text%3E%3C/svg%3E",
+        "alt": "Harbin Ice World"
+      },
+      {
+        "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%23f5ede3' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='DM Sans' font-size='14' fill='%238a7a60'%3E⛪ St. Sophia Cathedral — YOUR PHOTO%3C/text%3E%3C/svg%3E",
+        "alt": "St. Sophia Cathedral"
+      },
+      {
+        "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%23f5ede3' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='DM Sans' font-size='14' fill='%238a7a60'%3E🧱 Central Street — YOUR PHOTO%3C/text%3E%3C/svg%3E",
+        "alt": "Harbin Central Street"
+      }
+    ]
   }
 ]
