@@ -51,6 +51,8 @@
 
 /* ── 2. RESET & BASE ─────────────────────────────────────── */
 * { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+.section, .check-step, .map-section-wrap, #community-section { scroll-margin-top: 84px; }
 body {
   background: var(--bg);
   color: var(--text);
@@ -136,6 +138,193 @@ nav { display: flex; gap: 6px; align-items: center; }
   border-radius: 6px;
   letter-spacing: 1px;
 }
+
+/* ── 3b. NAV DROPDOWNS ───────────────────────────────────── */
+.nav-item { position: relative; }
+.nav-link-btn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--text-mid);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all .2s;
+  background: none;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.nav-link-btn:hover, .nav-item.open .nav-link-btn { background: var(--surface2); color: var(--text); }
+.nav-caret { transition: transform .2s; opacity: .6; }
+.nav-item.open .nav-caret { transform: rotate(180deg); }
+
+.nav-dropdown-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  min-width: 220px;
+  background: rgba(250,246,239,0.98);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.14);
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease, visibility .18s;
+  z-index: 150;
+}
+.nav-item.open .nav-dropdown-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-dd-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--text-mid);
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  font-family: 'DM Sans', sans-serif;
+  transition: background .15s, color .15s;
+}
+.nav-dd-link:hover { background: var(--surface2); color: var(--accent); }
+.nav-dd-link.nav-dd-highlight { color: var(--accent); font-weight: 500; border-bottom: 1px solid var(--border); border-radius: 8px 8px 0 0; margin-bottom: 4px; padding-bottom: 11px; }
+
+.nav-dd-scroll {
+  max-height: 280px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(154,123,47,.35) transparent;
+}
+.nav-dd-scroll::-webkit-scrollbar { width: 5px; }
+.nav-dd-scroll::-webkit-scrollbar-track { background: transparent; }
+.nav-dd-scroll::-webkit-scrollbar-thumb { background: rgba(154,123,47,.35); border-radius: 3px; }
+
+.nav-search-btn {
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  border: none;
+  background: none;
+  color: var(--text-mid);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, color .2s;
+}
+.nav-search-btn:hover { background: var(--surface2); color: var(--accent); }
+
+/* ── 3c. SEARCH OVERLAY ──────────────────────────────────── */
+#rc-search-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(26,18,8,0.55);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 12vh 20px 20px;
+}
+#rc-search-overlay.show { display: flex; animation: rcSearchFade .15s ease; }
+@keyframes rcSearchFade { from { opacity: 0; } to { opacity: 1; } }
+
+.rc-search-box {
+  width: 100%;
+  max-width: 560px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+  overflow: hidden;
+  animation: rcSearchPop .18s ease;
+}
+@keyframes rcSearchPop { from { opacity: 0; transform: translateY(-10px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+.rc-search-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--border);
+}
+.rc-search-input-row .rc-search-icon { font-size: 16px; opacity: .7; }
+.rc-search-input-row .rc-search-brand { font-family: 'Playfair Display', serif; color: var(--accent); font-weight: 700; font-size: 14px; opacity: .55; }
+#rc-search-input {
+  flex: 1;
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 16px;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+}
+#rc-search-input::placeholder { color: var(--text-muted); }
+.rc-search-esc {
+  font-size: 10px;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 2px 6px;
+  border-radius: 5px;
+}
+
+.rc-search-results {
+  max-height: 50vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(154,123,47,.35) transparent;
+  padding: 8px;
+}
+.rc-search-results::-webkit-scrollbar { width: 5px; }
+.rc-search-results::-webkit-scrollbar-thumb { background: rgba(154,123,47,.35); border-radius: 3px; }
+
+.rc-search-result {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+.rc-search-result:hover, .rc-search-result.active { background: var(--surface2); }
+.rc-search-result-icon { font-size: 18px; width: 26px; text-align: center; flex-shrink: 0; margin-top: 1px; }
+.rc-search-result-title { font-size: 13.5px; color: var(--text); font-weight: 500; }
+.rc-search-result-snippet { font-size: 12px; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
+.rc-search-result-tag { font-size: 9px; color: var(--gold); text-transform: uppercase; letter-spacing: .6px; margin-top: 4px; display: inline-block; }
+
+.rc-search-empty, .rc-search-hint {
+  padding: 32px 18px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.rc-search-hint-tries { margin-top: 10px; display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+.rc-search-try {
+  font-size: 11px;
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  cursor: pointer;
+  color: var(--text-mid);
+  background: none;
+}
+.rc-search-try:hover { border-color: var(--accent); color: var(--accent); }
 
 /* ── 4. FLOATING MENU ────────────────────────────────────── */
 #menu-btn {
@@ -1236,9 +1425,14 @@ footer {
 /* ── 21. RESPONSIVE ──────────────────────────────────────── */
 @media (max-width: 640px) {
   nav .nav-link:not(.nav-cta) { display: none; }
+  nav .nav-item { display: none; }
+  /* Search stays visible on mobile — it's the only way to reach
+     content on pages that don't have the floating hamburger menu. */
   header { padding: 12px 16px; }
   .hero { padding: 30px 16px 50px; }
   .section { padding: 40px 16px; }
+  #rc-search-overlay { padding: 8vh 12px 12px; }
+  .rc-search-input-row .rc-search-brand { display: none; }
 }
 
 /* ── 22. PHOTO LIGHTBOX ──────────────────────────────────── */

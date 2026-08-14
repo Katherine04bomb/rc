@@ -496,3 +496,17 @@ POSTS.forEach(p => {
   _watchPostReacts(p.id);
 });
 loadCommunity();
+
+// If we arrived here via a "Things to Know" nav/search link from another
+// page (e.g. ?tab=qa#community-section), select the right tab and scroll.
+(function rcApplyTabFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const tab = params.get('tab');
+  if (tab && ['lifehacks', 'qa', 'news'].includes(tab)) {
+    commShowTab(tab);
+    setTimeout(() => {
+      const target = document.getElementById('community-section');
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  }
+})();
