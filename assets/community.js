@@ -17,7 +17,14 @@
 
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ──────────────────────────────
-
+  {
+    id: 'post-017',
+    category: 'qa',
+    date: 'August 2026',
+    tag: 'qa',
+    title: "❓ Is there a 7-day or 10-day transport card like Melbourne's Myki? — Crystal",
+    body: `Another win for foreign travelers. WeChat Pay has quietly added support for 6 more international card issuers this month, bringing total coverage to roughly 80% of foreign-issued Visa and Mastercard. Previously, many European and Southeast Asian cards were hit-or-miss. If you tried linking your card a few months ago and it failed — try again now, it might just work. Remember: link before you land.`
+  },
   // ── August 2026 ───────────────────────────────────────────
   {
     id: 'post-016',
@@ -25,7 +32,8 @@ const POSTS = [
     date: 'August 2026',
     tag: 'news',
     title: '📱 WeChat Pay expands international card support — now covers 80% of foreign visitors',
-    body: `Another win for foreign travelers. WeChat Pay has quietly added support for 6 more international card issuers this month, bringing total coverage to roughly 80% of foreign-issued Visa and Mastercard. Previously, many European and Southeast Asian cards were hit-or-miss. If you tried linking your card a few months ago and it failed — try again now, it might just work. Remember: link before you land.`
+    body: `Not really. China doesn't have one nationwide public transport card that works across every city. Instead, public transport is usually city-based. Shanghai, Beijing, Guangzhou, etc. each have their own transport systems and payment options.
+    For a short trip, you can usually: 1. Pay for metro rides with Alipay or the city's transport mini-program. 2.Buy a single-ride ticket at the metro station, there is a <a href="../metro-guide" style="color:var(--gold)">guide</a>. or 3.Use a local transport card if you're staying longer or taking public transport frequently.(but if you're only visiting for a few days, don't worry about buying a physical transport card before you arrive. Set up <a href="../alipay" style="color:var(--gold)">Alipay</a> first — it's usually much more convenient for visitors!)`
   },
   {
     id: 'post-015',

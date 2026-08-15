@@ -355,6 +355,11 @@ function loadGetReady() {
           <div class="country-btn" onclick="showVisa(this,'sg')">🇸🇬 Singapore</div>
           <div class="country-btn" onclick="showVisa(this,'jp')">🇯🇵 Japan</div>
           <div class="country-btn" onclick="showVisa(this,'kr')">🇰🇷 South Korea</div>
+          <div class="country-btn" onclick="showVisa(this,'ru')">🇷🇺 Russia</div>
+          <div class="country-btn" onclick="showVisa(this,'my')">🇲🇾 Malaysia</div>
+          <div class="country-btn" onclick="showVisa(this,'vn')">🇻🇳 Vietnam</div>
+          <div class="country-btn" onclick="showVisa(this,'th')">🇹🇭 Thailand</div>
+          <div class="country-btn" onclick="showVisa(this,'mn')">🇲🇳 Mongolia</div>
           <div class="country-btn" onclick="showVisa(this,'nz')">🇳🇿 New Zealand</div>
           <div class="country-btn" onclick="showVisa(this,'it')">🇮🇹 Italy</div>
           <div class="country-btn" onclick="showVisa(this,'es')">🇪🇸 Spain</div>
@@ -364,6 +369,7 @@ function loadGetReady() {
           <div class="country-btn" onclick="showVisa(this,'br')">🇧🇷 Brazil</div>
           <div class="country-btn" onclick="showVisa(this,'in')">🇮🇳 India</div>
           <div class="country-btn" onclick="showVisa(this,'za')">🇿🇦 South Africa</div>
+          <div class="country-btn" onclick="showVisa(this,'pk')">🇵🇰 Pakistan</div>
         </div>
         <div class="visa-result" id="visa-result"></div>
         <div id="visa-no-result" style="display:none;padding:14px;font-size:12px;color:var(--text-muted);background:var(--surface);border-radius:8px;line-height:1.8">
