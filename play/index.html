@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>China Challenge — Test Your China IQ | Ready? China!</title>
+<meta name="description" content="A bonus round for curious travelers: 100 questions about China — food, culture, history, tech and travel hacks. Play Easy, Medium or Hard and earn your China badge.">
+<meta name="keywords" content="China quiz, China travel trivia, China IQ test, China culture questions, test your China knowledge, China challenge game">
+<meta property="og:title" content="China Challenge — Bonus Round | Ready? China!">
+<meta property="og:description" content="100 questions about China. 3 difficulty modes. Earn your badge before you fly.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.readychinatravel.com/play/">
+<link rel="canonical" href="https://www.readychinatravel.com/play/">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G3C5T1WRB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3G3C5T1WRB');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  /* ══════════ CHINA CHALLENGE — game styles ══════════ */
+  :root {
+    --game-red: #c0392b;
+    --game-red-dark: #8e241a;
+    --game-gold: #b8860b;
+    --game-gold-light: #d4a531;
+    --game-navy: #1e2a4a;
+    --game-green: #2e7d32;
+  }
+  .game-bg {
+    position: relative;
+    padding: 120px 20px 80px;
+    min-height: calc(100vh - 70px);
+    overflow: hidden;
+  }
+  /* subtle pixel-grid texture for game feel */
+  .game-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(rgba(192,57,43,.05) 1px, transparent 1px),
+      radial-gradient(rgba(154,123,47,.05) 1px, transparent 1px);
+    background-size: 22px 22px, 22px 22px;
+    background-position: 0 0, 11px 11px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .game-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* ── Hero ── */
+  .ch-hero { text-align: center; margin-bottom: 36px; }
+  .ch-bonus-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, #fdeaea, #fdf3e3);
+    border: 1px solid rgba(192,57,43,.28);
+    color: var(--game-red-dark);
+    font-size: 12px; font-weight: 800; letter-spacing: 2.5px;
+    padding: 7px 16px; border-radius: 999px;
+    animation: ch-bob 3s ease-in-out infinite;
+  }
+  @keyframes ch-bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+  .ch-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(34px, 6vw, 54px);
+    font-weight: 700; color: var(--text);
+    margin: 16px 0 8px; line-height: 1.1;
+  }
+  .ch-title em {
+    font-style: italic;
+    background: linear-gradient(100deg, var(--game-red), var(--game-gold));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .ch-sub { color: var(--text-muted); font-size: 15px; line-height: 1.7; max-width: 520px; margin: 0 auto; }
+  .ch-floaters { position: absolute; inset: 0; pointer-events: none; z-index: 0; font-size: 22px; }
+  .ch-floaters span { position: absolute; opacity: .35; animation: ch-float 9s ease-in-out infinite; }
+  .ch-floaters .f1 { top: 22%; left: 6%; animation-delay: 0s; }
+  .ch-floaters .f2 { top: 12%; right: 8%; animation-delay: 1.2s; }
+  .ch-floaters .f3 { bottom: 30%; left: 10%; animation-delay: 2.4s; }
+  .ch-floaters .f4 { bottom: 20%; right: 5%; animation-delay: 3.6s; }
+  .ch-floaters .f5 { top: 45%; left: 2%; animation-delay: 4.8s; }
+  @keyframes ch-float {
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    33% { transform: translateY(-14px) rotate(6deg); }
+    66% { transform: translateY(8px) rotate(-4deg); }
+  }
+
+  /* ── Mode cards ── */
+  .ch-modes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .ch-mode {
+    position: relative;
+    background: #fff;
+    border: 2px solid var(--border);
+    border-radius: 18px;
+    padding: 22px 16px 18px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    overflow: hidden;
+  }
+  .ch-mode:hover { transform: translateY(-6px); box-shadow: 0 14px 30px rgba(192,57,43,.12); border-color: var(--game-red); }
+  .ch-mode:active { transform: translateY(-2px) scale(.98); }
+  .ch-mode-emoji { font-size: 38px; display: block; margin-bottom: 10px; }
+  .ch-mode-name { font-size: 17px; font-weight: 800; color: var(--text); }
+  .ch-mode-count { font-size: 12px; color: var(--text-muted); margin-top: 4px; font-weight: 500; }
+  .ch-mode-desc { font-size: 12px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; min-height: 36px; }
+  .ch-mode-xp { display: inline-block; margin-top: 10px; font-size: 11px; font-weight: 800; color: var(--game-gold); background: var(--gold-soft); border: 1px solid var(--gold-border); border-radius: 999px; padding: 3px 10px; letter-spacing: .5px; }
+  .ch-mode .ch-ribbon {
+    position: absolute; top: 12px; right: -30px; transform: rotate(45deg);
+    background: var(--game-red); color: #fff; font-size: 9px; font-weight: 800; letter-spacing: 1px;
+    padding: 4px 32px;
+  }
+  .ch-mode.easy   .ch-mode-xp { color: var(--game-green); background: rgba(46,125,50,.1); border-color: rgba(46,125,50,.25); }
+  .ch-mode.hard   .ch-mode-xp { color: var(--game-red-dark); background: var(--red-soft); border-color: var(--red-border); }
+
+  /* ── Game card ── */
+  .ch-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    box-shadow: 0 10px 40px rgba(26,18,8,.08);
+    padding: 24px;
+    display: none;
+    animation: ch-slideup .3s ease;
+  }
+  .ch-card.show { display: block; }
+  @keyframes ch-slideup { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* HUD */
+  .ch-hud { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+  .ch-hud-left { display: flex; align-items: center; gap: 8px; }
+  .ch-chip {
+    font-size: 12px; font-weight: 700; border-radius: 999px; padding: 5px 13px;
+    display: inline-flex; align-items: center; gap: 5px;
+  }
+  .ch-chip-mode { background: var(--red-soft); color: var(--game-red-dark); border: 1px solid var(--red-border); }
+  .ch-chip-xp { background: var(--gold-soft); color: var(--game-gold); border: 1px solid var(--gold-border); }
+  .ch-chip-streak { background: #fff7e8; color: #b45309; border: 1px solid #f5d28a; }
+  .ch-chip-best { background: #eef2fb; color: var(--game-navy); border: 1px solid #c9d4ee; }
+  .ch-hud-right { margin-left: auto; font-size: 13px; font-weight: 700; color: var(--text-mid); }
+  .ch-bar-wrap { height: 10px; border-radius: 999px; background: #f1ece2; overflow: hidden; margin-bottom: 22px; position: relative; }
+  .ch-bar { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--game-red), var(--game-gold)); transition: width .4s cubic-bezier(.22,1,.36,1); width: 0; }
+  .ch-bar-flag { position: absolute; top: 50%; width: 20px; height: 20px; margin-top: -10px; border-radius: 50%; background: #fff; border: 2px solid var(--game-red); display: flex; align-items: center; justify-content: center; font-size: 10px; transition: left .4s cubic-bezier(.22,1,.36,1); }
+
+  /* Question */
+  .ch-q-num { font-size: 11px; font-weight: 800; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 6px; }
+  .ch-q-text { font-size: 19px; font-weight: 700; color: var(--text); line-height: 1.5; margin-bottom: 20px; }
+  .ch-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .ch-opt {
+    position: relative;
+    padding: 14px 14px 14px 42px;
+    border: 2px solid #e8e0d2;
+    border-radius: 14px;
+    background: #fff;
+    font-size: 14px; font-weight: 600; color: var(--text);
+    cursor: pointer;
+    text-align: left;
+    transition: all .13s ease;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .ch-opt::before {
+    content: attr(data-key);
+    position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
+    width: 20px; height: 20px; border-radius: 7px;
+    background: #f4efe6; color: var(--text-muted);
+    font-size: 11px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ch-opt:hover:not(:disabled) { border-color: var(--game-red); background: #fff8f6; transform: translateY(-2px); }
+  .ch-opt:disabled { cursor: default; }
+  .ch-opt.ok { background: var(--game-green); border-color: var(--game-green); color: #fff; animation: ch-pop .35s ease; }
+  .ch-opt.ok::before { background: rgba(255,255,255,.25); color: #fff; }
+  .ch-opt.no { background: var(--game-red); border-color: var(--game-red); color: #fff; animation: ch-shake .35s ease; }
+  .ch-opt.no::before { background: rgba(255,255,255,.25); color: #fff; }
+  .ch-opt.show { border-color: var(--game-green); background: #eef7e8; color: #1c4a1f; }
+  .ch-opt.show::before { background: var(--game-green); color: #fff; }
+  @keyframes ch-pop { 0%{transform:scale(.94)} 55%{transform:scale(1.04)} 100%{transform:scale(1)} }
+  @keyframes ch-shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 50%{transform:translateX(5px)} 75%{transform:translateX(-3px)} }
+
+  /* Feedback card */
+  .ch-fb { margin-top: 16px; border-radius: 16px; padding: 14px 16px; font-size: 13px; line-height: 1.7; display: none; animation: ch-slideup .25s ease; }
+  .ch-fb.show { display: block; }
+  .ch-fb .ch-fb-head { font-weight: 800; margin-bottom: 4px; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+  .ch-fb .ch-fb-fact { border-top: 1px solid rgba(0,0,0,.08); margin-top: 10px; padding-top: 10px; }
+  .ch-fb .ch-fb-fact b { color: var(--game-gold); }
+  .ch-fb.ok { background: #eef7e8; color: #1c4a1f; }
+  .ch-fb.no { background: #fdeaea; color: #7a1f14; }
+
+  /* Next / actions */
+  .ch-actions { display: flex; gap: 10px; margin-top: 16px; }
+  .ch-btn {
+    flex: 1;
+    padding: 13px;
+    border-radius: 14px;
+    border: none;
+    font-size: 14px; font-weight: 800;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all .15s ease;
+  }
+  .ch-btn-primary { background: var(--game-red); color: #fff; }
+  .ch-btn-primary:hover { background: var(--game-red-dark); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(192,57,43,.3); }
+  .ch-btn-ghost { background: #fff; color: var(--text-muted); border: 2px solid #e8e0d2; }
+  .ch-btn-ghost:hover { border-color: var(--game-red); color: var(--game-red); }
+  .ch-btn.hidden { display: none; }
+
+  /* ── Result ── */
+  .ch-result { text-align: center; }
+  .ch-result-medal { font-size: 72px; line-height: 1; animation: ch-medal .6s cubic-bezier(.34,1.56,.64,1); display: inline-block; }
+  @keyframes ch-medal { from { transform: scale(0) rotate(-30deg); opacity: 0; } to { transform: scale(1) rotate(0); opacity: 1; } }
+  .ch-result-title { font-size: 22px; font-weight: 800; color: var(--text); margin: 14px 0 4px; }
+  .ch-result-rank { font-size: 14px; font-weight: 700; color: var(--game-gold); letter-spacing: 1px; }
+  .ch-result-stats { display: flex; justify-content: center; gap: 10px; margin: 18px 0; flex-wrap: wrap; }
+  .ch-stat { background: #faf6ef; border: 1px solid var(--border); border-radius: 14px; padding: 10px 18px; min-width: 92px; }
+  .ch-stat .v { font-size: 20px; font-weight: 800; color: var(--text); }
+  .ch-stat .l { font-size: 10px; letter-spacing: 1.5px; color: var(--text-muted); margin-top: 2px; font-weight: 700; }
+  .ch-newbest { display: inline-block; margin-bottom: 8px; background: linear-gradient(135deg, var(--game-red), var(--game-gold)); color: #fff; font-size: 11px; font-weight: 800; letter-spacing: 1px; border-radius: 999px; padding: 5px 14px; animation: ch-bob 1.4s ease-in-out infinite; }
+
+  /* related guides */
+  .ch-related { margin-top: 22px; text-align: left; }
+  .ch-related-head { font-size: 13px; font-weight: 800; color: var(--text-mid); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+  .ch-related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .ch-rel-link {
+    display: block; padding: 12px 14px; border: 1.5px solid #e8e0d2; border-radius: 12px;
+    background: #fff; text-decoration: none; color: var(--text);
+    font-size: 13px; font-weight: 700; transition: all .15s ease;
+  }
+  .ch-rel-link small { display: block; font-weight: 500; color: var(--text-muted); margin-top: 2px; font-size: 11px; }
+  .ch-rel-link:hover { border-color: var(--game-red); background: #fff8f6; transform: translateY(-2px); }
+
+  /* confetti canvas */
+  #ch-confetti { position: fixed; inset: 0; pointer-events: none; z-index: 300; }
+
+  .ch-modes-foot { text-align: center; margin-top: 22px; font-size: 12px; color: var(--text-muted); }
+  .ch-modes-foot b { color: var(--game-gold); }
+
+  @media (max-width: 560px) {
+    .ch-modes { grid-template-columns: 1fr; }
+    .ch-opts { grid-template-columns: 1fr; }
+    .ch-related-grid { grid-template-columns: 1fr; }
+    .ch-actions { flex-direction: column; }
+    .game-bg { padding-top: 100px; }
+  }
+</style>
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<main>
+  <div class="game-bg">
+    <div class="ch-floaters" aria-hidden="true">
+      <span class="f1">🧧</span><span class="f2">🎋</span><span class="f3">🐼</span><span class="f4">🏮</span><span class="f5">✈️</span>
+    </div>
+
+    <div class="game-wrap">
+
+      <!-- ═══ HERO + MODE SELECT ═══ -->
+      <div id="ch-home">
+        <div class="ch-hero">
+          <div class="ch-bonus-badge">🎮 BONUS ROUND</div>
+          <h1 class="ch-title">The <em>China Challenge</em></h1>
+          <p class="ch-sub">Think you know China? Prove it. 100 hand-picked questions on food, culture, history and travel hacks — earn your badge before you fly. 🐼</p>
+        </div>
+
+        <div class="ch-card show">
+          <div style="text-align:center;margin-bottom:18px">
+            <div style="font-size:13px;font-weight:800;color:var(--text)">CHOOSE YOUR LEVEL</div>
+            <div style="font-size:12px;color:var(--text-muted);margin-top:3px">Random questions every round — no two games are the same</div>
+          </div>
+          <div class="ch-modes" id="ch-modes"></div>
+          <div class="ch-modes-foot">🏅 Badges: <b>Rookie</b> → <b>Explorer</b> → <b>Master</b> → <b>Legend</b></div>
+        </div>
+      </div>
+
+      <!-- ═══ GAME ═══ -->
+      <div class="ch-card" id="ch-game">
+        <div class="ch-hud">
+          <div class="ch-hud-left">
+            <span class="ch-chip ch-chip-mode" id="hud-mode">EASY</span>
+            <span class="ch-chip ch-chip-xp" id="hud-xp">⭐ 0 XP</span>
+            <span class="ch-chip ch-chip-streak" id="hud-streak" style="display:none">🔥 x0</span>
+            <span class="ch-chip ch-chip-best" id="hud-best" style="display:none"></span>
+          </div>
+          <div class="ch-hud-right" id="hud-progress">1 / 5</div>
+        </div>
+        <div class="ch-bar-wrap">
+          <div class="ch-bar" id="ch-bar"></div>
+          <div class="ch-bar-flag" id="ch-bar-flag">🐼</div>
+        </div>
+        <div class="ch-q-num" id="ch-q-num">QUESTION 1</div>
+        <div class="ch-q-text" id="ch-q-text"></div>
+        <div class="ch-opts" id="ch-opts"></div>
+        <div class="ch-fb" id="ch-fb"></div>
+        <div class="ch-actions">
+          <button class="ch-btn ch-btn-primary hidden" id="ch-next" onclick="game.next()">Next →</button>
+          <button class="ch-btn ch-btn-ghost hidden" id="ch-again" onclick="game.restart()">↻ Play Again</button>
+          <button class="ch-btn ch-btn-ghost hidden" id="ch-home-btn" onclick="game.toHome()">Change Level</button>
+        </div>
+      </div>
+
+      <!-- ═══ RESULT ═══ -->
+      <div class="ch-card" id="ch-result"></div>
+
+    </div>
+  </div>
+</main>
+
+<footer id="site-footer"></footer>
+
+<canvas id="ch-confetti"></canvas>
+
+<script src="quiz-data.js"></script>
+<script>
+/* ═══════════════════════════════════════════════
+   CHINA CHALLENGE — game engine
+   ═══════════════════════════════════════════════ */
+(function () {
+  var bank = window.QUIZ_BANK || { easy: [], medium: [], hard: [] };
+
+  var MODES = [
+    { key: 'easy',   n: 5,  xp: 10, emoji: '🌱', name: 'Easy',      count: '5 quick questions', desc: 'The classics — pandas, Great Wall, dumplings. Warm-up for everyone.', badge: 'WARM-UP' },
+    { key: 'medium', n: 10, xp: 20, emoji: '🧭', name: 'Medium',    count: '10 questions',       desc: 'Culture, history, food & tech. A solid China IQ test.', badge: null },
+    { key: 'hard',   n: 15, xp: 30, emoji: '🔥', name: 'Hard',      count: '15 questions',       desc: 'Deep cuts and clever traps. Only true China fans survive.', badge: 'SPICY' }
+  ];
+
+  var RANKS = [
+    { min: 1.0,  medal: '🏆', name: 'CHINA LEGEND',  color: 'var(--game-gold)' },
+    { min: 0.8,  medal: '🥇', name: 'CHINA MASTER',  color: 'var(--game-red)' },
+    { min: 0.6,  medal: '🧭', name: 'CHINA EXPLORER', color: 'var(--game-navy)' },
+    { min: 0.4,  medal: '🐼', name: 'CHINA ROOKIE',  color: '#2e7d32' },
+    { min: 0,    medal: '🎋', name: 'CHINA NEWBIE',  color: 'var(--text-muted)' }
+  ];
+
+  /* category → related guides (relative to /play/) */
+  var CATEGORY_GUIDES = {
+    food:     [ { t: 'Food Survival Guide', d: 'Order like a local — menu hacks, etiquette, allergies', u: '../food-guide/' } ],
+    geo:      [ { t: 'All Cities', d: 'Best cities for first-timers, ranked', u: '../cities.html' } ],
+    nature:   [ { t: 'Zhangjiajie', d: 'The real Avatar mountains', u: '../guides/zhangjiajie.html' }, { t: 'Guilin & Yangshuo', d: 'Karst peaks & Li River', u: '../guides/guilin.html' } ],
+    culture:  [ { t: 'Beijing Guide', d: 'Hutongs, hutong food & temples', u: '../guides/beijing.html' }, { t: 'Hangzhou', d: 'West Lake & silk culture', u: '../guides/hangzhou.html' } ],
+    history:  [ { t: "Xi'an Guide", d: 'Terracotta Army & city walls', u: '../guides/xian.html' }, { t: 'Dunhuang', d: 'Mogao Caves & Silk Road', u: '../guides/dunhuang.html' } ],
+    festival: [ { t: 'China Travel Calendar', d: 'When festivals hit — and how busy it gets', u: '../cities.html' } ],
+    tech:     [ { t: 'Payments Setup', d: 'WeChat Pay & Alipay for foreigners', u: '../qr-payments/' }, { t: 'High-Speed Rail', d: 'Book & ride bullet trains like a local', u: '../high-speed-train/' } ],
+    money:    [ { t: 'Payments Setup', d: 'WeChat Pay & Alipay for foreigners', u: '../qr-payments/' } ],
+    sport:    [ { t: 'Chengdu Guide', d: 'Pandas, hotpot & nightlife', u: '../guides/chengdu.html' } ],
+    people:   [ { t: 'Shanghai Guide', d: 'Skyline, bund & street food', u: '../guides/shanghai.html' } ]
+  };
+
+  var game = window.game = {
+    mode: null, questions: [], idx: 0, xp: 0, streak: 0, bestStreak: 0, correct: 0,
+    answered: false, bestScores: {}
+  };
+
+  /* ── utils ── */
+  function shuffle(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function loadBest() {
+    try { game.bestScores = JSON.parse(localStorage.getItem('ch_best') || '{}'); } catch (e) { game.bestScores = {}; }
+  }
+  function saveBest() {
+    try { localStorage.setItem('ch_best', JSON.stringify(game.bestScores)); } catch (e) {}
+  }
+
+  /* ── tiny sound effects (Web Audio) ── */
+  var actx = null;
+  function tone(freq, dur, type, delay, vol) {
+    try {
+      if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+      var t0 = actx.currentTime + (delay || 0);
+      var o = actx.createOscillator(), g = actx.createGain();
+      o.type = type || 'sine'; o.frequency.value = freq;
+      g.gain.setValueAtTime(vol || 0.12, t0);
+      g.gain.exponentialRampToValueAtTime(0.001, t0 + (dur || 0.2));
+      o.connect(g); g.connect(actx.destination);
+      o.start(t0); o.stop(t0 + dur + 0.05);
+    } catch (e) {}
+  }
+  function sndOk()  { tone(523, .12, 'triangle', 0, .1); tone(784, .18, 'triangle', .09, .1); }
+  function sndNo()  { tone(196, .2, 'sawtooth', 0, .05); tone(155, .28, 'sawtooth', .1, .05); }
+  function sndFan() { [523, 659, 784, 1047].forEach(function (f, i) { tone(f, .22, 'triangle', i * .13, .12); }); }
+
+  /* ── confetti ── */
+  var confettiRunning = false;
+  function confettiBurst() {
+    var cv = document.getElementById('ch-confetti');
+    if (!cv || confettiRunning) return;
+    confettiRunning = true;
+    var ctx = cv.getContext('2d');
+    cv.width = window.innerWidth; cv.height = window.innerHeight;
+    var colors = ['#c0392b', '#d4a531', '#1e2a4a', '#2e7d32', '#e74c3c', '#f5c542'];
+    var parts = [];
+    for (var i = 0; i < 130; i++) {
+      parts.push({
+        x: cv.width / 2 + (Math.random() - .5) * 140,
+        y: cv.height * .3 + (Math.random() - .5) * 60,
+        vx: (Math.random() - .5) * 13,
+        vy: -Math.random() * 13 - 4,
+        g: .32 + Math.random() * .15,
+        s: 5 + Math.random() * 7,
+        rot: Math.random() * Math.PI,
+        vr: (Math.random() - .5) * .3,
+        c: colors[Math.floor(Math.random() * colors.length)],
+        ttl: 0
+      });
+    }
+    (function draw() {
+      ctx.clearRect(0, 0, cv.width, cv.height);
+      var alive = false;
+      parts.forEach(function (p) {
+        p.x += p.vx; p.y += p.vy; p.vy += p.g; p.rot += p.vr; p.ttl++;
+        if (p.y < cv.height + 30 && p.ttl < 200) {
+          alive = true;
+          ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+          ctx.fillStyle = p.c; ctx.fillRect(-p.s / 2, -p.s / 2, p.s, p.s * .7);
+          ctx.restore();
+        }
+      });
+      if (alive) requestAnimationFrame(draw);
+      else { ctx.clearRect(0, 0, cv.width, cv.height); confettiRunning = false; }
+    })();
+  }
+
+  /* ── render: mode select ── */
+  function renderModes() {
+    loadBest();
+    var el = document.getElementById('ch-modes');
+    el.innerHTML = MODES.map(function (m) {
+      var best = game.bestScores[m.key];
+      var bestTxt = best ? '<div style="font-size:11px;color:var(--game-gold);font-weight:700;margin-top:6px">⭐ Best ' + best + ' XP</div>' : '';
+      return '<div class="ch-mode ' + m.key + '" onclick="game.start(\'' + m.key + '\')">' +
+        (m.badge ? '<div class="ch-ribbon">' + m.badge + '</div>' : '') +
+        '<span class="ch-mode-emoji">' + m.emoji + '</span>' +
+        '<div class="ch-mode-name">' + m.name + '</div>' +
+        '<div class="ch-mode-count">' + m.count + '</div>' +
+        '<div class="ch-mode-desc">' + m.desc + '</div>' +
+        '<div class="ch-mode-xp">' + m.xp + ' XP / question</div>' +
+        bestTxt +
+        '</div>';
+    }).join('');
+  }
+
+  function show(id) {
+    ['ch-home', 'ch-game', 'ch-result'].forEach(function (i) {
+      var el = document.getElementById(i);
+      el.classList.toggle('show', i === id);
+    });
+    if (id !== 'ch-home') document.getElementById('ch-home').style.display = 'none';
+    else document.getElementById('ch-home').style.display = '';
+  }
+
+  /* ── start game ── */
+  game.start = function (key) {
+    var m = MODES.filter(function (x) { return x.key === key; })[0];
+    if (!m) return;
+    var pool = (bank[m.key] || []).slice();
+    game.mode = m;
+    game.questions = shuffle(pool).slice(0, m.n);
+    game.idx = 0; game.xp = 0; game.streak = 0; game.bestStreak = 0; game.correct = 0; game.answered = false;
+    game.correctCats = {}; // reset category tracking each round
+    show('ch-game');
+    document.getElementById('ch-next').classList.add('hidden');
+    document.getElementById('ch-again').classList.add('hidden');
+    document.getElementById('ch-home-btn').classList.add('hidden');
+    renderQ();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  /* ── render question ── */
+  function renderQ() {
+    var q = game.questions[game.idx];
+    var m = game.mode;
+    var done = game.idx;
+    var pct = (done / game.questions.length) * 100;
+
+    document.getElementById('hud-mode').textContent = m.emoji + ' ' + m.name.toUpperCase();
+    document.getElementById('hud-xp').textContent = '⭐ ' + game.xp + ' XP';
+    var st = document.getElementById('hud-streak');
+    if (game.streak >= 2) { st.style.display = ''; st.textContent = '🔥 x' + game.streak; }
+    else st.style.display = 'none';
+    var best = game.bestScores[m.key];
+    var hb = document.getElementById('hud-best');
+    if (best) { hb.style.display = ''; hb.textContent = '🏅 ' + best + ' XP'; }
+    else hb.style.display = 'none';
+
+    document.getElementById('hud-progress').textContent = (game.idx + 1) + ' / ' + game.questions.length;
+    document.getElementById('ch-q-num').textContent = 'QUESTION ' + (game.idx + 1) + ' OF ' + game.questions.length;
+    document.getElementById('ch-q-text').textContent = q.q;
+
+    document.getElementById('ch-bar').style.width = pct + '%';
+    document.getElementById('ch-bar-flag').style.left = 'calc(' + pct + '% - 10px)';
+
+    var keys = ['A', 'B', 'C', 'D'];
+    var opts = document.getElementById('ch-opts');
+    opts.innerHTML = shuffle(q.o.map(function (opt, i) { return { t: opt, k: keys[i] }; })).map(function (o) {
+      return '<button class="ch-opt" data-key="' + o.k + '" onclick="game.pick(this)">' + esc(o.t) + '</button>';
+    }).join('');
+
+    var fb = document.getElementById('ch-fb');
+    fb.className = 'ch-fb';
+    fb.innerHTML = '';
+    game.answered = false;
+  }
+
+  /* ── pick answer ── */
+  game.pick = function (btn) {
+    if (game.answered) return;
+    game.answered = true;
+    var q = game.questions[game.idx];
+    var correct = btn.textContent === q.a;
+    var btns = document.querySelectorAll('#ch-opts .ch-opt');
+    var all = Array.prototype.slice.call(btns);
+
+    all.forEach(function (b) {
+      b.disabled = true;
+      if (b.textContent === q.a) b.classList.add('show');
+    });
+
+    var fb = document.getElementById('ch-fb');
+    var nextBtn = document.getElementById('ch-next');
+    var isLast = game.idx === game.questions.length - 1;
+
+    if (correct) {
+      btn.classList.add('ok');
+      game.streak++;
+      game.bestStreak = Math.max(game.bestStreak, game.streak);
+      game.correct++;
+      var bonus = game.streak >= 3 ? Math.ceil(game.mode.xp * 0.5) : 0;
+      game.xp += game.mode.xp + bonus;
+      sndOk();
+      fb.className = 'ch-fb ok show';
+      fb.innerHTML = '<div class="ch-fb-head">✅ Nice!' + (bonus ? ' <span style="color:var(--game-gold)">+🔥 streak bonus +' + bonus + ' XP</span>' : '') + ' +' + game.mode.xp + ' XP</div>' +
+        '<div class="ch-fb-fact">💡 <b>Did you know?</b> ' + esc(q.f) + '</div>';
+    } else {
+      btn.classList.add('no');
+      game.streak = 0;
+      sndNo();
+      fb.className = 'ch-fb no show';
+      fb.innerHTML = '<div class="ch-fb-head">❌ Not quite — the answer is <b>' + esc(q.a) + '</b></div>' +
+        '<div class="ch-fb-fact">💡 <b>Did you know?</b> ' + esc(q.f) + '</div>';
+    }
+
+    document.getElementById('hud-xp').textContent = '⭐ ' + game.xp + ' XP';
+    var st = document.getElementById('hud-streak');
+    if (game.streak >= 2) { st.style.display = ''; st.textContent = '🔥 x' + game.streak; }
+    else st.style.display = 'none';
+
+    nextBtn.classList.remove('hidden');
+    nextBtn.textContent = isLast ? 'See My Result 🏁' : 'Next →';
+  };
+
+  /* ── next ── */
+  game.next = function () {
+    game.idx++;
+    if (game.idx >= game.questions.length) { renderResult(); return; }
+    renderQ();
+  };
+
+  /* ── result ── */
+  function renderResult() {
+    var m = game.mode;
+    var total = game.questions.length;
+    var ratio = game.correct / total;
+    var rank = RANKS.filter(function (r) { return ratio >= r.min; })[0];
+
+    /* personal best */
+    var best = game.bestScores[m.key] || 0;
+    var isNew = game.xp > best;
+    if (isNew) { game.bestScores[m.key] = game.xp; saveBest(); }
+
+    /* related guides from correctly-answered categories */
+    var catCount = {};
+    game.correctCats = game.correctCats || {};
+    Object.keys(game.correctCats).forEach(function (idx) {
+      var c = game.correctCats[idx];
+      if (c) catCount[c] = (catCount[c] || 0) + 1;
+    });
+
+    var relSet = [], relSeen = {};
+    var catOrder = Object.keys(catCount).sort(function (a, b) { return catCount[b] - catCount[a]; });
+    catOrder.forEach(function (c) {
+      (CATEGORY_GUIDES[c] || []).forEach(function (g) {
+        if (!relSeen[g.u]) { relSeen[g.u] = true; relSet.push(g); }
+      });
+    });
+    if (relSet.length === 0) {
+      relSet.push({ t: 'All Cities', d: 'Best cities for first-timers, ranked', u: '../cities.html' });
+    }
+    var relHtml = relSet.slice(0, 4).map(function (g) {
+      return '<a class="ch-rel-link" href="' + g.u + '">' + esc(g.t) + '<small>' + esc(g.d) + '</small></a>';
+    }).join('');
+
+    sndFan();
+    confettiBurst();
+
+    document.getElementById('ch-result').innerHTML =
+      '<div class="ch-result">' +
+        (isNew ? '<div class="ch-newbest">🎉 NEW PERSONAL BEST!</div>' : '') +
+        '<div class="ch-result-medal">' + rank.medal + '</div>' +
+        '<div class="ch-result-title">' + (ratio === 1 ? 'PERFECT GAME!' : 'Round Complete!') + '</div>' +
+        '<div class="ch-result-rank" style="color:' + rank.color + '">' + rank.name + '</div>' +
+        '<div class="ch-result-stats">' +
+          '<div class="ch-stat"><div class="v">' + game.xp + '</div><div class="l">XP EARNED</div></div>' +
+          '<div class="ch-stat"><div class="v">' + game.correct + '/' + total + '</div><div class="l">CORRECT</div></div>' +
+          '<div class="ch-stat"><div class="v">' + Math.round(ratio * 100) + '%</div><div class="l">ACCURACY</div></div>' +
+          '<div class="ch-stat"><div class="v">🔥' + game.bestStreak + '</div><div class="l">BEST STREAK</div></div>' +
+        '</div>' +
+        '<div class="ch-related">' +
+          '<div class="ch-related-head">🧭 Based on what you nailed, explore these:</div>' +
+          '<div class="ch-related-grid">' + relHtml + '</div>' +
+        '</div>' +
+      '</div>';
+
+    document.getElementById('ch-next').classList.add('hidden');
+    document.getElementById('ch-again').classList.remove('hidden');
+    document.getElementById('ch-home-btn').classList.remove('hidden');
+    show('ch-result');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ── restart / home ── */
+  game.restart = function () { game.start(game.mode.key); };
+  game.toHome = function () {
+    show('ch-home');
+    document.getElementById('ch-home').style.display = '';
+    renderModes();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  /* track categories of correct answers */
+  game.correctCats = {};
+  var origPick = game.pick;
+  game.pick = function (btn) {
+    var q = game.questions[game.idx];
+    var correct = btn.textContent === q.a;
+    if (correct) game.correctCats[game.idx] = q.c;
+    origPick(btn);
+  };
+
+  renderModes();
+})();
+</script>
+
+<script src="../assets/nav.js"></script>
+<script>buildNav();</script>
+</body>
+</html>

@@ -400,6 +400,20 @@ nav { display: flex; gap: 6px; align-items: center; }
 }
 .mbadge-red  { background: var(--red-soft);  color: var(--accent);     border: 1px solid var(--red-border); }
 .mbadge-gray { background: var(--surface2);  color: var(--text-muted); border: 1px solid var(--border); }
+.mbadge-gold { background: var(--gold-soft); color: var(--gold);       border: 1px solid var(--gold-border); }
+
+/* featured menu item — China Challenge (bonus game) */
+.menu-item-featured {
+  background: linear-gradient(135deg, #fdf1ee, #fbf5e6);
+  border-bottom: 1px solid var(--red-border);
+}
+.menu-item-featured:hover { background: linear-gradient(135deg, #fbe4df, #f7ecd2); }
+.menu-item-featured .menu-item-title { color: var(--accent); font-weight: 700; }
+.menu-item-featured .menu-icon { animation: chChallengeBob 2.6s ease-in-out infinite; }
+@keyframes chChallengeBob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-3px) rotate(-6deg); }
+}
 
 /* ── 5. MAIN & HERO ──────────────────────────────────────── */
 main { padding-top: 70px; position: relative; z-index: 1; }
