@@ -758,7 +758,7 @@ function loadGetReady() {
           <li>Bus stops show routes in Chinese and pinyin — use Amap to find your route</li>
           <li>Buses announce stops in Chinese and English in most big cities</li>
         </ul>
-        <a href="get-around-like-local" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Bus guide →</a>
+        <a href="bus-guide" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Bus guide →</a>
         </div>
         <div class="info-card"><div class="info-card-title">🚲 Shared Bikes — City hopping on two wheels</div><ul class="info-list">
           <li>Meituan Bike (美团单车) and Hellobike (哈啰单车) — the two biggest operators</li>
@@ -767,7 +767,7 @@ function loadGetReady() {
           <li>Park in designated zones (look for painted rectangles on the pavement) or face a fine</li>
           <li>Best for exploring hutongs, parks, and areas where metro doesn't reach</li>
         </ul>
-        <a href="get-around-like-local" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Bike sharing guide →</a>
+        <a href="bike-guide" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">📖 Bike sharing guide →</a>
         </div>
         <div class="info-card"><div class="info-card-title">✈️ Domestic Flights</div><ul class="info-list">
           <li>Worth it for very long distances (e.g. Beijing → Yunnan)</li>
