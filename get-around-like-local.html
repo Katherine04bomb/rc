@@ -135,12 +135,12 @@
 
     <div style="background:var(--surface);border-radius:12px;padding:24px;margin-bottom:16px">
       <h3 style="font-size:18px;margin-bottom:6px">🚌 Public Bus (公交车 Gōngjiāochē)</h3>
-      <p style="color:var(--text-muted);font-size:14px;line-height:1.8">The cheapest way to get around — fares are ¥1–2 per ride. Buses cover areas the metro doesn't reach and are found in every Chinese city, from mega-cities to small towns. Pay with your Alipay or WeChat transport QR code, or get a physical bus card at any metro station. Use Amap (高德地图) to find routes — it shows real-time bus locations and estimated arrival times. Most big cities announce stops in both Chinese and English.</p>
+      <p style="color:var(--text-muted);font-size:14px;line-height:1.8">The cheapest way to get around — fares are ¥1–2 per ride. Buses cover areas the metro doesn't reach and are found in every Chinese city, from mega-cities to small towns. Pay with your Alipay or WeChat transport QR code, or get a physical bus card at any metro station. Use Amap (高德地图) to find routes — it shows real-time bus locations and estimated arrival times. Most big cities announce stops in both Chinese and English.See the full <a href="bus-guide/index.html" style="color:var(--accent)">Bus Guide →</a></p>
     </div>
 
     <div style="background:var(--surface);border-radius:12px;padding:24px;margin-bottom:16px">
       <h3 style="font-size:18px;margin-bottom:6px">🚲 Shared Bikes (共享单车 Gòngxiǎng Dānchē)</h3>
-      <p style="color:var(--text-muted);font-size:14px;line-height:1.8">China's streets are filled with dockless bikes — you'll see blue (Hellobike 哈啰单车), yellow (Meituan Bike 美团单车), and green (Didi Bike) ones everywhere. Scan the QR code on the bike with Alipay or WeChat to unlock — no separate app needed. Cost: ¥1–3 per 30 minutes. Best for short trips under 3km, exploring neighborhoods, or getting from the metro to your final destination. <strong>Important:</strong> You must park in designated zones (look for painted rectangles on the pavement) or face a ¥5–20 fine. The app will show you where the nearest parking zone is.</p>
+      <p style="color:var(--text-muted);font-size:14px;line-height:1.8">China's streets are filled with dockless bikes — you'll see blue (Hellobike 哈啰单车), yellow (Meituan Bike 美团单车), and green (Didi Bike) ones everywhere. Scan the QR code on the bike with Alipay or WeChat to unlock — no separate app needed. Cost: ¥1–3 per 30 minutes. Best for short trips under 3km, exploring neighborhoods, or getting from the metro to your final destination. <strong>Important:</strong> You must park in designated zones (look for painted rectangles on the pavement) or face a ¥5–20 fine. The app will show you where the nearest parking zone is.See the full <a href="bikes/index.html" style="color:var(--accent)">Bike Guide →</a></p>
     </div>
 
     <div style="background:var(--surface);border-radius:12px;padding:24px;margin-bottom:16px">
@@ -166,7 +166,7 @@
         <div class="info-card-title">🗺️ Use Amap, Not Google Maps</div>
         <ul class="info-list">
           <li>Google Maps data in China is inaccurate and outdated</li>
-          <li>Amap (高德地图) has real-time traffic, accurate walking paths, and indoor maps of malls and stations</li>
+          <li><a href="amap-guide/index.html" style="color:var(--accent)">Amap →</a>(高德地图) has real-time traffic, accurate walking paths, and indoor maps of malls and stations</li>
           <li>Switch to English in Settings — most labels will still show in Chinese, but menus become readable</li>
           <li>Works offline if you download city maps in advance</li>
         </ul>
@@ -202,9 +202,89 @@
   </div>
 </article>
 
+<!-- EMAIL CAPTURE -->
+  <section class="guide-email-capture" id="download-pdf">
+    <h3>📥 Get the Full PDF Guide</h3>
+    <p>
+      A clean, printable version of this guide with all screenshots —
+      perfect to keep on your phone for reference when you're in China.
+      I'll also send you updates when Alipay changes its setup process.
+    </p>
+    <form class="guide-email-form"
+      action="https://formspree.io/f/mnjypvzn"
+      method="POST"
+      onsubmit="handleGuideEmail(event)">
+      <input type="hidden" name="guide" value="alipay-setup">
+      <input
+        class="guide-email-input"
+        type="email"
+        name="email"
+        placeholder="your@email.com"
+        required>
+      <button class="guide-email-submit" type="submit">Send Me the PDF ✉️</button>
+    </form>
+    <div class="guide-email-success" id="guide-email-ok">
+      ✅ Got it! Check your inbox — I'll send the PDF shortly.
+    </div>
+    <div class="guide-email-note">No spam. I read every email personally.</div>
+  </section>
+<!-- RELATED GUIDES -->
+  <section class="related-guides">
+    <h3>Continue Getting Ready →</h3>
+    <div class="related-grid">
+      <a href="../emergency" class="related-card">
+        <div class="related-card-icon">🆘</div>
+        <div class="related-card-title">Emergency Contacts</div>
+        <div class="related-card-desc">Important phone numbers and resources for travelers in China</div>
+      </a>
+      <a href="../travel-insurance" class="related-card">
+        <div class="related-card-icon">🏥</div>
+        <div class="related-card-title">Travel Insurance</div>
+        <div class="related-card-desc">I bet the travel insurance worth every penny!</div>
+      </a>
+      <a href="../metro-guide" class="related-card">
+        <div class="related-card-icon"></div>
+        <div class="related-card-title">Metro Guide</div>
+        <div class="related-card-desc">Buy tickets, use Alipay at the gate, read signs</div>
+      </a>
+      <a href="../guides" class="related-card">
+        <div class="related-card-icon">📚</div>
+        <div class="related-card-title">All Guides →</div>
+        <div class="related-card-desc">Everything you need before and after you land</div>
+      </a>
+    </div>
+  </section>
+
 </div></main>
 
+<!-- FOOTER — injected by nav.js -->
 <footer id="site-footer"></footer>
+
+<!-- Scripts -->
+<script src="../assets/ui.js"></script>
+<script src="../assets/nav.js"></script>
+<script>
+  // Build shared nav
+  buildNav('../');
+
+  // Email form handler
+  function handleGuideEmail(e) {
+    e.preventDefault();
+    const form = e.target;
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(r => {
+      if (r.ok) {
+        form.style.display = 'none';
+        document.getElementById('guide-email-ok').style.display = 'block';
+      }
+    }).catch(() => {
+      document.getElementById('guide-email-ok').style.display = 'block';
+    });
+  }
+</script>
 
 </body>
 </html>

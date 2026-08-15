@@ -21,9 +21,13 @@ const POSTS = [
     id: 'post-017',
     category: 'qa',
     date: 'August 2026',
-    tag: 'qa',
+    tag: 'tip',
     title: "❓ Is there a 7-day or 10-day transport card like Melbourne's Myki? — Crystal",
-    body: `Another win for foreign travelers. WeChat Pay has quietly added support for 6 more international card issuers this month, bringing total coverage to roughly 80% of foreign-issued Visa and Mastercard. Previously, many European and Southeast Asian cards were hit-or-miss. If you tried linking your card a few months ago and it failed — try again now, it might just work. Remember: link before you land.`
+    body: `Not really. China doesn't have one nationwide public transport card that works across every city.
+    Instead, public transport is usually city-based. Shanghai, Beijing, Guangzhou, etc. each have their own transport systems and payment options.
+    For a short trip, you can usually:
+    (1) Pay for metro rides with Alipay or the city's transport mini-program, or you can buy a single-ride ticket at the metro station, there is a <a href="../metro-guide" style="color:var(--gold)">guide</a>.
+    (2) Use a local transport card if you're staying longer or taking public transport frequently (but if you're only visiting for a few days, don't worry about buying a physical transport card before you arrive. Set up <a href="../alipay" style="color:var(--gold)">Alipay</a> first — it's usually much more convenient for visitors).`
   },
   // ── August 2026 ───────────────────────────────────────────
   {
@@ -48,7 +52,7 @@ const POSTS = [
     category: 'lifehacks',
     date: 'August 2026',
     tag: 'tip',
-    title: '🧊 How to stay cool in China\'s August heat — without spending a cent',
+    title: '🧊 How to stay cool in China\'s August heat without spending a cent',
     body: `August is brutal. But there are secret ways to stay cool for free: (1) Big shopping malls blast AC all day and have plenty of seating — MixC and Joy City chains are everywhere. (2) Most museums are heavily air-conditioned and entry is often free or under ¥30. (3) Public libraries are another hidden gem — quiet, freezing cold, and free WiFi. (4) Starbucks in China has AC and you can sit for hours without buying a second drink. Just don't plan outdoor sightseeing between 11am and 3pm and you'll survive.`
   },
 
@@ -426,7 +430,7 @@ function loadCommunity() {
   <section class="section" id="community-section">
     <div class="section-eyebrow">Community · 旅行者社区</div>
     <div class="comm-title-row">
-      <h2 class="section-title">Know Before You Go</h2>
+      <h2 class="section-title">Become a China master</h2>
       ${readMoreLink}
     </div>
     <p class="section-sub">Life hacks, honest Q&As, and real updates from Kat — everything I wish someone had told my friends before they visited China.</p>
