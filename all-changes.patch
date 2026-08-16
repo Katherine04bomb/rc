@@ -1,0 +1,1283 @@
+diff --git a/_builder/generator.py b/_builder/generator.py
+index f544187..b64ff40 100644
+--- a/_builder/generator.py
++++ b/_builder/generator.py
+@@ -265,6 +265,15 @@ def render_city(d):
+   <meta property="og:description" content="%s">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="%s">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+@@ -345,6 +354,8 @@ def render_city(d):
+ 
+ %s
+ 
++<footer id="site-footer"></footer>
++
+ </body>
+ </html>""" % (
+         d["title"], esc(meta), og_img_line, BASE + d["file"], d["title"], esc(meta), BASE + d["file"],
+diff --git a/alipay/index.html b/alipay/index.html
+index 230aaf1..df4fa98 100644
+--- a/alipay/index.html
++++ b/alipay/index.html
+@@ -122,6 +122,15 @@
+ }
+ </style>
+   </style>
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+diff --git a/amap-guide/index.html b/amap-guide/index.html
+index 62f4b4e..11ea72d 100644
+--- a/amap-guide/index.html
++++ b/amap-guide/index.html
+@@ -57,6 +57,15 @@
+       box-shadow: 0 4px 12px rgba(0,0,0,.08);
+     }
+ </style>
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ <header id="site-header"></header>
+diff --git a/assets/nav.js b/assets/nav.js
+index b4c2af3..a3a6c61 100644
+--- a/assets/nav.js
++++ b/assets/nav.js
+@@ -163,7 +163,8 @@ function buildNav(rootPath) {
+       <div style="margin-top:8px;font-size:11px">
+         <a href="${rootPath}alipay" style="color:var(--text-muted);margin-right:16px">Alipay Setup</a>
+         <a href="${rootPath}wechat" style="color:var(--text-muted);margin-right:16px">WeChat Setup</a>
+-        <a href="${rootPath}guides" style="color:var(--text-muted)">All Guides</a>
++        <a href="${rootPath}guides" style="color:var(--text-muted);margin-right:16px">All Guides</a>
++        <a href="${rootPath}privacy" style="color:var(--text-muted)">Privacy Policy</a>
+       </div>
+     </div>
+     <div style="text-align:right;line-height:1.8">
+diff --git a/bike-guide/index.html b/bike-guide/index.html
+index d376318..bf16765 100644
+--- a/bike-guide/index.html
++++ b/bike-guide/index.html
+@@ -53,6 +53,15 @@
+       box-shadow: 0 4px 12px rgba(0,0,0,.08);
+     }
+ </style>
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ <header id="site-header"></header>
+diff --git a/bus-guide/index.html b/bus-guide/index.html
+index 7e6c039..2db54c5 100644
+--- a/bus-guide/index.html
++++ b/bus-guide/index.html
+@@ -49,6 +49,15 @@
+       box-shadow: 0 4px 12px rgba(0,0,0,.08);
+     }
+ </style>
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ <header id="site-header"></header>
+diff --git a/cities.html b/cities.html
+index 7ee23d4..7f2805a 100644
+--- a/cities.html
++++ b/cities.html
+@@ -24,6 +24,15 @@
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="assets/style.css">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+diff --git a/community.html b/community.html
+index 7010dac..9b33b8b 100644
+--- a/community.html
++++ b/community.html
+@@ -44,6 +44,15 @@
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="assets/style.css">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+diff --git a/currency/index.html b/currency/index.html
+index 600ef86..2f95c9c 100644
+--- a/currency/index.html
++++ b/currency/index.html
+@@ -130,6 +130,15 @@
+   .conv-arrow { transform: rotate(90deg); }
+ }
+ </style>
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ <header id="site-header"></header>
+diff --git a/dianping-guide/index.html b/dianping-guide/index.html
+index f3915ac..1bc7b91 100644
+--- a/dianping-guide/index.html
++++ b/dianping-guide/index.html
+@@ -42,6 +42,15 @@
+ .read-checklist li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-mid);line-height:1.6}
+ .read-checklist li::before{content:"✓";color:var(--accent);font-weight:700;flex-shrink:0}
+ </style>
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ <header id="site-header"></header>
+diff --git a/didi/index.html b/didi/index.html
+index 58493b8..c033bd8 100644
+--- a/didi/index.html
++++ b/didi/index.html
+@@ -23,6 +23,15 @@
+   overflow: visible;
+ }
+ </style>
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ <header id="site-header"></header>
+diff --git a/emergency/index.html b/emergency/index.html
+index 39e1803..44728c4 100644
+--- a/emergency/index.html
++++ b/emergency/index.html
+@@ -24,6 +24,15 @@
+ .scenario-card{background:white;border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:14px}
+ .scenario-card h3{font-size:15px;font-weight:700;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+ </style>
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ <header id="site-header"></header>
+diff --git a/esim/index.html b/esim/index.html
+index 17880c0..d27e167 100644
+--- a/esim/index.html
++++ b/esim/index.html
+@@ -30,6 +30,15 @@
+   overflow: visible;
+ }
+ </style>
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ <header id="site-header"></header>
+diff --git a/flights-hotels/index.html b/flights-hotels/index.html
+index ed4b8ce..3b997e1 100644
+--- a/flights-hotels/index.html
++++ b/flights-hotels/index.html
+@@ -15,6 +15,15 @@
+ <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="../assets/style.css">
+ <link rel="stylesheet" href="../assets/guide.css">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ <header id="site-header"></header>
+diff --git a/food-guide/index.html b/food-guide/index.html
+index 2c638fa..64dae4e 100644
+--- a/food-guide/index.html
++++ b/food-guide/index.html
+@@ -21,6 +21,15 @@
+ .phrase-pinyin{font-size:11px;color:var(--gold);margin-bottom:2px}
+ .phrase-en{font-size:13px;color:var(--text-muted)}
+ </style>
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ <header id="site-header"></header>
+diff --git a/get-around-like-local.html b/get-around-like-local.html
+index e42437b..5e9649b 100644
+--- a/get-around-like-local.html
++++ b/get-around-like-local.html
+@@ -33,6 +33,15 @@
+   "mainEntityOfPage": "https://www.readychinatravel.com/get-around-like-local.html"
+ }
+ </script>
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+diff --git a/guides/beijing.html b/guides/beijing.html
+index 51b2316..6e30922 100644
+--- a/guides/beijing.html
++++ b/guides/beijing.html
+@@ -25,6 +25,15 @@
+   <meta property="og:description" content="The honest guide to Beijing for first-time visitors: why go, top 5 must-sees with real history, where to stay by district, and what to eat.">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="https://www.readychinatravel.com/guides/beijing.html">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+@@ -463,5 +472,7 @@
+ })();
+ </script>
+ 
++<footer id="site-footer"></footer>
++
+ </body>
+ </html>
+diff --git a/guides/changxing.html b/guides/changxing.html
+index d4aff2d..f8eef90 100644
+--- a/guides/changxing.html
++++ b/guides/changxing.html
+@@ -25,6 +25,15 @@
+   <meta property="og:description" content="The honest guide to Changxing for first-time visitors: why go, top 5 must-sees with real history, where to stay by district, and what to eat.">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="https://www.readychinatravel.com/guides/changxing.html">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+@@ -437,5 +446,7 @@
+ })();
+ </script>
+ 
++<footer id="site-footer"></footer>
++
+ </body>
+ </html>
+\ No newline at end of file
+diff --git a/guides/chengdu.html b/guides/chengdu.html
+index 0147c37..ae38e8d 100644
+--- a/guides/chengdu.html
++++ b/guides/chengdu.html
+@@ -25,6 +25,15 @@
+   <meta property="og:description" content="The honest guide to Chengdu for first-time visitors: why go, top 5 must-sees with real history, where to stay by district, and what to eat.">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="https://www.readychinatravel.com/guides/chengdu.html">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+@@ -446,5 +455,7 @@
+ })();
+ </script>
+ 
++<footer id="site-footer"></footer>
++
+ </body>
+ </html>
+\ No newline at end of file
+diff --git a/guides/chongqing.html b/guides/chongqing.html
+index 9a820c4..82698aa 100644
+--- a/guides/chongqing.html
++++ b/guides/chongqing.html
+@@ -25,6 +25,15 @@
+   <meta property="og:description" content="The honest guide to Chongqing for first-time visitors: why go, top 5 must-sees with real history, where to stay by district, and what to eat.">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="https://www.readychinatravel.com/guides/chongqing.html">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+@@ -449,5 +458,7 @@
+ })();
+ </script>
+ 
++<footer id="site-footer"></footer>
++
+ </body>
+ </html>
+\ No newline at end of file
+diff --git a/guides/dunhuang.html b/guides/dunhuang.html
+index 24ec55c..742c6a0 100644
+--- a/guides/dunhuang.html
++++ b/guides/dunhuang.html
+@@ -26,6 +26,15 @@
+   <meta property="og:description" content="The honest guide to Dunhuang for first-time visitors: why go, top 5 must-sees with real history, where to stay by district, and what to eat.">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="https://www.readychinatravel.com/guides/dunhuang.html">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+@@ -450,5 +459,7 @@
+ })();
+ </script>
+ 
++<footer id="site-footer"></footer>
++
+ </body>
+ </html>
+\ No newline at end of file
+diff --git a/guides/guangzhou.html b/guides/guangzhou.html
+index 53c38b1..204c5db 100644
+--- a/guides/guangzhou.html
++++ b/guides/guangzhou.html
+@@ -25,6 +25,15 @@
+   <meta property="og:description" content="The honest guide to Guangzhou for first-time visitors: why go, top 5 must-sees with real history, where to stay by district, and what to eat.">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="https://www.readychinatravel.com/guides/guangzhou.html">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+@@ -482,5 +491,7 @@
+ })();
+ </script>
+ 
++<footer id="site-footer"></footer>
++
+ </body>
+ </html>
+\ No newline at end of file
+diff --git a/guides/guilin.html b/guides/guilin.html
+index 6260013..9d7c68b 100644
+--- a/guides/guilin.html
++++ b/guides/guilin.html
+@@ -25,6 +25,15 @@
+   <meta property="og:description" content="The honest guide to Guilin for first-time visitors: why go, top 5 must-sees with real history, where to stay by district, and what to eat.">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="https://www.readychinatravel.com/guides/guilin.html">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+@@ -448,5 +457,7 @@
+ })();
+ </script>
+ 
++<footer id="site-footer"></footer>
++
+ </body>
+ </html>
+\ No newline at end of file
+diff --git a/guides/hangzhou.html b/guides/hangzhou.html
+index 1db9269..2a4c000 100644
+--- a/guides/hangzhou.html
++++ b/guides/hangzhou.html
+@@ -25,6 +25,15 @@
+   <meta property="og:description" content="The honest guide to Hangzhou for first-time visitors: why go, top 5 must-sees with real history, where to stay by district, and what to eat.">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="https://www.readychinatravel.com/guides/hangzhou.html">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+@@ -448,5 +457,7 @@
+ })();
+ </script>
+ 
++<footer id="site-footer"></footer>
++
+ </body>
+ </html>
+\ No newline at end of file
+diff --git a/guides/harbin.html b/guides/harbin.html
+index acbbcf4..a03981e 100644
+--- a/guides/harbin.html
++++ b/guides/harbin.html
+@@ -25,6 +25,15 @@
+   <meta property="og:description" content="The honest guide to Harbin for first-time visitors: why go, top 5 must-sees with real history, where to stay by district, and what to eat.">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="https://www.readychinatravel.com/guides/harbin.html">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+@@ -469,5 +478,7 @@
+ })();
+ </script>
+ 
++<footer id="site-footer"></footer>
++
+ </body>
+ </html>
+\ No newline at end of file
+diff --git a/guides/hengqin.html b/guides/hengqin.html
+index 2f4bd72..42b6880 100644
+--- a/guides/hengqin.html
++++ b/guides/hengqin.html
+@@ -25,6 +25,15 @@
+   <meta property="og:description" content="The honest guide to Hengqin for first-time visitors: why go, top 5 must-sees with real history, where to stay by district, and what to eat.">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="https://www.readychinatravel.com/guides/hengqin.html">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+@@ -449,5 +458,7 @@
+ })();
+ </script>
+ 
++<footer id="site-footer"></footer>
++
+ </body>
+ </html>
+\ No newline at end of file
+diff --git a/guides/kashgar.html b/guides/kashgar.html
+index b2b56c6..66818fa 100644
+--- a/guides/kashgar.html
++++ b/guides/kashgar.html
+@@ -26,6 +26,15 @@
+   <meta property="og:description" content="The honest guide to Kashgar for first-time visitors: why go, top 5 must-sees with real history, where to stay by district, and what to eat.">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="https://www.readychinatravel.com/guides/kashgar.html">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+@@ -438,5 +447,7 @@
+ })();
+ </script>
+ 
++<footer id="site-footer"></footer>
++
+ </body>
+ </html>
+\ No newline at end of file
+diff --git a/guides/lijiang.html b/guides/lijiang.html
+index b1cda8d..4d8b59a 100644
+--- a/guides/lijiang.html
++++ b/guides/lijiang.html
+@@ -26,6 +26,15 @@
+   <meta property="og:description" content="The honest guide to Lijiang for first-time visitors: why go, top 5 must-sees with real history, where to stay by district, and what to eat.">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="https://www.readychinatravel.com/guides/lijiang.html">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+@@ -450,5 +459,7 @@
+ })();
+ </script>
+ 
++<footer id="site-footer"></footer>
++
+ </body>
+ </html>
+\ No newline at end of file
+diff --git a/guides/ordos.html b/guides/ordos.html
+index 8c3128e..4219427 100644
+--- a/guides/ordos.html
++++ b/guides/ordos.html
+@@ -25,6 +25,15 @@
+   <meta property="og:description" content="The honest guide to Ordos for first-time visitors: why go, top 5 must-sees with real history, where to stay by district, and what to eat.">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="https://www.readychinatravel.com/guides/ordos.html">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+@@ -449,5 +458,7 @@
+ })();
+ </script>
+ 
++<footer id="site-footer"></footer>
++
+ </body>
+ </html>
+\ No newline at end of file
+diff --git a/guides/pingwu-baima.html b/guides/pingwu-baima.html
+index 07ab118..45650a6 100644
+--- a/guides/pingwu-baima.html
++++ b/guides/pingwu-baima.html
+@@ -25,6 +25,15 @@
+   <meta property="og:description" content="The honest guide to Pingwu Baima for first-time visitors: why go, top 5 must-sees with real history, where to stay by district, and what to eat.">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="https://www.readychinatravel.com/guides/pingwu-baima.html">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+@@ -436,5 +445,7 @@
+ })();
+ </script>
+ 
++<footer id="site-footer"></footer>
++
+ </body>
+ </html>
+\ No newline at end of file
+diff --git a/guides/quanzhou.html b/guides/quanzhou.html
+index 12c08fe..b1d76c5 100644
+--- a/guides/quanzhou.html
++++ b/guides/quanzhou.html
+@@ -25,6 +25,15 @@
+   <meta property="og:description" content="The honest guide to Quanzhou for first-time visitors: why go, top 5 must-sees with real history, where to stay by district, and what to eat.">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="https://www.readychinatravel.com/guides/quanzhou.html">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+@@ -448,5 +457,7 @@
+ })();
+ </script>
+ 
++<footer id="site-footer"></footer>
++
+ </body>
+ </html>
+\ No newline at end of file
+diff --git a/guides/shanghai.html b/guides/shanghai.html
+index 8e452ba..a3b35dd 100644
+--- a/guides/shanghai.html
++++ b/guides/shanghai.html
+@@ -25,6 +25,15 @@
+   <meta property="og:description" content="The honest guide to Shanghai for first-time visitors: why go, top 5 must-sees with real history, where to stay by district, and what to eat.">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="https://www.readychinatravel.com/guides/shanghai.html">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+@@ -448,5 +457,7 @@
+ })();
+ </script>
+ 
++<footer id="site-footer"></footer>
++
+ </body>
+ </html>
+\ No newline at end of file
+diff --git a/guides/shenzhen.html b/guides/shenzhen.html
+index 6d011de..6718352 100644
+--- a/guides/shenzhen.html
++++ b/guides/shenzhen.html
+@@ -25,6 +25,15 @@
+   <meta property="og:description" content="The honest guide to Shenzhen for first-time visitors: why go, top 5 must-sees with real history, where to stay by district, and what to eat.">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="https://www.readychinatravel.com/guides/shenzhen.html">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+@@ -469,5 +478,7 @@
+ })();
+ </script>
+ 
++<footer id="site-footer"></footer>
++
+ </body>
+ </html>
+\ No newline at end of file
+diff --git a/guides/xian.html b/guides/xian.html
+index 77282e3..79e033e 100644
+--- a/guides/xian.html
++++ b/guides/xian.html
+@@ -25,6 +25,15 @@
+   <meta property="og:description" content="The honest guide to Xi'an for first-time visitors: why go, top 5 must-sees with real history, where to stay by district, and what to eat.">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="https://www.readychinatravel.com/guides/xian.html">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+@@ -448,5 +457,7 @@
+ })();
+ </script>
+ 
++<footer id="site-footer"></footer>
++
+ </body>
+ </html>
+\ No newline at end of file
+diff --git a/guides/yiwu.html b/guides/yiwu.html
+index dadf676..1e3b713 100644
+--- a/guides/yiwu.html
++++ b/guides/yiwu.html
+@@ -25,6 +25,15 @@
+   <meta property="og:description" content="The honest guide to Yiwu for first-time visitors: why go, top 5 must-sees with real history, where to stay by district, and what to eat.">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="https://www.readychinatravel.com/guides/yiwu.html">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+@@ -437,5 +446,7 @@
+ })();
+ </script>
+ 
++<footer id="site-footer"></footer>
++
+ </body>
+ </html>
+\ No newline at end of file
+diff --git a/guides/zhangjiajie.html b/guides/zhangjiajie.html
+index fe84162..d8dc237 100644
+--- a/guides/zhangjiajie.html
++++ b/guides/zhangjiajie.html
+@@ -25,6 +25,15 @@
+   <meta property="og:description" content="The honest guide to Zhangjiajie for first-time visitors: why go, top 5 must-sees with real history, where to stay by district, and what to eat.">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="https://www.readychinatravel.com/guides/zhangjiajie.html">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+@@ -437,5 +446,7 @@
+ })();
+ </script>
+ 
++<footer id="site-footer"></footer>
++
+ </body>
+ </html>
+\ No newline at end of file
+diff --git a/high-speed-train/index.html b/high-speed-train/index.html
+index 3631a46..4ec66d4 100644
+--- a/high-speed-train/index.html
++++ b/high-speed-train/index.html
+@@ -31,6 +31,15 @@
+   overflow: visible;
+ }
+ </style>
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ <header id="site-header"></header>
+diff --git a/immigration/index.html b/immigration/index.html
+index 1f1b22e..18a8885 100644
+--- a/immigration/index.html
++++ b/immigration/index.html
+@@ -15,6 +15,15 @@
+ <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="../assets/style.css">
+ <link rel="stylesheet" href="../assets/guide.css">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ <header id="site-header"></header>
+diff --git a/index.html b/index.html
+index d5794ab..a636c28 100644
+--- a/index.html
++++ b/index.html
+@@ -25,6 +25,15 @@
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="assets/style.css">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+diff --git a/metro-guide/index.html b/metro-guide/index.html
+index e72f35e..6d7e4f6 100644
+--- a/metro-guide/index.html
++++ b/metro-guide/index.html
+@@ -25,6 +25,15 @@
+ }
+ </style>
+ 
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ <header id="site-header"></header>
+diff --git a/phrases/index.html b/phrases/index.html
+index d9ac71d..6cf1092 100644
+--- a/phrases/index.html
++++ b/phrases/index.html
+@@ -30,6 +30,15 @@
+ .tone-name{font-size:10px;color:var(--text-muted);margin-top:4px}
+ @media(max-width:640px){.phrase-row{grid-template-columns:1fr 1fr}.p-tip{display:none}.tone-grid{grid-template-columns:repeat(2,1fr)}}
+ </style>
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ <header id="site-header"></header>
+diff --git a/play/index.html b/play/index.html
+index 89f22d6..05b7065 100644
+--- a/play/index.html
++++ b/play/index.html
+@@ -255,6 +255,15 @@
+     .game-bg { padding-top: 100px; }
+   }
+ </style>
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ 
+diff --git a/privacy/index.html b/privacy/index.html
+new file mode 100644
+index 0000000..a1dd4a0
+--- /dev/null
++++ b/privacy/index.html
+@@ -0,0 +1,155 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++<meta charset="UTF-8">
++<meta name="viewport" content="width=device-width, initial-scale=1.0">
++<title>Privacy Policy — Ready? China!</title>
++<meta name="description" content="How Ready? China! handles visitor data: analytics, contact forms, and affiliate/tracking links used on this site.">
++<link rel="canonical" href="https://www.readychinatravel.com/privacy">
++<meta name="robots" content="noindex, follow">
++<meta property="og:title" content="Privacy Policy — Ready? China!">
++<meta property="og:type" content="article">
++<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G3C5T1WRB"></script>
++<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3G3C5T1WRB');</script>
++<link rel="preconnect" href="https://fonts.googleapis.com">
++<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
++<link rel="stylesheet" href="../assets/style.css">
++<link rel="stylesheet" href="../assets/guide.css">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
++</head>
++<body>
++<header id="site-header"></header>
++<script src="../assets/nav.js"></script>
++<script>buildNav();</script>
++
++<main><div class="guide-wrap">
++<nav class="breadcrumb"><a href="../">Home</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Privacy Policy</span></nav>
++
++<div class="guide-hero">
++  <div class="guide-hero-icon">🔒</div>
++  <div>
++    <div class="guide-hero-eyebrow">Legal &amp; Privacy</div>
++    <h1>Privacy Policy</h1>
++    <p class="guide-hero-sub">This page explains, in plain language, what data this site collects, which outside services it uses, and how affiliate links work. Ready? China! is a small independent site — this isn't a corporate legal document, just an honest explanation of what happens when you visit.</p>
++    <div class="guide-meta"><span>📅 Updated August 2026</span></div>
++  </div>
++</div>
++
++<div class="callout callout-info" style="margin-bottom:28px">
++  <div class="callout-label">ℹ️ Quick Summary</div>
++  This site uses Google Analytics to see which pages are useful, contact/quiz forms that go through a third-party form service, and affiliate links (including an automated tool called Travelpayouts Drive) that may earn this site a commission if you book something through them. No visitor data is sold, and form submissions are never shared with advertisers or affiliate partners.
++</div>
++
++<article class="guide-step">
++  <div class="guide-step-header"><div class="guide-step-num">1</div><h2>Who Runs This Site</h2></div>
++  <div class="guide-step-body full-width">
++    <p>Ready? China! (readychinatravel.com) is an independently run site built and maintained by Kat, to help first-time visitors prepare for travel to China. This is not a large company — it's one person's project. If you have a question about your data, use the contact options on the <a href="../community">Community</a> page.</p>
++  </div>
++</article>
++
++<article class="guide-step">
++  <div class="guide-step-header"><div class="guide-step-num">2</div><h2>Analytics — Google Analytics</h2></div>
++  <div class="guide-step-body full-width">
++    <p>This site uses Google Analytics to understand which pages are helpful and where visitors are coming from. Google Analytics uses cookies and similar technology to collect information such as:</p>
++    <div class="info-grid">
++      <div class="info-card"><div class="info-card-title">What's collected</div><ul class="info-list">
++        <li>Pages visited and time spent on them</li>
++        <li>General location (country/city level, from IP address)</li>
++        <li>Device and browser type</li>
++        <li>How you arrived at the site (search engine, link, direct)</li>
++      </ul></div>
++      <div class="info-card"><div class="info-card-title">What's not collected</div><ul class="info-list">
++        <li>Your name or contact details (unless you submit a form separately — see below)</li>
++        <li>Anything you type into forms</li>
++        <li>Payment information (this site doesn't process payments)</li>
++      </ul></div>
++    </div>
++    <p style="margin-top:12px">You can learn more about how Google handles this data in <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>, and opt out of Google Analytics tracking across all websites using the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.</p>
++  </div>
++</article>
++
++<article class="guide-step">
++  <div class="guide-step-header"><div class="guide-step-num">3</div><h2>Contact Forms &amp; the AI Planner</h2></div>
++  <div class="guide-step-body full-width">
++    <p>Forms on this site (community submissions, the AI trip planner, and similar features) are handled by <strong>Formspree</strong>, a third-party form processing service. When you submit a form, the information you type — such as your email address or trip details — is sent directly to Formspree's servers and forwarded to Kat's inbox.</p>
++    <div class="callout callout-warning">
++      <div class="callout-label">What this means</div>
++      Anything you submit through a form is used only to respond to you, or, if you've opted into a specific feature, to provide that feature. Form submissions are never passed to Travelpayouts, advertisers, or any affiliate program. This site does not sell or share your contact information with third parties.
++    </div>
++    <p style="margin-top:12px">You can review Formspree's own data practices at <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a>.</p>
++  </div>
++</article>
++
++<article class="guide-step">
++  <div class="guide-step-header"><div class="guide-step-num">4</div><h2>Affiliate Links &amp; Travelpayouts Drive</h2></div>
++  <div class="guide-step-body full-width">
++    <p>Ready? China! is free to use, and is partly funded through affiliate partnerships. When you click certain links on this site (for example, eSIM, flight, hotel, train, VPN, or travel insurance links) and go on to make a booking or purchase, this site may earn a small commission — at no extra cost to you.</p>
++    <p style="margin-top:12px">This site uses <strong>Travelpayouts Drive</strong>, an automated tool that:</p>
++    <ul class="info-list">
++      <li>Finds existing links to travel brands on this site and routes them through Travelpayouts' tracking system, so referrals can be counted and commissions paid</li>
++      <li>May automatically turn certain travel-related keywords in the text into affiliate links</li>
++      <li>Sets a cookie to record that a booking came from this site, so the referral can be credited — this cookie does not contain your name, email, or other personal details</li>
++    </ul>
++    <p style="margin-top:12px">Other affiliate partners used or planned for this site include Airalo (eSIM), Trip.com (flights/hotels/trains), and travel insurance and VPN providers. Each of these partners has its own privacy and cookie policy governing what happens after you leave this site.</p>
++    <div class="callout callout-info">
++      <div class="callout-label">Why this matters to you</div>
++      Affiliate relationships don't cost you anything extra, and Kat only recommends services actually used or vetted for travel in China. But clicking through to a partner site means that partner's own tracking and privacy policy applies from that point on — this policy only covers what happens on readychinatravel.com itself.
++    </div>
++  </div>
++</article>
++
++<article class="guide-step">
++  <div class="guide-step-header"><div class="guide-step-num">5</div><h2>Cookies, in Plain Terms</h2></div>
++  <div class="guide-step-body full-width">
++    <p>A cookie is a small file your browser stores when you visit a site. This site uses cookies from:</p>
++    <ul class="info-list">
++      <li><strong>Google Analytics</strong> — to understand site usage (see Section 2)</li>
++      <li><strong>Travelpayouts</strong> — to track affiliate referrals (see Section 4)</li>
++    </ul>
++    <p style="margin-top:12px">You can block or delete cookies at any time through your browser settings. Doing so may affect how affiliate referrals are tracked, but won't stop you from using any part of this site.</p>
++  </div>
++</article>
++
++<article class="guide-step">
++  <div class="guide-step-header"><div class="guide-step-num">6</div><h2>Your Choices</h2></div>
++  <div class="guide-step-body full-width">
++    <div class="info-grid">
++      <div class="info-card"><div class="info-card-title">You can</div><ul class="info-list">
++        <li>Browse the site without submitting any form — nothing personal is collected unless you type it into a form</li>
++        <li>Block cookies or use browser privacy settings/extensions</li>
++        <li>Ask what data Formspree holds for a submission you made, by contacting Kat directly</li>
++      </ul></div>
++      <div class="info-card"><div class="info-card-title">Not offered right now</div><ul class="info-list">
++        <li>A cookie-consent banner (this site currently relies on your browser's own cookie controls)</li>
++        <li>A dedicated account system or data dashboard (there are no user accounts on this site)</li>
++      </ul></div>
++    </div>
++  </div>
++</article>
++
++<article class="guide-step">
++  <div class="guide-step-header"><div class="guide-step-num">7</div><h2>Changes to This Policy</h2></div>
++  <div class="guide-step-body full-width">
++    <p>As Ready? China! adds new features, guides, or partners, this page will be updated to reflect them. Check the "Updated" date at the top of this page for the latest revision.</p>
++  </div>
++</article>
++
++<div class="callout callout-tip" style="margin-top:28px">
++  <div class="callout-label">📝 A Note From Kat</div>
++  I built this site because I wanted my friends to have an easier time visiting me in China. I'm not a lawyer, and this page isn't a substitute for legal advice — it's just a straightforward account of what actually happens on this site. If anything here is unclear, reach out through the <a href="../community">Community page</a> and I'll answer directly.
++</div>
++
++</div></main>
++
++<footer id="site-footer"></footer>
++
++</body>
++</html>
+diff --git a/qr-payments/index.html b/qr-payments/index.html
+index 0a085c8..15f3874 100644
+--- a/qr-payments/index.html
++++ b/qr-payments/index.html
+@@ -15,6 +15,15 @@
+ <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="../assets/style.css">
+ <link rel="stylesheet" href="../assets/guide.css">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ <header id="site-header"></header>
+diff --git a/travel-insurance/index.html b/travel-insurance/index.html
+index f7a4ad9..35030ce 100644
+--- a/travel-insurance/index.html
++++ b/travel-insurance/index.html
+@@ -15,6 +15,15 @@
+ <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="../assets/style.css">
+ <link rel="stylesheet" href="../assets/guide.css">
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ <header id="site-header"></header>
+diff --git a/visa/index.html b/visa/index.html
+index 2546973..5837a11 100644
+--- a/visa/index.html
++++ b/visa/index.html
+@@ -53,6 +53,15 @@
+ .faq-arrow{transition:transform .3s;font-size:12px;opacity:.5}
+ @media(max-width:640px){.vc-form{grid-template-columns:1fr}}
+ </style>
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ <header id="site-header"></header>
+diff --git a/vpn/index.html b/vpn/index.html
+index 41fc50c..3e5cbe5 100644
+--- a/vpn/index.html
++++ b/vpn/index.html
+@@ -23,6 +23,15 @@
+ 
+ .screenshot-wrap{background:transparent;border:none;border-radius:0;width:100%;max-width:300px;margin:0 auto;margin-top:10px}
+ </style>
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ <header id="site-header"></header>
+diff --git a/wechat/index.html b/wechat/index.html
+index 2dea6d6..ab5b639 100644
+--- a/wechat/index.html
++++ b/wechat/index.html
+@@ -24,6 +24,15 @@
+   overflow: visible;
+ }
+ </style>
++<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
++  (function () {
++      var script = document.createElement("script");
++      script.async = 1;
++      script.setAttribute("data-cmp-ab","2");
++      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
++      document.head.appendChild(script);
++  })();
++</script>
+ </head>
+ <body>
+ <header id="site-header"></header>

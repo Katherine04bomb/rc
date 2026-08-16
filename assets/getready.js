@@ -9,111 +9,147 @@
 const visaDB = {
   us: {
     flag:'🇺🇸', name:'United States', type:'Visa Required',
-    detail:`You need an <strong>L (Tourist) visa</strong> before you fly. Apply at the nearest Chinese Consulate — processing takes 4–7 business days. You're also eligible for <strong>144-hour visa-free transit</strong> through Beijing, Shanghai, Guangzhou, Chengdu and more (onward ticket required).`,
+    detail:`You need an <strong>L (Tourist) visa</strong> before you fly. Apply at the nearest Chinese Consulate — processing takes 4–7 business days. You're also eligible for <strong>144-hour visa-free transit</strong> through Beijing, Shanghai, Guangzhou, Chengdu and more (onward ticket to a third country required).`,
     officialUrl:'https://www.visaforchina.cn/globle/',
-    embassyUrl:'https://www.china-embassy.gov.cn/eng/'
+    embassyUrl:'http://us.china-embassy.gov.cn/eng/'
   },
   uk: {
-    flag:'🇬🇧', name:'United Kingdom', type:'✅ Visa-Free (15 days)',
-    detail:`Great news — UK passport holders enjoy <strong>15-day visa-free entry</strong> (expanded 2024 policy). No application needed for short trips. Staying longer than 15 days? Apply for an L visa at the Chinese Embassy in London.`,
+    flag:'🇬🇧', name:'United Kingdom', type:'✅ Visa-Free (30 days)',
+    detail:`Great news — UK passport holders enjoy <strong>30-day visa-free entry</strong> until December 31, 2026 (expanded 2024 policy). No application needed for short trips. Staying longer than 30 days? Apply for an L visa at the Chinese Embassy in London.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
-    embassyUrl:'https://www.chinese-embassy.org.uk/eng/'
+    embassyUrl:'http://gb.china-embassy.gov.cn/eng/'
   },
   au: {
-    flag:'🇦🇺', name:'Australia', type:'Visa Required',
-    detail:`You need an <strong>L (Tourist) visa</strong> before you fly. Apply at the Chinese Embassy in Canberra or consulates in Sydney or Melbourne. Processing takes 4–7 business days. <strong>144-hour transit visa-free</strong> is also available.`,
+    flag:'🇦🇺', name:'Australia', type:'✅ Visa-Free (30 days)',
+    detail:`Australian passport holders do not need a visa to enter China for short stays up to <strong>30 days</strong>. Under a temporary policy valid until December 31, 2026, ordinary passport holders can visit for tourism, business, family visits, or transit without applying in advance.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
-    embassyUrl:'https://www.china-embassy.gov.cn/eng/'
+    embassyUrl:'https://au.china-embassy.gov.cn/eng/'
   },
   de: {
-    flag:'🇩🇪', name:'Germany', type:'✅ Visa-Free (15 days)',
-    detail:`German passport holders enjoy <strong>15-day visa-free entry</strong> (expanded 2024). No application needed for short stays. Staying longer? Apply at the Chinese Embassy in Berlin or consulates in Frankfurt, Hamburg, or Munich.`,
+    flag:'🇩🇪', name:'Germany', type:'✅ Visa-Free (30 days)',
+    detail:`German passport holders enjoy <strong>30-day visa-free entry</strong>for tourism, business, family visits, or transit (updated Nov 2025). No application needed for short stays. Staying longer? Apply at the Chinese Embassy in Berlin or consulates in Frankfurt, Hamburg, or Munich.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
-    embassyUrl:'https://www.china-botschaft.de/eng/'
+    embassyUrl:'https://de.china-embassy.gov.cn/det/'
   },
   fr: {
-    flag:'🇫🇷', name:'France', type:'✅ Visa-Free (15 days)',
-    detail:`French passport holders enjoy <strong>15-day visa-free entry</strong> (expanded 2024). For longer stays, apply at the Chinese Embassy in Paris or consulate in Lyon.`,
+    flag:'🇫🇷', name:'France', type:'✅ Visa-Free (30 days)',
+    detail:`French passport holders enjoy <strong>30-day visa-free entry</strong>for tourism, business, family visits, or transit (updated Nov 2025). For longer stays, apply at the Chinese Embassy in Paris or consulate in Lyon.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
-    embassyUrl:'https://www.amb-chine.fr/fra/'
+    embassyUrl:'http://www.china.org.cn/english/Embassies/'
   },
   ca: {
-    flag:'🇨🇦', name:'Canada', type:'Visa Required',
-    detail:`You need an <strong>L (Tourist) visa</strong> before you travel. Apply at the Chinese Consulate in Toronto, Vancouver, Calgary, or the Embassy in Ottawa. Processing takes 4–7 business days. <strong>144-hour transit visa-free</strong> is also available.`,
+    flag:'🇨🇦', name:'Canada', type:'✅ Visa-Free (30 days)',
+    detail:`Canadian ordinary passport holders do not need a visa to enter mainland China for stays of up to <strong>30 days</strong>, under a temporary visa-waiver program active until December 31, 2026 (updated Feb 2026). This applies to tourism, business, family visits, exchanges, and transit.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
-    embassyUrl:'https://www.chinaembassycanada.org/eng/'
+    embassyUrl:'https://vancouver.china-consulate.gov.cn/eng/'
   },
   sg: {
     flag:'🇸🇬', name:'Singapore', type:'✅ Visa-Free (30 days)',
     detail:`Singapore passport holders enjoy <strong>30-day visa-free entry</strong> — one of the most generous agreements China offers. No application needed for tourist stays under 30 days.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
-    embassyUrl:'https://www.mfa.gov.cn/ce/cesg/eng/'
+    embassyUrl:'https://sg.china-embassy.gov.cn/eng/jbwzlm/links_eng/'
   },
   jp: {
-    flag:'🇯🇵', name:'Japan', type:'✅ Visa-Free (15 days)',
-    detail:`Japanese passport holders enjoy <strong>15-day visa-free entry</strong> (restored 2024). For stays longer than 15 days, apply at the Chinese Embassy in Tokyo or consulates in Osaka, Nagoya, Fukuoka, or Sapporo.`,
+    flag:'🇯🇵', name:'Japan', type:'✅ Visa-Free (30 days)',
+    detail:`Japanese passport holders enjoy <strong>30-day visa-free entry</strong>for tourism, business, family visits, or transit. This unilateral visa-free policy remains in effect through December 31, 2026 (updated Nov 2025). For stays longer than 30 days, apply at the Chinese Embassy in Tokyo or consulates in Osaka, Nagoya, Fukuoka, or Sapporo.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
     embassyUrl:'http://www.china-embassy.or.jp/jpn/'
   },
   kr: {
-    flag:'🇰🇷', name:'South Korea', type:'✅ Visa-Free (15 days)',
-    detail:`South Korean passport holders enjoy <strong>15-day visa-free entry</strong> (expanded 2024). For longer stays, apply at the Chinese Embassy in Seoul or consulates in Busan or Guangzhou.`,
+    flag:'🇰🇷', name:'South Korea', type:'✅ Visa-Free (30 days)',
+    detail:`South Korean passport holders enjoy <strong>30-day visa-free entry</strong>for tourism, for tourism, business, family visits, or transit. This unilateral visa-free policy remains in effect through December 31, 2026(updated Nov 2025). For longer stays, apply at the Chinese Embassy in Seoul or consulates in Busan.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
     embassyUrl:'http://kr.china-embassy.gov.cn/kor/'
   },
-  nz: {
-    flag:'🇳🇿', name:'New Zealand', type:'Visa Required',
-    detail:`You need an <strong>L (Tourist) visa</strong> before travelling. Apply at the Chinese Embassy in Wellington or the Consulate in Auckland. Processing takes 4–7 business days.`,
+  ru: {
+    flag:'🇷🇺', name:'Russia', type:'✅ Visa-Free (30 days)',
+    detail:`Russian passport holders enjoy <strong>30-day visa-free entry</strong> (This policy is valid through December 31, 2027). For longer stays, apply at the Chinese Embassy in Moscow or consulates in Saint Petersburg or Vladivostok.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
-    embassyUrl:'https://www.mfa.gov.cn/ce/cenl/eng/'
+    embassyUrl:'http://ru.china-embassy.gov.cn/eng/'
+  },
+  my: {
+    flag:'🇲🇾', name:'Malaysia', type:'✅ Visa-Free (30 days)',
+    detail:`Malaysian passport holders enjoy <strong>30-day visa-free entry</strong> (updated July 17, 2025). For longer stays, apply at the Chinese Embassy in Kuala Lumpur or consulates in Johor Bahru or Penang.`,
+    officialUrl:'https://www.visaforchina.cn/globle/',
+    embassyUrl:'http://my.china-embassy.gov.cn/mya/'
+  },
+  vn: {
+    flag:'🇻🇳', name:'Vietnam', type:'Visa Required',
+    detail:`You need an <strong>L (Tourist) visa</strong> before you travel. Apply for a Chinese visa in advance through the Chinese Visa Application Service Center or the Chinese Embassy in Hanoi, Da Nang, or Ho Chi Minh City. Standard processing takes about 4 business days, and single-entry tourist visa fees cost roughly $45 USD for Vietnamese citizens `,
+    officialUrl:'https://www.visaforchina.cn/globle/',
+    embassyUrl:'http://vn.china-embassy.gov.cn/vie/'
+  },
+  th: {
+    flag:'🇹🇭', name:'Thailand', type:'✅ Visa-Free (30 days)',
+    detail:`Thai passport holders enjoy <strong>30-day visa-free entry</strong> (updated May 21, 2026). For longer stays, apply at the Chinese Embassy in Bangkok or consulates in Chiang Mai or Phuket.`,
+    officialUrl:'https://www.visaforchina.cn/globle/',
+    embassyUrl:'http://th.china-embassy.gov.cn/tha/'
+  },
+  mn: {
+    flag:'🇲🇳', name:'Mongolia', type:'✅ Visa-Free (30 days)',
+    detail:` Holders of standard Mongolian passports (Series E and PE) can enter China visa-free for up to <strong>30 days</strong>. For longer stays, apply at the Chinese Embassy in Ulaanbaatar or consulates in Darkhan or Erdenet.`,
+    officialUrl:'https://www.visaforchina.cn/globle/',
+    embassyUrl:'http://mn.china-embassy.gov.cn/eng/'
+  },
+  nz: {
+    flag:'🇳🇿', name:'New Zealand', type:'✅ Visa-Free (30 days)',
+    detail:`New Zealand passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits, or transit (updated Nov 2025). For longer stays, apply at the Chinese Embassy in Wellington or the Consulate in Auckland.`,
+    officialUrl:'https://www.visaforchina.cn/globle/',
+    embassyUrl:'https://nz.china-embassy.gov.cn/eng/'
   },
   it: {
-    flag:'🇮🇹', name:'Italy', type:'✅ Visa-Free (15 days)',
-    detail:`Italian passport holders enjoy <strong>15-day visa-free entry</strong> (2024 policy). For longer trips, apply at the Chinese Embassy in Rome or consulates in Milan or Florence.`,
+    flag:'🇮🇹', name:'Italy', type:'✅ Visa-Free (30 days)',
+    detail:`Italian passport holders enjoy <strong>30-day visa-free entry</strong>for tourism, business,family visits or transit through December 31, 2026 (updated Nov 2025). For longer trips, apply at the Chinese Embassy in Rome or consulates in Milan or Florence.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
-    embassyUrl:'https://www.mfa.gov.cn/ce/ceit/ita/'
+    embassyUrl:'https://it.china-embassy.gov.cn/ita/'
   },
   es: {
-    flag:'🇪🇸', name:'Spain', type:'✅ Visa-Free (15 days)',
-    detail:`Spanish passport holders enjoy <strong>15-day visa-free entry</strong> (2024 policy). For longer trips, apply at the Chinese Embassy in Madrid or Consulate General in Barcelona.`,
+    flag:'🇪🇸', name:'Spain', type:'✅ Visa-Free (30 days)',
+    detail:`Spanish passport holders enjoy <strong>30-day visa-free entry</strong>for tourism, business, family visits, or transit through December 31, 2026 (updated Nov 2025). For longer trips, apply at the Chinese Embassy in Madrid or Consulate General in Barcelona.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
-    embassyUrl:'https://www.mfa.gov.cn/ce/cees/esp/'
+    embassyUrl:'https://es.china-embassy.gov.cn/esp/'
   },
   nl: {
-    flag:'🇳🇱', name:'Netherlands', type:'✅ Visa-Free (15 days)',
-    detail:`Dutch passport holders enjoy <strong>15-day visa-free entry</strong> (2024 policy). For longer stays, apply at the Chinese Embassy in The Hague.`,
+    flag:'🇳🇱', name:'Netherlands', type:'✅ Visa-Free (30 days)',
+    detail:`Dutch passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits, or transit (updated Nov 2025). For longer stays, apply at the Chinese Embassy in The Hague.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
-    embassyUrl:'https://www.mfa.gov.cn/ce/cenl/eng/'
+    embassyUrl:'https://nl.china-embassy.gov.cn/eng/'
   },
   se: {
-    flag:'🇸🇪', name:'Sweden', type:'✅ Visa-Free (15 days)',
-    detail:`Swedish passport holders enjoy <strong>15-day visa-free entry</strong> (2024 policy). For longer stays, apply at the Chinese Embassy in Stockholm.`,
+    flag:'🇸🇪', name:'Sweden', type:'✅ Visa-Free (30 days)',
+    detail:`Swedish passport holders enjoy <strong>30-day visa-free entry</strong> for business, tourism, family visits, or transit through December 31, 2026. For longer stays, apply at the Chinese Embassy in Stockholm.(updated Nov 2025)`,
     officialUrl:'https://www.visaforchina.cn/globle/',
-    embassyUrl:'https://www.mfa.gov.cn/ce/cese/eng/'
+    embassyUrl:'https://se.china-embassy.gov.cn/eng/'
   },
   ch: {
-    flag:'🇨🇭', name:'Switzerland', type:'Visa Required',
-    detail:`You need an <strong>L (Tourist) visa</strong>. Apply at the Chinese Embassy in Bern. Processing takes 4–7 business days.`,
+    flag:'🇨🇭', name:'Switzerland', type:'✅ Visa-Free (30 days)',
+    detail:`Swiss ordinary passport holders do not need a visa to enter China for tourism, business, family visits, exchange visits, or transit for stays up to <strong>30 days</strong>. This visa-free entry policy remains active through <strong>December 31, 2026</strong>.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
-    embassyUrl:'https://www.mfa.gov.cn/ce/cech/ger/'
+    embassyUrl:'https://ch.china-embassy.gov.cn/ger/'
   },
   br: {
     flag:'🇧🇷', name:'Brazil', type:'✅ Visa-Free (30 days)',
     detail:`Brazilian passport holders enjoy <strong>30-day visa-free entry</strong> under the bilateral agreement. No application needed for tourist stays under 30 days.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
-    embassyUrl:'https://www.mfa.gov.cn/ce/cebr/eng/'
+    embassyUrl:'https://br.china-embassy.gov.cn/'
   },
   in: {
     flag:'🇮🇳', name:'India', type:'Visa Required',
-    detail:`You need an <strong>L (Tourist) visa</strong>. Apply at the Chinese Embassy in New Delhi or consulates in Mumbai, Kolkata, or Chennai. Processing takes 5–10 business days.`,
+    detail:`You need an <strong>L (Tourist) visa</strong>. The process starts online through the Chinese Visa Application Service Center where you fill out forms and upload documents. After online review, you must visit a application center in person to submit your physical passport and provide fingerprints(updated Aug 20, 2024).`,
     officialUrl:'https://www.visaforchina.cn/globle/',
-    embassyUrl:'https://www.mfa.gov.cn/ce/cein/eng/'
+    embassyUrl:'https://embassies.net/china-in-india'
   },
   za: {
     flag:'🇿🇦', name:'South Africa', type:'Visa Required',
-    detail:`You need an <strong>L (Tourist) visa</strong>. Apply at the Chinese Embassy in Pretoria. Processing takes 5–7 business days.`,
+    detail:`You need an <strong>L (Tourist) visa</strong>. Applications must be completed online and submitted in person through the Chinese Visa Application Service Center (CVASC) located in Johannesburg, Cape Town, or Durban. Standard processing takes a few working days.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
-    embassyUrl:'https://www.mfa.gov.cn/ce/ceza/eng/'
+    embassyUrl:'https://johannesburg.china-consulate.gov.cn/eng'
+  },
+  pk: {
+    flag:'🇵🇰', name:'Pakistan', type:'Visa Required',
+    detail:`You need an <strong>L (Tourist) visa</strong>. Applications are processed online and submitted through the Chinese Visa Application Service Center (managed via Gerry's). Standard processing takes 5 to 7 working days, with service fees around PKR 13,200 [0.4].`,
+    officialUrl:'https://www.visaforchina.cn/globle/',
+    embassyUrl:'https://pk.china-embassy.gov.cn/eng/'
   }
 };
 

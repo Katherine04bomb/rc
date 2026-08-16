@@ -52,7 +52,7 @@ function loadAbout() {
               </div>
               <div class="about-ex">
                 <div class="about-ex-icon">💳</div>
-                <div class="about-ex-text">Katty <strong>couldn't pay for dinner</strong>
+                <div class="about-ex-text">Kory <strong>couldn't pay for dinner</strong>
                   — she thought credit cards worked everywhere. The restaurant only took
                   WeChat or Alipay pay. A stranger finally helped her. She was so embarrassed.</div>
               </div>

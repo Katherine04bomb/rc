@@ -26,8 +26,8 @@ const POSTS = [
     body: `Not really. China doesn't have one nationwide public transport card that works across every city.
     Instead, public transport is usually city-based. Shanghai, Beijing, Guangzhou, etc. each have their own transport systems and payment options.
     For a short trip, you can usually:
-    (1) Pay for metro rides with Alipay or the city's transport mini-program, or you can buy a single-ride ticket at the metro station, there is a <a href="../metro-guide" style="color:var(--gold)">guide</a>.
-    (2) Use a local transport card if you're staying longer or taking public transport frequently (but if you're only visiting for a few days, don't worry about buying a physical transport card before you arrive. Set up <a href="../alipay" style="color:var(--gold)">Alipay</a> first — it's usually much more convenient for visitors).`
+    (1) Pay for metro rides with Alipay or the city's transport mini-program, or you can buy a single-ride ticket at the metro station, there's a metro guide on the website.
+    (2) Use a local transport card if you're staying longer or taking public transport frequently (but if you're only visiting for a few days, don't worry about buying a physical transport card before you arrive. Set up Alipay first — it's usually much more convenient for visitors).`
   },
   // ── August 2026 ───────────────────────────────────────────
   {
