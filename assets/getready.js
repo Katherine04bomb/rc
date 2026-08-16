@@ -350,7 +350,7 @@ function loadGetReady() {
   <section class="section" id="ready-section">
     <div class="section-eyebrow">Step by Step · 出发准备</div>
     <h2 class="section-title">Get Ready with Me</h2>
-    <p class="section-sub">Tick off each step as you go — I've been through this with so many friends, and by the end of this list, you'll feel genuinely prepared.</p>
+    <p class="section-sub">Tick off each step as you go — I've been through this with so many friends, and by the end of this list, you'll feel genuinely prepared.Finish them all, and we'll celebrate with a full-screen fireworks show! </p>
 
     <div class="progress-area">
       <div class="progress-header">

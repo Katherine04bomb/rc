@@ -475,7 +475,7 @@ function loadCommunity() {
         ✅ You're on the list! I'll be in touch soon.
       </div>
       <div style="margin-top:16px;font-size:12px;color:var(--text-muted)">
-        Or reach me directly: <a href="mailto:katherine011004@gmail.com" style="color:var(--accent)">katherine011004@gmail.com</a>
+        Or reach me directly: <a href="mailto:hello@readychinatravel.com" style="color:var(--accent)">hello@readychinatravel.com</a>
       </div>
     </div>
   </section>`;

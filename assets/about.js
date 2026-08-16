@@ -70,7 +70,7 @@ function loadAbout() {
             <div class="about-contact">
               <span>📧</span>
               <span>Questions? Stories? Just want to say hi? Email Katherine directly:
-                <a href="mailto:katherine011004@gmail.com">katherine011004@gmail.com</a>
+                <a href="mailto:hello@readychinatravel.com">hello@readychinatravel.com</a>
               </span>
             </div>
             <div class="about-hometown">Welcome to China! 🏮</div>
