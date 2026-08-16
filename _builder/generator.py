@@ -247,14 +247,7 @@ def render_city(d):
 <meta name="description" content="%s">
 %s
 
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G3C5T1WRB"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3G3C5T1WRB');
-</script>
+<script src="../assets/consent-gate.js"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -265,15 +258,6 @@ def render_city(d):
   <meta property="og:description" content="%s">
   <meta property="og:type" content="article">
   <meta property="og:url" content="%s">
-<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
-  (function () {
-      var script = document.createElement("script");
-      script.async = 1;
-      script.setAttribute("data-cmp-ab","2");
-      script.src = 'https://emrld.ltd/NTYyNzU5.js?t=562759';
-      document.head.appendChild(script);
-  })();
-</script>
 </head>
 <body>
 

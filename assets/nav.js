@@ -164,7 +164,8 @@ function buildNav(rootPath) {
         <a href="${rootPath}alipay" style="color:var(--text-muted);margin-right:16px">Alipay Setup</a>
         <a href="${rootPath}wechat" style="color:var(--text-muted);margin-right:16px">WeChat Setup</a>
         <a href="${rootPath}guides" style="color:var(--text-muted);margin-right:16px">All Guides</a>
-        <a href="${rootPath}privacy" style="color:var(--text-muted)">Privacy Policy</a>
+        <a href="${rootPath}privacy" style="color:var(--text-muted);margin-right:16px">Privacy Policy</a>
+        <a href="javascript:void(0)" onclick="if(window.rcOpenCookiePrefs)window.rcOpenCookiePrefs()" style="color:var(--text-muted)">Cookie Preferences</a>
       </div>
     </div>
     <div style="text-align:right;line-height:1.8">
@@ -177,6 +178,9 @@ function buildNav(rootPath) {
   // search.js is loaded dynamically here so no page needs its own
   // <script> tag for it — one less file to touch when adding pages.
   rcLoadSearchScript(rootPath);
+
+  // Cookie consent banner — same dynamic-load pattern as search.js.
+  rcLoadCookieConsentScript(rootPath);
 }
 
 function rcLoadSearchScript(rootPath) {
@@ -185,6 +189,15 @@ function rcLoadSearchScript(rootPath) {
   s.id = 'rc-search-script';
   s.src = rootPath + 'assets/search.js';
   s.setAttribute('data-root', rootPath);
+  document.body.appendChild(s);
+}
+
+function rcLoadCookieConsentScript(rootPath) {
+  if (document.getElementById('rc-cookie-script')) return; // already loaded
+  const s = document.createElement('script');
+  s.id = 'rc-cookie-script';
+  s.src = rootPath + 'assets/cookie-consent.js';
+  s.onload = () => rcInitCookieBanner(rootPath);
   document.body.appendChild(s);
 }
 
