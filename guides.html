@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Guides · Ready? China!</title>
+  <!-- SEO -->
+  <meta name="description" content="Every guide on Ready? China! — visas, payments, transport, food, language, and 20 city guides for first-time visitors.">
+  <link rel="canonical" href="https://www.readychinatravel.com/guides.html">
+  <meta property="og:title" content="All Guides — Ready? China!">
+  <meta property="og:description" content="The complete library: visas, Alipay, WeChat, transport, food, phrases, and city guides.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.readychinatravel.com/guides.html">
+<script src="assets/consent-gate.js"></script>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3G3C5T1WRB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3G3C5T1WRB');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+
+.guides-hero {
+  padding: 130px 24px 60px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--bg2) 0%, var(--bg) 100%);
+}
+.guides-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 5vw, 56px);
+  color: var(--text);
+  margin-bottom: 14px;
+}
+.guides-hero p {
+  color: var(--text-muted);
+  max-width: 560px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.guide-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 28px 24px 12px;
+  position: sticky;
+  top: 70px;
+  background: var(--bg);
+  z-index: 5;
+  border-bottom: 1px solid var(--border);
+}
+.guide-filter {
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text-mid);
+  padding: 8px 18px;
+  border-radius: 24px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all .2s;
+}
+.guide-filter:hover, .guide-filter.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.guides-main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 30px 24px 80px;
+}
+.guide-category {
+  margin-bottom: 48px;
+}
+.guide-category-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  color: var(--text);
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+.guide-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+}
+.guide-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.guide-card-link {
+  display: block;
+  padding: 20px;
+  color: inherit;
+  text-decoration: none;
+}
+.guide-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.guide-card-tag {
+  background: var(--red-soft);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+.guide-card-time {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.guide-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  color: var(--text);
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+.guide-card-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+.guide-card-cta {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+}
+.guide-card.hidden { display: none; }
+@media (max-width: 640px) {
+  .guide-filters { top: 60px; gap: 8px; padding: 18px 16px 10px; }
+  .guide-filter { padding: 7px 14px; font-size: 12px; }
+  .guides-main { padding: 20px 16px 60px; }
+  .guide-grid { grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<main>
+<section class="guides-hero">
+  <h1>All Guides</h1>
+  <p>Every article on Ready? China!, organized so you can find what you need — from visa paperwork to your first bowl of noodles.</p>
+</section>
+
+<div class="guide-filters" id="guide-filters">
+  <button class="guide-filter active" data-filter="all">All</button>
+  <button class="guide-filter" data-filter="before">Before you fly</button>
+  <button class="guide-filter" data-filter="money">Money &amp; pay</button>
+  <button class="guide-filter" data-filter="around">Getting around</button>
+  <button class="guide-filter" data-filter="food">Food &amp; language</button>
+  <button class="guide-filter" data-filter="city">City guides</button>
+  <button class="guide-filter" data-filter="other">Other</button>
+</div>
+
+<div class="guides-main">
+    <div class="guide-category" id="cat-before">
+      <h2 class="guide-category-title">Before you fly</h2>
+      <div class="guide-grid">
+      <article class="guide-card" data-category="before">
+        <a href="visa/" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Essential</span>
+            <span class="guide-card-time">6 min</span>
+          </div>
+          <h3 class="guide-card-title">Visa Guide</h3>
+          <p class="guide-card-desc">Who needs a visa, how to apply, and what documents you&#x27;ll need before you fly.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="before">
+        <a href="immigration/" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Essential</span>
+            <span class="guide-card-time">5 min</span>
+          </div>
+          <h3 class="guide-card-title">Immigration &amp; Customs</h3>
+          <p class="guide-card-desc">Arrival forms, customs rules, and what to expect at the border.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="before">
+        <a href="esim/" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Setup</span>
+            <span class="guide-card-time">4 min</span>
+          </div>
+          <h3 class="guide-card-title">eSIM &amp; Mobile Data</h3>
+          <p class="guide-card-desc">Get internet before you land: Airalo eSIM setup and local SIM alternatives.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="before">
+        <a href="travel-insurance/" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Safety</span>
+            <span class="guide-card-time">3 min</span>
+          </div>
+          <h3 class="guide-card-title">Travel Insurance</h3>
+          <p class="guide-card-desc">Why you need it for China and what a good policy should cover.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="before">
+        <a href="vpn/" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Setup</span>
+            <span class="guide-card-time">4 min</span>
+          </div>
+          <h3 class="guide-card-title">VPN Guide</h3>
+          <p class="guide-card-desc">Install a working VPN before arrival so Google, Instagram, and Maps still work.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      </div>
+    </div>
+    <div class="guide-category" id="cat-money">
+      <h2 class="guide-category-title">Money &amp; pay</h2>
+      <div class="guide-grid">
+      <article class="guide-card" data-category="money">
+        <a href="alipay/" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Payments</span>
+            <span class="guide-card-time">7 min</span>
+          </div>
+          <h3 class="guide-card-title">Alipay Setup</h3>
+          <p class="guide-card-desc">Set up Alipay, link a foreign card, and pay like a local with face-scan.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="money">
+        <a href="wechat/" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Payments</span>
+            <span class="guide-card-time">7 min</span>
+          </div>
+          <h3 class="guide-card-title">WeChat Pay Setup</h3>
+          <p class="guide-card-desc">Use WeChat Pay as a foreigner: verification, cards, and tipping.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="money">
+        <a href="qr-payments/" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Payments</span>
+            <span class="guide-card-time">4 min</span>
+          </div>
+          <h3 class="guide-card-title">QR Payments 101</h3>
+          <p class="guide-card-desc">How scanning and being scanned works in shops, restaurants, and taxis.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="money">
+        <a href="currency/" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Money</span>
+            <span class="guide-card-time">3 min</span>
+          </div>
+          <h3 class="guide-card-title">Currency &amp; Cash</h3>
+          <p class="guide-card-desc">Yuan basics, exchange tips, ATMs, and when you still need cash.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      </div>
+    </div>
+    <div class="guide-category" id="cat-around">
+      <h2 class="guide-category-title">Getting around</h2>
+      <div class="guide-grid">
+      <article class="guide-card" data-category="around">
+        <a href="didi/" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Transport</span>
+            <span class="guide-card-time">5 min</span>
+          </div>
+          <h3 class="guide-card-title">Didi (Ride-hailing)</h3>
+          <p class="guide-card-desc">China&#x27;s Uber: app setup, hailing a car, and avoiding scams.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="around">
+        <a href="high-speed-train/" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Transport</span>
+            <span class="guide-card-time">6 min</span>
+          </div>
+          <h3 class="guide-card-title">High-Speed Train</h3>
+          <p class="guide-card-desc">Book bullet trains with Trip.com, read tickets, and navigate stations.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="around">
+        <a href="metro-guide/" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Transport</span>
+            <span class="guide-card-time">5 min</span>
+          </div>
+          <h3 class="guide-card-title">Metro Guide</h3>
+          <p class="guide-card-desc">Subway apps, QR tickets, and how to not get lost underground.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="around">
+        <a href="amap-guide/" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Navigation</span>
+            <span class="guide-card-time">5 min</span>
+          </div>
+          <h3 class="guide-card-title">Amap (Gaode Maps)</h3>
+          <p class="guide-card-desc">Google Maps doesn&#x27;t work in China — use Amap like a local for directions and transit.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="around">
+        <a href="bike-guide/" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Transport</span>
+            <span class="guide-card-time">4 min</span>
+          </div>
+          <h3 class="guide-card-title">Shared Bikes</h3>
+          <p class="guide-card-desc">Yellow, blue or green bike: which app, costs, unlock rules, and fines to avoid.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="around">
+        <a href="bus-guide/" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Transport</span>
+            <span class="guide-card-time">5 min</span>
+          </div>
+          <h3 class="guide-card-title">City Buses</h3>
+          <p class="guide-card-desc">Transport QR code, boarding, paying, and getting off — step-by-step.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="around">
+        <a href="get-around-like-local.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Transport</span>
+            <span class="guide-card-time">6 min</span>
+          </div>
+          <h3 class="guide-card-title">Get Around Like a Local</h3>
+          <p class="guide-card-desc">Buses, bikes, walking, and the little tricks that make movement easy.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      </div>
+    </div>
+    <div class="guide-category" id="cat-food">
+      <h2 class="guide-category-title">Food &amp; language</h2>
+      <div class="guide-grid">
+      <article class="guide-card" data-category="food">
+        <a href="food-guide/" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Food</span>
+            <span class="guide-card-time">6 min</span>
+          </div>
+          <h3 class="guide-card-title">Food Guide</h3>
+          <p class="guide-card-desc">What to eat, how to order, dietary restrictions, and street-food safety.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="food">
+        <a href="phrases/" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Language</span>
+            <span class="guide-card-time">4 min</span>
+          </div>
+          <h3 class="guide-card-title">Useful Phrases</h3>
+          <p class="guide-card-desc">Must-know Mandarin phrases with pinyin for travel survival.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="food">
+        <a href="dianping-guide/" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Food</span>
+            <span class="guide-card-time">5 min</span>
+          </div>
+          <h3 class="guide-card-title">Dianping (Find Food)</h3>
+          <p class="guide-card-desc">How locals pick restaurants — and how you can use Dianping without reading Chinese.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      </div>
+    </div>
+    <div class="guide-category" id="cat-city">
+      <h2 class="guide-category-title">City guides</h2>
+      <div class="guide-grid">
+      <article class="guide-card" data-category="city">
+        <a href="guides/beijing.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">City</span>
+            <span class="guide-card-time">4–6 days</span>
+          </div>
+          <h3 class="guide-card-title">Beijing</h3>
+          <p class="guide-card-desc">History, culture, Great Wall, Chinese civilization — difficulty ★☆☆☆☆</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="city">
+        <a href="guides/shanghai.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">City</span>
+            <span class="guide-card-time">3–4 days</span>
+          </div>
+          <h3 class="guide-card-title">Shanghai</h3>
+          <p class="guide-card-desc">Futuristic skyline, international food, modernity — difficulty ★☆☆☆☆</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="city">
+        <a href="guides/guangzhou.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">City</span>
+            <span class="guide-card-time">2–3 days</span>
+          </div>
+          <h3 class="guide-card-title">Guangzhou</h3>
+          <p class="guide-card-desc">Cantonese food capital, dim sum heaven, Canton Tower — difficulty ★★☆☆☆</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="city">
+        <a href="guides/shenzhen.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">City</span>
+            <span class="guide-card-time">2–3 days</span>
+          </div>
+          <h3 class="guide-card-title">Shenzhen</h3>
+          <p class="guide-card-desc">Tech metropolis, futuristic skyline, easy Hong Kong day trip — difficulty ★☆☆☆☆</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="city">
+        <a href="guides/chengdu.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">City</span>
+            <span class="guide-card-time">3–5 days</span>
+          </div>
+          <h3 class="guide-card-title">Chengdu</h3>
+          <p class="guide-card-desc">Pandas, hotpot, chill vibes, authentic local life — difficulty ★★☆☆☆</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="city">
+        <a href="guides/xian.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">City</span>
+            <span class="guide-card-time">2–3 days</span>
+          </div>
+          <h3 class="guide-card-title">Xi&#x27;an</h3>
+          <p class="guide-card-desc">Ancient history, Terracotta Army, Silk Road — difficulty ★★☆☆☆</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="city">
+        <a href="guides/chongqing.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">City</span>
+            <span class="guide-card-time">2–3 days</span>
+          </div>
+          <h3 class="guide-card-title">Chongqing</h3>
+          <p class="guide-card-desc">Cyberpunk city, hotpot capital, mountain drama — difficulty ★★★☆☆</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="city">
+        <a href="guides/guilin.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">City</span>
+            <span class="guide-card-time">3–4 days</span>
+          </div>
+          <h3 class="guide-card-title">Guilin</h3>
+          <p class="guide-card-desc">Nature, karst mountains, Li River scenery — difficulty ★★☆☆☆</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="city">
+        <a href="guides/quanzhou.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">City</span>
+            <span class="guide-card-time">2–3 days</span>
+          </div>
+          <h3 class="guide-card-title">Quanzhou</h3>
+          <p class="guide-card-desc">Hidden gem, Maritime Silk Road, authentic local China — difficulty ★★★★☆</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="city">
+        <a href="guides/hangzhou.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">City</span>
+            <span class="guide-card-time">2–3 days</span>
+          </div>
+          <h3 class="guide-card-title">Hangzhou</h3>
+          <p class="guide-card-desc">Serenity, West Lake, tea culture, easy day trips — difficulty ★☆☆☆☆</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="city">
+        <a href="guides/dunhuang.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">City</span>
+            <span class="guide-card-time">3–4 days</span>
+          </div>
+          <h3 class="guide-card-title">Dunhuang</h3>
+          <p class="guide-card-desc">Silk Road art, Mogao Caves, desert landscapes — difficulty ★★★☆☆</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="city">
+        <a href="guides/lijiang.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">City</span>
+            <span class="guide-card-time">2–3 days</span>
+          </div>
+          <h3 class="guide-card-title">Lijiang</h3>
+          <p class="guide-card-desc">Naxi culture, cobblestone old town, Jade Dragon Snow Mountain — difficulty ★★★☆☆</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="city">
+        <a href="guides/kashgar.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">City</span>
+            <span class="guide-card-time">2–3 days</span>
+          </div>
+          <h3 class="guide-card-title">Kashgar</h3>
+          <p class="guide-card-desc">Uyghur craft bazaar, Silk Road living museum — difficulty ★★★★★</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="city">
+        <a href="guides/pingwu-baima.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">City</span>
+            <span class="guide-card-time">2 days</span>
+          </div>
+          <h3 class="guide-card-title">Pingwu Baima</h3>
+          <p class="guide-card-desc">Baima Tibetan culture, mountain villages, feather headdress — difficulty ★★★★☆</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="city">
+        <a href="guides/yiwu.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">City</span>
+            <span class="guide-card-time">1–2 days</span>
+          </div>
+          <h3 class="guide-card-title">Yiwu</h3>
+          <p class="guide-card-desc">World&#x27;s small-commodities market, crazy shopping — difficulty ★★☆☆☆</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="city">
+        <a href="guides/ordos.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">City</span>
+            <span class="guide-card-time">2–3 days</span>
+          </div>
+          <h3 class="guide-card-title">Ordos</h3>
+          <p class="guide-card-desc">Grasslands, Mongolian culture, futuristic Ordos city — difficulty ★★★☆☆</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="city">
+        <a href="guides/hengqin.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">City</span>
+            <span class="guide-card-time">1–2 days</span>
+          </div>
+          <h3 class="guide-card-title">Hengqin</h3>
+          <p class="guide-card-desc">Chimelong resort, Macau neighbor, entertainment island — difficulty ★★☆☆☆</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="city">
+        <a href="guides/changxing.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">City</span>
+            <span class="guide-card-time">1–2 days</span>
+          </div>
+          <h3 class="guide-card-title">Changxing</h3>
+          <p class="guide-card-desc">Tea plantations, quiet lakes, local farm food — difficulty ★★☆☆☆</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="city">
+        <a href="guides/harbin.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">City</span>
+            <span class="guide-card-time">2–3 days</span>
+          </div>
+          <h3 class="guide-card-title">Harbin</h3>
+          <p class="guide-card-desc">Ice Festival, Russian architecture, winter wonderland — difficulty ★★★☆☆</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="city">
+        <a href="guides/zhangjiajie.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">City</span>
+            <span class="guide-card-time">2–3 days</span>
+          </div>
+          <h3 class="guide-card-title">Zhangjiajie</h3>
+          <p class="guide-card-desc">Avatar mountains, glass bridge, sandstone pillars — difficulty ★★☆☆☆</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      </div>
+    </div>
+    <div class="guide-category" id="cat-other">
+      <h2 class="guide-category-title">Other</h2>
+      <div class="guide-grid">
+      <article class="guide-card" data-category="other">
+        <a href="cities.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Directory</span>
+            <span class="guide-card-time">—</span>
+          </div>
+          <h3 class="guide-card-title">All Cities</h3>
+          <p class="guide-card-desc">Browse every city guide on a big interactive map.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="other">
+        <a href="community.html" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Community</span>
+            <span class="guide-card-time">—</span>
+          </div>
+          <h3 class="guide-card-title">Community &amp; Tips</h3>
+          <p class="guide-card-desc">News, updates, and tips for foreign travelers in China.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="other">
+        <a href="play/" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Game</span>
+            <span class="guide-card-time">5 min</span>
+          </div>
+          <h3 class="guide-card-title">China Challenge Quiz</h3>
+          <p class="guide-card-desc">100 questions to test your China IQ — food, culture, history, and travel hacks.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      <article class="guide-card" data-category="other">
+        <a href="privacy/" class="guide-card-link">
+          <div class="guide-card-meta">
+            <span class="guide-card-tag">Legal</span>
+            <span class="guide-card-time">2 min</span>
+          </div>
+          <h3 class="guide-card-title">Privacy Policy</h3>
+          <p class="guide-card-desc">How readychinatravel.com handles your data and affiliate tracking.</p>
+          <span class="guide-card-cta">Read more &rarr;</span>
+        </a>
+      </article>
+      </div>
+    </div>
+</div>
+
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="assets/nav.js"></script>
+<script>buildNav();</script>
+<script>
+(function() {
+  const buttons = document.querySelectorAll('.guide-filter');
+  const cards = document.querySelectorAll('.guide-card');
+  const categories = document.querySelectorAll('.guide-category');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+
+      cards.forEach(card => {
+        card.classList.toggle('hidden', filter !== 'all' && card.dataset.category !== filter);
+      });
+
+      categories.forEach(cat => {
+        const visible = cat.querySelectorAll('.guide-card:not(.hidden)').length;
+        cat.style.display = visible ? '' : 'none';
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

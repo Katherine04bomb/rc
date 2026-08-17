@@ -163,7 +163,7 @@ function buildNav(rootPath) {
       <div style="margin-top:8px;font-size:11px">
         <a href="${rootPath}alipay" style="color:var(--text-muted);margin-right:16px">Alipay Setup</a>
         <a href="${rootPath}wechat" style="color:var(--text-muted);margin-right:16px">WeChat Setup</a>
-        <a href="${rootPath}guides" style="color:var(--text-muted);margin-right:16px">All Guides</a>
+        <a href="${rootPath}guides.html" style="color:var(--text-muted);margin-right:16px">All Guides</a>
         <a href="${rootPath}privacy" style="color:var(--text-muted);margin-right:16px">Privacy Policy</a>
         <a href="javascript:void(0)" onclick="if(window.rcOpenCookiePrefs)window.rcOpenCookiePrefs()" style="color:var(--text-muted)">Cookie Preferences</a>
       </div>

@@ -2286,3 +2286,28 @@ footer {
   #rc-cookie-banner { padding: 0; align-items: flex-end; }
   .rc-cookie-card { max-width: 100%; border-radius: 16px 16px 0 0; }
 }
+/* ===== 修复地图图钉看不见 ===== */
+.city-pin-halo {
+  fill: var(--accent);
+  fill-opacity: 0.25;
+  stroke: #fff;
+  stroke-width: 1.5;
+  opacity: 1;
+}
+.city-pin-dot {
+  fill: var(--accent);
+  stroke: #fff;
+  stroke-width: 2;
+  r: 6;
+}
+.city-pin-emoji {
+  font-size: 13px;
+}
+.city-pin-lbl {
+  font-size: 8.5px;
+  font-weight: 500;
+  fill: var(--text);
+  opacity: 0.85;
+}
+.city-pin:hover .city-pin-halo { r: 10; }
+.city-pin:hover .city-pin-dot { fill: var(--gold-light); }
