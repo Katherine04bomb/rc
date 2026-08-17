@@ -422,12 +422,12 @@ function buildCityPins() {
     const e = document.createElementNS(NS, 'text');
     e.setAttribute('class', 'city-pin-emoji');
     e.setAttribute('text-anchor', 'middle');
-    e.setAttribute('dy', '3.2');
+    e.setAttribute('dy', '-6');
     e.textContent = c.emoji;
     const l = document.createElementNS(NS, 'text');
     l.setAttribute('class', 'city-pin-lbl');
     l.setAttribute('text-anchor', 'middle');
-    l.setAttribute('y', '13');
+    l.setAttribute('y', '-15');
     l.textContent = c.nameEn;
 
     g.appendChild(c1); g.appendChild(c2); g.appendChild(e); g.appendChild(l);

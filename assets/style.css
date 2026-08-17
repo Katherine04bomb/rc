@@ -1988,18 +1988,34 @@ footer {
 /* ── City pins (overlay) ── */
 .city-pin { cursor: pointer; transition: opacity .2s ease; }
 .city-pin-halo {
-  fill: var(--gold-soft); stroke: var(--gold); stroke-width: .8;
-  opacity: .9; transition: r .15s ease;
+  fill: var(--accent);
+  fill-opacity: 0.22;
+  stroke: #fff;
+  stroke-width: 1.1;
+  opacity: 0.95;
+  transition: r .15s ease;
 }
-.city-pin-dot { fill: var(--accent); stroke: #fff; stroke-width: 1.2; }
-.city-pin-emoji { font-size: 8px; pointer-events: none; }
+.city-pin-dot {
+  fill: #fff;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+.city-pin-emoji {
+  font-size: 12px;
+  pointer-events: none;
+}
 .city-pin-lbl {
-  font-family: 'DM Sans', sans-serif; font-size: 5.5px; fill: var(--text);
-  pointer-events: none; opacity: .6; transition: opacity .2s, fill .2s;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  fill: var(--text);
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity .2s, fill .2s;
 }
-.city-pin:hover .city-pin-halo { r: 9; }
-.city-pin:hover .city-pin-dot { fill: var(--gold); }
-.city-pin:hover .city-pin-lbl { opacity: 1; fill: var(--accent); }
+.city-pin:hover .city-pin-halo { r: 10; }
+.city-pin:hover .city-pin-dot { fill: var(--accent); stroke: #fff; }
+.city-pin:hover .city-pin-lbl { fill: var(--accent); }
 .city-pin.pin-dim { opacity: .18; pointer-events: none; }
 
 /* ── Side panel: trip + badges ── */
