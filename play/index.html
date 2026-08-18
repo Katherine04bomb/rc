@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>China Challenge — Test Your China IQ | Ready? China!</title>
-<meta name="description" content="A bonus round for curious travelers: 100 questions about China — food, culture, history, tech and travel hacks. Play Easy, Medium or Hard and earn your China badge.">
+<meta name="description" content="A bonus round for curious travelers: 300 questions about China — food, culture, history, tech and travel hacks. Play Easy, Medium or Hard and earn your China badge.">
 <meta name="keywords" content="China quiz, China travel trivia, China IQ test, China culture questions, test your China knowledge, China challenge game">
 <meta property="og:title" content="China Challenge — Bonus Round | Ready? China!">
-<meta property="og:description" content="100 questions about China. 3 difficulty modes. Earn your badge before you fly.">
+<meta property="og:description" content="300 questions about China. 3 difficulty modes. Earn your badge before you fly.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.readychinatravel.com/play/">
 <link rel="canonical" href="https://www.readychinatravel.com/play/">
@@ -142,6 +142,7 @@
   .ch-chip-xp { background: var(--gold-soft); color: var(--game-gold); border: 1px solid var(--gold-border); }
   .ch-chip-streak { background: #fff7e8; color: #b45309; border: 1px solid #f5d28a; }
   .ch-chip-best { background: #eef2fb; color: var(--game-navy); border: 1px solid #c9d4ee; }
+  .ch-chip-timer { background: #e8f5e9; color: var(--game-green); border: 1px solid rgba(46,125,50,.25); }
   .ch-hud-right { margin-left: auto; font-size: 13px; font-weight: 700; color: var(--text-mid); }
   .ch-bar-wrap { height: 10px; border-radius: 999px; background: #f1ece2; overflow: hidden; margin-bottom: 22px; position: relative; }
   .ch-bar { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--game-red), var(--game-gold)); transition: width .4s cubic-bezier(.22,1,.36,1); width: 0; }
@@ -220,6 +221,8 @@
   .ch-stat .v { font-size: 20px; font-weight: 800; color: var(--text); }
   .ch-stat .l { font-size: 10px; letter-spacing: 1.5px; color: var(--text-muted); margin-top: 2px; font-weight: 700; }
   .ch-newbest { display: inline-block; margin-bottom: 8px; background: linear-gradient(135deg, var(--game-red), var(--game-gold)); color: #fff; font-size: 11px; font-weight: 800; letter-spacing: 1px; border-radius: 999px; padding: 5px 14px; animation: ch-bob 1.4s ease-in-out infinite; }
+  .ch-result-actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+  .ch-result-actions .ch-btn { min-width: 140px; flex: 0 0 auto; }
 
   /* related guides */
   .ch-related { margin-top: 22px; text-align: left; }
@@ -239,12 +242,78 @@
   .ch-modes-foot { text-align: center; margin-top: 22px; font-size: 12px; color: var(--text-muted); }
   .ch-modes-foot b { color: var(--game-gold); }
 
+  /* ── Share panel ── */
+  .ch-share-panel {
+    position: fixed; inset: 0; z-index: 400;
+    background: rgba(0,0,0,.45);
+    display: none; align-items: flex-end; justify-content: center;
+    backdrop-filter: blur(4px);
+  }
+  .ch-share-panel.show { display: flex; animation: ch-fadein .2s ease; }
+  @keyframes ch-fadein { from { opacity: 0; } to { opacity: 1; } }
+  .ch-share-sheet {
+    background: #fff;
+    width: 100%; max-width: 420px;
+    max-height: 92vh; overflow-y: auto;
+    border-radius: 24px 24px 0 0;
+    padding: 20px 18px 28px;
+    animation: ch-slideup .3s ease;
+  }
+  .ch-share-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .ch-share-head h3 { margin: 0; font-size: 16px; }
+  .ch-share-head button {
+    background: none; border: none; font-size: 18px; cursor: pointer; color: var(--text-muted);
+  }
+  .ch-share-preview {
+    background: #f6f3ef; border-radius: 16px; padding: 14px; margin-bottom: 16px;
+    display: flex; justify-content: center;
+  }
+  .ch-share-actions { display: flex; gap: 10px; }
+  .ch-share-actions .ch-btn { flex: 1; }
+  .ch-share-tip {
+    text-align: center; font-size: 11px; color: var(--text-muted); margin-top: 12px; line-height: 1.5;
+  }
+
+  /* ── Share poster card (rendered by html2canvas) ── */
+  .share-poster {
+    width: 320px; background: #fffdf9; border-radius: 22px;
+    padding: 28px 22px 22px; text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    box-shadow: 0 12px 35px rgba(0,0,0,.1);
+    color: #2c2c2c;
+  }
+  .share-poster .poster-best {
+    display: inline-block;
+    background: linear-gradient(90deg, #D35400, #E67E22);
+    color: #fff; font-size: 10px; font-weight: 800; letter-spacing: 1px;
+    padding: 7px 14px; border-radius: 999px; margin-bottom: 16px;
+  }
+  .share-poster .poster-emoji { font-size: 70px; line-height: 1; margin-bottom: 8px; }
+  .share-poster .poster-title { font-size: 22px; font-weight: 800; color: var(--game-red-dark); margin-bottom: 2px; }
+  .share-poster .poster-sub { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--game-gold); text-transform: uppercase; margin-bottom: 10px; }
+  .share-poster .poster-brag { font-size: 13px; color: #555; line-height: 1.55; margin-bottom: 18px; padding: 0 6px; }
+  .share-poster .poster-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 18px;
+  }
+  .share-poster .poster-stat {
+    background: #f9f5ef; border: 1px solid #efe8df; border-radius: 14px; padding: 12px 6px;
+  }
+  .share-poster .poster-stat .v { font-size: 18px; font-weight: 800; color: #2c2c2c; }
+  .share-poster .poster-stat .l { font-size: 8px; font-weight: 700; letter-spacing: .6px; color: #7a7a7a; margin-top: 3px; }
+  .share-poster .poster-qr img { width: 130px; height: 130px; border-radius: 12px; }
+  .share-poster .poster-url { font-size: 10px; font-weight: 700; color: #7a7a7a; letter-spacing: .5px; margin-top: 6px; }
+
   @media (max-width: 560px) {
     .ch-modes { grid-template-columns: 1fr; }
     .ch-opts { grid-template-columns: 1fr; }
     .ch-related-grid { grid-template-columns: 1fr; }
     .ch-actions { flex-direction: column; }
+    .ch-result-actions .ch-btn { width: 100%; }
     .game-bg { padding-top: 100px; }
+    .share-poster { width: 280px; }
   }
 </style>
 </head>
@@ -265,7 +334,7 @@
         <div class="ch-hero">
           <div class="ch-bonus-badge">🎮 BONUS ROUND</div>
           <h1 class="ch-title">The <em>China Challenge</em></h1>
-          <p class="ch-sub">Think you know China? Prove it. 100 hand-picked questions on food, culture, history and travel hacks — earn your badge before you fly. 🐼</p>
+          <p class="ch-sub">Think you know China? Prove it. 300 hand-picked questions on food, culture, history and travel hacks — earn your badge before you fly. 🐼</p>
         </div>
 
         <div class="ch-card show">
@@ -274,7 +343,7 @@
             <div style="font-size:12px;color:var(--text-muted);margin-top:3px">Random questions every round — no two games are the same</div>
           </div>
           <div class="ch-modes" id="ch-modes"></div>
-          <div class="ch-modes-foot">🏅 Badges: <b>Rookie</b> → <b>Explorer</b> → <b>Master</b> → <b>Legend</b></div>
+          <div class="ch-modes-foot">🏅 Badges: <b>Newbie</b> → <b>Rookie</b> → <b>Explorer</b> → <b>Master</b> → <b>Legend</b> → <b>Emperor</b></div>
         </div>
       </div>
 
@@ -286,6 +355,7 @@
             <span class="ch-chip ch-chip-xp" id="hud-xp">⭐ 0 XP</span>
             <span class="ch-chip ch-chip-streak" id="hud-streak" style="display:none">🔥 x0</span>
             <span class="ch-chip ch-chip-best" id="hud-best" style="display:none"></span>
+            <span class="ch-chip ch-chip-timer" id="hud-timer">⏱️ 0s</span>
           </div>
           <div class="ch-hud-right" id="hud-progress">1 / 5</div>
         </div>
@@ -315,7 +385,42 @@
 
 <canvas id="ch-confetti"></canvas>
 
+<!-- ═══ Share panel ═══ -->
+<div class="ch-share-panel" id="ch-share-panel" onclick="if(event.target===this) game.closeSharePanel()">
+  <div class="ch-share-sheet" onclick="event.stopPropagation()">
+    <div class="ch-share-head">
+      <h3>Share your score</h3>
+      <button onclick="game.closeSharePanel()" aria-label="Close">✕</button>
+    </div>
+    <div class="ch-share-preview">
+      <div class="share-poster" id="share-poster">
+        <div class="poster-best" id="poster-best">🎉 NEW PERSONAL BEST!</div>
+        <div class="poster-emoji" id="poster-emoji">🐉</div>
+        <div class="poster-title" id="poster-title">China Master</div>
+        <div class="poster-sub" id="poster-sub">MASTER</div>
+        <div class="poster-brag" id="poster-brag">I got 4/5 in China Challenge Easy Mode in 12 seconds. Beat my time?</div>
+        <div class="poster-stats">
+          <div class="poster-stat"><div class="v" id="poster-xp">50</div><div class="l">XP EARNED</div></div>
+          <div class="poster-stat"><div class="v" id="poster-correct">4/5</div><div class="l">CORRECT</div></div>
+          <div class="poster-stat"><div class="v" id="poster-acc">80%</div><div class="l">ACCURACY</div></div>
+          <div class="poster-stat"><div class="v" id="poster-time">12s</div><div class="l">TIME</div></div>
+        </div>
+        <div class="poster-qr">
+          <img src="qr-code.png" alt="Scan to play" id="poster-qr-img">
+        </div>
+        <div class="poster-url">readychinatravel.com/play</div>
+      </div>
+    </div>
+    <div class="ch-share-actions">
+      <button class="ch-btn ch-btn-primary" onclick="game.saveShareImage()">💾 Save Image</button>
+      <button class="ch-btn ch-btn-ghost" onclick="game.shareText()">🔗 Share Link</button>
+    </div>
+    <div class="ch-share-tip">Save the image, then post it to WeChat, Moments, Xiaohongshu, Instagram or WhatsApp.</div>
+  </div>
+</div>
+
 <script src="quiz-data.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script>
 /* ═══════════════════════════════════════════════
    CHINA CHALLENGE — game engine
@@ -330,11 +435,12 @@
   ];
 
   var RANKS = [
-    { min: 1.0,  medal: '🏆', name: 'CHINA LEGEND',  color: 'var(--game-gold)' },
-    { min: 0.8,  medal: '🥇', name: 'CHINA MASTER',  color: 'var(--game-red)' },
-    { min: 0.6,  medal: '🧭', name: 'CHINA EXPLORER', color: 'var(--game-navy)' },
-    { min: 0.4,  medal: '🐼', name: 'CHINA ROOKIE',  color: '#2e7d32' },
-    { min: 0,    medal: '🎋', name: 'CHINA NEWBIE',  color: 'var(--text-muted)' }
+    { min: 1.0,  medal: '🏆', name: 'Perfect Emperor', color: 'var(--game-gold)' },
+    { min: 0.95, medal: '👑', name: 'China Legend',    color: 'var(--game-gold)' },
+    { min: 0.8,  medal: '🐉', name: 'China Master',    color: 'var(--game-red)' },
+    { min: 0.6,  medal: '🐼', name: 'China Explorer',  color: 'var(--game-navy)' },
+    { min: 0.4,  medal: '🐣', name: 'China Rookie',    color: '#2e7d32' },
+    { min: 0,    medal: '🥚', name: 'China Newbie',    color: 'var(--text-muted)' }
   ];
 
   /* category → related guides (relative to /play/) */
@@ -353,7 +459,8 @@
 
   var game = window.game = {
     mode: null, questions: [], idx: 0, xp: 0, streak: 0, bestStreak: 0, correct: 0,
-    answered: false, bestScores: {}
+    answered: false, bestScores: {},
+    startTime: 0, elapsed: 0, timerInterval: null, resultData: null
   };
 
   /* ── utils ── */
@@ -373,6 +480,26 @@
   }
   function saveBest() {
     try { localStorage.setItem('ch_best', JSON.stringify(game.bestScores)); } catch (e) {}
+  }
+  function formatTime(sec) { return sec + 's'; }
+
+  /* ── timer ── */
+  function startTimer() {
+    game.startTime = Date.now();
+    game.elapsed = 0;
+    clearInterval(game.timerInterval);
+    game.timerInterval = setInterval(updateTimer, 250);
+  }
+  function stopTimer() {
+    clearInterval(game.timerInterval);
+    game.timerInterval = null;
+    if (game.startTime) game.elapsed = Math.max(1, Math.round((Date.now() - game.startTime) / 1000));
+  }
+  function updateTimer() {
+    if (!game.startTime) return;
+    var sec = Math.round((Date.now() - game.startTime) / 1000);
+    var el = document.getElementById('hud-timer');
+    if (el) el.textContent = '⏱️ ' + sec + 's';
   }
 
   /* ── tiny sound effects (Web Audio) ── */
@@ -395,7 +522,7 @@
 
   /* ── confetti ── */
   var confettiRunning = false;
-  function confettiBurst() {
+  function confettiBurst(count) {
     var cv = document.getElementById('ch-confetti');
     if (!cv || confettiRunning) return;
     confettiRunning = true;
@@ -403,7 +530,8 @@
     cv.width = window.innerWidth; cv.height = window.innerHeight;
     var colors = ['#c0392b', '#d4a531', '#1e2a4a', '#2e7d32', '#e74c3c', '#f5c542'];
     var parts = [];
-    for (var i = 0; i < 130; i++) {
+    var n = count || 130;
+    for (var i = 0; i < n; i++) {
       parts.push({
         x: cv.width / 2 + (Math.random() - .5) * 140,
         y: cv.height * .3 + (Math.random() - .5) * 60,
@@ -471,10 +599,12 @@
     game.questions = shuffle(pool).slice(0, m.n);
     game.idx = 0; game.xp = 0; game.streak = 0; game.bestStreak = 0; game.correct = 0; game.answered = false;
     game.correctCats = {}; // reset category tracking each round
+    game.resultData = null;
     show('ch-game');
     document.getElementById('ch-next').classList.add('hidden');
     document.getElementById('ch-again').classList.add('hidden');
     document.getElementById('ch-home-btn').classList.add('hidden');
+    startTimer();
     renderQ();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -495,6 +625,7 @@
     var hb = document.getElementById('hud-best');
     if (best) { hb.style.display = ''; hb.textContent = '🏅 ' + best + ' XP'; }
     else hb.style.display = 'none';
+    updateTimer();
 
     document.getElementById('hud-progress').textContent = (game.idx + 1) + ' / ' + game.questions.length;
     document.getElementById('ch-q-num').textContent = 'QUESTION ' + (game.idx + 1) + ' OF ' + game.questions.length;
@@ -565,7 +696,7 @@
   /* ── next ── */
   game.next = function () {
     game.idx++;
-    if (game.idx >= game.questions.length) { renderResult(); return; }
+    if (game.idx >= game.questions.length) { stopTimer(); renderResult(); return; }
     renderQ();
   };
 
@@ -603,8 +734,14 @@
       return '<a class="ch-rel-link" href="' + g.u + '">' + esc(g.t) + '<small>' + esc(g.d) + '</small></a>';
     }).join('');
 
+    var timeText = formatTime(game.elapsed);
+    game.resultData = {
+      xp: game.xp, correct: game.correct, total: total, accuracy: Math.round(ratio * 100),
+      time: game.elapsed, timeText: timeText, rank: rank, mode: m, isNew: isNew, perfect: ratio === 1
+    };
+
     sndFan();
-    confettiBurst();
+    confettiBurst(ratio === 1 ? 220 : 130);
 
     document.getElementById('ch-result').innerHTML =
       '<div class="ch-result">' +
@@ -617,6 +754,13 @@
           '<div class="ch-stat"><div class="v">' + game.correct + '/' + total + '</div><div class="l">CORRECT</div></div>' +
           '<div class="ch-stat"><div class="v">' + Math.round(ratio * 100) + '%</div><div class="l">ACCURACY</div></div>' +
           '<div class="ch-stat"><div class="v">🔥' + game.bestStreak + '</div><div class="l">BEST STREAK</div></div>' +
+          '<div class="ch-stat"><div class="v">' + timeText + '</div><div class="l">TIME</div></div>' +
+          '<div class="ch-stat"><div class="v">' + m.name.toUpperCase() + '</div><div class="l">MODE</div></div>' +
+        '</div>' +
+        '<div class="ch-result-actions">' +
+          '<button class="ch-btn ch-btn-primary" onclick="game.restart()">↻ Start Over</button>' +
+          '<button class="ch-btn ch-btn-ghost" onclick="game.openSharePanel()">📤 Share</button>' +
+          '<button class="ch-btn ch-btn-ghost" onclick="game.toHome()">Change Level</button>' +
         '</div>' +
         '<div class="ch-related">' +
           '<div class="ch-related-head">🧭 Based on what you nailed, explore these:</div>' +
@@ -634,10 +778,69 @@
   /* ── restart / home ── */
   game.restart = function () { game.start(game.mode.key); };
   game.toHome = function () {
+    stopTimer();
     show('ch-home');
     document.getElementById('ch-home').style.display = '';
     renderModes();
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  /* ── share panel ── */
+  game.openSharePanel = function () {
+    if (!game.resultData) return;
+    var d = game.resultData;
+    var brag = 'I got ' + d.correct + '/' + d.total + ' in China Challenge ' + d.mode.name + ' Mode in ' + d.timeText + '. Beat my time?';
+
+    document.getElementById('poster-best').style.display = d.isNew ? 'inline-block' : 'none';
+    document.getElementById('poster-emoji').textContent = d.rank.medal;
+    document.getElementById('poster-title').textContent = d.rank.name;
+    document.getElementById('poster-sub').textContent = d.rank.name.toUpperCase().replace('CHINA ', '').replace('PERFECT ', '');
+    document.getElementById('poster-brag').textContent = brag;
+    document.getElementById('poster-xp').textContent = d.xp;
+    document.getElementById('poster-correct').textContent = d.correct + '/' + d.total;
+    document.getElementById('poster-acc').textContent = d.accuracy + '%';
+    document.getElementById('poster-time').textContent = d.timeText;
+
+    document.getElementById('ch-share-panel').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  };
+  game.closeSharePanel = function () {
+    document.getElementById('ch-share-panel').classList.remove('show');
+    document.body.style.overflow = '';
+  };
+  game.saveShareImage = function () {
+    var el = document.getElementById('share-poster');
+    if (!el) return;
+    if (typeof html2canvas === 'undefined') {
+      alert('Image generator is loading. Please try again in a moment.');
+      return;
+    }
+    html2canvas(el, { scale: 2, backgroundColor: '#fffdf9', useCORS: true }).then(function (canvas) {
+      var link = document.createElement('a');
+      link.download = 'china-challenge-' + (game.resultData ? game.resultData.rank.name.toLowerCase().replace(/\s+/g, '-') : 'score') + '.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }).catch(function (err) {
+      console.error(err);
+      alert('Could not save image. Try taking a screenshot instead.');
+    });
+  };
+  game.shareText = function () {
+    var d = game.resultData;
+    if (!d) return;
+    var text = 'I got ' + d.correct + '/' + d.total + ' in China Challenge ' + d.mode.name + ' Mode in ' + d.timeText + '. Beat my time?';
+    var url = 'https://www.readychinatravel.com/play/';
+    if (navigator.share) {
+      navigator.share({ title: 'China Challenge', text: text, url: url }).catch(function () {});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(text + ' ' + url).then(function () {
+        alert('Copied to clipboard!');
+      }).catch(function () {
+        prompt('Copy this to share:', text + ' ' + url);
+      });
+    } else {
+      prompt('Copy this to share:', text + ' ' + url);
+    }
   };
 
   /* track categories of correct answers */
