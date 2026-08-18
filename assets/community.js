@@ -1,17 +1,23 @@
 // ============================================================
 //  assets/community.js — Community Knowledge Hub
 //
-//  HOW TO ADD A POST (takes 2 minutes):
+//  HOW TO ADD A POST (takes 3 minutes):
 //  1. Copy any post object below
 //  2. Paste it at the TOP of the POSTS array
 //  3. Fill in:
 //       id:       'post-XXX'  ← increment the number
+//       slug:     'short-readable-url-slug'  ← lowercase, hyphens,
+//                 no emoji — this becomes /community/<slug>.html
 //       category: 'lifehacks' | 'qa' | 'news'
 //       date:     'August 2026'
 //       tag:      'tip' | 'visa' | 'news'
 //       title:    'Your title'
-//       body:     `Your content`
-//  4. Save → git push
+//       body:     `Your content` (no backticks inside the body text)
+//  4. Save
+//  5. Run: python3 _builder/community_generator.py
+//     This creates /community/<slug>.html — a real, indexable page
+//     for the post, so it can rank in Google on its own.
+//  6. git push (commit both community.js AND the new /community/*.html file)
 //  Both index.html and community.html auto-update — no extra steps.
 // ============================================================
 
@@ -19,6 +25,7 @@ const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ──────────────────────────────
   {
     id: 'post-017',
+    slug: 'china-public-transport-card',
     category: 'qa',
     date: 'August 2026',
     tag: 'tip',
@@ -32,6 +39,7 @@ const POSTS = [
   // ── August 2026 ───────────────────────────────────────────
   {
     id: 'post-016',
+    slug: 'wechat-pay-international-cards',
     category: 'news',
     date: 'August 2026',
     tag: 'news',
@@ -41,6 +49,7 @@ const POSTS = [
   },
   {
     id: 'post-015',
+    slug: 'booking-com-hotels-china',
     category: 'qa',
     date: 'August 2026',
     tag: 'tip',
@@ -49,6 +58,7 @@ const POSTS = [
   },
   {
     id: 'post-014',
+    slug: 'stay-cool-china-summer-heat',
     category: 'lifehacks',
     date: 'August 2026',
     tag: 'tip',
@@ -59,6 +69,7 @@ const POSTS = [
   // ── July 2026 ─────────────────────────────────────────────
   {
     id: 'post-013',
+    slug: 'germany-visa-free-china',
     category: 'news',
     date: 'July 2026',
     tag: 'visa',
@@ -67,6 +78,7 @@ const POSTS = [
   },
   {
     id: 'post-012',
+    slug: 'vpn-china-instagram-whatsapp',
     category: 'qa',
     date: 'July 2026',
     tag: 'tip',
@@ -75,6 +87,7 @@ const POSTS = [
   },
   {
     id: 'post-011',
+    slug: 'china-metro-apps-english',
     category: 'lifehacks',
     date: 'July 2026',
     tag: 'tip',
@@ -85,6 +98,7 @@ const POSTS = [
   // ── ORIGINAL POSTS (June–March 2026) ─────────────────────
   {
     id: 'post-001',
+    slug: 'china-summer-packing-list',
     category: 'lifehacks',
     date: 'June 2026',
     tag: 'tip',
@@ -93,6 +107,7 @@ const POSTS = [
   },
   {
     id: 'post-002',
+    slug: 'foreigner-friendly-alipay',
     category: 'lifehacks',
     date: 'May 2026',
     tag: 'tip',
@@ -101,6 +116,7 @@ const POSTS = [
   },
   {
     id: 'post-003',
+    slug: 'why-china-restaurants-serve-hot-water',
     category: 'lifehacks',
     date: 'April 2026',
     tag: 'tip',
@@ -109,6 +125,7 @@ const POSTS = [
   },
   {
     id: 'post-004',
+    slug: 'china-toilet-culture-squat-toilets',
     category: 'lifehacks',
     date: 'March 2026',
     tag: 'tip',
@@ -119,6 +136,7 @@ const POSTS = [
   // ── Q&A ───────────────────────────────────────────────────
   {
     id: 'post-005',
+    slug: 'why-no-ice-water-china-restaurants',
     category: 'qa',
     date: 'June 2026',
     tag: 'tip',
@@ -127,6 +145,7 @@ const POSTS = [
   },
   {
     id: 'post-006',
+    slug: 'google-maps-alternative-china',
     category: 'qa',
     date: 'May 2026',
     tag: 'tip',
@@ -135,6 +154,7 @@ const POSTS = [
   },
   {
     id: 'post-007',
+    slug: 'is-tap-water-safe-in-china',
     category: 'qa',
     date: 'April 2026',
     tag: 'tip',
@@ -145,6 +165,7 @@ const POSTS = [
   // ── NEWS ───────────────────────────────────────────────
   {
     id: 'post-008',
+    slug: 'australia-china-visa-transit',
     category: 'news',
     date: 'June 2026',
     tag: 'visa',
@@ -153,6 +174,7 @@ const POSTS = [
   },
   {
     id: 'post-009',
+    slug: 'china-parks-drinking-water-fountains',
     category: 'news',
     date: 'May 2026',
     tag: 'news',
@@ -161,6 +183,7 @@ const POSTS = [
   },
   {
     id: 'post-010',
+    slug: 'high-speed-rail-foreign-cards-china',
     category: 'news',
     date: 'April 2026',
     tag: 'news',
@@ -321,7 +344,7 @@ function _commRenderCards(limit) {
           <span class="news-date">${post.date}</span>
           <span class="news-tag" style="background:${t.bg};color:${t.color};border:1px solid ${t.border}">${t.label}</span>
         </div>
-        <div class="news-headline">${post.title}</div>
+        <a class="news-headline" href="community/${post.slug}.html" onclick="event.stopPropagation()">${post.title}</a>
         <div class="news-body comm-body-preview">${post.body}</div>
         <div class="comm-reactions" onclick="event.stopPropagation()">
           <button class="comm-react-btn ${vote === 'helpful' ? 'active' : ''}" id="rb-${post.id}-helpful" onclick="commReact('${post.id}','helpful')">

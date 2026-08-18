@@ -861,7 +861,8 @@ main { padding-top: 70px; position: relative; z-index: 1; }
   padding: 2px 8px;
   border-radius: 8px;
 }
-.news-headline { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--text); margin-bottom: 10px; line-height: 1.4; }
+.news-headline { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--text); margin-bottom: 10px; line-height: 1.4; display: block; text-decoration: none; }
+.news-headline:hover { color: var(--accent); }
 .news-body { font-size: 13px; color: var(--text-muted); line-height: 1.75; }
 .community-coming {
   background: white;
