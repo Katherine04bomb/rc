@@ -39,8 +39,22 @@
   </div>
 </div>
 
-<article style="font-size:15px;line-height:1.9;color:var(--text-mid);white-space:pre-line;margin-bottom:32px">Not reliably. Booking.com and Agoda technically list Chinese hotels, but many smaller properties only appear on Chinese platforms like Trip.com (formerly Ctrip), Meituan, or Fliggy. The best strategy: use Trip.com — it has a full English interface, accepts foreign cards, and lists both international chains AND local boutique hotels. If you're looking for something really unique (like a courtyard hotel in a Beijing hutong), Trip.com will have options that Booking.com won't show you.</article>
+<article style="font-size:15px;line-height:1.9;color:var(--text-mid);white-space:pre-line;margin-bottom:24px">Not reliably. Booking.com and Agoda technically list Chinese hotels, but many smaller properties only appear on Chinese platforms like Trip.com (formerly Ctrip), Meituan, or Fliggy. The best strategy: use Trip.com — it has a full English interface, accepts foreign cards, and lists both international chains AND local boutique hotels. If you're looking for something really unique (like a courtyard hotel in a Beijing hutong), Trip.com will have options that Booking.com won't show you.</article>
 
+<div class="comm-reactions" style="margin-bottom:32px">
+  <button class="comm-react-btn" id="rb-post-015-helpful" onclick="commReact('post-015','helpful')">
+    👍 <span class="comm-react-label">Helpful</span>
+    <span class="comm-react-count" id="r-post-015-helpful"></span>
+  </button>
+  <button class="comm-react-btn" id="rb-post-015-nope" onclick="commReact('post-015','nope')">
+    👎 <span class="comm-react-label">Not Helpful</span>
+    <span class="comm-react-count" id="r-post-015-nope"></span>
+  </button>
+  <button class="comm-react-btn" id="rb-post-015-confused" onclick="commReact('post-015','confused')">
+    ❓ <span class="comm-react-label">Confused</span>
+    <span class="comm-react-count" id="r-post-015-confused"></span>
+  </button>
+</div>
 <div class="callout callout-tip">
   <div class="callout-label">💬 Got a question of your own?</div>
   Kat answers new questions every week on the <a href="../community.html" style="color:var(--gold)">Community page</a> — search, browse by topic, or leave your email to get notified about new posts.
@@ -70,6 +84,11 @@
 </div>
 </main>
 <footer id="site-footer"></footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="../assets/community.js"></script>
+
 <script src="../assets/nav.js"></script>
 <script>buildNav('../');</script>
 </body>

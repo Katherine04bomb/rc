@@ -39,8 +39,22 @@
   </div>
 </div>
 
-<article style="font-size:15px;line-height:1.9;color:var(--text-mid);white-space:pre-line;margin-bottom:32px">Big update — Alipay now lets you link a foreign Visa or Mastercard directly, without needing a Chinese bank account as an intermediate step. Download the International version, go to Settings → Bank Cards, and you're done in about 5 minutes. Do this before you land — it makes everything so much easier from day one.</article>
+<article style="font-size:15px;line-height:1.9;color:var(--text-mid);white-space:pre-line;margin-bottom:24px">Big update — Alipay now lets you link a foreign Visa or Mastercard directly, without needing a Chinese bank account as an intermediate step. Download the International version, go to Settings → Bank Cards, and you're done in about 5 minutes. Do this before you land — it makes everything so much easier from day one.</article>
 
+<div class="comm-reactions" style="margin-bottom:32px">
+  <button class="comm-react-btn" id="rb-post-002-helpful" onclick="commReact('post-002','helpful')">
+    👍 <span class="comm-react-label">Helpful</span>
+    <span class="comm-react-count" id="r-post-002-helpful"></span>
+  </button>
+  <button class="comm-react-btn" id="rb-post-002-nope" onclick="commReact('post-002','nope')">
+    👎 <span class="comm-react-label">Not Helpful</span>
+    <span class="comm-react-count" id="r-post-002-nope"></span>
+  </button>
+  <button class="comm-react-btn" id="rb-post-002-confused" onclick="commReact('post-002','confused')">
+    ❓ <span class="comm-react-label">Confused</span>
+    <span class="comm-react-count" id="r-post-002-confused"></span>
+  </button>
+</div>
 <div class="callout callout-tip">
   <div class="callout-label">💬 Got a question of your own?</div>
   Kat answers new questions every week on the <a href="../community.html" style="color:var(--gold)">Community page</a> — search, browse by topic, or leave your email to get notified about new posts.
@@ -70,6 +84,11 @@
 </div>
 </main>
 <footer id="site-footer"></footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="../assets/community.js"></script>
+
 <script src="../assets/nav.js"></script>
 <script>buildNav('../');</script>
 </body>

@@ -270,7 +270,6 @@ function _watchPostReacts(id) {
     REACT_TYPES.forEach(t => { if (typeof data[t] !== 'number') data[t] = 0; });
     _commReacts[id] = data;
     _updateReactUI(id);
-    _syncModalReacts(id);
   });
 }
 
@@ -338,15 +337,16 @@ function _commRenderCards(limit) {
       ? `<span class="comm-cat-label">${catLabels[post.category]}</span>` : '';
 
     return `
-      <div class="news-card comm-card" onclick="commOpenCard('${post.id}')">
+      <div class="news-card comm-card">
+        <a class="comm-card-link" href="community/${post.slug}.html" aria-label="${post.title}"></a>
         <div class="news-meta">
           ${cat}
           <span class="news-date">${post.date}</span>
           <span class="news-tag" style="background:${t.bg};color:${t.color};border:1px solid ${t.border}">${t.label}</span>
         </div>
-        <a class="news-headline" href="community/${post.slug}.html" onclick="event.stopPropagation()">${post.title}</a>
+        <div class="news-headline">${post.title}</div>
         <div class="news-body comm-body-preview">${post.body}</div>
-        <div class="comm-reactions" onclick="event.stopPropagation()">
+        <div class="comm-reactions">
           <button class="comm-react-btn ${vote === 'helpful' ? 'active' : ''}" id="rb-${post.id}-helpful" onclick="commReact('${post.id}','helpful')">
             👍 <span class="comm-react-label">Helpful</span>
             <span class="comm-react-count" id="r-${post.id}-helpful">${r.helpful || ''}</span>
@@ -362,50 +362,6 @@ function _commRenderCards(limit) {
         </div>
       </div>`;
   }).join('');
-}
-
-// ── MODAL OPEN ────────────────────────────────────────────────
-function commOpenCard(id) {
-  const post = POSTS.find(p => p.id === id);
-  if (!post) return;
-  const t = TAG_STYLES[post.tag] || TAG_STYLES.news;
-  const r = _getReacts(id);
-
-  document.getElementById('comm-modal-tag').textContent   = t.label;
-  document.getElementById('comm-modal-tag').style.cssText =
-    `background:${t.bg};color:${t.color};border:1px solid ${t.border};` +
-    `font-size:9px;font-weight:700;letter-spacing:1px;padding:3px 10px;border-radius:8px;`;
-  document.getElementById('comm-modal-date').textContent  = post.date;
-  document.getElementById('comm-modal-title').textContent = post.title;
-  document.getElementById('comm-modal-body').textContent  = post.body;
-
-  REACT_TYPES.forEach(type => {
-    const btn = document.getElementById(`cm-react-${type}`);
-    if (btn) btn.onclick = () => { commReact(id, type); };
-  });
-  _syncModalReacts(id);
-
-  document.getElementById('comm-modal').classList.add('show');
-  document.body.style.overflow = 'hidden';
-}
-
-function _syncModalReacts(id) {
-  const r = _getReacts(id);
-  const vote = _getUserVote(id);
-  document.getElementById('cm-react-helpful-count').textContent  = r.helpful  || '';
-  document.getElementById('cm-react-nope-count').textContent     = r.nope     || '';
-  document.getElementById('cm-react-confused-count').textContent = r.confused || '';
-  REACT_TYPES.forEach(type => {
-    const btn = document.getElementById(`cm-react-${type}`);
-    if (btn) btn.classList.toggle('active', vote === type);
-  });
-}
-
-// ── MODAL CLOSE ───────────────────────────────────────────────
-function commCloseCard() {
-  document.getElementById('comm-modal').classList.remove('show');
-  document.body.style.overflow = '';
-  _commRenderCards();
 }
 
 // ── REACTIONS ─────────────────────────────────────────────────
@@ -429,7 +385,6 @@ function commReact(id, type) {
 
   _saveLocalCounts();
   _updateReactUI(id);
-  _syncModalReacts(id);
 }
 
 function _updateReactUI(id) {
@@ -530,7 +485,14 @@ POSTS.forEach(p => {
   _getReacts(p.id);
   _watchPostReacts(p.id);
 });
-loadCommunity();
+// Only build the full community feed (search/tabs/card list) on pages
+// that actually have the #community-container element — index.html and
+// community.html. Individual post pages (/community/<slug>.html) load
+// this same file too, just for the reaction functions above — they
+// don't have that container, so skip this part there.
+if (document.getElementById('community-container')) {
+  loadCommunity();
+}
 
 // If we arrived here via a "Things to Know" nav/search link from another
 // page (e.g. ?tab=qa#community-section), select the right tab and scroll.

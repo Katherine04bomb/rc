@@ -143,6 +143,28 @@ def render_page(post):
         f'letter-spacing:1px;padding:4px 10px;border-radius:8px">{tag_info["label"]}</span>'
     )
 
+    post_id = post['id']
+    # Reaction buttons — identical markup/ids/onclick to the ones community.js
+    # renders on the card, so the same commReact()/Firebase logic drives both
+    # with zero duplicated reaction code. Counts start blank; community.js
+    # fills them in from Firebase/localStorage once it loads (see scripts
+    # near the closing </body> below).
+    reactions_html = f"""
+<div class="comm-reactions" style="margin-bottom:32px">
+  <button class="comm-react-btn" id="rb-{post_id}-helpful" onclick="commReact('{post_id}','helpful')">
+    👍 <span class="comm-react-label">Helpful</span>
+    <span class="comm-react-count" id="r-{post_id}-helpful"></span>
+  </button>
+  <button class="comm-react-btn" id="rb-{post_id}-nope" onclick="commReact('{post_id}','nope')">
+    👎 <span class="comm-react-label">Not Helpful</span>
+    <span class="comm-react-count" id="r-{post_id}-nope"></span>
+  </button>
+  <button class="comm-react-btn" id="rb-{post_id}-confused" onclick="commReact('{post_id}','confused')">
+    ❓ <span class="comm-react-label">Confused</span>
+    <span class="comm-react-count" id="r-{post_id}-confused"></span>
+  </button>
+</div>"""
+
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -184,8 +206,8 @@ def render_page(post):
   </div>
 </div>
 
-<article style="font-size:15px;line-height:1.9;color:var(--text-mid);white-space:pre-line;margin-bottom:32px">{post['body']}</article>
-
+<article style="font-size:15px;line-height:1.9;color:var(--text-mid);white-space:pre-line;margin-bottom:24px">{post['body']}</article>
+{reactions_html}
 <div class="callout callout-tip">
   <div class="callout-label">💬 Got a question of your own?</div>
   Kat answers new questions every week on the <a href="../community.html" style="color:var(--gold)">Community page</a> — search, browse by topic, or leave your email to get notified about new posts.
@@ -215,6 +237,11 @@ def render_page(post):
 </div>
 </main>
 <footer id="site-footer"></footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="../assets/community.js"></script>
+
 <script src="../assets/nav.js"></script>
 <script>buildNav('../');</script>
 </body>

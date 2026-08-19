@@ -1000,14 +1000,32 @@ main { padding-top: 70px; position: relative; z-index: 1; }
   gap: 12px;
 }
 
-/* Card — clickable */
+/* Card — the entire card navigates to the post's own page via a
+   "stretched link": a transparent <a> absolutely positioned over
+   the whole card. Reaction buttons sit in a later DOM position
+   with a higher z-index so they stay independently clickable. */
 .comm-card {
+  position: relative;
   cursor: pointer;
   transition: border-color .2s, box-shadow .2s;
 }
 .comm-card:hover {
   border-color: var(--gold);
   box-shadow: 0 4px 20px rgba(154,123,47,0.1);
+}
+.comm-card:focus-within {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-soft);
+}
+.comm-card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+}
+.comm-card-link:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
 }
 
 /* Body preview — clamp to 3 lines on card */
@@ -1031,8 +1049,12 @@ main { padding-top: 70px; position: relative; z-index: 1; }
   padding: 2px 7px;
 }
 
-/* Reactions row */
+/* Reactions row — sits above the card-wide stretched link (z-index:1)
+   so the buttons remain independently clickable and don't trigger
+   card navigation. */
 .comm-reactions {
+  position: relative;
+  z-index: 2;
   display: flex;
   gap: 8px;
   margin-top: 14px;
@@ -1082,31 +1104,6 @@ main { padding-top: 70px; position: relative; z-index: 1; }
   background: white;
   border: 1px solid var(--border);
   border-radius: 12px;
-}
-
-/* Community modal */
-#comm-modal .modal-box { max-width: 640px; }
-.comm-modal-meta {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
-  flex-wrap: wrap;
-}
-.comm-modal-date { font-size: 11px; color: var(--text-muted); }
-.comm-modal-body {
-  font-size: 14px;
-  color: var(--text-mid);
-  line-height: 1.85;
-  white-space: pre-line;
-}
-.comm-modal-reactions {
-  display: flex;
-  gap: 10px;
-  margin-top: 24px;
-  padding-top: 18px;
-  border-top: 1px solid var(--border);
-  flex-wrap: wrap;
 }
 
 /* Responsive */

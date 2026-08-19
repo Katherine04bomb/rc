@@ -39,8 +39,22 @@
   </div>
 </div>
 
-<article style="font-size:15px;line-height:1.9;color:var(--text-mid);white-space:pre-line;margin-bottom:32px">Just a reminder for my lovely Australian friends: you still need to apply for a tourist (L) visa before entering China. Processing takes 4–7 business days, so don't leave it until the last minute. That said, if you're transiting through Shanghai, Beijing, or Guangzhou with an onward ticket to a third country, you can enter visa-free for up to 144 hours. Check the Get Ready section above for more details.</article>
+<article style="font-size:15px;line-height:1.9;color:var(--text-mid);white-space:pre-line;margin-bottom:24px">Just a reminder for my lovely Australian friends: you still need to apply for a tourist (L) visa before entering China. Processing takes 4–7 business days, so don't leave it until the last minute. That said, if you're transiting through Shanghai, Beijing, or Guangzhou with an onward ticket to a third country, you can enter visa-free for up to 144 hours. Check the Get Ready section above for more details.</article>
 
+<div class="comm-reactions" style="margin-bottom:32px">
+  <button class="comm-react-btn" id="rb-post-008-helpful" onclick="commReact('post-008','helpful')">
+    👍 <span class="comm-react-label">Helpful</span>
+    <span class="comm-react-count" id="r-post-008-helpful"></span>
+  </button>
+  <button class="comm-react-btn" id="rb-post-008-nope" onclick="commReact('post-008','nope')">
+    👎 <span class="comm-react-label">Not Helpful</span>
+    <span class="comm-react-count" id="r-post-008-nope"></span>
+  </button>
+  <button class="comm-react-btn" id="rb-post-008-confused" onclick="commReact('post-008','confused')">
+    ❓ <span class="comm-react-label">Confused</span>
+    <span class="comm-react-count" id="r-post-008-confused"></span>
+  </button>
+</div>
 <div class="callout callout-tip">
   <div class="callout-label">💬 Got a question of your own?</div>
   Kat answers new questions every week on the <a href="../community.html" style="color:var(--gold)">Community page</a> — search, browse by topic, or leave your email to get notified about new posts.
@@ -70,6 +84,11 @@
 </div>
 </main>
 <footer id="site-footer"></footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="../assets/community.js"></script>
+
 <script src="../assets/nav.js"></script>
 <script>buildNav('../');</script>
 </body>

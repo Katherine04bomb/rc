@@ -39,8 +39,22 @@
   </div>
 </div>
 
-<article style="font-size:15px;line-height:1.9;color:var(--text-mid);white-space:pre-line;margin-bottom:32px">Yes — Instagram, WhatsApp, Facebook, Google, and most Western social media are blocked in China without a VPN. You MUST download and configure your VPN BEFORE you arrive, because VPN provider websites are also blocked inside China. I recommend ExpressVPN or Astrill — they've been the most reliable for my friends. Set it up at home, test it, and don't turn your phone's VPN off once you land. One more thing: don't post about your VPN on Chinese social media; just use it quietly.</article>
+<article style="font-size:15px;line-height:1.9;color:var(--text-mid);white-space:pre-line;margin-bottom:24px">Yes — Instagram, WhatsApp, Facebook, Google, and most Western social media are blocked in China without a VPN. You MUST download and configure your VPN BEFORE you arrive, because VPN provider websites are also blocked inside China. I recommend ExpressVPN or Astrill — they've been the most reliable for my friends. Set it up at home, test it, and don't turn your phone's VPN off once you land. One more thing: don't post about your VPN on Chinese social media; just use it quietly.</article>
 
+<div class="comm-reactions" style="margin-bottom:32px">
+  <button class="comm-react-btn" id="rb-post-012-helpful" onclick="commReact('post-012','helpful')">
+    👍 <span class="comm-react-label">Helpful</span>
+    <span class="comm-react-count" id="r-post-012-helpful"></span>
+  </button>
+  <button class="comm-react-btn" id="rb-post-012-nope" onclick="commReact('post-012','nope')">
+    👎 <span class="comm-react-label">Not Helpful</span>
+    <span class="comm-react-count" id="r-post-012-nope"></span>
+  </button>
+  <button class="comm-react-btn" id="rb-post-012-confused" onclick="commReact('post-012','confused')">
+    ❓ <span class="comm-react-label">Confused</span>
+    <span class="comm-react-count" id="r-post-012-confused"></span>
+  </button>
+</div>
 <div class="callout callout-tip">
   <div class="callout-label">💬 Got a question of your own?</div>
   Kat answers new questions every week on the <a href="../community.html" style="color:var(--gold)">Community page</a> — search, browse by topic, or leave your email to get notified about new posts.
@@ -70,6 +84,11 @@
 </div>
 </main>
 <footer id="site-footer"></footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="../assets/community.js"></script>
+
 <script src="../assets/nav.js"></script>
 <script>buildNav('../');</script>
 </body>
