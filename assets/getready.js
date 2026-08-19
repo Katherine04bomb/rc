@@ -350,7 +350,7 @@ function loadGetReady() {
   <section class="section" id="ready-section">
     <div class="section-eyebrow">Step by Step · 出发准备</div>
     <h2 class="section-title">Get Ready with Me</h2>
-    <p class="section-sub">Tick off each step as you go — I've been through this with so many friends, and by the end of this list, you'll feel genuinely prepared.Finish them all, and we'll celebrate with a full-screen fireworks show! </p>
+    <p class="section-sub">Tick off each step as you go — I've been through this with so many friends, and by the end of this list, you'll feel genuinely prepared. Finish them all, and we'll celebrate with a full-screen fireworks show! </p>
 
     <div class="progress-area">
       <div class="progress-header">
@@ -517,13 +517,13 @@ function loadGetReady() {
         </div></div>
         <div class="app-item"><div class="app-icon-box">💵</div><div>
           <div class="app-name">Cash — Bring some, just in case</div>
-          <div class="app-desc">Bring ¥100–500 RMB as backup if theres any internet issue. <strong>Refusing to accept RMB(Chinese Yuan) cash is illegal in China</strong>. Exchange at Bank of China for the best rates.</div>
+          <div class="app-desc">Bring ¥300–500 RMB as backup if theres any internet issue. <strong>Refusing to accept RMB(Chinese Yuan) cash is illegal in China</strong>. Exchange at Bank of China for the best rates.</div>
           <div class="app-tip">⚠️ Let your bank know you're travelling so they don't block your card at ATMs.(ATMs with UnionPay/Visa logos work for foreign cards).</div>
           <a href="currency" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-top:8px">💱 Currency Converter →</a>
         </div></div>
         <div class="app-item"><div class="app-icon-box">📲</div><div>
           <div class="app-name">QR Code Payments — How it actually works</div>
-          <div class="app-desc"><strong>Why QR codes?</strong> China runs on QR payments — from luxury malls to street food carts. Cash and credit cards are rarely accepted. Two ways to pay: (1) <strong>You scan the vendor's QR</strong> — open Alipay/WeChat, tap Scan, point at their code, enter amount, confirm. (2) <strong>Vendor scans your QR</strong> — open Alipay → Receive, show your barcode, they scan it. <strong>The #1 mistake:</strong> using your phone's camera app instead of the Alipay/WeChat scan feature inside the app.</div>
+          <div class="app-desc"><strong>Why QR codes?</strong> China runs on QR payments — from luxury malls to street food carts. Two ways to pay: (1) <strong>You scan the vendor's QR</strong> — open Alipay/WeChat, tap Scan, point at their code, enter amount, confirm. (2) <strong>Vendor scans your QR</strong> — open Alipay → Receive, show your barcode, they scan it. <strong>The #1 mistake:</strong> using your phone's camera app instead of the Alipay/WeChat scan feature inside the app.</div>
           <div class="app-tip">✅ Restaurant tables: scan the table QR with WeChat to see the menu + order + pay — all without talking to anyone.</div>
           <a href="qr-payments" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:5px 12px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:800;margin-top:8px">📲 How to use QR Code to pay →</a>
         </div></div>
@@ -761,7 +761,7 @@ function loadGetReady() {
   <!-- TRANSPORT MODAL (Step 9 — After You Arrive) -->
   <div class="modal-overlay" id="transport-modal">
     <div class="modal-box"><div class="modal-header">
-      <div><div class="modal-title">🚇 Getting Around China · 出行指南<a href="get-around-like-local" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
+      <div><div class="modal-title">🚇 Getting Around China · 出行指南<a href="../get-around-like-local.html" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold);padding:4px 10px;border-radius:6px;font-size:11px;text-decoration:none;border:1px solid var(--gold-border);font-weight:500;margin-left:10px">Read more →</a></div>
       <div class="modal-subtitle">Airport transfers, metro, buses, bikes — the complete guide to moving around China</div></div>
       <button class="modal-close" onclick="closeModal('transport-modal')">×</button>
     </div>
