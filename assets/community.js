@@ -108,9 +108,16 @@ const POSTS = [
     category: 'news',
     date: 'August 2026',
     tag: 'news',
-    title: '📱 WeChat Pay expands international card support — now covers 80% of foreign visitors',
-    body: `Not really. China doesn't have one nationwide public transport card that works across every city. Instead, public transport is usually city-based. Shanghai, Beijing, Guangzhou, etc. each have their own transport systems and payment options.
-    For a short trip, you can usually: 1. Pay for metro rides with Alipay or the city's transport mini-program. 2.Buy a single-ride ticket at the metro station, there is a <a href="../metro-guide" style="color:var(--gold)">guide</a>. or 3.Use a local transport card if you're staying longer or taking public transport frequently.(but if you're only visiting for a few days, don't worry about buying a physical transport card before you arrive. Set up <a href="../alipay" style="color:var(--gold)">Alipay</a> first — it's usually much more convenient for visitors!)`
+    title: '📱 WeChat Pay foreign-card usage surges 80% — how to set it up',
+    body: `WeChat Pay has quietly become one of the most foreigner-friendly payment apps in China. In 2026 it supports card binding from seven major international card networks (Visa, Mastercard, JCB and more), and usage among foreign visitors is booming — transactions with international cards grew nearly 80% year-on-year in the first months of 2026.
+
+How it works for tourists:
+(1) Download WeChat and register with your foreign phone number.
+(2) Add your card under Me → Services → Wallet → Cards. No Chinese bank account needed.
+(3) Pay by scanning merchant QR codes — it works at millions of shops, restaurants, and metro stations.
+(4) Bonus: 40+ overseas wallets can scan WeChat Pay QR codes directly, so some visitors don't even need to set up the app at all.
+
+One thing to know: international cards carry a 3% fee, but it's waived for transactions under ¥200 through the end of 2026 — which covers most daily purchases like meals, metro fares, and street food. In-app payment guidance is now available in 16 languages.`
   },
   {
     id: 'post-015',
@@ -136,10 +143,19 @@ const POSTS = [
     id: 'post-013',
     slug: 'germany-visa-free-china',
     category: 'news',
-    date: 'July 2026',
+    date: 'August 2026',
     tag: 'visa',
-    title: '🇩🇪 Germany now eligible for 15-day visa-free entry to China',
-    body: `Big update for my German friends — as of July 2026, German passport holders can enter China visa-free for up to 15 days. This joins the growing list of countries that China has opened visa-free access to over the past year, including France, Switzerland, Italy, Spain, the Netherlands, Malaysia, and Singapore. The full list now covers over 15 countries. No visa application, no paperwork — just show up with your passport. Check your country's status before booking.`
+    title: '🇩🇪 Germany is on China\'s visa-free list — up to 30 days, no visa needed',
+    body: `Quick update for my German friends: German passport holders can currently enter China visa-free for up to 30 days for tourism, business, family visits, or transit.
+
+To be clear, this isn't brand new — Germany has been on China's visa-free list since December 2023. But the window has grown from the original 15 days to 30 days, and the policy is confirmed through at least December 31, 2026.
+
+What you need:
+(1) A valid ordinary passport, valid for the duration of your stay.
+(2) No advance application — just show up at any open port.
+(3) You can enter multiple times; there's currently no cap on entries.
+
+Not covered: work, study, or news coverage — those still need the appropriate visa. When in doubt, check the visa guide before you book.`
   },
   {
     id: 'post-012',
@@ -185,8 +201,15 @@ const POSTS = [
     category: 'lifehacks',
     date: 'April 2026',
     tag: 'tip',
-    title: '🚰 Why restaurants give you hot water — and why it\'s actually great',
-    body: `You'll notice that most Chinese restaurants serve hot or warm water instead of cold. This comes from traditional Chinese medicine — hot water is believed to aid digestion and balance the body. Don't ask for ice; embrace it. Bonus: hot water is free everywhere, even on trains. Bring a small thermos and you'll never pay for drinks again.`
+    title: '🚰 Why Chinese restaurants serve hot water — and how to use it to save money',
+    body: `You'll notice most Chinese restaurants bring hot or warm water to your table instead of cold. It comes from traditional Chinese medicine, which treats warm drinks as better for digestion. (For the full story on the ice-water thing, there's a separate Q&A about that.)
+
+Here's the practical upside: hot water is FREE basically everywhere — restaurants, hotels, trains, even some airport lounges. Bring a small thermos (保温杯, bǎowēn bēi) and you can:
+(1) Fill up at breakfast and carry warm tea or plain water all day.
+(2) Save ¥5–10 a day instead of buying bottled drinks.
+(3) Brew loose-leaf tea on the go — it's cheap and everywhere.
+
+It's one of those small habits that makes China travel feel surprisingly easy once you lean into it.`
   },
   {
     id: 'post-004',
@@ -194,8 +217,14 @@ const POSTS = [
     category: 'lifehacks',
     date: 'March 2026',
     tag: 'tip',
-    title: '🚽 toilet culture',
-    body: `There are many traditional squat toilets in China. Practice your Asian squat at home! You will need to straddle the pan with one foot on each side and squat down. And dont forget to bring some tissues with you!🧻`
+    title: '🚽 Squat toilets in China — what to expect and how to use one',
+    body: `Many public toilets in China — especially at stations, parks, and older restaurants — use traditional squat toilets. It's simple once you know how: stand over the pan with one foot on each side, and squat down. No part of you touches the pan.
+
+Two tips from a local:
+(1) Carry tissues (纸巾, zhǐjīn) everywhere — public toilets often run out or charge for them.
+(2) If you really can't do it, look for the accessible/western-style stall (usually marked with a pictogram of a seated toilet). Most newer malls, airports, and hotels have them.
+
+It feels a little awkward at first, but after a week most travelers say it's actually cleaner and faster than sitting.🧻`
   },
 
   // ── Q&A ───────────────────────────────────────────────────
@@ -224,7 +253,7 @@ const POSTS = [
     date: 'April 2026',
     tag: 'tip',
     title: '❓ Is it safe to drink tap water in China?--Lily',
-    body: `No — tap water in China is not safe to drink directly. Always drink bottled water or water that has been boiled. The good news: bottled water is extremely cheap (¥1–2 for 500ml everywhere), and hotels always provide hot water flasks or kettles. Hot water from thermoses at restaurants and on trains has been boiled and is safe. Never use tap water to brush your teeth without boiling it first.`
+    body: `No — tap water in China is not safe to drink directly. Always drink bottled water or water that has been boiled. The good news: bottled water is extremely cheap (¥1–2 for 500ml everywhere), and hotels always provide hot water flasks or kettles. Hot water from thermoses at restaurants and on trains has been boiled and is safe. Brushing your teeth with tap water in big cities is generally fine — but don't drink it straight from the tap. When in doubt, use bottled or boiled water.`
   },
 
   // ── NEWS ───────────────────────────────────────────────
@@ -232,28 +261,61 @@ const POSTS = [
     id: 'post-008',
     slug: 'australia-china-visa-transit',
     category: 'news',
-    date: 'June 2026',
+    date: 'August 2026',
     tag: 'visa',
-    title: '🇦🇺 Australian travelers still need a visa — but transit is available',
-    body: `Just a reminder for my lovely Australian friends: you still need to apply for a tourist (L) visa before entering China. Processing takes 4–7 business days, so don't leave it until the last minute. That said, if you're transiting through Shanghai, Beijing, or Guangzhou with an onward ticket to a third country, you can enter visa-free for up to 144 hours. Check the Get Ready section above for more details.`
+    title: '🇦🇺 Australia visa update: 30-day visa-free entry now covers Aussies',
+    body: `Good news for my Australian friends — Australian passport holders can now enter China visa-free for up to 30 days for tourism, business, family visits, and transit. This is part of China's unilateral visa waiver covering 50 countries, and it runs through at least December 31, 2026.
+
+What changed: previously Australians needed a tourist visa for any visit. Now, for stays up to 30 days, you can simply fly in with a valid ordinary passport. No application, no paperwork.
+
+Three reminders:
+(1) Your passport must be valid for at least the length of your stay.
+(2) Work, study, and news reporting still require the appropriate visa.
+(3) For short layovers (under 240 hours) when transiting to a third country, the separate 240-hour transit exemption also applies.
+
+Not sure if this applies to your nationality? Check the visa guide on this site before booking.`
   },
   {
     id: 'post-009',
     slug: 'china-parks-drinking-water-fountains',
     category: 'news',
-    date: 'May 2026',
+    date: 'August 2026',
     tag: 'news',
-    title: '💧 Some parks now provide 直饮水 drinking fountains',
-    body: `Good news for budget travelers! Several major parks in Beijing, Shanghai and Chengdu have installed 直饮水 (zhí yǐn shuǐ) — direct drinking water fountains with purified water. Look for the blue tap icons on park maps. This is part of a citywide initiative to reduce plastic waste. Bring a reusable bottle — it saves money and the environment.`
+    title: '💧 Free drinking fountains in Chinese parks — where they exist (and where they don\'t)',
+    body: `Good news for budget travelers: free public drinking fountains (直饮水, zhí yǐn shuǐ) are slowly appearing in Chinese parks — it's a real but still rare thing.
+
+Where they actually exist
+The fountains you'll find are mostly in newer municipal projects, not in the famous tourist parks. Real examples reported in Chinese media: Qingfeng Park and Zijin Park in Changzhou (Jiangsu), Binjiang Park in Shangrao (Jiangxi), Dadukou Park in Chongqing, and some parks in Meishan (Sichuan) and Rongxian (Zigong). They usually look like stainless-steel bubblers with a button — press, lean in, drink.
+
+The honest reality
+- Most parks in Beijing, Shanghai, and the big tourist cities do NOT have public drinking fountains. Don't plan around finding one.
+- Even where they exist, they're designed for locals who already trust the system. As a visitor, you can't verify the maintenance schedule.
+
+What to do instead
+(1) Carry your own bottle — free hot water is available at hotels, high-speed rail stations, and most airports (look for the 开水/直饮水 water station).
+(2) Bottled water is ¥1–2 at any convenience store (便利店, biànlì diàn).
+(3) Tap water in cities is chlorinated and not recommended for drinking — filter or boil if you're in a pinch.
+
+Bottom line: free park fountains are a nice-to-have trend, not a feature you can rely on yet. Pack a bottle, and use the train station water stations instead.`
   },
   {
     id: 'post-010',
     slug: 'high-speed-rail-foreign-cards-china',
     category: 'news',
-    date: 'April 2026',
+    date: 'August 2026',
     tag: 'news',
-    title: '🚄 High-speed rail now accepts foreign bank cards at ticket machines',
-    body: `Major update for independent travelers: as of early 2026, most high-speed rail ticket machines at major stations now accept foreign Visa and Mastercard. Previously you needed a Chinese ID card or UnionPay card. You'll still need your passport. Recommended: book on the Trip.com app instead — you can reserve seats in advance, choose your carriage, and collect at the machine with your passport.`
+    title: '🚄 Buying high-speed rail tickets in 2026 — what actually works for foreigners',
+    body: `Paying for high-speed rail in China is easier than it used to be, but which method you use still matters a lot. Here's the honest 2026 picture.
+
+The official 12306 app officially accepts international Visa, Mastercard, JCB and Diners Club — but foreign cards are still frequently declined in practice. Don't rely on it if you're in a hurry.
+
+Most reliable option for foreigners: book on Trip.com. Full English interface, reliably accepts foreign cards (Visa, Mastercard, Amex, PayPal), and you just enter your passport details. You'll pay a small service fee, but it removes the headache.
+
+Also works well: link a foreign card to Alipay or WeChat Pay, then pay on 12306 or at the station like a local — the 3% international fee is usually waived for transactions under ¥200.
+
+Cash at the ticket window is the dependable fallback.
+
+One huge simplification since 2020: high-speed rail is fully paperless. Your passport IS your ticket — scan it at the gate to board. No printing, no collection window.`
   }
 
   // ── END OF POSTS ──────────────────────────────────────────
