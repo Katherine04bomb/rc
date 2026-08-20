@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore the Map — Ready? China!</title>
+  <!-- SEO -->
+  <meta name="description" content="Interactive China travel map: pick a vibe, explore 34 provinces, and build your own route city by city with Kat's curated guides.">
+  <link rel="canonical" href="https://www.readychinatravel.com/map.html">
+  <meta property="og:title" content="Explore the Map — Ready? China!">
+  <meta property="og:description" content="Pick a vibe, light up the map, and build your China trip city by city.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.readychinatravel.com/map.html">
+
+
+<script src="assets/consent-gate.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<!-- HEADER — built by assets/nav.js -->
+<header id="site-header"></header>
+
+<!-- FLOATING MENU -->
+<button id="menu-btn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+<div id="menu-dropdown">
+  <div class="menu-item" onclick="rcOpenSearch();closeMenu()">
+    <div class="menu-icon">🔍</div>
+    <div><div class="menu-item-title">Search</div><div class="menu-item-sub">Visa, Alipay, train…</div></div>
+  </div>
+  <div class="menu-item" onclick="window.location='index.html#ready-section';closeMenu()">
+    <div class="menu-icon">✅</div>
+    <div><div class="menu-item-title">Get Ready with Me</div><div class="menu-item-sub">Step-by-step checklist</div></div>
+  </div>
+  <div class="menu-item" onclick="window.location='index.html#cities-section';closeMenu()">
+    <div class="menu-icon">🗺️</div>
+    <div><div class="menu-item-title">Cities</div><div class="menu-item-sub">Where to go?</div></div>
+  </div>
+  <div class="menu-item" onclick="window.location='map.html';closeMenu()">
+    <div class="menu-icon">📍</div>
+    <div><div class="menu-item-title">Explore the Map</div><div class="menu-item-sub">Plan your route</div></div>
+  </div>
+  <div class="menu-item" onclick="window.location='index.html#community-section';closeMenu()">
+    <div class="menu-icon">👥</div>
+    <div><div class="menu-item-title">Community</div><div class="menu-item-sub">Tips and News</div></div>
+  </div>
+  <div class="menu-item menu-item-featured" onclick="window.location='play/';closeMenu()">
+    <div class="menu-icon">🎮</div>
+    <div><div class="menu-item-title">China Challenge</div><div class="menu-item-sub">You think you know China?</div></div>
+    <span class="mbadge mbadge-gold">BETA</span>
+  </div>
+  <div class="menu-item" onclick="openModal('planning-modal');closeMenu()">
+    <div class="menu-icon">🤖</div>
+    <div><div class="menu-item-title">AI Trip Planner</div><div class="menu-item-sub">Auto itinerary</div></div>
+    <span class="mbadge mbadge-gray">SOON</span>
+  </div>
+  <div class="menu-item" onclick="openModal('about-modal');closeMenu()">
+    <div class="menu-icon">🙋‍♀️</div>
+    <div><div class="menu-item-title">Meet Katherine</div><div class="menu-item-sub">Who built this &amp; why</div></div>
+  </div>
+</div>
+
+<!-- MAP TOOLTIP -->
+<div id="prov-tip">
+  <div class="tzh" id="tip-zh"></div>
+  <div class="ten" id="tip-en"></div>
+  <div class="tdesc" id="tip-desc"></div>
+</div>
+
+<main>
+
+<!-- ═══════════ FULL MAP ═══════════ -->
+<div id="map-container" data-mode="full" data-map-url="assets/china-Map.svg" data-cities-url="./data/cities.json"></div>
+
+</main>
+
+<footer id="site-footer"></footer>
+
+<!-- MODALS -->
+<div id="ready-modals-container"></div>
+<div id="about-container"></div>
+<div id="planner-container"></div>
+
+<!-- PHOTO LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo gallery">
+  <button id="lb-close" onclick="closeLightbox()" aria-label="Close gallery">&#x2715;</button>
+  <button id="lb-prev"  onclick="navigateLightbox(-1)" aria-label="Previous photo">&#8592;</button>
+  <div id="lb-inner">
+    <img id="lb-img" src="" alt="">
+    <div id="lb-caption"></div>
+    <div id="lb-counter"></div>
+  </div>
+  <button id="lb-next"  onclick="navigateLightbox(1)" aria-label="Next photo">&#8594;</button>
+</div>
+
+
+<!-- SCRIPTS — ui.js must be first (provides global functions) -->
+<script src="assets/ui.js"></script>
+<script src="assets/nav.js"></script>
+<script>buildNav();</script>
+<script src="assets/cities.js"></script>
+<script src="assets/about.js"></script>
+<!--Firebase SDKs (needed only if you enable cross-user reaction counts)-->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="assets/community.js"></script>
+<script src="assets/aiplanner.js"></script>
+<script src="assets/getready.js"></script>
+<script src="assets/map.js"></script>
+</body>
+</html>

@@ -44,7 +44,7 @@ def extract(path):
     metas = re.findall(r'class="hero-meta-tag">([^<]*)<', html)
     metas = [clean(m) for m in metas if clean(m)]
     difficulty = metas[0] if metas else "★★☆☆☆"
-    tags = metas[1:] if metas else []
+    tags = [m for m in metas[1:] if not m.startswith("🗓")]
     days_tag = [m for m in metas if m.startswith("🗓")]
     if days_tag:
         days = days_tag[0].replace("🗓", "").strip()

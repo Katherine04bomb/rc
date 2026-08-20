@@ -1053,5 +1053,131 @@
       "Cangshan Mountain & Three Pagodas"
     ],
     "photos": []
+  },
+  {
+    "emoji": "🏮",
+    "nameZh": "苏州",
+    "nameEn": "Suzhou",
+    "difficulty": "★★☆☆☆",
+    "days": "3–4 days",
+    "bestFor": "Classical gardens, canals, silk, water towns",
+    "tags": [
+      "Classical gardens",
+      "Canals",
+      "Water towns"
+    ],
+    "attractions": [
+      "Humble Administrator's Garden",
+      "Suzhou Museum",
+      "Pingjiang Road",
+      "Tiger Hill",
+      "Tongli Water Town"
+    ],
+    "photos": []
+  },
+  {
+    "emoji": "🏛️",
+    "nameZh": "南京",
+    "nameEn": "Nanjing",
+    "difficulty": "★★☆☆☆",
+    "days": "3 days",
+    "bestFor": "Ancient capitals, Ming history, Qinhuai River, museums",
+    "tags": [
+      "History",
+      "Museums",
+      "Food scene"
+    ],
+    "attractions": [
+      "Sun Yat-sen Mausoleum",
+      "Ming Xiaoling Mausoleum",
+      "Confucius Temple & Qinhuai River",
+      "Zhonghua Gate & the City Wall",
+      "Nanjing Museum"
+    ],
+    "photos": []
+  },
+  {
+    "emoji": "🏔️",
+    "nameZh": "拉萨",
+    "nameEn": "Lhasa",
+    "difficulty": "★★★★☆",
+    "days": "4–5 days",
+    "bestFor": "Potala Palace, Tibetan Buddhism, high-altitude magic",
+    "tags": [
+      "High altitude",
+      "Tibetan culture",
+      "Monasteries"
+    ],
+    "attractions": [
+      "Potala Palace",
+      "Jokhang Temple & Barkhor Street",
+      "Sera Monastery",
+      "Drepung Monastery",
+      "Namtso Lake"
+    ],
+    "photos": []
+  },
+  {
+    "emoji": "⛰️",
+    "nameZh": "黄山",
+    "nameEn": "Huangshan",
+    "difficulty": "★★★☆☆",
+    "days": "3–4 days",
+    "bestFor": "Granite peaks, sea of clouds, Hongcun village, UNESCO",
+    "tags": [
+      "Hiking",
+      "Sea of clouds",
+      "UNESCO"
+    ],
+    "attractions": [
+      "Hongcun Village",
+      "Welcoming Pine",
+      "Bright Summit & Sea of Clouds",
+      "Xihai Grand Canyon",
+      "Tunxi Old Street"
+    ],
+    "photos": []
+  },
+  {
+    "emoji": "🌊",
+    "nameZh": "厦门",
+    "nameEn": "Xiamen",
+    "difficulty": "★★☆☆☆",
+    "days": "3–4 days",
+    "bestFor": "Gulangyu island, sea breeze, colonial villas, street food",
+    "tags": [
+      "Coastal",
+      "Islands",
+      "Food"
+    ],
+    "attractions": [
+      "Gulangyu Island",
+      "Nanputuo Temple",
+      "Shapowei & the Arts District",
+      "Ring Road & the Beaches",
+      "Zengcuoan Fishing Village"
+    ],
+    "photos": []
+  },
+  {
+    "emoji": "🌴",
+    "nameZh": "三亚",
+    "nameEn": "Sanya",
+    "difficulty": "★★☆☆☆",
+    "days": "3–5 days",
+    "bestFor": "Tropical beaches, palm trees, resorts, island escapes",
+    "tags": [
+      "Beaches",
+      "Resorts",
+      "Tropical"
+    ],
+    "attractions": [
+      "Yalong Bay",
+      "Nanshan Temple & the Sea Guanyin",
+      "Wuzhizhou Island",
+      "Tianya Haijiao",
+      "Dadonghai Bay"
+    ],
+    "photos": []
   }
 ]

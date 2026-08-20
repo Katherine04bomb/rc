@@ -839,6 +839,70 @@ main { padding-top: 70px; position: relative; z-index: 1; }
   pointer-events: none;
 }
 
+/* ════════════════════════════════════════════════════════════
+   MAP TEASER (homepage only)
+   ════════════════════════════════════════════════════════════ */
+.map-section-teaser { padding: 70px 24px; }
+.map-teaser-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 420px) 1fr;
+  gap: 44px;
+  align-items: center;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.map-teaser-text .section-eyebrow { margin-bottom: 14px; }
+.map-teaser-text .section-title { text-align: left; margin-bottom: 14px; }
+.map-teaser-text .section-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+.map-teaser-text .section-sub {
+  text-align: left;
+  margin: 0 0 26px;
+  max-width: none;
+}
+.map-teaser-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin-bottom: 18px;
+}
+.map-teaser-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  letter-spacing: .3px;
+}
+.map-teaser-stats b {
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 700;
+}
+.map-teaser-stats .dot-sep { opacity: .5; }
+.map-teaser-map {
+  border-radius: 18px;
+  background: linear-gradient(180deg, #f0ead9 0%, #e7dfca 100%);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 10px 30px rgba(26,18,8,.10);
+  overflow: hidden;
+}
+.map-teaser-map #china-map-svg-wrap { margin-top: 0; }
+.map-teaser-map #china-map-svg { display: block; }
+
+@media (max-width: 860px) {
+  .map-teaser-grid { grid-template-columns: 1fr; gap: 32px; }
+  .map-teaser-text { text-align: center; }
+  .map-teaser-text .section-title,
+  .map-teaser-text .section-sub { text-align: center; }
+  .map-teaser-cta { margin: 0 auto 18px; display: flex; }
+  .map-teaser-stats { justify-content: center; }
+}
+
 /* ── 11. COMMUNITY & POSTS ───────────────────────────────── */
 .news-card {
   background: white;
@@ -2325,3 +2389,187 @@ footer {
 }
 .city-pin:hover .city-pin-halo { r: 10; }
 .city-pin:hover .city-pin-dot { fill: var(--gold-light); }
+
+/* ============================================================
+   MAP SECTION — GAME-IFIED UPGRADE
+   Added: Kat hint, explorer level, pulsing pins, trip route,
+   per-filter theme colors.
+   ============================================================ */
+
+/* ── Kat hint under chips ── */
+.map-hint {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: -6px 0 14px;
+  min-height: 18px;
+  transition: opacity .2s ease;
+}
+
+/* ── Explorer / game progress panel ── */
+.explorer-panel {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 6px 22px rgba(0,0,0,.05);
+}
+.explorer-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.explorer-level {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.explorer-bar-wrap {
+  height: 8px;
+  background: var(--surface);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.explorer-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold-light), var(--accent));
+  border-radius: 999px;
+  transition: width .6s cubic-bezier(.2,.8,.2,1);
+}
+.explorer-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ── Pin entrance + pulse ── */
+@keyframes pinPop {
+  0%   { transform: scale(0); opacity: 0; }
+  60%  { transform: scale(1.25); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes pinPulse {
+  0%   { transform: scale(1); opacity: .55; }
+  70%  { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+.city-pin { cursor: pointer; transition: opacity .2s ease; }
+.city-pin-inner {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pinPop .5s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.city-pin-inner > * {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.city-pin-pulse {
+  fill: var(--accent);
+  opacity: .55;
+  pointer-events: none;
+  animation: pinPulse 2.2s ease-out infinite;
+}
+.city-pin-halo {
+  fill: var(--accent);
+  fill-opacity: 0.25;
+  stroke: #fff;
+  stroke-width: 1.5;
+  opacity: 1;
+  transition: r .2s ease;
+}
+.city-pin-dot {
+  fill: #fff;
+  stroke: var(--accent);
+  stroke-width: 2;
+  r: 5;
+  transition: all .2s ease;
+}
+.city-pin-emoji {
+  font-size: 13px;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,.15));
+}
+.city-pin-lbl {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 8.5px;
+  font-weight: 600;
+  fill: var(--text);
+  opacity: .9;
+  pointer-events: none;
+  text-shadow: 0 1px 0 rgba(255,255,255,.7);
+  transition: opacity .2s, fill .2s;
+}
+.city-pin:hover .city-pin-halo { r: 11; }
+.city-pin:hover .city-pin-dot { fill: var(--accent); stroke: #fff; r: 6; }
+.city-pin:hover .city-pin-lbl { fill: var(--accent); opacity: 1; }
+.city-pin.pin-dim { opacity: .14; pointer-events: none; }
+.city-pin.pin-match .city-pin-pulse { fill: var(--filter-glow, var(--gold-light)); }
+.city-pin.pin-match .city-pin-dot { fill: #fff; stroke: var(--filter-glow, var(--gold-light)); }
+
+/* ── Filter chips with per-color theming ── */
+.map-chip {
+  font-family: 'DM Sans', sans-serif; font-size: 12px;
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 7px 13px; border-radius: 999px;
+  background: var(--surface); color: var(--text-mid);
+  border: 1px solid var(--border); cursor: pointer;
+  transition: all .18s ease;
+}
+.map-chip:hover {
+  border-color: var(--chip-color, var(--gold));
+  color: var(--chip-color, var(--gold));
+  background: color-mix(in srgb, var(--chip-color, var(--gold)) 10%, transparent);
+}
+.map-chip.active {
+  background: var(--chip-color, var(--accent));
+  color: #fff;
+  border-color: var(--chip-color, var(--accent));
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--chip-color, var(--accent)) 35%, transparent);
+}
+
+/* ── Province filter states with per-filter color ── */
+#china-map-svg .province {
+  transition: fill .35s ease, opacity .35s ease, filter .35s ease;
+}
+#china-map-svg .province.prov-match {
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--filter-glow, var(--gold-light)) 70%, transparent));
+}
+#china-map-svg .province.prov-faded { opacity: .22; }
+
+/* ── Trip route line ── */
+.trip-route {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.2;
+  stroke-dasharray: 5,4;
+  stroke-linecap: round;
+  opacity: .85;
+  filter: drop-shadow(0 0 3px rgba(192,57,43,.35));
+  animation: routeDash 1s linear forwards;
+}
+@keyframes routeDash {
+  from { stroke-dashoffset: 20; }
+  to   { stroke-dashoffset: 0; }
+}
+.trip-route-dot {
+  fill: #fff;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+
+/* ── Responsive tweaks ── */
+@media (max-width: 860px) {
+  .explorer-panel { padding: 14px; }
+  .explorer-level { font-size: 16px; }
+}
+@media (max-width: 480px) {
+  .map-hint { font-size: 11px; }
+  .city-pin-lbl { font-size: 7.5px; }
+}
