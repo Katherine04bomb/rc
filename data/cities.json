@@ -40,6 +40,14 @@
         "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460301/peking-duck_dh1zfb.webp",
         "alt": "Peking Duck dinner"
       }
+    ],
+    "x": 490,
+    "y": 144,
+    "provinceId": "beijing",
+    "interests": [
+      "history",
+      "art",
+      "food"
     ]
   },
   {
@@ -82,6 +90,15 @@
         "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460304/xiaolongbao_ndfdw3.jpg",
         "alt": "Xiaolongbao soup dumplings"
       }
+    ],
+    "x": 532,
+    "y": 230,
+    "provinceId": "shanghai",
+    "interests": [
+      "city",
+      "art",
+      "nightlife",
+      "food"
     ]
   },
   {
@@ -125,6 +142,14 @@
         "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460324/hotpot_p0amdn.jpg",
         "alt": "Chengdu hotpot"
       }
+    ],
+    "x": 405,
+    "y": 238,
+    "provinceId": "sichuan",
+    "interests": [
+      "food",
+      "wildlife",
+      "nature"
     ]
   },
   {
@@ -167,6 +192,13 @@
         "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460306/roujiamo-chinese-burger_kowuyb.jpg",
         "alt": "roujiamo (Chinese \"burger\")"
       }
+    ],
+    "x": 442,
+    "y": 200,
+    "provinceId": "shaanxi",
+    "interests": [
+      "history",
+      "food"
     ]
   },
   {
@@ -210,6 +242,15 @@
         "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460321/hotpot_gsk4di.jpg",
         "alt": "Chongqing hotpot"
       }
+    ],
+    "x": 418,
+    "y": 245,
+    "provinceId": "chongqing",
+    "interests": [
+      "food",
+      "city",
+      "nightlife",
+      "nature"
     ]
   },
   {
@@ -252,6 +293,12 @@
         "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782635742/guilin-rice-noodle_czaxkw.jpg",
         "alt": "Guilin Rice Noodles"
       }
+    ],
+    "x": 446,
+    "y": 292,
+    "provinceId": "guangxi",
+    "interests": [
+      "nature"
     ]
   },
   {
@@ -295,6 +342,14 @@
         "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460305/minnan-oyster-pancake_a9hfl1.jpg",
         "alt": "Minnan Oyster Pancake"
       }
+    ],
+    "x": 512,
+    "y": 274,
+    "provinceId": "fujian",
+    "interests": [
+      "history",
+      "art",
+      "food"
     ]
   },
   {
@@ -337,6 +392,15 @@
         "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1782460313/dongpo-pork_wajz0k.jpg",
         "alt": "Dongpo Pork"
       }
+    ],
+    "x": 524,
+    "y": 246,
+    "provinceId": "zhejiang",
+    "interests": [
+      "nature",
+      "history",
+      "art",
+      "food"
     ]
   },
   {
@@ -380,6 +444,13 @@
         "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1786687060/Screenshot_2026-08-14_at_1.38.14_pm_dkivqj.png",
         "alt": "guangzhou sky"
       }
+    ],
+    "x": 484,
+    "y": 300,
+    "provinceId": "guangdong",
+    "interests": [
+      "food",
+      "city"
     ]
   },
   {
@@ -423,6 +494,13 @@
         "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1786782835/creative_myafys.jpg",
         "alt": "Shenzhen sign"
       }
+    ],
+    "x": 490,
+    "y": 306,
+    "provinceId": "guangdong",
+    "interests": [
+      "city",
+      "nightlife"
     ]
   },
   {
@@ -466,6 +544,14 @@
         "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1786780378/Screenshot_2026-08-15_at_3.52.35_pm_c1ohy5.png",
         "alt": "Harbin snowman"
       }
+    ],
+    "x": 574,
+    "y": 72,
+    "provinceId": "heilongjiang",
+    "interests": [
+      "nature",
+      "art",
+      "wildlife"
     ]
   },
   {
@@ -527,6 +613,14 @@
         "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1786637761/IMG_1035_sc76jn.jpg",
         "alt": "Bamboo Shoot Braised Pork"
       }
+    ],
+    "x": 521,
+    "y": 234,
+    "provinceId": "zhejiang",
+    "interests": [
+      "history",
+      "nature",
+      "food"
     ]
   },
   {
@@ -589,6 +683,14 @@
         "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1786528553/Screenshot_2026-08-12_at_5.54.11_pm_o0wckz.png",
         "alt": "Apricot Water"
       }
+    ],
+    "x": 335,
+    "y": 136,
+    "provinceId": "gansu",
+    "interests": [
+      "history",
+      "art",
+      "nature"
     ]
   },
   {
@@ -655,6 +757,14 @@
         "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1786610818/IMG_1016_byecdt.jpg",
         "alt": "Macau-Style Egg Tart"
       }
+    ],
+    "x": 474,
+    "y": 330,
+    "provinceId": "guangdong",
+    "interests": [
+      "city",
+      "nightlife",
+      "food"
     ]
   },
   {
@@ -697,6 +807,14 @@
         "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1786534219/Screenshot_2026-08-12_at_7.26.15_pm_nhuyoo.png",
         "alt": "Naan &amp; Salted Milk Tea"
       }
+    ],
+    "x": 196,
+    "y": 144,
+    "provinceId": "xinjiang",
+    "interests": [
+      "history",
+      "food",
+      "nature"
     ]
   },
   {
@@ -759,6 +877,14 @@
         "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1786532802/Screenshot_2026-08-12_at_7.03.58_pm_ucwkxj.png",
         "alt": "Lijiang Mushroom Hotpot"
       }
+    ],
+    "x": 376,
+    "y": 279,
+    "provinceId": "yunnan",
+    "interests": [
+      "nature",
+      "history",
+      "art"
     ]
   },
   {
@@ -820,6 +946,14 @@
         "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1786606601/IMG_1005_oemiul.jpg",
         "alt": "Oat Noodles (Youmian) (莜面) in Ordos"
       }
+    ],
+    "x": 446,
+    "y": 142,
+    "provinceId": "inner-mongolia",
+    "interests": [
+      "nature",
+      "wildlife",
+      "history"
     ]
   },
   {
@@ -881,6 +1015,14 @@
         "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1786603110/IMG_0994_espc6s.jpg",
         "alt": "Smoked Bacon & Sausages"
       }
+    ],
+    "x": 407,
+    "y": 219,
+    "provinceId": "sichuan",
+    "interests": [
+      "wildlife",
+      "nature",
+      "history"
     ]
   },
   {
@@ -946,6 +1088,13 @@
         "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1786636240/%E8%B1%86%E8%8A%B1_bdanur.webp",
         "alt": "Mixed Tofu Pudding"
       }
+    ],
+    "x": 522,
+    "y": 253,
+    "provinceId": "zhejiang",
+    "interests": [
+      "city",
+      "food"
     ]
   },
   {
@@ -1008,6 +1157,14 @@
         "src": "https://res.cloudinary.com/dosiqd0h4/image/upload/v1786596719/IMG_0982_ohfyga.jpg",
         "alt": "Gao Mountain Baba"
       }
+    ],
+    "x": 451,
+    "y": 255,
+    "provinceId": "hunan",
+    "interests": [
+      "nature",
+      "wildlife",
+      "city"
     ]
   },
   {
@@ -1030,7 +1187,15 @@
       "Yunnan Nationalities Village",
       "Dounan Flower Market"
     ],
-    "photos": []
+    "photos": [],
+    "x": 394,
+    "y": 299,
+    "provinceId": "yunnan",
+    "interests": [
+      "nature",
+      "city",
+      "food"
+    ]
   },
   {
     "emoji": "🌊",
@@ -1052,7 +1217,15 @@
       "Xizhou Town",
       "Cangshan Mountain & Three Pagodas"
     ],
-    "photos": []
+    "photos": [],
+    "x": 376,
+    "y": 292,
+    "provinceId": "yunnan",
+    "interests": [
+      "nature",
+      "history",
+      "art"
+    ]
   },
   {
     "emoji": "🏮",
@@ -1073,7 +1246,15 @@
       "Tiger Hill",
       "Tongli Water Town"
     ],
-    "photos": []
+    "photos": [],
+    "x": 524,
+    "y": 238,
+    "provinceId": "jiangsu",
+    "interests": [
+      "history",
+      "city",
+      "food"
+    ]
   },
   {
     "emoji": "🏛️",
@@ -1094,7 +1275,15 @@
       "Zhonghua Gate & the City Wall",
       "Nanjing Museum"
     ],
-    "photos": []
+    "photos": [],
+    "x": 507,
+    "y": 218,
+    "provinceId": "jiangsu",
+    "interests": [
+      "history",
+      "city",
+      "food"
+    ]
   },
   {
     "emoji": "🏔️",
@@ -1115,7 +1304,15 @@
       "Drepung Monastery",
       "Namtso Lake"
     ],
-    "photos": []
+    "photos": [],
+    "x": 295,
+    "y": 240,
+    "provinceId": "tibet",
+    "interests": [
+      "history",
+      "nature",
+      "wildlife"
+    ]
   },
   {
     "emoji": "⛰️",
@@ -1136,7 +1333,15 @@
       "Xihai Grand Canyon",
       "Tunxi Old Street"
     ],
-    "photos": []
+    "photos": [],
+    "x": 504,
+    "y": 218,
+    "provinceId": "anhui",
+    "interests": [
+      "nature",
+      "city",
+      "history"
+    ]
   },
   {
     "emoji": "🌊",
@@ -1157,7 +1362,15 @@
       "Ring Road & the Beaches",
       "Zengcuoan Fishing Village"
     ],
-    "photos": []
+    "photos": [],
+    "x": 508,
+    "y": 294,
+    "provinceId": "fujian",
+    "interests": [
+      "city",
+      "food",
+      "nature"
+    ]
   },
   {
     "emoji": "🌴",
@@ -1178,6 +1391,14 @@
       "Tianya Haijiao",
       "Dadonghai Bay"
     ],
-    "photos": []
+    "photos": [],
+    "x": 450,
+    "y": 375,
+    "provinceId": "hainan",
+    "interests": [
+      "nature",
+      "city",
+      "wildlife"
+    ]
   }
 ]

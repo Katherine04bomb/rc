@@ -24,6 +24,71 @@
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ──────────────────────────────
   {
+    id: 'post-019',
+    slug: 'rolling-suitcases-vs-backpacks-china',
+    category: 'qa',
+    date: 'August 2026',
+    tag: 'tip',
+    title: "❓ Why do Chinese travelers prefer rolling suitcases over backpacks? — Charlotte",
+    body: `Great question, Charlotte. You'll notice this the second you step into a Chinese train station — locals glide past with sleek hard-shell suitcases while foreign backpackers look like they're about to summit Everest.
+    Here's why rolling luggage dominates in China:
+    Infrastructure is suitcase-friendly
+    Chinese cities are built for wheels. Airports, high-speed rail stations, and metro systems have smooth floors, elevators, and escalators everywhere. Sidewalks are generally paved and flat. Unlike cobblestone European streets or Southeast Asian dirt roads, you rarely need to carry your bag for long distances. A 28-inch suitcase rolls effortlessly from the Beijing South Station platform to your hotel.
+    
+    High-speed rail culture
+    The vast majority of domestic travel in China happens by high-speed rail, not buses or vans. On a train, you have massive overhead racks and luggage areas at the ends of each carriage. A suitcase sits neatly in these spaces; a bulky backpack gets squashed and is harder to store neatly. Chinese travelers also tend to pack more (gifts, snacks, backup clothes), and a suitcase simply holds more volume.
+    
+    Security and cleanliness
+    Hard-shell suitcases protect electronics and gifts better in crowded spaces. They're also easier to keep clean in dusty or rainy conditions — just wipe the shell. Backpacks absorb sweat, rain, and subway grime directly onto your back.
+    
+    That said — personal preference wins
+    Plenty of Chinese people, especially younger travelers and outdoor enthusiasts, prefer backpacks. If you're doing a lot of walking within cities, hopping on and off metro lines, or traveling light, a backpack keeps your hands free and is more agile. For backpacker hostels, rural trekking, or motorcycle trips in Yunnan, a backpack is absolutely the better choice.
+    
+    Kat's honest take: For a typical China trip (flying into Beijing/Shanghai, taking high-speed rail between cities, staying in hotels), a rolling suitcase is genuinely more convenient. But if your style is more "wander around old town alleys all day," go with a backpack. There's no wrong answer — just know that you'll be in the minority as a backpacker, and that's totally fine.`
+  },
+  {
+    id: 'post-018',
+    slug: 'how-to-use-chopsticks-china',
+    category: 'lifehacks',
+    date: 'August 2026',
+    tag: 'tip',
+    title: "🥢 How to use chopsticks in China (without embarrassing yourself)",
+    body: `Chopsticks aren't just utensils in China — they're a daily ritual. Most locals have been using them since age three, so don't feel bad if you struggle at first. Here's how to get from fumbling to functional in one meal.
+    
+    Step 1: Hold the first chopstick like a pencil
+    Rest it in the crook between your thumb and index finger, letting it sit naturally on your ring finger. This chopstick stays completely still — it's your anchor.
+    <!-- PHOTO PLACEHOLDER 1 -->
+    <div style="background:var(--surface2);border:2px dashed var(--border);border-radius:12px;padding:32px;text-align:center;margin:20px 0">
+    <div style="font-size:32px;margin-bottom:8px">📸</div>
+    <div style="font-size:13px;color:var(--text-muted)">Photo: Close-up of the "pencil grip" on the first chopstick</div>
+    <div style="font-size:11px;color:var(--text-muted);margin-top:8px">Replace this block with: &lt;img src="../assets/images/YOUR_PHOTO.jpg" alt="Chopstick pencil grip" style="width:100%;border-radius:8px"&gt;</div>
+    </div>
+    
+    Step 2: Move only the top chopstick
+    Hold the second chopstick between your thumb, index, and middle fingers — like you're holding a pen ready to write. This is the only chopstick that moves. Open and close the tips by pivoting your index finger up and down.
+    <!-- PHOTO PLACEHOLDER 2 -->
+    <div style="background:var(--surface2);border:2px dashed var(--border);border-radius:12px;padding:32px;text-align:center;margin:20px 0">
+    <div style="font-size:32px;margin-bottom:8px">📸</div>
+    <div style="font-size:13px;color:var(--text-muted)">Photo: Hand position showing the moving top chopstick</div>
+    <div style="font-size:11px;color:var(--text-muted);margin-top:8px">Replace this block with: &lt;img src="../assets/images/YOUR_PHOTO.jpg" alt="Moving top chopstick" style="width:100%;border-radius:8px"&gt;</div>
+    </div>
+    The common mistake? Trying to move both sticks. Lock the bottom one, move only the top.
+    What NOT to do (seriously, locals will wince)
+    - Don't stick chopsticks upright in your rice bowl — it resembles incense at a funeral and is considered extremely bad luck.
+    - Don't wave them around while talking, point at people with them, or tap bowls to get service.
+    - Don't pass food directly from your chopsticks to someone else's — this also has funeral associations.
+    - If you need to set them down, rest them across your bowl or on the chopstick rest (筷子架). Never leave them sticking into food.
+    <!-- YOUTUBE VIDEO PLACEHOLDER -->
+    <div style="background:var(--surface2);border:2px dashed var(--border);border-radius:12px;padding:32px;text-align:center;margin:20px 0">
+    <div style="font-size:32px;margin-bottom:8px">▶️</div>
+    <div style="font-size:13px;color:var(--text-muted)">YouTube video placeholder — Kat's chopsticks tutorial</div>
+    <div style="font-size:11px;color:var(--text-muted);margin-top:8px">Replace VIDEO_ID below with your YouTube video ID:</div>
+    <code style="display:block;background:var(--bg);padding:8px;border-radius:4px;margin-top:8px;font-size:11px;word-break:break-all">&lt;iframe width="100%" height="360" src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius:8px"&gt;&lt;/iframe&gt;</code>
+    </div>
+    Practice tip: Start with larger items — dumplings, tofu cubes, broccoli florets. Rice is actually the hardest because it's loose and slippery. Many Chinese people bring the bowl right up to their mouth and shovel — it's completely acceptable, not rude at all.
+    If you really can't manage, asking for a fork (叉子, chāzi) is fine in tourist areas. But learning even basic chopsticks earns you genuine smiles and respect from locals. It's worth the 10 minutes of awkwardness.`
+  },
+  {
     id: 'post-017',
     slug: 'china-public-transport-card',
     category: 'qa',
