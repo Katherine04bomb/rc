@@ -127,6 +127,26 @@ const PROVINCE_MAP = [
    desc:"China's largest region. Taklamakan Desert, Silk Road oases, Kashgar bazaar."},
 ];
 
+// ── REGION MAP (provinceId → north/east/west/south) ─────────
+// Used only by the new badge progress rings. Adding a province here
+// only affects the badge "region" grouping, nothing else.
+const REGION_OF = {
+  beijing:'north', tianjin:'north', hebei:'north', shanxi:'north',
+  'inner-mongolia':'north', liaoning:'north', jilin:'north',
+  heilongjiang:'north', shandong:'north', henan:'north', ningxia:'north',
+  shanghai:'east', jiangsu:'east', zhejiang:'east', anhui:'east',
+  fujian:'east', jiangxi:'east',
+  guangdong:'south', guangxi:'south', hainan:'south', hubei:'south', hunan:'south',
+  chongqing:'west', sichuan:'west', guizhou:'west', yunnan:'west',
+  tibet:'west', shaanxi:'west', gansu:'west', qinghai:'west', xinjiang:'west'
+};
+const REGION_DEFS = [
+  { key:'north', name:'North', color:'#378ADD', sample:'Harbin, Beijing' },
+  { key:'east',  name:'East',  color:'#1D9E75', sample:'Shanghai, Suzhou' },
+  { key:'west',  name:'West',  color:'#BA7517', sample:'Lhasa, Kashgar' },
+  { key:'south', name:'South', color:'#D85A30', sample:'Guilin, Xiamen' }
+];
+
 // ── INTEREST FILTER CHIPS ───────────────────────────────────
 // 想加一个新标签：在下面加一行 {key, emoji, label} 即可。
 // key 必须和 cities.json 里每个城市的 interests 数组值一致。
@@ -345,6 +365,15 @@ function loadMap(mode) {
             Pick a vibe to light up the map, tap a <b>city pin</b>, and build your trip.
           </p>
 
+          <!-- GAME ENTRY (links to the dedicated game page /play/map/) -->
+          <div class="rc-game-cta-row">
+            <a class="rc-game-cta" href="play/map/">
+              <span class="rc-game-cta-em">🧩</span>
+              <span class="rc-game-cta-tx">Play map game — Pin the Province</span>
+              <span class="rc-game-cta-ar">→</span>
+            </a>
+          </div>
+
           <!-- INTEREST FILTER CHIPS -->
           <div class="map-chips" id="map-chips">${chipHTML}</div>
 
@@ -368,30 +397,54 @@ function loadMap(mode) {
               </div>
             </div>
 
-            <!-- RIGHT: My Trip → Can't decide → Badges -->
+            <!-- RIGHT: tabbed sidebar (My Trip / Badges) -->
             <aside class="map-side">
-              <div class="explorer-panel" id="explorer-panel">
-                <div class="explorer-title">🏅 China Explorer Level</div>
-                <div class="explorer-level" id="explorer-level">Lv.1 纸上谈兵</div>
-                <div class="explorer-bar-wrap"><div class="explorer-bar" id="explorer-bar"></div></div>
-                <div class="explorer-sub" id="explorer-sub">Add your first city to level up.</div>
+              <div class="rc-tabs" id="rc-tabs">
+                <button class="rc-tab on" data-rt="trip" type="button">My Trip</button>
+                <button class="rc-tab" data-rt="badges" type="button">Badges</button>
               </div>
 
-              <div class="trip-panel">
-                <div class="trip-head">
-                  <span>🧳 My Trip</span>
-                  <span class="trip-count" id="trip-count">0</span>
+              <!-- TRIP PANEL -->
+              <div class="rc-panel on" id="rc-panel-trip">
+                <div class="trip-panel">
+                  <div class="trip-head">
+                    <span>🧳 My Trip</span>
+                    <span class="trip-count" id="trip-count">0</span>
+                  </div>
+                  <div class="trip-list" id="trip-list"></div>
+                  <div class="interested-mini" id="interested-mini"></div>
+                  <button class="trip-btn" id="trip-itin" onclick="openItinerary()">📋 Get full itinerary</button>
                 </div>
-                <div class="trip-list" id="trip-list"></div>
-                <div class="interested-mini" id="interested-mini"></div>
-                <button class="trip-btn" id="trip-itin" onclick="openItinerary()">📋 Get full itinerary</button>
+
+                <button class="surprise-btn" onclick="surpriseCity()">🎁 Can't decide? Surprise me</button>
+
+                <div class="explorer-panel rc-level-card" id="explorer-panel">
+                  <div class="rc-ring" id="rc-level-ring" style="--rc-pct:0">
+                    <svg width="62" height="62" viewBox="0 0 62 62">
+                      <circle cx="31" cy="31" r="26" class="rc-ring-bg"></circle>
+                      <circle cx="31" cy="31" r="26" class="rc-ring-fg" id="rc-level-ring-fg"></circle>
+                    </svg>
+                    <span class="rc-level-num" id="rc-level-num">Lv.1</span>
+                  </div>
+                  <div class="rc-level-txt">
+                    <div class="explorer-title">🏅 China Explorer</div>
+                    <div class="explorer-level" id="explorer-level">Lv.1 China Newbie</div>
+                    <div class="explorer-bar-wrap"><div class="explorer-bar" id="explorer-bar"></div></div>
+                    <div class="explorer-sub" id="explorer-sub">Add your first city to level up.</div>
+                  </div>
+                </div>
               </div>
 
-              <button class="surprise-btn" onclick="surpriseCity()">🎁 Can't decide? Surprise me</button>
-
-              <div class="badge-wall">
-                <div class="badge-head">🏅 My badges <span style="opacity:.6;font-weight:400">(tap a pin → ★ / ✓)</span></div>
-                <div class="badge-grid" id="badge-grid"></div>
+              <!-- BADGES PANEL -->
+              <div class="rc-panel" id="rc-panel-badges">
+                <div class="rc-badges-head">
+                  <span class="rc-sec-label">My badges</span>
+                  <span class="rc-bcount" id="rc-bcount">0 / 0 collected</span>
+                </div>
+                <div class="rc-progress" id="rc-progress"></div>
+                <div class="rc-sec-label rc-sub-label">Collected — tap to open</div>
+                <div class="badge-grid rc-bcollected" id="badge-grid"></div>
+                <div class="rc-ach" id="rc-ach"></div>
               </div>
             </aside>
           </div>
@@ -453,6 +506,7 @@ function loadMap(mode) {
       });
       if (!isTeaser) {
         setupChips();
+        setupTabs();
         renderTrip();
         renderBadges();
         updateExplorer();
@@ -701,14 +755,15 @@ function updateExplorer() {
   const badges = loadBadges();
   const been = Object.values(badges).filter(v => v === 'been').length;
   const interested = Object.values(badges).filter(v => v === 'interested').length;
-  const score = trip.length * 3 + been * 5 + interested * 1;
+  const puzzleXp = parseInt(localStorage.getItem('rc_puzzle_xp') || '0', 10);
+  const score = trip.length * 3 + been * 5 + interested * 1 + puzzleXp;
 
   const levels = [
-    { min: 0,   label: 'Lv.1 纸上谈兵', sub: 'Add your first city to level up.' },
-    { min: 3,   label: 'Lv.2 跃跃欲试', sub: 'You\'re building a real itinerary!' },
-    { min: 9,   label: 'Lv.3 说走就走', sub: 'Kat would be proud of this route.' },
-    { min: 18,  label: 'Lv.4 中国通',   sub: 'You\'re basically a local now.' },
-    { min: 30,  label: 'Lv.5 超级玩家', sub: 'All the badges? Legendary.' }
+    { min: 0,   label: 'Lv.1 China Newbie', sub: 'Add your first city to level up.' },
+    { min: 3,   label: 'Lv.2 China Rookie', sub: 'You\'re building a real itinerary!' },
+    { min: 9,   label: 'Lv.3 China Explorer', sub: 'Kat would be proud of this route.' },
+    { min: 18,  label: 'Lv.4 China Master', sub: 'You\'re basically a local now.' },
+    { min: 30,  label: 'Lv.5 China Legend', sub: 'All the badges? Legendary.' }
   ];
   const level = levels.slice().reverse().find(l => score >= l.min);
   const next = levels.find(l => l.min > score);
@@ -722,6 +777,18 @@ function updateExplorer() {
   if (elLevel) elLevel.textContent = level.label;
   if (elBar) elBar.style.width = pct + '%';
   if (elSub) elSub.textContent = level.sub;
+
+  // level ring (additive visual — the bar above stays intact)
+  const ringFg = document.getElementById('rc-level-ring-fg');
+  if (ringFg) {
+    const circ = 2 * Math.PI * 26;
+    ringFg.style.strokeDasharray = circ;
+    ringFg.style.strokeDashoffset = circ * (1 - pct / 100);
+  }
+  const ringWrap = document.getElementById('rc-level-ring');
+  if (ringWrap) ringWrap.style.setProperty('--rc-pct', pct);
+  const numEl = document.getElementById('rc-level-num');
+  if (numEl) numEl.textContent = level.label.split(' ')[0];
 }
 function addToTrip(nameEn) {
   const trip = loadTrip();
@@ -760,22 +827,100 @@ function renderInterested() {
   `;
 }
 
-// ── BADGE WALL ──────────────────────────────────────────────
+// ── BADGE WALL (total progress ring + collected / locked + achievements) ─
 function renderBadges() {
   const grid = document.getElementById('badge-grid');
   if (!grid) return;
   const badges = loadBadges();
-  grid.innerHTML = CITIES.map(c => {
-    const st = badges[c.nameEn] ? badges[c.nameEn] : '';
-    return `<button class="badge ${st}" data-city="${c.nameEn}" title="${c.nameEn}">
-      <span class="badge-emoji">${c.emoji}</span>
+
+  // ---- total progress ring (single compact summary) ----
+  const progEl = document.getElementById('rc-progress');
+  if (progEl) {
+    const got = CITIES.filter(c => badges[c.nameEn]).length;
+    const total = CITIES.length;
+    const pct = total ? got / total : 0;
+    const circ = 2 * Math.PI * 24;
+    const dash = Math.round(pct * circ);
+    const nextXp = 30 - Math.floor(got / total * 30);
+    progEl.innerHTML = `
+      <div class="rc-progress-ring" style="--rc-color:var(--red,#B03A2E)">
+        <div class="rc-progress-ring-svg">
+          <svg width="58" height="58" viewBox="0 0 58 58">
+            <circle cx="29" cy="29" r="24" class="rc-rg-bg"></circle>
+            <circle cx="29" cy="29" r="24" class="rc-rg-fg" stroke-dasharray="${dash} ${circ}"></circle>
+          </svg>
+          <span class="rc-progress-num">${got}/${total}</span>
+        </div>
+        <div class="rc-progress-info">
+          <div class="rc-progress-nm">${got} cities collected</div>
+          <div class="rc-progress-sub">Keep exploring — every city counts!</div>
+        </div>
+      </div>`;
+  }
+
+  // ---- collected (with state) + locked badges ----
+  const collected = CITIES.filter(c => badges[c.nameEn]);
+  const locked = CITIES.filter(c => !badges[c.nameEn]);
+  grid.innerHTML = '';
+  collected.forEach(c => {
+    const st = badges[c.nameEn];
+    const b = document.createElement('button');
+    b.className = 'badge rc-b ' + (st === 'been' ? 'been rc-been' : 'interested rc-want');
+    b.setAttribute('data-city', c.nameEn);
+    b.title = c.nameEn;
+    b.innerHTML = `<span class="badge-emoji">${c.emoji}</span>
       <span class="badge-name">${c.nameEn}</span>
-    </button>`;
-  }).join('');
-  grid.querySelectorAll('.badge').forEach(b => {
-    b.addEventListener('click', () => openCityPin(b.dataset.city));
+      <span class="rc-b-state">${st === 'been' ? '✓ been' : '★ want'}</span>`;
+    b.addEventListener('click', () => openCityPin(c.nameEn));
+    grid.appendChild(b);
   });
+  locked.forEach(c => {
+    const b = document.createElement('button');
+    b.className = 'badge rc-b rc-locked';
+    b.setAttribute('data-city', c.nameEn);
+    b.title = c.nameEn;
+    b.innerHTML = `<span class="badge-emoji">${c.emoji}</span>
+      <span class="badge-name">${c.nameEn}</span>
+      <span class="rc-b-state">—</span>`;
+    b.addEventListener('click', () => openCityPin(c.nameEn));
+    grid.appendChild(b);
+  });
+
+  // ---- count pill ----
+  const cnt = document.getElementById('rc-bcount');
+  if (cnt) cnt.textContent = collected.length + ' / ' + CITIES.length + ' collected';
+
+  // ---- achievement tiles ----
+  renderAchievements(badges);
+
   updateExplorer();
+}
+
+// ── ACHIEVEMENT TILES (extra motivation, fully additive) ───
+function renderAchievements(badges) {
+  const ach = document.getElementById('rc-ach');
+  if (!ach) return;
+  const list = [];
+  // Foodie explorer — 4+ food cities marked
+  const foodCities = CITIES.filter(c => (c.interests || []).includes('food') && badges[c.nameEn]);
+  if (foodCities.length >= 4) list.push({ em:'🍜', t:'Foodie explorer', s:'marked ' + foodCities.length + ' food cities' });
+  // Trail blazer — 3+ cities in trip
+  const trip = loadTrip();
+  if (trip.length >= 3) list.push({ em:'🧳', t:'Trail blazer', s:trip.length + ' cities in your route' });
+  // Region master — all cities of one region collected
+  REGION_DEFS.forEach(r => {
+    const cs = CITIES.filter(c => REGION_OF[c.provinceId] === r.key);
+    const got = cs.filter(c => badges[c.nameEn]).length;
+    if (cs.length && got === cs.length) list.push({ em:'🏆', t:r.name + ' master', s:'all ' + cs.length + ' ' + r.name.toLowerCase() + ' cities collected' });
+  });
+  // Cartographer — played the map game (puzzle xp)
+  const pxp = (parseInt(localStorage.getItem('rc_puzzle_xp') || '0', 10));
+  if (pxp >= 30) list.push({ em:'🗺️', t:'Cartographer', s:'earned ' + pxp + ' XP in Pin the Province' });
+
+  ach.innerHTML = list.length
+    ? list.map(a => `<div class="rc-ach-tile"><span class="rc-ach-em">${a.em}</span>
+        <div><div class="rc-ach-t">${a.t}</div><div class="rc-ach-s">${a.s}</div></div></div>`).join('')
+    : '<div class="rc-ach-empty">Mark cities as ★ or ✓ to unlock achievements.</div>';
 }
 
 // ── SURPRISE ────────────────────────────────────────────────
@@ -892,3 +1037,22 @@ function toast(msg) {
 const mapContainer = document.getElementById('map-container');
 const MAP_MODE = (mapContainer && mapContainer.dataset.mode === 'teaser') ? 'teaser' : 'full';
 loadMap(MAP_MODE);
+
+// ============================================================
+//  TAB SIDEBAR + GAME ENTRY (additive — existing code untouched)
+// ============================================================
+
+// ── TAB SWITCH (My Trip / Badges) ──────────────────────────
+function setupTabs() {
+  const bar = document.getElementById('rc-tabs');
+  if (!bar) return;
+  bar.querySelectorAll('.rc-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      bar.querySelectorAll('.rc-tab').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      document.querySelectorAll('.rc-panel').forEach(p => p.classList.remove('on'));
+      const panel = document.getElementById('rc-panel-' + btn.dataset.rt);
+      if (panel) panel.classList.add('on');
+    });
+  });
+}

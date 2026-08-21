@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pin the Province — China Map Game | Ready? China!</title>
+<meta name="description" content="Learn China's map by playing: a province name appears, tap it on the map. Names and landmark icons always shown (except Hard mode), so anyone can play. Earn XP, level up your China Explorer rank.">
+<meta name="keywords" content="China map game, learn China provinces, China geography quiz, map puzzle China, spot the province, China travel game">
+<meta property="og:title" content="Pin the Province — China Map Game | Ready? China!">
+<meta property="og:description" content="Tap the named province on the map. +10 XP per correct answer. 3 difficulty modes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.readychinatravel.com/play/map/">
+<link rel="canonical" href="https://www.readychinatravel.com/play/map/">
+
+<script src="../../assets/consent-gate.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  /* ══════════ PIN THE PROVINCE — game styles ══════════ */
+  :root {
+    --pz-red: #b03a2e;
+    --pz-red-dark: #8e2a20;
+    --pz-gold: #b8860b;
+    --pz-navy: #1c3a5c;
+    --pz-green: #2e7d32;
+  }
+  .pz-bg {
+    position: relative;
+    padding: 120px 20px 80px;
+    min-height: calc(100vh - 70px);
+    overflow: hidden;
+  }
+  .pz-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(rgba(176,58,46,.05) 1px, transparent 1px),
+      radial-gradient(rgba(184,134,11,.05) 1px, transparent 1px);
+    background-size: 22px 22px, 22px 22px;
+    background-position: 0 0, 11px 11px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .pz-wrap { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; }
+
+  /* ── Hero ── */
+  .pz-hero { text-align: center; margin-bottom: 30px; }
+  .pz-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, #fdeaea, #fdf3e3);
+    border: 1px solid rgba(176,58,46,.28);
+    color: var(--pz-red-dark);
+    font-size: 12px; font-weight: 800; letter-spacing: 2.5px;
+    padding: 7px 16px; border-radius: 999px;
+    animation: pz-bob 3s ease-in-out infinite;
+  }
+  @keyframes pz-bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+  .pz-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 5vw, 46px);
+    font-weight: 700; color: var(--text);
+    margin: 16px 0 8px; line-height: 1.1;
+  }
+  .pz-title em {
+    font-style: italic;
+    background: linear-gradient(100deg, var(--pz-red), var(--pz-gold));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .pz-sub { color: var(--text-muted); font-size: 14px; line-height: 1.7; max-width: 560px; margin: 0 auto; }
+
+  /* ── Layout: map left, controls right ── */
+  .pz-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; align-items: start; }
+
+  .pz-map-card {
+    background: #fff; border: 1px solid var(--border); border-radius: 22px;
+    box-shadow: 0 10px 40px rgba(26,18,8,.08);
+    padding: 18px; position: relative;
+  }
+  .pz-map-card .pz-map-head {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 10px; font-size: 12px; color: var(--text-muted); font-weight: 600;
+  }
+  #puzzle-map svg { display: block; width: 100%; height: auto; }
+  .pz-prov { fill: #f0ede3; stroke: #c9c4b4; stroke-width: 1; transition: fill .2s; cursor: pointer; }
+  .pz-prov:hover { fill: #fbf4de; }
+  .pz-prov.pz-active { fill: #f9d9d2; stroke: var(--pz-red); stroke-width: 1.5; }
+  .pz-prov.pz-flash-ok { fill: #cde8d2; stroke: var(--pz-green); }
+  .pz-prov.pz-flash-no { fill: #f5c8c2; stroke: var(--pz-red); }
+  .pz-prov.pz-decor { fill: #e7e2d4; cursor: default; }
+
+  .pz-panel { display: flex; flex-direction: column; gap: 14px; }
+  .pz-card {
+    background: #fff; border: 1px solid var(--border); border-radius: 18px;
+    padding: 16px 18px; box-shadow: 0 6px 24px rgba(26,18,8,.05);
+  }
+  .pz-xp-row { display: flex; align-items: center; justify-content: space-between; }
+  .pz-xp-label { font-size: 12px; font-weight: 800; letter-spacing: 1.5px; color: var(--text-muted); }
+  .pz-xp-num { font-size: 18px; font-weight: 800; color: var(--pz-gold); }
+  .pz-xp-num small { font-size: 11px; color: var(--text-muted); font-weight: 500; }
+
+  .pz-modes { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .pz-mode {
+    border: 2px solid #e8e0d2; border-radius: 13px; padding: 12px 6px;
+    text-align: center; cursor: pointer; transition: all .15s ease; background: #fff;
+  }
+  .pz-mode:hover { border-color: var(--pz-red); transform: translateY(-2px); }
+  .pz-mode.on { border-color: var(--pz-red); background: #fdf0ee; }
+  .pz-mode-em { font-size: 22px; display: block; }
+  .pz-mode-nm { font-size: 12.5px; font-weight: 800; color: var(--text); margin-top: 3px; display: block; }
+  .pz-mode-ds { font-size: 10px; color: var(--text-muted); margin-top: 2px; display: block; line-height: 1.3; }
+
+  .pz-start {
+    width: 100%; border: none; border-radius: 14px; padding: 14px;
+    background: var(--pz-red); color: #fff; font-size: 15px; font-weight: 800;
+    cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all .15s ease;
+  }
+  .pz-start:hover { background: var(--pz-red-dark); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(176,58,46,.3); }
+
+  .pz-foot { font-size: 11.5px; color: var(--text-muted); text-align: center; line-height: 1.6; }
+  .pz-foot b { color: var(--pz-gold); }
+
+  /* ── Arena (in-game state) ── */
+  .pz-hud { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .pz-hud span {
+    font-size: 12px; font-weight: 700; border-radius: 999px; padding: 4px 11px;
+    background: #f4efe6; color: var(--text-mid);
+  }
+  .pz-hud .pz-time { background: #e8f5e9; color: var(--pz-green); }
+  .pz-hud .pz-correct { background: #fdeaea; color: var(--pz-green); }
+  .pz-q { display: flex; align-items: center; gap: 10px; margin: 14px 0 4px; font-size: 15px; color: var(--text); }
+  .pz-q-em { font-size: 26px; }
+  .pz-q-tx b { color: var(--pz-red); }
+  .pz-fb { min-height: 20px; font-size: 12.5px; font-weight: 700; margin: 4px 0; }
+  .pz-fb.ok { color: var(--pz-green); }
+  .pz-fb.no { color: var(--pz-red); }
+  .pz-quit, .pz-next, .pz-again {
+    margin-top: 8px; padding: 9px 16px; border-radius: 11px; border: none;
+    font-size: 13px; font-weight: 800; cursor: pointer; font-family: 'DM Sans', sans-serif;
+    background: #f4efe6; color: var(--text-mid); transition: all .13s ease;
+  }
+  .pz-quit:hover, .pz-next:hover, .pz-again:hover { background: var(--pz-red); color: #fff; }
+
+  .pz-welcome { text-align: center; padding: 6px 4px; }
+  .pz-welcome-em { font-size: 34px; }
+  .pz-welcome-t { font-size: 16px; font-weight: 800; color: var(--text); margin: 6px 0 4px; }
+  .pz-welcome-s { font-size: 12.5px; color: var(--text-muted); line-height: 1.7; }
+  .pz-welcome-s b { color: var(--pz-green); }
+
+  .pz-result { text-align: center; padding: 8px 4px; }
+  .pz-medal { font-size: 56px; line-height: 1; animation: pz-pop .5s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes pz-pop { from { transform: scale(0) rotate(-20deg); opacity: 0; } to { transform: scale(1) rotate(0); opacity: 1; } }
+  .pz-score { font-size: 19px; font-weight: 800; color: var(--text); margin: 10px 0 2px; }
+  .pz-rank { font-size: 13px; font-weight: 700; color: var(--pz-gold); letter-spacing: 1px; margin-bottom: 8px; }
+
+  .pz-learn { text-align: center; }
+  .pz-learn-em { font-size: 34px; }
+  .pz-learn-zh { font-size: 21px; font-weight: 700; color: var(--text); margin-top: 4px; }
+  .pz-learn-en { font-size: 13px; font-weight: 700; color: var(--pz-navy); margin-top: 2px; }
+  .pz-learn-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.6; margin: 8px 0; }
+  .pz-learn-prog { font-size: 11px; font-weight: 800; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 8px; }
+
+  /* toast */
+  .pz-toast {
+    position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%) translateY(10px);
+    background: #2c2c2a; color: #fff; font-size: 13px; border-radius: 999px;
+    padding: 10px 20px; opacity: 0; pointer-events: none; transition: all .25s ease; z-index: 999;
+  }
+  .pz-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* tip */
+  .pz-tip {
+    position: fixed; pointer-events: none; z-index: 999;
+    background: #2c2c2a; color: #fff; font-size: 12px; border-radius: 10px;
+    padding: 8px 12px; opacity: 0; transition: opacity .15s; max-width: 260px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.2);
+  }
+  .pz-tip b { display: block; font-size: 12.5px; font-weight: 500; }
+  .pz-tip span { color: #c9c4b4; font-size: 11px; line-height: 1.5; display: block; margin-top: 2px; }
+
+  @media (max-width: 860px) {
+    .pz-grid { grid-template-columns: 1fr; }
+    .pz-bg { padding-top: 100px; }
+  }
+</style>
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<main>
+  <div class="pz-bg">
+    <div class="pz-wrap">
+
+      <!-- ═══ HERO ═══ -->
+      <div class="pz-hero">
+        <div class="pz-badge">🧩 MAP GAME</div>
+        <h1 class="pz-title">Pin the <em>Province</em></h1>
+        <p class="pz-sub">A province name appears — tap it on the map. Names &amp; landmark icons are always shown (except Hard mode), so anyone can play. <b>+10 XP per correct answer.</b></p>
+      </div>
+
+      <!-- ═══ GAME GRID ═══ -->
+      <div class="pz-grid">
+
+        <!-- LEFT: MAP -->
+        <div class="pz-map-card">
+          <div class="pz-map-head">
+            <span>🗺️ China map</span>
+            <span>hover a province to explore</span>
+          </div>
+          <div id="puzzle-map">
+            <div style="text-align:center;padding:60px;color:var(--text-muted);font-size:13px">Loading map…</div>
+          </div>
+        </div>
+
+        <!-- RIGHT: CONTROLS -->
+        <div class="pz-panel">
+          <div class="pz-card">
+            <div class="pz-xp-row">
+              <span class="pz-xp-label">⭐ MY TOTAL XP</span>
+              <span class="pz-xp-num" id="pz-xp">0 <small>XP</small></span>
+            </div>
+          </div>
+
+          <div class="pz-card">
+            <div class="pz-xp-row" style="margin-bottom:10px">
+              <span class="pz-xp-label">CHOOSE YOUR LEVEL</span>
+            </div>
+            <div class="pz-modes">
+              <button class="pz-mode" data-pz-mode="learn" type="button">
+                <span class="pz-mode-em">🌱</span>
+                <span class="pz-mode-nm">Learn</span>
+                <span class="pz-mode-ds">guided tour first</span>
+              </button>
+              <button class="pz-mode on" data-pz-mode="easy" type="button">
+                <span class="pz-mode-em">🧭</span>
+                <span class="pz-mode-nm">Easy</span>
+                <span class="pz-mode-ds">names + landmarks</span>
+              </button>
+              <button class="pz-mode" data-pz-mode="hard" type="button">
+                <span class="pz-mode-em">🔥</span>
+                <span class="pz-mode-nm">Hard</span>
+                <span class="pz-mode-ds">timed, no hints</span>
+              </button>
+            </div>
+            <button class="pz-start" id="pz-start" type="button">▶ Start challenge</button>
+          </div>
+
+          <div class="pz-card" id="puzzle-arena">
+            <div class="pz-welcome">
+              <div class="pz-welcome-em">🧩</div>
+              <div class="pz-welcome-t">Spot the Province</div>
+              <div class="pz-welcome-s">A province name appears — tap it on the map.<br>Names &amp; landmark icons are always shown (except Hard), so anyone can play.<br><b>+10 XP per correct answer.</b></div>
+            </div>
+          </div>
+
+          <div class="pz-foot">
+            🏅 Rank: <b>China Rookie</b> → <b>China Explorer</b> → <b>China Master</b> → <b>China Legend</b><br>
+            XP feeds your Explorer level on the main map · no fail state, just play
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer id="site-footer"></footer>
+
+<!-- SCRIPTS -->
+<script src="../../assets/nav.js"></script>
+<script>buildNav();</script>
+<script src="../../assets/map-puzzle.js"></script>
+<script>
+  // svgUrl is relative to THIS page (/play/map/ → ../../assets/china-Map.svg)
+  initPinTheProvince({ svgUrl: '../../assets/china-Map.svg', mapId: 'puzzle-map', arenaId: 'puzzle-arena' });
+</script>
+</body>
+</html>

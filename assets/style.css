@@ -2574,6 +2574,269 @@ footer {
   .city-pin-lbl { font-size: 7.5px; }
 }
 
+/* ============================================================
+   MAP PAGE — TAB SIDEBAR + REGION RINGS + GAME (additive)
+   All classes are prefixed .rc- to avoid touching existing CSS.
+   ============================================================ */
+
+/* ── tab bar ── */
+.rc-tabs {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+  background: var(--bg-soft, #f1efe8); padding: 5px;
+  border-radius: 12px; margin-bottom: 14px;
+}
+.rc-tab {
+  border: none; background: transparent; border-radius: 9px;
+  padding: 8px 0; font-size: 13px; color: var(--text-muted, #6b6b66);
+  cursor: pointer; font-family: inherit; font-weight: 500;
+  transition: all .18s ease;
+}
+.rc-tab:hover { color: var(--text, #2c2c2a); }
+.rc-tab.on {
+  background: #fff; color: var(--text, #2c2c2a);
+  box-shadow: 0 1px 4px rgba(44,44,42,.12);
+}
+
+/* ── panels ── */
+.rc-panel { display: none; flex-direction: column; }
+.rc-panel.on { display: flex; }
+
+/* ── level card (explorer panel re-laid out with a ring) ── */
+.explorer-panel.rc-level-card {
+  display: flex; align-items: center; gap: 14px;
+  background: #eaf1f8; border: 1px solid #d5e2ee;
+}
+.explorer-panel.rc-level-card .explorer-title { font-size: 12px; }
+.explorer-panel.rc-level-card .explorer-level { font-size: 14px; }
+.explorer-panel.rc-level-card .explorer-sub { font-size: 11.5px; }
+.rc-ring {
+  position: relative; width: 62px; height: 62px; flex: none;
+}
+.rc-ring svg { transform: rotate(-90deg); }
+.rc-ring .rc-ring-bg { fill: none; stroke: #d5e2ee; stroke-width: 6; }
+.rc-ring .rc-ring-fg {
+  fill: none; stroke: var(--accent, #b03a2e); stroke-width: 6;
+  stroke-linecap: round; transition: stroke-dashoffset .5s ease;
+}
+.rc-level-num {
+  position: absolute; inset: 0; display: flex; align-items: center;
+  justify-content: center; font-size: 15px; font-weight: 600;
+  color: var(--navy, #1c3a5c);
+}
+.rc-level-txt { flex: 1; min-width: 0; }
+
+/* ── badges panel ── */
+.rc-badges-head {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 12px;
+}
+.rc-sec-label {
+  font-size: 12px; font-weight: 600; color: var(--text-muted, #9a9a93);
+  letter-spacing: .4px;
+}
+.rc-bcount {
+  background: var(--red-soft, #fdf0ee); color: var(--accent, #8e2a20);
+  font-size: 12px; font-weight: 500; border-radius: 99px; padding: 4px 12px;
+}
+.rc-regions {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;
+}
+.rc-region-ring {
+  display: flex; align-items: center; gap: 11px;
+  border: 1px solid var(--line, #e6e3da); border-radius: 13px; padding: 10px;
+}
+.rc-region-ring-svg { position: relative; width: 52px; height: 52px; flex: none; }
+.rc-region-ring-svg svg { transform: rotate(-90deg); }
+.rc-rg-bg { fill: none; stroke: #e3e0d6; stroke-width: 5; }
+.rc-rg-fg {
+  fill: none; stroke: var(--rc-color, #378add); stroke-width: 5;
+  stroke-linecap: round; transition: stroke-dasharray .5s ease;
+}
+.rc-rg-num {
+  position: absolute; inset: 0; display: flex; align-items: center;
+  justify-content: center; font-size: 11px; font-weight: 600;
+  color: var(--text, #2c2c2a);
+}
+.rc-rg-nm { font-size: 13px; font-weight: 600; }
+.rc-rg-sample { font-size: 10.5px; color: var(--text-muted, #6b6b66); }
+
+.rc-sub-label { margin: 4px 0 9px; }
+.rc-bcollected { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.badge.rc-b { padding: 9px 4px 7px; text-align: center; position: relative; }
+.badge.rc-b .badge-emoji { font-size: 17px; }
+.badge.rc-b .badge-name { font-size: 10px; }
+.badge.rc-b .rc-b-state { display: block; font-size: 9px; margin-top: 2px; }
+.badge.rc-been .rc-b-state { color: var(--accent, #8e2a20); }
+.badge.rc-want .rc-b-state { color: var(--green, #2f7d4f); }
+.badge.rc-locked {
+  background: #f4f2eb; border-color: transparent;
+}
+.badge.rc-locked .badge-emoji { filter: grayscale(1); opacity: .4; }
+.badge.rc-locked .badge-name { color: var(--text-muted, #9a9a93); }
+.badge.rc-locked .rc-b-state { color: var(--text-muted, #9a9a93); }
+
+.rc-ach { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+.rc-ach-tile {
+  display: flex; align-items: center; gap: 10px;
+  border: 1px solid var(--gold-border, #e6d9b0);
+  background: var(--gold-soft, #fbf4de); border-radius: 12px; padding: 10px 13px;
+}
+.rc-ach-em { font-size: 20px; }
+.rc-ach-t { font-size: 13px; font-weight: 600; color: #7a5b00; }
+.rc-ach-s { font-size: 11.5px; color: #a0831f; }
+.rc-ach-empty {
+  font-size: 12px; color: var(--text-muted, #9a9a93);
+  border: 1px dashed var(--line, #e6e3da); border-radius: 12px; padding: 12px;
+  text-align: center;
+}
+
+/* ── game panel ── */
+.rc-game-title { font-size: 16px; font-weight: 600; }
+.rc-game-sub { font-size: 12px; color: var(--text-muted, #6b6b66); margin: 3px 0 14px; }
+.rc-modes { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+.rc-mode {
+  border: 1.5px solid var(--line, #e6e3da); border-radius: 12px;
+  padding: 11px 6px; text-align: center; cursor: pointer;
+  transition: all .18s ease; position: relative; background: #fff;
+  font-family: inherit;
+}
+.rc-mode:hover { border-color: #c9c4b4; }
+.rc-mode.on { border-color: var(--accent, #b03a2e); background: var(--red-soft, #fdf0ee); }
+.rc-mode-em { font-size: 20px; display: block; }
+.rc-mode-nm { font-size: 12px; font-weight: 600; margin-top: 4px; display: block; }
+.rc-mode-ds { font-size: 9.5px; color: var(--text-muted, #9a9a93); margin-top: 2px; display: block; line-height: 1.35; }
+.rc-mode-badge {
+  position: absolute; top: -8px; right: -6px; background: var(--gold, #c99700);
+  color: #fff; font-size: 8.5px; border-radius: 99px; padding: 2px 7px; letter-spacing: .3px;
+}
+.rc-steps { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+.rc-step {
+  border: 1px solid var(--line, #e6e3da); border-radius: 11px;
+  padding: 9px 8px; font-size: 10.5px; color: var(--text-muted, #6b6b66);
+  line-height: 1.4; background: #fbfaf6;
+}
+.rc-step b { display: block; color: var(--text, #2c2c2a); font-size: 11px; margin-bottom: 2px; }
+.rc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.rc-tag {
+  font-size: 10.5px; color: var(--navy, #1c3a5c); background: #eaf1f8;
+  border-radius: 99px; padding: 4px 10px;
+}
+.rc-go {
+  width: 100%; border: none; background: var(--accent, #b03a2e); color: #fff;
+  border-radius: 12px; padding: 13px; font-size: 14px; font-weight: 600;
+  cursor: pointer; font-family: inherit; transition: background .18s;
+}
+.rc-go:hover { background: #8e2a20; }
+.rc-game-foot { font-size: 11px; color: var(--text-muted, #9a9a93); text-align: center; margin-top: 10px; }
+
+/* ── puzzle arena ── */
+.rc-puzzle-arena { margin-top: 16px; }
+.rc-puzzle-arena.playing {
+  border: 1px solid var(--line, #e6e3da); border-radius: 14px; padding: 16px;
+  background: #fbfaf6;
+}
+.rc-pz-hud {
+  display: flex; justify-content: space-between; font-size: 12px;
+  font-weight: 600; color: var(--text-muted, #6b6b66); margin-bottom: 12px;
+}
+.rc-pz-q { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.rc-pz-q-em { font-size: 26px; }
+.rc-pz-q-tx { font-size: 14px; }
+.rc-pz-q-tx b { color: var(--accent, #b03a2e); }
+.rc-pz-fb { font-size: 13px; min-height: 18px; margin-bottom: 10px; transition: color .15s; }
+.rc-pz-fb.ok { color: var(--green, #2f7d4f); font-weight: 600; }
+.rc-pz-fb.no { color: var(--accent, #b03a2e); }
+.rc-pz-quit {
+  border: 1px solid var(--line, #e6e3da); background: #fff; color: var(--text-muted, #6b6b66);
+  border-radius: 9px; padding: 6px 14px; font-size: 12px; cursor: pointer; font-family: inherit;
+}
+.rc-pz-result { text-align: center; padding: 8px 0; }
+.rc-pz-medal { font-size: 40px; }
+.rc-pz-score { font-size: 16px; font-weight: 600; margin-top: 4px; }
+.rc-pz-rank { font-size: 12px; color: var(--text-muted, #6b6b66); margin: 4px 0 14px; }
+.rc-pz-again {
+  border: none; background: var(--accent, #b03a2e); color: #fff;
+  border-radius: 11px; padding: 10px 22px; font-size: 13px; font-weight: 600;
+  cursor: pointer; font-family: inherit;
+}
+.rc-pz-learn { text-align: center; }
+.rc-pz-learn-em { font-size: 36px; }
+.rc-pz-learn-zh { font-size: 20px; font-weight: 600; margin-top: 2px; }
+.rc-pz-learn-en { font-size: 12px; color: var(--text-muted, #6b6b66); }
+.rc-pz-learn-desc { font-size: 12.5px; color: var(--text, #2c2c2a); margin: 10px 4px; line-height: 1.5; }
+.rc-pz-learn-prog { font-size: 11px; color: var(--text-muted, #9a9a93); margin: 6px 0 12px; }
+.rc-pz-next {
+  border: none; background: var(--accent, #b03a2e); color: #fff;
+  border-radius: 10px; padding: 8px 18px; font-size: 13px; cursor: pointer; font-family: inherit;
+  margin-right: 8px;
+}
+
+/* province flash during puzzle */
+.province.rc-pz-flash-ok { fill: #2f7d4f !important; }
+.province.rc-pz-flash-no { fill: #d85a30 !important; }
+
+/* responsive */
+@media (max-width: 860px) {
+  .rc-bcollected { grid-template-columns: repeat(4, 1fr); }
+  .rc-regions { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .rc-modes { grid-template-columns: 1fr; }
+  .rc-steps { grid-template-columns: 1fr; }
+  .rc-bcollected { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ── game entry CTA (links to the dedicated game page /play/map/) ── */
+.rc-game-cta-row {
+  display: flex; justify-content: center;
+  margin: 6px 0 18px;
+}
+.rc-game-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, var(--gold, #9a7b2f), var(--gold-light, #c9a84c));
+  color: #fff; text-decoration: none;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 15px; font-weight: 600; letter-spacing: .3px;
+  padding: 10px 22px; border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(154, 123, 47, .35);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.rc-game-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(154, 123, 47, .48);
+}
+.rc-game-cta-em { font-size: 17px; line-height: 1; }
+.rc-game-cta-ar {
+  font-size: 14px; transition: transform .18s ease;
+}
+.rc-game-cta:hover .rc-game-cta-ar { transform: translateX(3px); }
+@media (max-width: 640px) {
+  .rc-game-cta { font-size: 14px; padding: 9px 16px; }
+  .rc-game-cta-row { margin-bottom: 14px; }
+}
+/* ── badge wall: total progress ring ── */
+.rc-progress { margin-bottom: 14px; }
+.rc-progress-ring {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--red-soft, rgba(192,57,43,0.1));
+  border: 1px solid var(--red-border, rgba(192,57,43,0.25));
+  border-radius: 14px; padding: 12px 14px;
+}
+.rc-progress-ring-svg { position: relative; width: 58px; height: 58px; flex: none; }
+.rc-progress-ring-svg svg { transform: rotate(-90deg); }
+.rc-rg-bg { fill: none; stroke: #f0e2d4; stroke-width: 5; }
+.rc-rg-fg {
+  fill: none; stroke: var(--rc-color, #B03A2E); stroke-width: 5;
+  stroke-linecap: round; transition: stroke-dasharray .5s ease;
+}
+.rc-progress-num {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 13px; font-weight: 700; color: var(--text, #2c2c2a);
+}
+.rc-progress-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.rc-progress-nm { font-size: 13px; font-weight: 700; color: var(--text, #2c2c2a); }
+.rc-progress-sub { font-size: 11.5px; color: var(--text-muted, #6b6b66); }
 /* 22. PRODUCT SECTION (homepage) */
 .product-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:18px; max-width:640px; }
 .product-card { background:#F6F1E7; border:1px solid var(--border); border-radius:14px; padding:18px; text-align:left; cursor:pointer; transition:transform .15s, box-shadow .15s; }
