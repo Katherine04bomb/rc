@@ -50,11 +50,11 @@ const RC_CONFIG = {
   // ── Kat 小人头像（右下角悬浮按钮）────────────────────────
   // 透明背景 PNG，放到 assets/ 目录（如 assets/kat-avatar.png）。
   // 生成方法：AI 生成图片 → remove.bg 去背 → 保存为 PNG 上传。
-  katAvatar: 'assets/kat-avatar.png',       // TODO: 上传透明 PNG
+  katAvatar: 'assets/kat-avatar.PNG',       // ✅ 注意大写 .PNG，与 assets 里的文件名一致（GitHub Pages 区分大小写）
 
   // ── 社交链接（显示在新 footer 右侧）──────────────────────
   socialLinks: {
-    whatsapp:  'https://wa.me/13799200367',
+    whatsapp:  'https://wa.me/8613799200367',
     instagram: 'https://www.instagram.com/readychinatravel_kat',
     facebook:  'https://www.facebook.com/share/1Aq41hUq7Q/',
     youtube:   'https://youtube.com/@readychinatravel_kat',
@@ -244,13 +244,12 @@ function buildNav(rootPath) {
       </div>
     </div>`;
 
-    // ── Affiliate disclosure (small print, whole site) ──────
+    // ── Affiliate disclosure (tiny print at footer bottom) ──
     if (RC_CONFIG.affiliateNote) {
       const note = document.createElement('div');
-      note.className = 'rc-affiliate-note';
-      note.style.cssText = 'text-align:center;font-size:11px;color:var(--text-muted);opacity:.75;margin-top:14px;line-height:1.6;max-width:720px;margin-left:auto;margin-right:auto;padding:0 16px';
+      note.className = 'rc-footer-disclosure';
       note.textContent = RC_CONFIG.affiliateNote.replace('🇨🇳','');
-      footer.appendChild(note);
+      footer.querySelector('.rc-footer').appendChild(note);
     }
   }
 
@@ -295,23 +294,29 @@ function rcInjectWhatsAppButton(rootPath) {
 
   document.body.appendChild(btn);
 
-  // Tooltip label on first visit
-  const tip = document.createElement('div');
-  tip.id = 'rc-whatsapp-tip';
-  tip.textContent = 'Questions? Chat with Kat';
-  tip.style.cssText =
-    'position:fixed;bottom:108px;right:24px;z-index:9998;background:#fff;' +
-    'color:#333;font-size:12px;padding:8px 12px;border-radius:8px;' +
-    'box-shadow:0 2px 10px rgba(0,0,0,.15);border:1px solid #eee;max-width:180px;line-height:1.4';
-  document.body.appendChild(tip);
+  // ── Kat tooltip bubble (click × to close) ────────────────
+  const tooltip = document.createElement('div');
+  tooltip.id = 'rc-kat-tooltip';
+  tooltip.innerHTML =
+    '<button class="rc-kat-tooltip-close" aria-label="Close">&times;</button>' +
+    '<div class="rc-kat-tooltip-title">Questions? Chat with Kat</div>' +
+    '<div class="rc-kat-tooltip-body">I reply personally, usually within a day.</div>';
+  document.body.appendChild(tooltip);
+
+  tooltip.querySelector('.rc-kat-tooltip-close').addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    tooltip.classList.add('hidden');
+    try { localStorage.setItem('rc_kat_tip_closed', '1'); } catch (err) {}
+  });
+
   try {
-    if (!localStorage.getItem('rc_wa_tip_seen')) {
-      localStorage.setItem('rc_wa_tip_seen', '1');
-      setTimeout(() => { tip.style.transition = 'opacity .5s'; tip.style.opacity = '0'; setTimeout(() => tip.remove(), 600); }, 6000);
+    if (localStorage.getItem('rc_kat_tip_closed')) {
+      tooltip.classList.add('hidden');
     } else {
-      tip.remove();
+      setTimeout(() => tooltip.classList.add('hidden'), 10000);
     }
-  } catch (err) { tip.remove(); }
+  } catch (err) {}
 }
 
 // ============================================================

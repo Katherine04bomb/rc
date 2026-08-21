@@ -2872,3 +2872,24 @@ footer {
 .rc-footer-socials svg { width:17px; height:17px; fill:#6E6A5E; }
 .rc-footer-bottom { border-top:1px solid var(--border); margin-top:20px; padding-top:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; font-size:11px; color:#999; }
 @media (max-width:640px){ .rc-footer-bottom{ flex-direction:column; align-items:flex-start; } }
+
+/* 25. FOOTER AFFILIATE DISCLOSURE (tiny, understated) */
+.rc-footer-disclosure { text-align:center; font-size:10px; color:var(--text-muted); opacity:.5; margin-top:10px; padding-top:10px; line-height:1.5; letter-spacing:.2px; }
+
+/* 26. KAT TOOLTIP BUBBLE */
+#rc-kat-tooltip { position:fixed; bottom:104px; right:20px; z-index:9998; background:#fff; color:var(--text); border:1px solid var(--border); border-radius:12px; padding:14px 16px; width:210px; box-shadow:0 8px 24px rgba(0,0,0,.12); transition:opacity .35s ease, transform .35s ease; }
+#rc-kat-tooltip.hidden { opacity:0; transform:translateY(6px); pointer-events:none; }
+.rc-kat-tooltip-close { position:absolute; top:6px; right:8px; background:none; border:none; font-size:18px; color:var(--text-muted); cursor:pointer; line-height:1; padding:0; width:24px; height:24px; display:flex; align-items:center; justify-content:center; border-radius:6px; transition:background .15s; }
+.rc-kat-tooltip-close:hover { background:var(--surface2); color:var(--text); }
+.rc-kat-tooltip-title { font-weight:600; font-size:13px; margin-bottom:4px; padding-right:14px; }
+.rc-kat-tooltip-body { font-size:12px; color:var(--text-muted); line-height:1.45; }
+
+/* 27. KAT WAVE ANIMATION */
+#rc-whatsapp-btn img { animation:katWave 2.4s ease-in-out infinite; transform-origin:bottom center; }
+@keyframes katWave {
+  0%, 100% { transform:rotate(-2deg) translateY(0); }
+  20% { transform:rotate(3deg) translateY(-4px); }
+  40% { transform:rotate(-2deg) translateY(-2px); }
+  60% { transform:rotate(3deg) translateY(-4px); }
+  80% { transform:rotate(-1deg) translateY(0); }
+}
