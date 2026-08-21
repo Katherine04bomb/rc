@@ -30,6 +30,43 @@
 //  buildNav() — no extra <script> tag needed. See assets/search.js.
 // ============================================================
 
+// ============================================================
+//  ⚙️ SITE CONFIG — 只需在这里填一次，全站生效
+//  (Fill these once — they apply across the whole site)
+// ============================================================
+const RC_CONFIG = {
+  // ── WhatsApp ─────────────────────────────────────────────
+  // 你的 WhatsApp Business 号码：国家区号 + 号码，去掉 + 号。
+  // 例：中国大陆 138 0000 0000 → '8613800000000'
+  whatsappNumber: '8613799200367',
+  whatsappPrefill:
+    "Hi Kat! I'm planning a trip to China and had a question from your site.",
+
+  // ── 免费 PDF 指南 ────────────────────────────────────────
+  // 把 PDF 文件放到 assets/pdfs/ 目录（如 assets/pdfs/china-guide.pdf），
+  // 访客填完邮箱后会自动看到"立即下载"按钮，不用等邮件。
+  pdfUrl: 'assets/pdfs/china-guide.pdf',    // TODO: 确保文件存在
+
+  // ── Kat 小人头像（右下角悬浮按钮）────────────────────────
+  // 透明背景 PNG，放到 assets/ 目录（如 assets/kat-avatar.png）。
+  // 生成方法：AI 生成图片 → remove.bg 去背 → 保存为 PNG 上传。
+  katAvatar: 'assets/kat-avatar.png',       // TODO: 上传透明 PNG
+
+  // ── 社交链接（显示在新 footer 右侧）──────────────────────
+  socialLinks: {
+    whatsapp:  'https://wa.me/13799200367',
+    instagram: 'https://www.instagram.com/readychinatravel_kat',
+    facebook:  'https://www.facebook.com/share/1Aq41hUq7Q/',
+    youtube:   'https://youtube.com/@readychinatravel_kat',
+  },
+
+  // ── Affiliate 披露文案（显示在所有指南页的返佣链接附近）──
+  affiliateNote:
+    'Some links on this page are affiliate links — if you book through them, ' +
+    'I may earn a small commission at no extra cost to you. Thank you for ' +
+    'supporting Ready? China! 🇨🇳',
+};
+
 const PREPARE_ITEMS = [
   { label: 'Visa',               anchor: 'step-visa' },
   { label: 'Flights & Hotels',   anchor: 'step-flights' },
@@ -157,22 +194,68 @@ function buildNav(rootPath) {
   const footer = document.getElementById('site-footer');
   if (footer) {
     footer.innerHTML = `
-    <div>
-      <div class="footer-brand">Ready? China!</div>
-      <div>Survive &amp; Thrive with Kat · Made for You</div>
-      <div style="margin-top:8px;font-size:11px">
-        <a href="${rootPath}alipay" style="color:var(--text-muted);margin-right:16px">Alipay Setup</a>
-        <a href="${rootPath}wechat" style="color:var(--text-muted);margin-right:16px">WeChat Setup</a>
-        <a href="${rootPath}guides.html" style="color:var(--text-muted);margin-right:16px">All Guides</a>
-        <a href="${rootPath}privacy" style="color:var(--text-muted);margin-right:16px">Privacy Policy</a>
-        <a href="javascript:void(0)" onclick="if(window.rcOpenCookiePrefs)window.rcOpenCookiePrefs()" style="color:var(--text-muted)">Cookie Preferences</a>
+    <div class="rc-footer">
+      <div class="rc-footer-grid">
+        <div class="rc-footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="${rootPath}#ready-container">Get Ready Checklist</a></li>
+            <li><a href="${rootPath}guides.html">City Guides</a></li>
+            <li><a href="${rootPath}#community-container">Community</a></li>
+            <li><a href="${rootPath}alipay">Alipay Setup</a></li>
+            <li><a href="${rootPath}wechat">WeChat Setup</a></li>
+          </ul>
+        </div>
+        <div class="rc-footer-col">
+          <h4>Stay in touch</h4>
+          <p class="rc-footer-closing">"No guide can capture China. You have to feel it yourself. I'll be here when you do."</p>
+          <form class="rc-footer-form" action="https://formspree.io/f/mnjypvzn" method="POST">
+            <input type="email" name="email" placeholder="your@email.com" required/>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+        <div class="rc-footer-col">
+          <div class="rc-footer-brand">Ready? China!</div>
+          <p style="font-size:12px;color:var(--text-muted);margin:0 0 4px">Survive &amp; Thrive with Kat</p>
+          <p style="font-size:11px;color:var(--text-muted);margin:0">Made by a local, for curious friends.</p>
+          <div class="rc-footer-socials">
+            <a href="https://wa.me/${RC_CONFIG.whatsappNumber}" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-3.4-1.1-5.6-4-5.8-4.2-.2-.2-1.4-1.9-1.4-3.6s.9-2.5 1.2-2.9c.3-.3.7-.4.9-.4h.6c.2 0 .4 0 .6.5.2.5.8 1.9.8 2 .1.1.1.3 0 .5-.3.7-.9 1.2-.6 1.6 1 1.6 2.4 2.8 4.1 3.4.4.2.7.1.9-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.2.5.2.6.4.1.1.1.7-.2 1.4z"/></svg>
+            </a>
+            <a href="${RC_CONFIG.socialLinks.instagram}" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.6a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-10.5a1.4 1.4 0 1 1-2.9 0 1.4 1.4 0 0 1 2.9 0z"/></svg>
+            </a>
+            <a href="${RC_CONFIG.socialLinks.facebook}" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.5 1.5-3.9 3.77-3.9 1.1 0 2.24.2 2.24.2v2.46H15.2c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33V22c4.78-.76 8.43-4.92 8.43-9.94z"/></svg>
+            </a>
+            <a href="${RC_CONFIG.socialLinks.youtube}" target="_blank" rel="noopener" aria-label="YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.5 6.2c-.3-1-1-1.7-2-2C19.7 3.7 16 3.7 12 3.7s-7.7 0-9.5.5c-1 .3-1.7 1-2 2C0 7.9 0 12 0 12s0 4.1.5 5.8c.3 1 1 1.7 2 2 1.8.5 5.5.5 9.5.5s7.7 0 9.5-.5c1-.3 1.7-1 2-2 .5-1.7.5-5.8.5-5.8s0-4.1-.5-5.8zM9.6 15.6V8.4L15.8 12l-6.2 3.6z"/></svg>
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
-    <div style="text-align:right;line-height:1.8">
-      <div>AI Planner · Coming Soon</div>
-      <div style="opacity:.5;margin-top:4px">© 2026 Ready? China!</div>
+      <div class="rc-footer-bottom">
+        <span>© 2026 Ready? China! · AI Planner Coming Soon</span>
+        <span>
+          <a href="${rootPath}privacy">Privacy Policy</a>
+          <span> · </span>
+          <a href="javascript:void(0)" onclick="if(window.rcOpenCookiePrefs)window.rcOpenCookiePrefs()">Cookie Preferences</a>
+        </span>
+      </div>
     </div>`;
+
+    // ── Affiliate disclosure (small print, whole site) ──────
+    if (RC_CONFIG.affiliateNote) {
+      const note = document.createElement('div');
+      note.className = 'rc-affiliate-note';
+      note.style.cssText = 'text-align:center;font-size:11px;color:var(--text-muted);opacity:.75;margin-top:14px;line-height:1.6;max-width:720px;margin-left:auto;margin-right:auto;padding:0 16px';
+      note.textContent = RC_CONFIG.affiliateNote.replace('🇨🇳','');
+      footer.appendChild(note);
+    }
   }
+
+  // ── WhatsApp floating button (whole site) ─────────────────
+  rcInjectWhatsAppButton(rootPath);
 
   // Search overlay + index are shared across every page.
   // search.js is loaded dynamically here so no page needs its own
@@ -182,6 +265,97 @@ function buildNav(rootPath) {
   // Cookie consent banner — same dynamic-load pattern as search.js.
   rcLoadCookieConsentScript(rootPath);
 }
+
+// ============================================================
+//  💬 WhatsApp 浮动按钮 — 全站右下角
+// ============================================================
+function rcInjectWhatsAppButton(rootPath) {
+  if (!RC_CONFIG.whatsappNumber || RC_CONFIG.whatsappNumber.indexOf('X') !== -1) return;
+  if (document.getElementById('rc-whatsapp-btn')) return;
+  const text = encodeURIComponent(RC_CONFIG.whatsappPrefill);
+  const btn = document.createElement('a');
+  btn.id = 'rc-whatsapp-btn';
+  btn.href = 'https://wa.me/' + RC_CONFIG.whatsappNumber + '?text=' + text;
+  btn.target = '_blank';
+  btn.rel = 'noopener';
+  btn.setAttribute('aria-label', 'Chat with Kat on WhatsApp');
+
+  // Kat 小人（透明背景 PNG，配置在 RC_CONFIG.katAvatar）
+  const img = document.createElement('img');
+  img.src = rootPath + RC_CONFIG.katAvatar;
+  img.alt = '';
+  img.loading = 'lazy';
+  btn.appendChild(img);
+
+  // 绿色消息角标 "1"
+  const badge = document.createElement('span');
+  badge.className = 'rc-badge';
+  badge.textContent = '1';
+  btn.appendChild(badge);
+
+  document.body.appendChild(btn);
+
+  // Tooltip label on first visit
+  const tip = document.createElement('div');
+  tip.id = 'rc-whatsapp-tip';
+  tip.textContent = 'Questions? Chat with Kat';
+  tip.style.cssText =
+    'position:fixed;bottom:108px;right:24px;z-index:9998;background:#fff;' +
+    'color:#333;font-size:12px;padding:8px 12px;border-radius:8px;' +
+    'box-shadow:0 2px 10px rgba(0,0,0,.15);border:1px solid #eee;max-width:180px;line-height:1.4';
+  document.body.appendChild(tip);
+  try {
+    if (!localStorage.getItem('rc_wa_tip_seen')) {
+      localStorage.setItem('rc_wa_tip_seen', '1');
+      setTimeout(() => { tip.style.transition = 'opacity .5s'; tip.style.opacity = '0'; setTimeout(() => tip.remove(), 600); }, 6000);
+    } else {
+      tip.remove();
+    }
+  } catch (err) { tip.remove(); }
+}
+
+// ============================================================
+//  📥 PDF 自动下载 — 访客填完邮箱立即显示下载按钮
+//  (No more manually emailing PDFs — visitor gets it instantly)
+// ============================================================
+function rcSetupPdfAutoDownload() {
+  if (!RC_CONFIG.pdfUrl) return;
+  // Wait for all guide pages to finish parsing their inline scripts.
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      document.querySelectorAll('form.guide-email-form').forEach(form => {
+        if (form.dataset.rcPdfBound) return;
+        form.dataset.rcPdfBound = '1';
+        // Keep the original submit handler (Formspree email capture)
+        // and ADD an instant download button on success.
+        const origOnsubmit = form.getAttribute('onsubmit');
+        form.addEventListener('submit', function (e) {
+          const downloadRow = document.createElement('div');
+          downloadRow.className = 'rc-pdf-download';
+          downloadRow.style.cssText =
+            'margin-top:14px;text-align:center;display:none';
+          downloadRow.innerHTML =
+            '<a href="' + RC_CONFIG.pdfUrl + '" target="_blank" rel="noopener" ' +
+            'style="display:inline-block;background:#fff;color:var(--accent);' +
+            'font-weight:600;padding:11px 24px;border-radius:8px;' +
+            'text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.18);font-size:13px">' +
+            '📥 Download the PDF instantly →</a>' +
+            '<div style="font-size:11px;opacity:.75;margin-top:8px">' +
+            'No need to wait for email — grab it right here.</div>';
+          const target = document.getElementById(form.id + '-ok') ||
+            form.parentElement.querySelector('.guide-email-success') ||
+            form.closest('.guide-email-capture');
+          if (target) {
+            target.appendChild(downloadRow);
+            // Show it a moment after the original success handler hides the form.
+            setTimeout(() => { downloadRow.style.display = 'block'; }, 900);
+          }
+        });
+      });
+    }, 300);
+  });
+}
+if (typeof rcSetupPdfAutoDownload === 'function') rcSetupPdfAutoDownload();
 
 function rcLoadSearchScript(rootPath) {
   if (document.getElementById('rc-search-script')) return; // already loaded

@@ -108,16 +108,9 @@ const POSTS = [
     category: 'news',
     date: 'August 2026',
     tag: 'news',
-    title: '📱 WeChat Pay foreign-card usage surges 80% — how to set it up',
-    body: `WeChat Pay has quietly become one of the most foreigner-friendly payment apps in China. In 2026 it supports card binding from seven major international card networks (Visa, Mastercard, JCB and more), and usage among foreign visitors is booming — transactions with international cards grew nearly 80% year-on-year in the first months of 2026.
-
-How it works for tourists:
-(1) Download WeChat and register with your foreign phone number.
-(2) Add your card under Me → Services → Wallet → Cards. No Chinese bank account needed.
-(3) Pay by scanning merchant QR codes — it works at millions of shops, restaurants, and metro stations.
-(4) Bonus: 40+ overseas wallets can scan WeChat Pay QR codes directly, so some visitors don't even need to set up the app at all.
-
-One thing to know: international cards carry a 3% fee, but it's waived for transactions under ¥200 through the end of 2026 — which covers most daily purchases like meals, metro fares, and street food. In-app payment guidance is now available in 16 languages.`
+    title: '📱 WeChat Pay expands international card support — now covers 80% of foreign visitors',
+    body: `Not really. China doesn't have one nationwide public transport card that works across every city. Instead, public transport is usually city-based. Shanghai, Beijing, Guangzhou, etc. each have their own transport systems and payment options.
+    For a short trip, you can usually: 1. Pay for metro rides with Alipay or the city's transport mini-program. 2.Buy a single-ride ticket at the metro station, there is a <a href="../metro-guide" style="color:var(--gold)">guide</a>. or 3.Use a local transport card if you're staying longer or taking public transport frequently.(but if you're only visiting for a few days, don't worry about buying a physical transport card before you arrive. Set up <a href="../alipay" style="color:var(--gold)">Alipay</a> first — it's usually much more convenient for visitors!)`
   },
   {
     id: 'post-015',
@@ -143,19 +136,10 @@ One thing to know: international cards carry a 3% fee, but it's waived for trans
     id: 'post-013',
     slug: 'germany-visa-free-china',
     category: 'news',
-    date: 'August 2026',
+    date: 'July 2026',
     tag: 'visa',
-    title: '🇩🇪 Germany is on China\'s visa-free list — up to 30 days, no visa needed',
-    body: `Quick update for my German friends: German passport holders can currently enter China visa-free for up to 30 days for tourism, business, family visits, or transit.
-
-To be clear, this isn't brand new — Germany has been on China's visa-free list since December 2023. But the window has grown from the original 15 days to 30 days, and the policy is confirmed through at least December 31, 2026.
-
-What you need:
-(1) A valid ordinary passport, valid for the duration of your stay.
-(2) No advance application — just show up at any open port.
-(3) You can enter multiple times; there's currently no cap on entries.
-
-Not covered: work, study, or news coverage — those still need the appropriate visa. When in doubt, check the visa guide before you book.`
+    title: '🇩🇪 Germany now eligible for 15-day visa-free entry to China',
+    body: `Big update for my German friends — as of July 2026, German passport holders can enter China visa-free for up to 15 days. This joins the growing list of countries that China has opened visa-free access to over the past year, including France, Switzerland, Italy, Spain, the Netherlands, Malaysia, and Singapore. The full list now covers over 15 countries. No visa application, no paperwork — just show up with your passport. Check your country's status before booking.`
   },
   {
     id: 'post-012',
@@ -201,15 +185,8 @@ Not covered: work, study, or news coverage — those still need the appropriate 
     category: 'lifehacks',
     date: 'April 2026',
     tag: 'tip',
-    title: '🚰 Why Chinese restaurants serve hot water — and how to use it to save money',
-    body: `You'll notice most Chinese restaurants bring hot or warm water to your table instead of cold. It comes from traditional Chinese medicine, which treats warm drinks as better for digestion. (For the full story on the ice-water thing, there's a separate Q&A about that.)
-
-Here's the practical upside: hot water is FREE basically everywhere — restaurants, hotels, trains, even some airport lounges. Bring a small thermos (保温杯, bǎowēn bēi) and you can:
-(1) Fill up at breakfast and carry warm tea or plain water all day.
-(2) Save ¥5–10 a day instead of buying bottled drinks.
-(3) Brew loose-leaf tea on the go — it's cheap and everywhere.
-
-It's one of those small habits that makes China travel feel surprisingly easy once you lean into it.`
+    title: '🚰 Why restaurants give you hot water — and why it\'s actually great',
+    body: `You'll notice that most Chinese restaurants serve hot or warm water instead of cold. This comes from traditional Chinese medicine — hot water is believed to aid digestion and balance the body. Don't ask for ice; embrace it. Bonus: hot water is free everywhere, even on trains. Bring a small thermos and you'll never pay for drinks again.`
   },
   {
     id: 'post-004',
@@ -217,14 +194,8 @@ It's one of those small habits that makes China travel feel surprisingly easy on
     category: 'lifehacks',
     date: 'March 2026',
     tag: 'tip',
-    title: '🚽 Squat toilets in China — what to expect and how to use one',
-    body: `Many public toilets in China — especially at stations, parks, and older restaurants — use traditional squat toilets. It's simple once you know how: stand over the pan with one foot on each side, and squat down. No part of you touches the pan.
-
-Two tips from a local:
-(1) Carry tissues (纸巾, zhǐjīn) everywhere — public toilets often run out or charge for them.
-(2) If you really can't do it, look for the accessible/western-style stall (usually marked with a pictogram of a seated toilet). Most newer malls, airports, and hotels have them.
-
-It feels a little awkward at first, but after a week most travelers say it's actually cleaner and faster than sitting.🧻`
+    title: '🚽 toilet culture',
+    body: `There are many traditional squat toilets in China. Practice your Asian squat at home! You will need to straddle the pan with one foot on each side and squat down. And dont forget to bring some tissues with you!🧻`
   },
 
   // ── Q&A ───────────────────────────────────────────────────
@@ -253,7 +224,7 @@ It feels a little awkward at first, but after a week most travelers say it's act
     date: 'April 2026',
     tag: 'tip',
     title: '❓ Is it safe to drink tap water in China?--Lily',
-    body: `No — tap water in China is not safe to drink directly. Always drink bottled water or water that has been boiled. The good news: bottled water is extremely cheap (¥1–2 for 500ml everywhere), and hotels always provide hot water flasks or kettles. Hot water from thermoses at restaurants and on trains has been boiled and is safe. Brushing your teeth with tap water in big cities is generally fine — but don't drink it straight from the tap. When in doubt, use bottled or boiled water.`
+    body: `No — tap water in China is not safe to drink directly. Always drink bottled water or water that has been boiled. The good news: bottled water is extremely cheap (¥1–2 for 500ml everywhere), and hotels always provide hot water flasks or kettles. Hot water from thermoses at restaurants and on trains has been boiled and is safe. Never use tap water to brush your teeth without boiling it first.`
   },
 
   // ── NEWS ───────────────────────────────────────────────
@@ -261,61 +232,28 @@ It feels a little awkward at first, but after a week most travelers say it's act
     id: 'post-008',
     slug: 'australia-china-visa-transit',
     category: 'news',
-    date: 'August 2026',
+    date: 'June 2026',
     tag: 'visa',
-    title: '🇦🇺 Australia visa update: 30-day visa-free entry now covers Aussies',
-    body: `Good news for my Australian friends — Australian passport holders can now enter China visa-free for up to 30 days for tourism, business, family visits, and transit. This is part of China's unilateral visa waiver covering 50 countries, and it runs through at least December 31, 2026.
-
-What changed: previously Australians needed a tourist visa for any visit. Now, for stays up to 30 days, you can simply fly in with a valid ordinary passport. No application, no paperwork.
-
-Three reminders:
-(1) Your passport must be valid for at least the length of your stay.
-(2) Work, study, and news reporting still require the appropriate visa.
-(3) For short layovers (under 240 hours) when transiting to a third country, the separate 240-hour transit exemption also applies.
-
-Not sure if this applies to your nationality? Check the visa guide on this site before booking.`
+    title: '🇦🇺 Australian travelers still need a visa — but transit is available',
+    body: `Just a reminder for my lovely Australian friends: you still need to apply for a tourist (L) visa before entering China. Processing takes 4–7 business days, so don't leave it until the last minute. That said, if you're transiting through Shanghai, Beijing, or Guangzhou with an onward ticket to a third country, you can enter visa-free for up to 144 hours. Check the Get Ready section above for more details.`
   },
   {
     id: 'post-009',
     slug: 'china-parks-drinking-water-fountains',
     category: 'news',
-    date: 'August 2026',
+    date: 'May 2026',
     tag: 'news',
-    title: '💧 Free drinking fountains in Chinese parks — where they exist (and where they don\'t)',
-    body: `Good news for budget travelers: free public drinking fountains (直饮水, zhí yǐn shuǐ) are slowly appearing in Chinese parks — it's a real but still rare thing.
-
-Where they actually exist
-The fountains you'll find are mostly in newer municipal projects, not in the famous tourist parks. Real examples reported in Chinese media: Qingfeng Park and Zijin Park in Changzhou (Jiangsu), Binjiang Park in Shangrao (Jiangxi), Dadukou Park in Chongqing, and some parks in Meishan (Sichuan) and Rongxian (Zigong). They usually look like stainless-steel bubblers with a button — press, lean in, drink.
-
-The honest reality
-- Most parks in Beijing, Shanghai, and the big tourist cities do NOT have public drinking fountains. Don't plan around finding one.
-- Even where they exist, they're designed for locals who already trust the system. As a visitor, you can't verify the maintenance schedule.
-
-What to do instead
-(1) Carry your own bottle — free hot water is available at hotels, high-speed rail stations, and most airports (look for the 开水/直饮水 water station).
-(2) Bottled water is ¥1–2 at any convenience store (便利店, biànlì diàn).
-(3) Tap water in cities is chlorinated and not recommended for drinking — filter or boil if you're in a pinch.
-
-Bottom line: free park fountains are a nice-to-have trend, not a feature you can rely on yet. Pack a bottle, and use the train station water stations instead.`
+    title: '💧 Some parks now provide 直饮水 drinking fountains',
+    body: `Good news for budget travelers! Several major parks in Beijing, Shanghai and Chengdu have installed 直饮水 (zhí yǐn shuǐ) — direct drinking water fountains with purified water. Look for the blue tap icons on park maps. This is part of a citywide initiative to reduce plastic waste. Bring a reusable bottle — it saves money and the environment.`
   },
   {
     id: 'post-010',
     slug: 'high-speed-rail-foreign-cards-china',
     category: 'news',
-    date: 'August 2026',
+    date: 'April 2026',
     tag: 'news',
-    title: '🚄 Buying high-speed rail tickets in 2026 — what actually works for foreigners',
-    body: `Paying for high-speed rail in China is easier than it used to be, but which method you use still matters a lot. Here's the honest 2026 picture.
-
-The official 12306 app officially accepts international Visa, Mastercard, JCB and Diners Club — but foreign cards are still frequently declined in practice. Don't rely on it if you're in a hurry.
-
-Most reliable option for foreigners: book on Trip.com. Full English interface, reliably accepts foreign cards (Visa, Mastercard, Amex, PayPal), and you just enter your passport details. You'll pay a small service fee, but it removes the headache.
-
-Also works well: link a foreign card to Alipay or WeChat Pay, then pay on 12306 or at the station like a local — the 3% international fee is usually waived for transactions under ¥200.
-
-Cash at the ticket window is the dependable fallback.
-
-One huge simplification since 2020: high-speed rail is fully paperless. Your passport IS your ticket — scan it at the gate to board. No printing, no collection window.`
+    title: '🚄 High-speed rail now accepts foreign bank cards at ticket machines',
+    body: `Major update for independent travelers: as of early 2026, most high-speed rail ticket machines at major stations now accept foreign Visa and Mastercard. Previously you needed a Chinese ID card or UnionPay card. You'll still need your passport. Recommended: book on the Trip.com app instead — you can reserve seats in advance, choose your carriage, and collect at the machine with your passport.`
   }
 
   // ── END OF POSTS ──────────────────────────────────────────
@@ -454,7 +392,7 @@ function _commRenderCards(limit) {
   }
 
   const showCategory = _commQuery.length > 0;
-  const catLabels    = { lifehacks: 'Life Hacks', qa: 'Q&A', news: 'News' };
+  const catLabels    = { lifehacks: 'Kat\'s Hacks', qa: 'Q&A', news: 'News' };
 
   list.innerHTML = displayed.map(post => {
     const t   = TAG_STYLES[post.tag] || TAG_STYLES.news;
@@ -538,7 +476,7 @@ function loadCommunity() {
       <h2 class="section-title">Become a China master</h2>
       ${readMoreLink}
     </div>
-    <p class="section-sub">Life hacks, honest Q&As, and real updates from Kat — everything I wish someone had told my friends before they visited China.</p>
+    <p class="section-sub">Kat's hacks, honest Q&As, and real updates from Kat — everything I wish someone had told my friends before they visited China.</p>
 
     <!-- Search -->
     <div class="comm-search-wrap">
@@ -554,7 +492,7 @@ function loadCommunity() {
 
     <!-- Tabs -->
     <div class="comm-tabs">
-      <button class="comm-tab active" data-tab="lifehacks" onclick="commShowTab('lifehacks')">💡 Life Hacks</button>
+      <button class="comm-tab active" data-tab="lifehacks" onclick="commShowTab('lifehacks')">💡 Kat's Hacks</button>
       <button class="comm-tab"        data-tab="qa"        onclick="commShowTab('qa')">❓ Q&amp;A</button>
       <button class="comm-tab"        data-tab="news"   onclick="commShowTab('news')">📢 News</button>
     </div>
@@ -562,25 +500,26 @@ function loadCommunity() {
     <!-- Card list -->
     <div id="comm-card-list" class="comm-card-list"></div>
 
-    <!-- Email notify -->
+    <!-- Email capture — lead magnet -->
     <div class="community-coming" style="margin-top:32px">
-      <div class="comm-icon">🏮</div>
-      <div class="comm-title">Want to be notified when I post?</div>
-      <div class="comm-sub">Leave your email and I'll reach out personally whenever there's something new — visa policy changes, seasonal tips, or just a good story from a traveler who made it through.</div>
-      <form action="https://formspree.io/f/mnjypvzn" method="POST"
+      <div class="comm-icon">📋</div>
+      <div class="comm-title">Get the China Ready Checklist — free PDF</div>
+      <div class="comm-sub">The exact 10-step checklist I give every friend before they visit China — visa, payments, eSIM, transport, and the apps that actually work. Download it, print it, keep it in your pocket.</div>
+      <form id="community-email-form" class="guide-email-form" action="https://formspree.io/f/mnjypvzn" method="POST"
         style="display:flex;flex-direction:column;align-items:center;gap:12px"
         onsubmit="handleCommunityForm(event)">
+        <input type="hidden" name="guide" value="checklist-pdf">
         <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
           <input class="comm-input" type="email" name="email" placeholder="your@email.com" required/>
-          <button class="comm-btn" type="submit">Notify Me 🏮</button>
+          <button class="comm-btn" type="submit">Send me the PDF 📥</button>
         </div>
-        <p style="font-size:11px;color:var(--text-muted);margin:0">I read every email personally and reply to all of them.</p>
+        <p style="font-size:11px;color:var(--text-muted);margin:0">No spam — just the checklist, plus the occasional genuinely useful update.</p>
       </form>
-      <div id="comm-success" style="display:none;font-size:13px;color:var(--gold);margin-top:12px">
-        ✅ You're on the list! I'll be in touch soon.
+      <div id="community-email-form-ok" style="display:none;font-size:13px;color:var(--gold);margin-top:12px">
+        ✅ You're in — grab your download below!
       </div>
       <div style="margin-top:16px;font-size:12px;color:var(--text-muted)">
-        Or reach me directly: <a href="mailto:hello@readychinatravel.com" style="color:var(--accent)">hello@readychinatravel.com</a>
+        Questions before you go? Message me directly: <a href="mailto:hello@readychinatravel.com" style="color:var(--accent)">hello@readychinatravel.com</a>
       </div>
     </div>
   </section>`;
@@ -600,7 +539,7 @@ function handleCommunityForm(e) {
   }).then(r => {
     if (r.ok) {
       form.style.display = 'none';
-      document.getElementById('comm-success').style.display = 'block';
+      document.getElementById('community-email-form-ok').style.display = 'block';
     }
   });
 }

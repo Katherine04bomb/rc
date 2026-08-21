@@ -2573,3 +2573,39 @@ footer {
   .map-hint { font-size: 11px; }
   .city-pin-lbl { font-size: 7.5px; }
 }
+
+/* 22. PRODUCT SECTION (homepage) */
+.product-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:18px; max-width:640px; }
+.product-card { background:#F6F1E7; border:1px solid var(--border); border-radius:14px; padding:18px; text-align:left; cursor:pointer; transition:transform .15s, box-shadow .15s; }
+.product-card:hover { transform:translateY(-2px); box-shadow:0 4px 14px rgba(43,42,39,.1); }
+.product-icon { font-size:30px; margin-bottom:8px; }
+.product-name { font-size:15px; font-weight:600; color:var(--ink); margin-bottom:3px; }
+.product-price { font-size:12px; color:var(--text-muted); margin-bottom:10px; }
+.product-cta { display:inline-block; font-size:12.5px; font-weight:600; color:#fff; background:var(--accent); border-radius:8px; padding:7px 14px; }
+.product-card:nth-child(2) .product-cta { background:var(--gold); }
+
+/* 23. KAT FLOATING BUTTON (whole site) */
+#rc-whatsapp-btn { position:fixed; bottom:18px; right:18px; z-index:9999; display:block; filter:drop-shadow(0 6px 10px rgba(43,42,39,.25)); transition:transform .18s; text-decoration:none; line-height:0; }
+#rc-whatsapp-btn:hover { transform:scale(1.06) translateY(-2px); }
+#rc-whatsapp-btn img { width:78px; height:auto; display:block; pointer-events:none; }
+#rc-whatsapp-btn .rc-badge { position:absolute; top:-2px; right:-2px; min-width:20px; height:20px; border-radius:50%; background:#25D366; color:#fff; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; border:2px solid #fff; box-shadow:0 2px 5px rgba(0,0,0,.2); }
+
+/* 24. NEW THREE-COLUMN FOOTER (whole site) */
+.rc-footer { width:100%; }
+.rc-footer-grid { display:grid; grid-template-columns:1fr 1.2fr 1fr; gap:28px; width:100%; text-align:left; }
+@media (max-width:640px){ .rc-footer-grid{ grid-template-columns:1fr; gap:20px; } }
+.rc-footer-col h4 { font-size:11px; font-weight:600; color:#999; letter-spacing:1.5px; text-transform:uppercase; margin:0 0 10px; }
+.rc-footer-col ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:6px; }
+.rc-footer-col a { color:var(--text-muted); text-decoration:none; font-size:12px; }
+.rc-footer-col a:hover { color:var(--ink); }
+.rc-footer-closing { font-size:12.5px; color:var(--ink); font-style:italic; line-height:1.6; margin:0 0 10px; }
+.rc-footer-form { display:flex; gap:8px; margin-top:6px; flex-wrap:wrap; }
+.rc-footer-form input { flex:1; min-width:150px; border:1px solid var(--border); border-radius:9px; padding:8px 12px; font-size:12.5px; background:#fff; color:var(--ink); }
+.rc-footer-form button { background:var(--gold); color:#fff; border:none; border-radius:9px; padding:8px 14px; font-size:12.5px; font-weight:600; cursor:pointer; }
+.rc-footer-brand { font-family:"Playfair Display",serif; font-size:20px; color:var(--accent); margin-bottom:4px; }
+.rc-footer-socials { display:flex; gap:10px; margin-top:12px; }
+.rc-footer-socials a { width:34px; height:34px; border-radius:50%; background:#E8E1D3; display:flex; align-items:center; justify-content:center; transition:background .2s; }
+.rc-footer-socials a:hover { background:#D8D1C3; }
+.rc-footer-socials svg { width:17px; height:17px; fill:#6E6A5E; }
+.rc-footer-bottom { border-top:1px solid var(--border); margin-top:20px; padding-top:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; font-size:11px; color:#999; }
+@media (max-width:640px){ .rc-footer-bottom{ flex-direction:column; align-items:flex-start; } }

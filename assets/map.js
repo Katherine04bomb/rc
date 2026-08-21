@@ -321,7 +321,7 @@ function loadMap(mode) {
               <span class="dot-sep">·</span>
               <span><b>56</b> ethnic cultures</span>
               <span class="dot-sep">·</span>
-              <span><b>11</b> cities curated by Kat</span>
+              <span><b>28</b> cities curated by Kat</span>
             </div>
           </div>
           <div class="map-teaser-map">

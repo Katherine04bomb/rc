@@ -33,7 +33,7 @@ TAG_STYLES = {
     'news': {'label': 'CHINA NEWS',  'bg': 'var(--surface2)',  'color': 'var(--text-muted)', 'border': 'var(--border)',      'icon': '📰'},
 }
 CATEGORY_LABELS = {
-    'lifehacks': 'Life Hack',
+    'lifehacks': "Kat's Hacks",
     'qa': 'Q&A',
     'news': 'China News',
 }
