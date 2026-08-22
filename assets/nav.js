@@ -85,6 +85,13 @@ const KNOW_ITEMS = [
   { label: 'News', tab: 'news',      icon: '📢' },
 ];
 
+const SERVICES_ITEMS = [
+  { label: 'All Services',            href: 'index.html', type: 'internal' },
+  { label: 'Free Checklist',          href: 'index.html#ready-section', type: 'internal' },
+  { label: 'Classical Beijing 1 Day', href: 'https://wa.me/8613799200367?text=Hi%20Kat!%20I%27m%20interested%20in%20the%20Classical%20Beijing%201%20Day%20tour.', type: 'external' },
+  { label: 'Customised Itinerary',    href: 'https://wa.me/8613799200367?text=Hi%20Kat!%20I%27d%20love%20a%20custom%20itinerary%20for%20my%20China%20trip.', type: 'external' },
+];
+
 function buildNav(rootPath) {
   // Auto-detect the repo root so links work on:
   // GitHub Pages:   katherine04bomb.github.io/rc/
@@ -111,6 +118,15 @@ function buildNav(rootPath) {
     const knowLinks = KNOW_ITEMS.map(i =>
       `<button class="nav-dd-link" onclick="rcGoKnow('${i.tab}','${rootPath}')">${i.icon} ${i.label}</button>`
     ).join('');
+
+    const servicesLinks = SERVICES_ITEMS.map(i => {
+  if (i.type === 'external') {
+    return `<a class="nav-dd-link" href="${i.href}" target="_blank" rel="noopener">${i.label}</a>`;
+  }
+
+  const clean = i.href.replace(/^index\.html/, '');
+  return `<a class="nav-dd-link" href="${rootPath}${clean}">${i.label}</a>`;
+}).join('');
 
     header.innerHTML = `
     <div class="logo-area" onclick="window.location='${rootPath}'" style="cursor:pointer" title="Go to homepage">
@@ -176,6 +192,14 @@ function buildNav(rootPath) {
           <svg class="nav-caret" width="9" height="6" viewBox="0 0 9 6" fill="none"><path d="M1 1L4.5 5L8 1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="nav-dropdown-panel">${knowLinks}</div>
+      </div>
+
+      <div class="nav-item" data-nav="services">
+        <button class="nav-link-btn" aria-haspopup="true" aria-expanded="false" onclick="rcToggleDropdown(this)">
+          What Kat Can Help
+          <svg class="nav-caret" width="9" height="6" viewBox="0 0 9 6" fill="none"><path d="M1 1L4.5 5L8 1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+       </button>
+       <div class="nav-dropdown-panel">${servicesLinks}</div>
       </div>
 
       <button class="nav-search-btn" aria-label="Search Ready? China!" onclick="rcOpenSearch()">
