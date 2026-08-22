@@ -318,8 +318,37 @@ function rcInjectWhatsAppButton(rootPath) {
 
   document.body.appendChild(btn);
 
-  // ── Kat tooltip bubble (click × to close) ────────────────
-  const tooltip = document.createElement('div');
+// ── Kat collapse / expand interaction ───────────────────
+  // Click × to close the tooltip and shrink Kat to a small circle.
+  // Hover or click the collapsed circle to wake Kat up again.
+function rcKatCollapse() {
+    btn.classList.add('collapsed');
+    tooltip.classList.add('hidden');
+    try { localStorage.setItem('rc_kat_tip_closed', '1'); } catch (err) {}
+  }
+function rcKatExpand() {
+    btn.classList.remove('collapsed');
+    tooltip.classList.add('hidden');
+  }
+
+// In collapsed state, clicking the small circle wakes Kat instead of opening WhatsApp.
+  btn.addEventListener('click', (e) => {
+    if (btn.classList.contains('collapsed')) {
+      e.preventDefault();
+      e.stopPropagation();
+      rcKatExpand();
+    }
+  });
+
+// Hovering over the collapsed circle also wakes Kat.
+  btn.addEventListener('mouseenter', () => {
+    if (btn.classList.contains('collapsed')) {
+      btn.classList.remove('collapsed');
+    }
+  });
+
+// ── Kat tooltip bubble (click × to collapse Kat) ────────
+const tooltip = document.createElement('div');
   tooltip.id = 'rc-kat-tooltip';
   tooltip.innerHTML =
     '<button class="rc-kat-tooltip-close" aria-label="Close">&times;</button>' +
@@ -330,11 +359,11 @@ function rcInjectWhatsAppButton(rootPath) {
   tooltip.querySelector('.rc-kat-tooltip-close').addEventListener('click', (e) => {
     e.preventDefault();
     e.stopPropagation();
-    tooltip.classList.add('hidden');
-    try { localStorage.setItem('rc_kat_tip_closed', '1'); } catch (err) {}
+    rcKatCollapse();
   });
 
-  try {
+
+try {
     if (localStorage.getItem('rc_kat_tip_closed')) {
       tooltip.classList.add('hidden');
     } else {

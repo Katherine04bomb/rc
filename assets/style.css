@@ -2893,3 +2893,17 @@ footer {
   60% { transform:rotate(3deg) translateY(-4px); }
   80% { transform:rotate(-1deg) translateY(0); }
 }
+/* 28. KAT COLLAPSED STATE (click × → shrink to small dot) */
+#rc-whatsapp-btn { transition:transform .22s ease, bottom .22s ease, right .22s ease; }
+#rc-whatsapp-btn.collapsed { bottom:14px; right:14px; transform:none; }
+#rc-whatsapp-btn.collapsed:hover { transform:none; }
+#rc-whatsapp-btn.collapsed img {
+  width:44px; height:auto;
+  animation:none;
+  transform:none;
+  border-radius:50%;
+  border:2px solid #fff;
+  box-shadow:0 3px 8px rgba(0,0,0,.22);
+  background:#fff;
+}
+#rc-whatsapp-btn.collapsed .rc-badge { display:none; }
