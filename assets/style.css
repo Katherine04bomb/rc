@@ -2861,6 +2861,8 @@ footer {
 .rc-footer-col ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:6px; }
 .rc-footer-col a { color:var(--text-muted); text-decoration:none; font-size:12px; }
 .rc-footer-col a:hover { color:var(--ink); }
+.rc-footer-col:last-child { text-align: right; }
+.rc-footer-col:last-child .rc-footer-socials { justify-content: flex-end; }
 .rc-footer-closing { font-size:12.5px; color:var(--ink); font-style:italic; line-height:1.6; margin:0 0 10px; }
 .rc-footer-form { display:flex; gap:8px; margin-top:6px; flex-wrap:wrap; }
 .rc-footer-form input { flex:1; min-width:150px; border:1px solid var(--border); border-radius:9px; padding:8px 12px; font-size:12.5px; background:#fff; color:var(--ink); }
