@@ -68,6 +68,7 @@ const RC_CONFIG = {
 };
 
 const PREPARE_ITEMS = [
+  { label: 'All Guides',         href: 'guides.html', type: 'highlight' },
   { label: 'Visa',               anchor: 'step-visa' },
   { label: 'Flights & Hotels',   anchor: 'step-flights' },
   { label: 'Data / SIM',         anchor: 'step-esim' },
@@ -80,6 +81,7 @@ const PREPARE_ITEMS = [
 ];
 
 const KNOW_ITEMS = [
+  { label: 'Community', href: 'community.html', type: 'highlight', icon: '👥' },
   { label: 'Tips', tab: 'lifehacks', icon: '💡' },
   { label: 'Q&A',  tab: 'qa',        icon: '❓' },
   { label: 'News', tab: 'news',      icon: '📢' },
@@ -111,13 +113,19 @@ function buildNav(rootPath) {
   // ── HEADER ────────────────────────────────────────────────
   const header = document.getElementById('site-header');
   if (header) {
-    const prepareLinks = PREPARE_ITEMS.map(i =>
-      `<a class="nav-dd-link" href="${rootPath}#${i.anchor}">${i.label}</a>`
-    ).join('');
+    const prepareLinks = PREPARE_ITEMS.map(i => {
+      if (i.type === 'highlight') {
+        return `<a class="nav-dd-link nav-dd-highlight" href="${rootPath}${i.href}">${i.label}</a>`;
+      }
+      return `<a class="nav-dd-link" href="${rootPath}#${i.anchor}">${i.label}</a>`;
+    }).join('');
 
-    const knowLinks = KNOW_ITEMS.map(i =>
-      `<button class="nav-dd-link" onclick="rcGoKnow('${i.tab}','${rootPath}')">${i.icon} ${i.label}</button>`
-    ).join('');
+    const knowLinks = KNOW_ITEMS.map(i => {
+      if (i.type === 'highlight') {
+        return `<a class="nav-dd-link nav-dd-highlight" href="${rootPath}${i.href}">${i.icon} ${i.label}</a>`;
+      }
+      return `<button class="nav-dd-link" onclick="rcGoKnow('${i.tab}','${rootPath}')">${i.icon} ${i.label}</button>`;
+    }).join('');
 
     const servicesLinks = SERVICES_ITEMS.map(i => {
   if (i.type === 'external') {
