@@ -41,10 +41,10 @@
     var txt = encodeURIComponent("Hi Kat! I'm on your site and have a question.");
     return 'https://wa.me/' + num + '?text=' + txt;
   }
-  var MENU = [
+    var MENU = [
     { icon: '💬', label: 'Chat with Kat', href: waLink(), target: '_blank' },
-    { icon: '🔍', label: 'Search guides', href: '/guides/' },
-    { icon: '✅', label: 'Ready Score',    href: '/getready/' },
+    { icon: '🔍', label: 'Search guides', href: 'https://www.readychinatravel.com/guides.html' },
+    { icon: '✅', label: 'Ready Score',    href: 'https://www.readychinatravel.com/index.html#ready-section' },
     { icon: '🙈', label: 'Hide Kat',       action: 'hide' }
   ];
 
