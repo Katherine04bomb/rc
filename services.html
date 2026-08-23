@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Services · Ready? China!</title>
+<meta name="description" content="Everything Kat offers — free prep guides, premium city itineraries, and custom China trip planning.">
+<link rel="canonical" href="https://www.readychinatravel.com/services">
+<script src="assets/consent-gate.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/guide.css">
+<style>
+/* ── Services Page: Horizontal Scroll Carousels ── */
+
+.svc-intro { font-size:14px; color:var(--text-muted); line-height:1.7; margin:8px 0 40px; }
+
+/* Section header */
+.svc-section { margin-bottom:48px; }
+.svc-header { display:flex; align-items:baseline; gap:12px; margin-bottom:6px; flex-wrap:wrap; }
+.svc-title { font-family:'Playfair Display',serif; font-size:24px; color:var(--text); margin:0; }
+.svc-sub { font-size:13px; color:var(--text-muted); margin-bottom:20px; }
+
+/* Carousel container */
+.carousel-wrap { position:relative; }
+.carousel-track {
+  display:flex; gap:16px; overflow-x:auto; scroll-behavior:smooth;
+  scroll-snap-type:x mandatory; padding-bottom:12px;
+  scrollbar-width:thin; scrollbar-color:var(--gold-border) transparent;
+  -webkit-overflow-scrolling:touch;
+}
+.carousel-track::-webkit-scrollbar { height:5px; }
+.carousel-track::-webkit-scrollbar-track { background:transparent; }
+.carousel-track::-webkit-scrollbar-thumb { background:var(--gold-border); border-radius:3px; }
+
+/* Arrow buttons */
+.carousel-arrow {
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:36px; height:36px; border-radius:50%; border:1px solid var(--border);
+  background:rgba(250,246,239,.92); backdrop-filter:blur(8px);
+  color:var(--text-mid); font-size:16px; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  z-index:2; transition:all .2s; box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
+.carousel-arrow:hover { border-color:var(--accent); color:var(--accent); background:#fff; }
+.carousel-arrow.prev { left:-14px; }
+.carousel-arrow.next { right:-14px; }
+@media(max-width:680px){ .carousel-arrow{ display:none; } }
+
+/* ── Service Cards (matching site card style) ── */
+.svc-card {
+  flex:0 0 260px; min-width:260px; scroll-snap-align:start;
+  background:#fff; border:1px solid var(--border); border-radius:16px;
+  padding:24px 20px; text-decoration:none; display:block;
+  transition:all .25s cubic-bezier(.2,.8,.2,1);
+  position:relative; overflow:hidden;
+}
+.svc-card:hover {
+  border-color:var(--accent); box-shadow:0 6px 24px rgba(192,57,43,.1);
+  transform:translateY(-3px);
+}
+
+/* Card top: emoji + FREE/Paid badge row */
+.svc-card-top { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:14px; }
+.svc-card-icon { font-size:38px; line-height:1; }
+.svc-badge {
+  font-size:9px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase;
+  padding:4px 10px; border-radius:6px; flex-shrink:0;
+}
+.badge-free { background:rgba(39,174,96,.1); color:#27ae60; border:1px solid rgba(39,174,96,.25); }
+.badge-paid { background:var(--gold-soft); color:var(--gold); border:1px solid var(--gold-border); }
+.badge-service { background:rgba(52,152,219,.1); color:#3498db; border:1px solid rgba(52,152,219,.25); }
+.badge-soon { background:var(--surface2); color:var(--text-muted); border:1px solid var(--border); }
+
+/* Title area */
+.svc-card-title { font-family:'Playfair Display',serif; font-size:17px; color:var(--text); margin-bottom:4px; line-height:1.25; }
+.svc-card-subtitle { font-size:11px; color:var(--gold); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:10px; }
+
+/* Difficulty + days row */
+.svc-meta-row { display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+.difficulty-label { font-size:9px; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase; }
+.stars { color:var(--gold-light); font-size:13px; letter-spacing:1px; }
+.days-pill {
+  font-size:11px; color:var(--text-mid); background:var(--surface);
+  border:1px solid var(--border); padding:3px 10px; border-radius:12px;
+  display:inline-flex; align-items:center; gap:4px;
+}
+
+/* Best-for description */
+.svc-best { font-size:12px; color:var(--text-mid); line-height:1.55; margin-bottom:12px; }
+.svc-best strong { color:var(--text); font-weight:600; }
+
+/* Tags */
+.svc-tags { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:14px; }
+.svc-tag {
+  font-size:10px; color:var(--text-muted); background:var(--bg2);
+  border:1px solid var(--border); padding:3px 9px; border-radius:10px;
+}
+
+/* CTA / flip hint at bottom */
+.svc-card-footer { display:flex; align-items:center; justify-content:space-between; margin-top:auto; }
+.svc-cta-text { font-size:12px; color:var(--gold); font-weight:500; }
+.svc-flip-hint { font-size:10px; color:var(--text-muted); display:flex; align-items:center; gap:3px; opacity:.7; }
+
+/* Price on paid cards */
+.svc-price { font-size:22px; color:var(--accent); font-weight:700; margin-bottom:2px; }
+
+/* Featured card highlight */
+.svc-card.featured { border-color:var(--gold-border); background:linear-gradient(135deg,#fff 0%,var(--gold-soft) 100%); }
+.svc-card.coming-soon { opacity:.58; border-style:dashed; }
+.svc-card.coming-soon:hover { transform:none; box-shadow:none; border-color:var(--border); }
+
+/* Scroll hint dot-bar below carousel */
+.scroll-dots { display:flex; justify-content:center; gap:5px; margin-top:10px; }
+.scroll-dot { width:6px; height:6px; border-radius:50%; background:var(--border); }
+.scroll-dot.active { background:var(--gold); width:18px; border-radius:3px; }
+
+/* Callout at bottom */
+.svc-callout {
+  background:var(--gold-soft); border-left:3px solid var(--gold-light);
+  border-radius:0 8px 8px 0; padding:16px 20px; margin-top:44px;
+  font-size:13px; color:var(--text-mid); line-height:1.7;
+}
+.svc-callout-label { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin-bottom:5px; }
+
+@media(max-width:520px){
+  .svc-card{ flex:0 0 220px; min-width:220px; padding:20px 16px; }
+  .svc-card-icon{ font-size:32px; }
+  .svc-card-title{ font-size:15px; }
+}
+</style>
+</head>
+<body>
+<header id="site-header"></header>
+<main>
+<div class="guide-wrap">
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="index.html">Home</a><span class="breadcrumb-sep">›</span>
+  <span class="breadcrumb-current">All Services</span>
+</nav>
+
+<div class="guide-hero">
+  <div class="guide-hero-icon">🛍️</div>
+  <div>
+    <div class="guide-hero-eyebrow">What Kat Can Help With</div>
+    <h1>All Services</h1>
+    <div class="guide-meta">
+      <span>🆓 Free guides</span>
+      <span>💰 Premium itineraries</span>
+      <span>🤝 Custom planning</span>
+    </div>
+  </div>
+</div>
+
+<p class="svc-intro">From free checklists to downloadable deep-dives and fully custom itineraries — here's everything Ready? China! offers to get you confidently around China.</p>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 🆓 FREE RESOURCES                      -->
+<!-- ══════════════════════════════════════ -->
+<div class="svc-section">
+  <div class="svc-header">
+    <h2 class="svc-title">🆓 Free Resources</h2>
+  </div>
+  <p class="svc-sub">Start here. No card required.</p>
+
+  <div class="carousel-wrap">
+    <button class="carousel-arrow prev" onclick="scrollCarousel(this,-320)">‹</button>
+    <div class="carousel-track" id="free-track">
+
+      <!-- 1. GRWM Checklist -->
+      <a class="svc-card" href="index.html#ready-section">
+        <div class="svc-card-top">
+          <div class="svc-card-icon">📋</div>
+          <span class="svc-badge badge-free">FREE</span>
+        </div>
+        <h3 class="svc-card-title">GRWM Checklist</h3>
+        <div class="svc-meta-row">
+          <span class="days-pill">📌 17 steps</span>
+        </div>
+        <p class="svc-best"><strong>Best for:</strong> First-timers who want a complete pre-trip system — visa, SIM, apps, packing all in one list.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Beginner-friendly</span>
+          <span class="svc-tag">Printable</span>
+          <span class="svc-tag">Score yourself</span>
+        </div>
+        <div class="svc-card-footer">
+          <span class="svc-cta-text">Get it free →</span>
+        </div>
+      </a>
+
+      <!-- 2. Alipay Setup Guide -->
+      <a class="svc-card" href="alipay/">
+        <div class="svc-card-top">
+          <div class="svc-card-icon">📱</div>
+          <span class="svc-badge badge-free">FREE</span>
+        </div>
+        <h3 class="svc-card-title">Alipay Setup</h3>
+        <div class="svc-card-subtitle">支付宝设置</div>
+        <div class="svc-meta-row">
+          <span class="difficulty-label">Difficulty</span>
+          <span class="stars">★★★☆☆</span>
+          <span class="days-pill">📖 15 min</span>
+        </div>
+        <p class="svc-best"><strong>Best for:</strong> Foreigners who need to set up Alipay from scratch — screenshots, real-name verify, link card.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Step-by-step</span>
+          <span class="svc-tag">Screenshots</span>
+          <span class="svc-tag">Foreigner-friendly</span>
+        </div>
+        <div class="svc-card-footer">
+          <span class="svc-cta-text">Read the guide →</span>
+          <span class="svc-flip-hint">Click to flip →</span>
+        </div>
+      </a>
+
+      <!-- 3. Alipay How to Pay -->
+      <a class="svc-card" href="alipay/">
+        <div class="svc-card-top">
+          <div class="svc-card-icon">💸</div>
+          <span class="svc-badge badge-free">FREE</span>
+        </div>
+        <h3 class="svc-card-title">How to Pay with Alipay</h3>
+        <div class="svc-card-subtitle">怎么用支付宝付款</div>
+        <div class="svc-meta-row">
+          <span class="difficulty-label">Difficulty</span>
+          <span class="stars">★☆☆☆☆</span>
+          <span class="days-pill">📖 5 min</span>
+        </div>
+        <p class="svc-best"><strong>Best for:</strong> Anyone who already has Alipay but isn't sure how to actually use it at shops, restaurants, and street vendors.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Quick read</span>
+          <span class="svc-tag">QR code tips</span>
+        </div>
+        <div class="svc-card-footer">
+          <span class="svc-cta-text">Read the guide →</span>
+          <span class="svc-flip-hint">Click to flip →</span>
+        </div>
+      </a>
+
+      <!-- 4. WeChat Pay Setup -->
+      <a class="svc-card" href="wechat/">
+        <div class="svc-card-top">
+          <div class="svc-card-icon">💚</div>
+          <span class="svc-badge badge-free">FREE</span>
+        </div>
+        <h3 class="svc-card-title">WeChat Pay Setup</h3>
+        <div class="svc-card-subtitle">微信支付设置</div>
+        <div class="svc-meta-row">
+          <span class="difficulty-label">Difficulty</span>
+          <span class="stars">★★★☆☆</span>
+          <span class="days-pill">📖 15 min</span>
+        </div>
+        <p class="svc-best"><strong>Best for:</strong> Your backup wallet. Verification, binding a foreign card, when to use it over Alipay.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Backup payment</span>
+          <span class="svc-tag">Foreign card</span>
+        </div>
+        <div class="svc-card-footer">
+          <span class="svc-cta-text">Read the guide →</span>
+          <span class="svc-flip-hint">Click to flip →</span>
+        </div>
+      </a>
+
+      <!-- 5. WeChat How to Pay -->
+      <a class="svc-card" href="wechat/">
+        <div class="svc-card-top">
+          <div class="svc-card-icon">🧧</div>
+          <span class="svc-badge badge-free">FREE</span>
+        </div>
+        <h3 class="svc-card-title">How to Pay with WeChat</h3>
+        <div class="svc-card-subtitle">微信支付实操</div>
+        <div class="svc-meta-row">
+          <span class="difficulty-label">Difficulty</span>
+          <span class="stars">★☆☆☆☆</span>
+          <span class="days-pill">📖 5 min</span>
+        </div>
+        <p class="svc-best"><strong>Best for:</strong> Using WeChat Pay in daily life — scan, pay, send red packets, split bills with friends.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Quick read</span>
+          <span class="svc-tag">Red packets</span>
+        </div>
+        <div class="svc-card-footer">
+          <span class="svc-cta-text">Read the guide →</span>
+          <span class="svc-flip-hint">Click to flip →</span>
+        </div>
+      </a>
+
+      <!-- 6. Metro Guide -->
+      <a class="svc-card" href="metro-guide/">
+        <div class="svc-card-top">
+          <div class="svc-card-icon">🚇</div>
+          <span class="svc-badge badge-free">FREE</span>
+        </div>
+        <h3 class="svc-card-title">Metro Guide</h3>
+        <div class="svc-card-subtitle">地铁攻略</div>
+        <div class="svc-meta-row">
+          <span class="difficulty-label">Difficulty</span>
+          <span class="stars">★★☆☆☆</span>
+          <span class="days-pill">📖 10 min</span>
+        </div>
+        <p class="svc-best"><strong>Best for:</strong> Navigating China's metro systems like a local — apps, ticket types, key lines in major cities.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Transport</span>
+          <span class="svc-tag">City essential</span>
+        </div>
+        <div class="svc-card-footer">
+          <span class="svc-cta-text">Read the guide →</span>
+          <span class="svc-flip-hint">Click to flip →</span>
+        </div>
+      </a>
+
+      <!-- 7. Train / High-Speed Rail -->
+      <a class="svc-card" href="#">
+        <div class="svc-card-top">
+          <div class="svc-card-icon">🚄</div>
+          <span class="svc-badge badge-free">FREE</span>
+        </div>
+        <h3 class="svc-card-title">High-Speed Rail Guide</h3>
+        <div class="svc-card-subtitle">高铁攻略</div>
+        <div class="svc-meta-row">
+          <span class="difficulty-label">Difficulty</span>
+          <span class="stars">★★★☆☆</span>
+          <span class="days-pill">📖 15 min</span>
+        </div>
+        <p class="svc-best"><strong>Best for:</strong> Inter-city travelers. Booking tickets, seat classes, station navigation, and luggage rules.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Transport</span>
+          <span class="svc-tag">Inter-city</span>
+          <span class="svc-tag">Booking tips</span>
+        </div>
+        <div class="svc-card-footer">
+          <span class="svc-cta-text">Coming soon</span>
+          <span class="svc-flip-hint">Click to flip →</span>
+        </div>
+      </a>
+
+      <!-- 8. VPN Guide -->
+      <a class="svc-card" href="vpn/">
+        <div class="svc-card-top">
+          <div class="svc-card-icon">🔒</div>
+          <span class="svc-badge badge-free">FREE</span>
+        </div>
+        <h3 class="svc-card-title">VPN Setup Guide</h3>
+        <div class="svc-card-subtitle">网络工具</div>
+        <div class="svc-meta-row">
+          <span class="difficulty-label">Difficulty</span>
+          <span class="stars">★★☆☆☆</span>
+          <span class="days-pill">📖 10 min</span>
+        </div>
+        <p class="svc-best"><strong>Best for:</strong> Staying connected before your SIM works. Which VPNs work, setup steps, and backup options.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Connectivity</span>
+          <span class="svc-tag">Pre-trip essential</span>
+        </div>
+        <div class="svc-card-footer">
+          <span class="svc-cta-text">Read the guide →</span>
+          <span class="svc-flip-hint">Click to flip →</span>
+        </div>
+      </a>
+
+      <!-- 9. eSIM Guide -->
+      <a class="svc-card" href="esim/">
+        <div class="svc-card-top">
+          <div class="svc-card-icon">📶</div>
+          <span class="svc-badge badge-free">FREE</span>
+        </div>
+        <h3 class="svc-card-title">eSIM / Data Guide</h3>
+        <div class="svc-card-subtitle">上网指南</div>
+        <div class="svc-meta-row">
+          <span class="difficulty-label">Difficulty</span>
+          <span class="stars">★★☆☆☆</span>
+          <span class="days-pill">📖 8 min</span>
+        </div>
+        <p class="svc-best"><strong>Best for:</strong> Getting data the moment you land. Airalo vs local eSIMs, activation steps, cost comparison.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Connectivity</span>
+          <span class="svc-tag">Day-one essential</span>
+        </div>
+        <div class="svc-card-footer">
+          <span class="svc-cta-text">Read the guide →</span>
+          <span class="svc-flip-hint">Click to flip →</span>
+        </div>
+      </a>
+
+      <!-- 10. Chopsticks Etiquette -->
+      <a class="svc-card" href="community/how-to-use-chopsticks-china.html">
+        <div class="svc-card-top">
+          <div class="svc-card-icon">🥢</div>
+          <span class="svc-badge badge-free">FREE</span>
+        </div>
+        <h3 class="svc-card-title">Chopsticks 101</h3>
+        <div class="svc-card-subtitle">筷子入门</div>
+        <div class="svc-meta-row">
+          <span class="difficulty-label">Difficulty</span>
+          <span class="stars">★★☆☆☆</span>
+          <span class="days-pill">📖 7 min</span>
+        </div>
+        <p class="svc-best"><strong>Best for:</strong> Not looking like a total newbie at the dinner table. Hold them right, know the taboos.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Food & culture</span>
+          <span class="svc-tag">Etiquette</span>
+        </div>
+        <div class="svc-card-footer">
+          <span class="svc-cta-text">Read the guide →</span>
+          <span class="svc-flip-hint">Click to flip →</span>
+        </div>
+      </a>
+
+      <!-- 11. Visa Guide -->
+      <a class="svc-card" href="#">
+        <div class="svc-card-top">
+          <div class="svc-card-icon">🛂</div>
+          <span class="svc-badge badge-free">FREE</span>
+        </div>
+        <h3 class="svc-card-title">Visa & Entry Guide</h3>
+        <div class="svc-card-subtitle">签证入境</div>
+        <div class="svc-meta-row">
+          <span class="difficulty-label">Difficulty</span>
+          <span class="stars">★★★★☆</span>
+          <span class="days-pill">📖 20 min</span>
+        </div>
+        <p class="svc-best"><strong>Best for:</strong> Figuring out if you need a visa, which type, 144-hour transit, or the new visa-free entries.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Must visit</span>
+          <span class="svc-tag">144hr transit</span>
+          <span class="svc-tag">Visa-free</span>
+        </div>
+        <div class="svc-card-footer">
+          <span class="svc-cta-text">Coming soon</span>
+          <span class="svc-flip-hint">Click to flip →</span>
+        </div>
+      </a>
+
+      <!-- 12. Food Ordering Guide -->
+      <a class="svc-card" href="#">
+        <div class="svc-card-top">
+          <div class="svc-card-icon">🍜</div>
+          <span class="svc-badge badge-free">FREE</span>
+        </div>
+        <h3 class="svc-card-title">Food Ordering Survival</h3>
+        <div class="svc-card-subtitle">点餐生存</div>
+        <div class="svc-meta-row">
+          <span class="difficulty-label">Difficulty</span>
+          <span class="stars">★★☆☆☆</span>
+          <span class="days-pill">📖 10 min</span>
+        </div>
+        <p class="svc-best"><strong>Best for:</strong> Eating confidently without English menus. Apps, photo ordering, essential phrases, and what to avoid.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Food & culture</span>
+          <span class="svc-tag">Phrases</span>
+        </div>
+        <div class="svc-card-footer">
+          <span class="svc-cta-text">Coming soon</span>
+          <span class="svc-flip-hint">Click to flip →</span>
+        </div>
+      </a>
+
+    </div>
+    <button class="carousel-arrow next" onclick="scrollCarousel(this,320)">›</button>
+  </div>
+  <div class="scroll-dots" id="free-dots"></div>
+</div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 💰 PREMIUM DOWNLOADS                   -->
+<!-- ══════════════════════════════════════ -->
+<div class="svc-section">
+  <div class="svc-header">
+    <h2 class="svc-title">💰 Premium Itineraries</h2>
+  </div>
+  <p class="svc-sub">Ready-made PDF routes you can print and follow offline.</p>
+
+  <div class="carousel-wrap">
+    <button class="carousel-arrow prev" onclick="scrollCarousel(this,-320)">‹</button>
+    <div class="carousel-track" id="premium-track">
+
+      <!-- Beijing 1 Day -->
+      <a class="svc-card featured" href="pdf-guide.html">
+        <div class="svc-card-top">
+          <div class="svc-card-icon">🏯</div>
+          <span class="svc-badge badge-paid">$9.9</span>
+        </div>
+        <h3 class="svc-card-title">北京</h3>
+        <div class="svc-card-subtitle">BEIJING · 1 DAY</div>
+        <div class="svc-meta-row">
+          <span class="difficulty-label">DIFFICULTY</span>
+          <span class="stars">★★★★☆</span>
+          <span class="days-pill">📅 1 day</span>
+        </div>
+        <p class="svc-best"><strong>Best for:</strong> History, culture, Great Wall, Chinese civilization. First-time Beijing visitors.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Forbidden City</span>
+          <span class="svc-tag">Great Wall</span>
+          <span class="svc-tag">Hutongs</span>
+          <span class="svc-tag">Print-ready PDF</span>
+        </div>
+        <div class="svc-price">$9.9</div>
+        <div class="svc-card-footer">
+          <span class="svc-cta-text">View details →</span>
+          <span class="svc-flip-hint">Click to flip →</span>
+        </div>
+      </a>
+
+      <!-- Yunnan 3 Days (SOON) -->
+      <div class="svc-card coming-soon">
+        <div class="svc-card-top">
+          <div class="svc-card-icon">🦚</div>
+          <span class="svc-badge badge-paid">SOON</span>
+        </div>
+        <h3 class="svc-card-title">云南</h3>
+        <div class="svc-card-subtitle">YUNNAN · 3 DAYS</div>
+        <div class="svc-meta-row">
+          <span class="difficulty-label">DIFFICULTY</span>
+          <span class="stars">★★★☆☆</span>
+          <span class="days-pill">📅 3 days</span>
+        </div>
+        <p class="svc-best"><strong>Best for:</strong> Mountains, minorities, ancient towns, flower markets. Lijiang, Dali, Shangri-La vibes.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Lijiang</span>
+          <span class="svc-tag">Dali</span>
+          <span class="svc-tag">Nature lover</span>
+        </div>
+        <div class="svc-card-footer">
+          <span class="svc-cta-text">Coming soon</span>
+        </div>
+      </div>
+
+      <!-- Chongqing 3 Days (SOON) -->
+      <div class="svc-card coming-soon">
+        <div class="svc-card-top">
+          <div class="svc-card-icon">🌶️</div>
+          <span class="svc-badge badge-paid">SOON</span>
+        </div>
+        <h3 class="svc-card-title">重庆</h3>
+        <div class="svc-card-subtitle">CHONGQING · 3 DAYS</div>
+        <div class="svc-meta-row">
+          <span class="difficulty-label">DIFFICULTY</span>
+          <span class="stars">★★★★☆</span>
+          <span class="days-pill">📅 3 days</span>
+        </div>
+        <p class="svc-best"><strong>Best for:</strong> Cyberpunk cityscape, spicy hotpot, mountain terrain, 8D geography that breaks your GPS.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Hotpot capital</span>
+          <span class="svc-tag">Cyberpunk</span>
+          <span class="svc-tag">Adventure</span>
+        </div>
+        <div class="svc-card-footer">
+          <span class="svc-cta-text">Coming soon</span>
+        </div>
+      </div>
+
+      <!-- Shanghai 2 Days (SOON) placeholder -->
+      <div class="svc-card coming-soon">
+        <div class="svc-card-top">
+          <div class="svc-card-icon">🌃</div>
+          <span class="svc-badge badge-paid">SOON</span>
+        </div>
+        <h3 class="svc-card-title">上海</h3>
+        <div class="svc-card-subtitle">SHANGHAI · 2 DAYS</div>
+        <div class="svc-meta-row">
+          <span class="difficulty-label">DIFFICULTY</span>
+          <span class="stars">★★★☆☆</span>
+          <span class="days-pill">📅 2 days</span>
+        </div>
+        <p class="svc-best"><strong>Best for:</strong> Futuristic skyline, international food, modernity. The Bund, French Concession, coffee culture.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Most international</span>
+          <span class="svc-tag">Easy for beginners</span>
+        </div>
+        <div class="svc-card-footer">
+          <span class="svc-cta-text">Coming soon</span>
+        </div>
+      </div>
+
+      <!-- Chengdu 3 Days (SOON) placeholder -->
+      <div class="svc-card coming-soon">
+        <div class="svc-card-top">
+          <div class="svc-card-icon">🐼</div>
+          <span class="svc-badge badge-paid">SOON</span>
+        </div>
+        <h3 class="svc-card-title">成都</h3>
+        <div class="svc-card-subtitle">CHENGDU · 3 DAYS</div>
+        <div class="svc-meta-row">
+          <span class="difficulty-label">DIFFICULTY</span>
+          <span class="stars">★★☆☆☆</span>
+          <span class="days-pill">📅 3–5 days</span>
+        </div>
+        <p class="svc-best"><strong>Best for:</strong> Pandas, hotpot, chill vibes, authentic local life. The most relaxed major city in China.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Pandas!</span>
+          <span class="svc-tag">Best food city</span>
+          <span class="svc-tag">Laid-back</span>
+        </div>
+        <div class="svc-card-footer">
+          <span class="svc-cta-text">Coming soon</span>
+        </div>
+      </div>
+
+    </div>
+    <button class="carousel-arrow next" onclick="scrollCarousel(this,320)">›</button>
+  </div>
+  <div class="scroll-dots" id="premium-dots"></div>
+</div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 🤝 CUSTOM SERVICES                     -->
+<!-- ══════════════════════════════════════ -->
+<div class="svc-section">
+  <div class="svc-header">
+    <h2 class="svc-title">🤝 Custom Services</h2>
+  </div>
+  <p class="svc-sub">When you want Kat to do the planning for you.</p>
+
+  <div class="carousel-wrap">
+    <button class="carousel-arrow prev" onclick="scrollCarousel(this,-320)">‹</button>
+    <div class="carousel-track" id="service-track">
+
+      <!-- Custom Itinerary -->
+      <a class="svc-card" href="https://wa.me/8613799200367?text=Hi%20Kat!%20I%27d%20love%20a%20custom%20itinerary%20for%20my%20China%20trip.">
+        <div class="svc-card-top">
+          <div class="svc-card-icon">🗺️</div>
+          <span class="svc-badge badge-service">FROM $99</span>
+        </div>
+        <h3 class="svc-card-title">Customised Itinerary</h3>
+        <div class="svc-card-subtitle">定制行程</div>
+        <div class="svc-meta-row">
+          <span class="days-pill">⏱️ 48–72 hr turnaround</span>
+        </div>
+        <p class="svc-best"><strong>Best for:</strong> Travelers who want a ready-to-follow PDF route tailored to their cities, pace, and interests — not a generic template.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Personalised</span>
+          <span class="svc-tag">PDF delivery</span>
+          <span class="svc-tag">Restaurant recs</span>
+        </div>
+        <div class="svc-card-footer">
+          <span class="svc-cta-text">Message Kat →</span>
+        </div>
+      </a>
+
+      <!-- AI Trip Planner (SOON) -->
+      <div class="svc-card coming-soon">
+        <div class="svc-card-top">
+          <div class="svc-card-icon">🤖</div>
+          <span class="svc-badge badge-service">SOON</span>
+        </div>
+        <h3 class="svc-card-title">AI Trip Planner</h3>
+        <div class="svc-card-subtitle">智能路线规划</div>
+        <div class="svc-meta-row">
+          <span class="days-pill">⚡ Generated in seconds</span>
+        </div>
+        <p class="svc-best"><strong>Best for:</strong> Picking your days, budget, and interests — get an optimised route generated instantly. Free tool.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Free</span>
+          <span class="svc-tag">AI-powered</span>
+          <span class="svc-tag">Instant</span>
+        </div>
+        <div class="svc-card-footer">
+          <span class="svc-cta-text">Coming soon</span>
+        </div>
+      </div>
+
+      <!-- Booking Assistance (future) -->
+      <div class="svc-card coming-soon">
+        <div class="svc-card-top">
+          <div class="svc-card-icon">🎫</div>
+          <span class="svc-badge badge-service">SOON</span>
+        </div>
+        <h3 class="svc-card-title">Booking Assistance</h3>
+        <div class="svc-card-subtitle">代订服务</div>
+        <div class="svc-meta-row">
+          <span class="days-pill">💰 From $5</span>
+        </div>
+        <p class="svc-best"><strong>Best for:</strong> Need help booking train tickets, Forbidden City slots, or hard-to-get reservations? Kat handles the Chinese side.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Train tickets</span>
+          <span class="svc-tag">Attractions</span>
+          <span class="svc-tag">Saves time</span>
+        </div>
+        <div class="svc-card-footer">
+          <span class="svc-cta-text">Coming soon</span>
+        </div>
+      </div>
+
+    </div>
+    <button class="carousel-arrow next" onclick="scrollCarousel(this,320)">›</button>
+  </div>
+  <div class="scroll-dots" id="service-dots"></div>
+</div>
+
+
+<!-- Bottom callout -->
+<div class="svc-callout">
+  <div class="svc-callout-label">💬 Not sure which fits?</div>
+  Start with the free GRWM Checklist, grab a premium itinerary when you're ready, or message Kat for a fully custom plan. New products land here first — scroll left to see everything.
+</div>
+
+
+</div><!-- /guide-wrap -->
+</main>
+<footer id="site-footer"></footer>
+
+<script src="assets/nav.js"></script>
+<script>buildNav();</script>
+
+<!-- Carousel scroll helper -->
+<script>
+function scrollCarousel(btn, amount) {
+  const track = btn.parentElement.querySelector('.carousel-track');
+  track.scrollBy({ left: amount, behavior: 'smooth' });
+}
+
+// Optional: update dots on scroll (lightweight version)
+document.querySelectorAll('.carousel-track').forEach(track => {
+  track.addEventListener('scroll', () => {
+    // Could add active-dot logic here if desired
+  }, { passive: true });
+});
+</script>
+
+</body>
+</html>

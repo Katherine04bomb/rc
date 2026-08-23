@@ -88,11 +88,12 @@ const KNOW_ITEMS = [
 ];
 
 const SERVICES_ITEMS = [
-  { label: 'All Services',            href: 'index.html', type: 'internal' },
-  { label: 'Free Checklist',          href: 'index.html#ready-section', type: 'internal' },
-  { label: 'Classical Beijing 1 Day', href: 'https://wa.me/8613799200367?text=Hi%20Kat!%20I%27m%20interested%20in%20the%20Classical%20Beijing%201%20Day%20tour.', type: 'external' },
-  { label: 'Customised Itinerary',    href: 'https://wa.me/8613799200367?text=Hi%20Kat!%20I%27d%20love%20a%20custom%20itinerary%20for%20my%20China%20trip.', type: 'external' },
+  { label: 'All Services',         href: 'services.html', type: 'internal' },  // ← 原 index.html
+  { label: 'Free Checklist',       href: 'index.html#ready-section', type: 'internal' },
+  { label: 'Classical Beijing 1 Day', href: 'pdf-guide.html', type: 'internal' }, // ← 原 wa.me 链接
+  { label: 'Customised Itinerary', href: 'https://wa.me/8613799200367?text=Hi%20Kat!%20I%27d%20love%20a%20custom%20itinerary%20for%20my%20China%20trip.', type: 'external' },
 ];
+
 
 function buildNav(rootPath) {
   // Auto-detect the repo root so links work on:
@@ -214,9 +215,7 @@ function buildNav(rootPath) {
         <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><circle cx="7.2" cy="7.2" r="5.7" stroke="currentColor" stroke-width="1.6"/><line x1="11.3" y1="11.3" x2="15.5" y2="15.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
       </button>
 
-      <button class="nav-link nav-cta" onclick="rcOpenPlanner('${rootPath}')">
-        <span class="soon-tag">SOON</span>AI Itinerary
-      </button>
+      <button class="nav-link nav-cta" onclick="rcOpenPlanner('${rootPath}')">Start planning</button>
     </nav>`;
 
     rcFillCityDropdown(rootPath);

@@ -39,41 +39,29 @@
 <!-- FLOATING MENU -->
 <button id="menu-btn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 <div id="menu-dropdown">
-  <div class="menu-item" onclick="rcOpenSearch();closeMenu()">
-    <div class="menu-icon">🔍</div>
-    <div><div class="menu-item-title">Search</div><div class="menu-item-sub">Visa, Alipay, train…</div></div>
+  <div class="menu-item" onclick="rcOpenPlanner();closeMenu()">
+    <div class="menu-icon">🗓️</div>
+    <div><div class="menu-item-title">Plan your trip</div><div class="menu-item-sub">Build your China itinerary</div></div>
   </div>
   <div class="menu-item" onclick="scrollToSection('ready-section');closeMenu()">
     <div class="menu-icon">✅</div>
-    <div><div class="menu-item-title">Get Ready with Me</div><div class="menu-item-sub">Step-by-step checklist</div></div>
-    <span class="mbadge mbadge-red">START</span>
+    <div><div class="menu-item-title">What to Prepare</div><div class="menu-item-sub">Step-by-step checklist</div></div>
   </div>
   <div class="menu-item" onclick="scrollToSection('cities-section');closeMenu()">
-    <div class="menu-icon">🗺️</div>
-    <div><div class="menu-item-title">Cities</div><div class="menu-item-sub">Where to go?</div></div>
+    <div class="menu-icon">🏙️</div>
+    <div><div class="menu-item-title">Where to Go</div><div class="menu-item-sub">Pick your cities</div></div>
   </div>
   <div class="menu-item" onclick="scrollToSection('map-section');closeMenu()">
     <div class="menu-icon">📍</div>
     <div><div class="menu-item-title">Explore the Map</div><div class="menu-item-sub">Plan your route</div></div>
   </div>
   <div class="menu-item" onclick="scrollToSection('community-section');closeMenu()">
-    <div class="menu-icon">👥</div>
-    <div><div class="menu-item-title">Community</div><div class="menu-item-sub">Tips and News for you when traveling to China</div></div>
-    <span class="mbadge mbadge-red">NEW</span>
+    <div class="menu-icon">💡</div>
+    <div><div class="menu-item-title">Things to Know</div><div class="menu-item-sub">Tips, Q&A and News</div></div>
   </div>
   <div class="menu-item menu-item-featured" onclick="window.location='play/';closeMenu()">
     <div class="menu-icon">🎮</div>
-    <div><div class="menu-item-title">China Challenge</div><div class="menu-item-sub">You think you know China?</div></div>
-    <span class="mbadge mbadge-gold">BETA</span>
-  </div>
-  <div class="menu-item" onclick="openModal('planning-modal');closeMenu()">
-    <div class="menu-icon">🤖</div>
-    <div><div class="menu-item-title">AI Trip Planner</div><div class="menu-item-sub">Auto itinerary</div></div>
-    <span class="mbadge mbadge-gray">SOON</span>
-  </div>
-  <div class="menu-item" onclick="openModal('about-modal');closeMenu()">
-    <div class="menu-icon">🙋‍♀️</div>
-    <div><div class="menu-item-title">Meet Katherine</div><div class="menu-item-sub">Who built this &amp; why</div></div>
+    <div><div class="menu-item-title">China Quiz</div><div class="menu-item-sub">You think you know China?</div></div>
   </div>
 </div>
 
@@ -99,10 +87,7 @@
       <div class="kat-sig-role">China local · 5 years hosting foreign friends</div>
     </div>
   </div>
-  <div class="hero-actions">
-    <button class="btn-primary" onclick="scrollToSection('ready-section')">Get Ready with Me →</button>
-    <button class="btn-secondary" onclick="scrollToSection('cities-section')">Where should I go?</button>
-  </div>
+  <button class="hero-cta-mobile" onclick="rcOpenPlanner()">Start planning →</button>
   <div class="hero-story">
     <div class="story-quote">"China sounds amazing — but where do I even start?" I've heard this from every single foreign friend before their first visit. So I built this.</div>
     <div class="story-examples">
@@ -195,6 +180,7 @@
 <!-- SCRIPTS — ui.js must be first (provides global functions) -->
 <script src="assets/ui.js"></script>
 <script src="assets/nav.js"></script>
+<script src="assets/kat-pet.js"></script>   <!-- ← 新增这行 -->
 <script>buildNav();</script>
 <script src="assets/cities.js"></script>
 <script src="assets/about.js"></script>
