@@ -27,8 +27,14 @@
     var attr = s && s.getAttribute('data-root');
     if (attr !== null && attr !== undefined) { RC_ROOT = attr; return; }
     if (s && s.src) {
-      var m = s.src.match(/^(.*?assets\/)kat-pet\.js/);
-      if (m) RC_ROOT = m[1]; // "../" on inner pages, "" at site root
+      // s.src 是浏览器解析后的绝对 URL（如 https://…/assets/kat-pet.js），
+      // 只取 pathname 里 assets/ 之前的部分，避免把域名整个吞进 RC_ROOT
+      // 导致 "assets/assets/..." 双重路径 404（首页静态引入时的坑）。
+      try {
+        var p = new URL(s.src, window.location.href).pathname;
+        var m = p.match(/^(.*)assets\/kat-pet\.js/);
+        if (m) RC_ROOT = m[1]; // "/" at site root, "/visa/" on inner pages
+      } catch (err) {}
     }
   })();
 
