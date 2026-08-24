@@ -447,14 +447,20 @@
 }
 
 /* ── WHY [CITY] ── */
-.why-beijing { margin-bottom: 8px; }
-.why-beijing p {
+.why-beijing,
+.why-shenzhen,
+.why-harbin { margin-bottom: 8px; }
+.why-beijing p,
+.why-shenzhen p,
+.why-harbin p {
   font-size: 15px;
   line-height: 1.85;
   color: var(--text-mid);
   margin: 0 0 16px;
 }
-.why-beijing p:last-of-type { margin-bottom: 20px; }
+.why-beijing p:last-of-type,
+.why-shenzhen p:last-of-type,
+.why-harbin p:last-of-type { margin-bottom: 20px; }
 .why-photo-placeholder {
   border-radius: 16px;
   min-height: 240px;

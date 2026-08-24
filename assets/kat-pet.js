@@ -69,18 +69,66 @@
   ];
 
   // ── 4. 创建 DOM ─────────────────────────────────────────
-    // ── 4. 创建 DOM ─────────────────────────────────────────
+  var PET_SIZE  = 84;
+  var PET_MARGIN = 18;
   var pet = document.createElement('div');
   pet.id = 'kat-pet';
   pet.style.position = 'fixed';
-  pet.style.bottom = '18px';
-  pet.style.right = '18px';
   pet.style.zIndex = '9999';
-  pet.style.width = '84px';
+  pet.style.width = PET_SIZE + 'px';
   pet.style.lineHeight = '0';
-  pet.style.cursor = 'pointer';
+  pet.style.cursor = 'grab';
+  pet.style.touchAction = 'none'; // 移动端拖动时不触发页面滚动
+  pet.style.transition = 'left .25s cubic-bezier(.2,.8,.3,1), top .25s cubic-bezier(.2,.8,.3,1)';
   pet.setAttribute('role','button');
   pet.setAttribute('aria-label','Kat, your travel assistant');
+
+  // 初始位置：localStorage → 默认右下角
+  function petDefaultPos() {
+    return {
+      left: Math.max(window.innerWidth  - PET_SIZE - PET_MARGIN, PET_MARGIN),
+      top:  Math.max(window.innerHeight - PET_SIZE - PET_MARGIN, PET_MARGIN)
+    };
+  }
+  function petClamp(left, top) {
+    left = Math.max(PET_MARGIN, Math.min(left, window.innerWidth  - PET_SIZE - PET_MARGIN));
+    top  = Math.max(PET_MARGIN, Math.min(top,  window.innerHeight - PET_SIZE - PET_MARGIN));
+    return { left: left, top: top };
+  }
+  function petSetPos(left, top) {
+    pet.style.left = left + 'px';
+    pet.style.top  = top + 'px';
+    pet.style.right = 'auto';
+    pet.style.bottom = 'auto';
+  }
+  function petSnap(left, top) {
+    // 吸附到最近的左/右边缘；垂直位置保留
+    var mid = window.innerWidth / 2;
+    var snapped = (left + PET_SIZE / 2) < mid ? PET_MARGIN : (window.innerWidth - PET_SIZE - PET_MARGIN);
+    return { left: snapped, top: top };
+  }
+  function petSavePos(left, top) {
+    try { localStorage.setItem('kat_pet_pos', JSON.stringify({ left: left, top: top })); } catch (e) {}
+  }
+  function petRestorePos() {
+    try {
+      var raw = localStorage.getItem('kat_pet_pos');
+      if (raw) {
+        var p = JSON.parse(raw);
+        var c = petClamp(p.left, p.top);
+        petSetPos(c.left, c.top);
+        return;
+      }
+    } catch (e) {}
+    var d = petDefaultPos();
+    petSetPos(d.left, d.top);
+  }
+  petRestorePos();
+  // 窗口缩放 → 保留相对位置
+  window.addEventListener('resize', function () {
+    var c = petClamp(parseFloat(pet.style.left) || 0, parseFloat(pet.style.top) || 0);
+    petSetPos(c.left, c.top);
+  });
 
   pet.innerHTML =
     '<div class="kat-pet-imgwrap">' +
@@ -160,21 +208,83 @@
   }, 2000);
 
   // ── 6. 互动 ─────────────────────────────────────────────
-  // 点击 Kat → 弹菜单 + 冒爱心 + 切换等待表情
-  pet.addEventListener('click', function (e) {
-    if (e.target.closest('.kat-pet-menu-item')) return; // 菜单项单独处理
-    wake();
-    popHearts();
-    var opening = menu.classList.contains('hidden');
-    bubble.classList.add('hidden');
-    menu.classList.toggle('hidden');
-    if (opening) {
-      setState('wait');
-    } else {
-      setState('wave');
-      setTimeout(function () { if (state === 'wave') setState('idle'); }, ACTION_HOLD);
+  // Pointer Events：拖动 + 点击统一。位移 > 6px 算拖动，< 6px 算点击（弹菜单）。
+  var DRAG_THRESHOLD = 6;
+  var dragging = false, moved = false, dragStartX = 0, dragStartY = 0, dragOrigL = 0, dragOrigT = 0;
+
+  function onPointerDown(e) {
+    if (e.target.closest('.kat-pet-menu')) return; // 菜单区域不拖
+    if (e.button !== undefined && e.button !== 0) return; // 只响应主键
+    dragging = true; moved = false;
+    dragStartX = e.clientX; dragStartY = e.clientY;
+    dragOrigL = parseFloat(pet.style.left) || 0;
+    dragOrigT = parseFloat(pet.style.top)  || 0;
+    try { pet.setPointerCapture(e.pointerId); } catch (err) {}
+    e.preventDefault();
+  }
+
+  function onPointerMove(e) {
+    if (!dragging) return;
+    var dx = e.clientX - dragStartX, dy = e.clientY - dragStartY;
+    if (!moved && Math.hypot(dx, dy) > DRAG_THRESHOLD) {
+      moved = true;
+      pet.style.cursor = 'grabbing';
+      pet.style.transition = 'none';
+      pet.classList.add('kat-dragging');
+      menu.classList.add('hidden');
+      img.src = KAT_FRAMES.cute || FALLBACK; // 被拎起来 → 卖萌
     }
-  });
+    if (moved) {
+      var c = petClamp(dragOrigL + dx, dragOrigT + dy);
+      pet.style.left = c.left + 'px';
+      pet.style.top  = c.top + 'px';
+    }
+  }
+
+  function onPointerUp(e) {
+    if (!dragging) return;
+    dragging = false;
+    pet.style.cursor = 'grab';
+    pet.style.transition = 'left .25s cubic-bezier(.2,.8,.3,1), top .25s cubic-bezier(.2,.8,.3,1)';
+    pet.classList.remove('kat-dragging');
+    try { pet.releasePointerCapture(e.pointerId); } catch (err) {}
+    if (moved) {
+      // 松手 → 吸附 + 存位置
+      var left = parseFloat(pet.style.left) || 0;
+      var top  = parseFloat(pet.style.top)  || 0;
+      var fin = petSnap(left, top);
+      fin = petClamp(fin.left, fin.top);
+      petSetPos(fin.left, fin.top);
+      petSavePos(fin.left, fin.top);
+      setState('idle');
+    } else {
+      // 没移动 → 当作点击：弹菜单
+      wake();
+      popHearts();
+      var opening = menu.classList.contains('hidden');
+      bubble.classList.add('hidden');
+      menu.classList.toggle('hidden');
+      if (opening) {
+        setState('wait');
+      } else {
+        setState('wave');
+        setTimeout(function () { if (state === 'wave') setState('idle'); }, ACTION_HOLD);
+      }
+    }
+  }
+
+  function onPointerCancel() {
+    if (!dragging) return;
+    dragging = false; moved = false;
+    pet.style.cursor = 'grab';
+    pet.style.transition = 'left .25s cubic-bezier(.2,.8,.3,1), top .25s cubic-bezier(.2,.8,.3,1)';
+    pet.classList.remove('kat-dragging');
+  }
+
+  pet.addEventListener('pointerdown', onPointerDown);
+  pet.addEventListener('pointermove', onPointerMove);
+  pet.addEventListener('pointerup',   onPointerUp);
+  pet.addEventListener('pointercancel', onPointerCancel);
 
   // 菜单项点击
   menu.addEventListener('click', function (e) {
