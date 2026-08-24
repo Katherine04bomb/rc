@@ -132,6 +132,9 @@ function buildNav(rootPath) {
   if (i.type === 'external') {
     return `<a class="nav-dd-link" href="${i.href}" target="_blank" rel="noopener">${i.label}</a>`;
   }
+  if (i.type === 'highlight') {
+    return `<a class="nav-dd-link nav-dd-highlight" href="${rootPath}${i.href}">${i.label}</a>`;
+  }
 
   const clean = i.href.replace(/^index\.html/, '');
   return `<a class="nav-dd-link" href="${rootPath}${clean}">${i.label}</a>`;
@@ -294,6 +297,11 @@ function buildNav(rootPath) {
 
   // Cookie consent banner — same dynamic-load pattern as search.js.
   rcLoadCookieConsentScript(rootPath);
+
+  // Kat desk pet — same dynamic-load pattern, so the chibi floats on
+  // EVERY page (not just index.html). kat-pet.js reads data-root to
+  // resolve its image paths on inner pages (/visa/, /alipay/, …).
+  rcLoadKatPetScript(rootPath);
 }
 
 // ============================================================
@@ -437,6 +445,16 @@ function rcLoadCookieConsentScript(rootPath) {
   s.id = 'rc-cookie-script';
   s.src = rootPath + 'assets/cookie-consent.js';
   s.onload = () => rcInitCookieBanner(rootPath);
+  document.body.appendChild(s);
+}
+
+function rcLoadKatPetScript(rootPath) {
+  // Already present (e.g. the static <script> tag on index.html) → skip.
+  if (document.querySelector('script[src*="kat-pet.js"]')) return;
+  const s = document.createElement('script');
+  s.id = 'rc-katpet-script';
+  s.src = rootPath + 'assets/kat-pet.js';
+  s.setAttribute('data-root', rootPath);
   document.body.appendChild(s);
 }
 

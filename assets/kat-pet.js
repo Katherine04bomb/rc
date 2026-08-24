@@ -18,15 +18,29 @@
   // 避免重复注入
   if (document.getElementById('kat-pet')) return;
 
+  // ── 0. 根路径探测（内页: /visa/, /alipay/… 的 assets 相对路径会 404）──
+  // nav.js 在内页动态注入本脚本时会带 data-root="../"；
+  // 首页静态引入时 src="assets/kat-pet.js"，相对路径本身就能用。
+  var RC_ROOT = '';
+  (function () {
+    var s = document.currentScript || document.querySelector('script[src*="kat-pet.js"]');
+    var attr = s && s.getAttribute('data-root');
+    if (attr !== null && attr !== undefined) { RC_ROOT = attr; return; }
+    if (s && s.src) {
+      var m = s.src.match(/^(.*?assets\/)kat-pet\.js/);
+      if (m) RC_ROOT = m[1]; // "../" on inner pages, "" at site root
+    }
+  })();
+
   // ── 1. 动作帧（已接入 ChatGPT 生成的 6 帧素材）────
-  var FALLBACK = (window.RC_CONFIG && RC_CONFIG.katAvatar) || 'assets/kat-avatar.PNG';
+  var FALLBACK = (window.RC_CONFIG && RC_CONFIG.katAvatar) || RC_ROOT + 'assets/kat-avatar.PNG';
   var KAT_FRAMES = {
-    idle:  'assets/kat/kat-idle.png',
-    wave:  'assets/kat/kat-wave.png',
-    jump:  'assets/kat/kat-jump.png',
-    sleep: 'assets/kat/kat-sleep.png',
-    cute:  'assets/kat/kat-cute.png',
-    wait:  'assets/kat/kat-wait.png'
+    idle:  RC_ROOT + 'assets/kat/kat-idle.png',
+    wave:  RC_ROOT + 'assets/kat/kat-wave.png',
+    jump:  RC_ROOT + 'assets/kat/kat-jump.png',
+    sleep: RC_ROOT + 'assets/kat/kat-sleep.png',
+    cute:  RC_ROOT + 'assets/kat/kat-cute.png',
+    wait:  RC_ROOT + 'assets/kat/kat-wait.png'
   };
 
   // ── 2. 行为参数 ──────────────────────────────────────────

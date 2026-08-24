@@ -556,6 +556,14 @@ main { padding-top: 70px; position: relative; z-index: 1; }
   transition: all .2s;
 }
 .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+/* Hero CTA pair — "What should I bring?" / "Where should I go?" */
+.hero-cta-pair { display: flex; gap: 14px; margin: 22px 0 6px; flex-wrap: wrap; }
+.hero-cta-pair .btn-primary,
+.hero-cta-pair .btn-secondary { display: inline-block; }
+@media (max-width: 640px) {
+  .hero-cta-pair { flex-direction: column; align-items: stretch; }
+  .hero-cta-pair .btn-primary, .hero-cta-pair .btn-secondary { text-align: center; }
+}
 
 /* ── 8. GET READY — CHECKLIST & PROGRESS ────────────────── */
 .checklist-steps { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
@@ -3003,4 +3011,6 @@ footer {
 #rc-whatsapp-btn, .rc-whatsapp-btn, .whatsapp-float { display: none !important; visibility: hidden !important; }
 
 #kat-pet { position: fixed !important; bottom: 18px !important; right: 18px !important; z-index: 9999 !important; }
-#kat-pet .kat-pet-img { border-radius: 22px !important; background: #F5ECD9; box-shadow: 0 6px 16px rgba(43,42,39,.22) !important; }
+/* 无框版：只保留贴合物件轮廓的轻投影，去掉米色背景+圆角卡片 */
+#kat-pet .kat-pet-img { background: none !important; border-radius: 0 !important; box-shadow: none !important; }
+#kat-pet .kat-pet-imgwrap { filter: drop-shadow(0 4px 10px rgba(43,42,39,.18)); }
