@@ -864,7 +864,7 @@ function loadGetReady() {
   document.getElementById('ready-container').innerHTML = sectionHTML;
   document.getElementById('ready-modals-container').innerHTML = modalsHTML + `
 
-  <!-- CELEBRATION MODAL — fires when all 17 steps complete -->
+  <!-- CELEBRATION MODAL — fires when all 10 steps complete -->
   <div class="modal-overlay" id="celebrate-modal" style="z-index:400">
     <div class="modal-box" style="max-width:500px;text-align:center;overflow:hidden">
       <div style="background:linear-gradient(135deg,var(--accent),#8b1a1a);padding:36px 32px 28px;position:relative">

@@ -454,7 +454,7 @@ function loadCommunity() {
 
   const html = `
   <section class="section" id="community-section">
-    <div class="section-eyebrow">Community · 旅行者社区</div>
+    <div class="section-eyebrow">Kat's Tips · 旅行小抄</div>
     <div class="comm-title-row">
       <h2 class="section-title">Become a China master</h2>
       ${readMoreLink}

@@ -342,7 +342,12 @@
   try { if (localStorage.getItem('kat_pet_hidden')) pet.classList.add('kat-hidden'); } catch (err) {}
 
   // ── 7. 简单情境感知：滚动到 Ready Score 区域时提醒一次 ──
-  var rsTarget = document.querySelector('#ready-score, [data-ready-score], a[href*="getready"]');
+  // FIX: 原选择器找 #ready-score，但页面上不存在该 id。
+  // 首页真实结构是 index.html 里静态的 <div id="ready-container">，
+  // getready.js 稍后把 <section id="ready-section"> 注入其中
+  // （kat-pet.js 在 getready.js 之前加载，只能观察到静态容器）。
+  // IntersectionObserver 会在容器被填充后自动重新计算，滚动到位即触发。
+  var rsTarget = document.querySelector('#ready-container, #ready-section, [data-ready-score], a[href*="getready"]');
   if (rsTarget) {
     var rsShown = false;
     if ('IntersectionObserver' in window) {
@@ -351,7 +356,7 @@
           if (en.isIntersecting && !rsShown) {
             rsShown = true;
             bubble.querySelector('.kat-pet-bubble-title').textContent = 'Ready Score time? ✅';
-            bubble.querySelector('.kat-pet-bubble-body').textContent = '17 steps to get China-ready. Start now →';
+            bubble.querySelector('.kat-pet-bubble-body').textContent = '10 steps to get China-ready. Start now →';
             bubble.classList.remove('hidden');
             setState('wave');
             setTimeout(function () {

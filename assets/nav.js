@@ -81,7 +81,7 @@ const PREPARE_ITEMS = [
 ];
 
 const KNOW_ITEMS = [
-  { label: 'Community', href: 'community.html', type: 'highlight', icon: '👥' },
+  { label: 'Kat\'s Tips', href: 'community.html', type: 'highlight', icon: '👥' },
   { label: 'Tips', tab: 'lifehacks', icon: '💡' },
   { label: 'Q&A',  tab: 'qa',        icon: '❓' },
   { label: 'News', tab: 'news',      icon: '📢' },
@@ -235,7 +235,9 @@ function buildNav(rootPath) {
           <ul>
             <li><a href="${rootPath}#ready-container">Get Ready Checklist</a></li>
             <li><a href="${rootPath}cities.html">City Guides</a></li>
+            <li><a href="${rootPath}map.html">Explore China</a></li>
             <li><a href="${rootPath}#community-container">Community</a></li>
+            <li><a href="${rootPath}guides.html">All Guides</a></li>
             <li><a href="${rootPath}alipay">Alipay Setup</a></li>
             <li><a href="${rootPath}wechat">WeChat Setup</a></li>
           </ul>

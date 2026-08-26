@@ -3,8 +3,8 @@ READY? CHINA! - Migration package (2026-08-12)
 
 WHAT THIS ZIP CONTAINS
 ----------------------
-guides/*.html          17 city guide pages (beijing + 16 regenerated cities)
-assets/city-guide.css  NEW stylesheet used ONLY by the 17 guide pages
+guides/*.html          28 city guide pages (beijing + 16 regenerated cities)
+assets/city-guide.css  NEW stylesheet used ONLY by the 28 guide pages
 _builder/              dev tools for regenerating / checking the pages
 
 HOW TO APPLY ON YOUR NEW COMPUTER
