@@ -1528,6 +1528,7 @@ footer {
     background: var(--accent); color: #fff; padding: 15px 28px;
     border-radius: 8px; font-family: 'DM Sans', sans-serif;
     font-size: 15px; font-weight: 600; border: none; cursor: pointer;
+    text-decoration: none;
   }
   .hero-cta-mobile:hover { background: var(--accent2); }
   .section { padding: 40px 16px; }

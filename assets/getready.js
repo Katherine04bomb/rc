@@ -874,19 +874,21 @@ function loadGetReady() {
         <button class="modal-close" onclick="closeModal('celebrate-modal')" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.3);color:white">×</button>
       </div>
       <div style="padding:28px 32px">
-        <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;line-height:1.7">
-          Get your free <strong>China Ready Checklist PDF</strong> — a printable version of everything you've just completed, perfect for offline reference during your trip.
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;line-height:1.7">
+          Get your free <strong>China Ready Checklist PDF</strong> — a printable version of everything you've just completed, perfect for offline reference during your trip. <strong>Instant download — no email required.</strong>
         </p>
-        <form id="celebrate-form" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:14px"
+        <a href="assets/pdf/china-ready-checklist.pdf" download
+           style="display:inline-block;background:var(--accent);color:#fff;padding:13px 30px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;margin-bottom:18px">⬇️ Download free PDF</a>
+        <form id="celebrate-form" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:10px;max-width:400px;margin-left:auto;margin-right:auto"
           action="https://formspree.io/f/mnjypvzn" method="POST"
           onsubmit="handleCelebForm(event)">
           <input type="hidden" name="guide" value="china-ready-checklist">
-          <input type="email" name="email" placeholder="your@email.com" required
+          <input type="email" name="email" placeholder="your@email.com (optional)"
             style="flex:1;min-width:200px;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;background:var(--surface);color:var(--text)">
-          <button type="submit" style="background:var(--accent);color:white;border:none;padding:10px 20px;border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;white-space:nowrap">Send me the PDF 🇨🇳</button>
+          <button type="submit" style="background:var(--accent);color:white;border:none;padding:10px 20px;border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;white-space:nowrap">Email it to me 💌</button>
         </form>
-        <div id="celebrate-ok" style="display:none;font-size:13px;color:var(--gold);margin-bottom:12px">✅ On its way! Check your inbox.</div>
-        <p style="font-size:11px;color:var(--text-muted)">No spam. Kat reads every email personally.</p>
+        <div id="celebrate-ok" style="display:none;font-size:13px;color:var(--gold);margin-bottom:10px">✅ Sent! Check your inbox.</div>
+        <p style="font-size:11px;color:var(--text-muted)">Email is optional — download above works instantly. No spam, Kat reads everything personally.</p>
       </div>
     </div>
   </div>
