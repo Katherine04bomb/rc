@@ -182,7 +182,7 @@
 
   function wake() {
     lastActivity = Date.now();
-    if (state === 'sleep') setState('idle');
+    if (state === 'sleep') setState(baseState());
   }
 
   // 随机小动作：wave / jump / cute
@@ -193,7 +193,7 @@
         var r = Math.random();
         var pick = r < 0.4 ? 'wave' : (r < 0.7 ? 'jump' : 'cute');
         setState(pick);
-        setTimeout(function () { if (state === pick) setState('idle'); }, ACTION_HOLD);
+        setTimeout(function () { if (state === pick) setState(baseState()); }, ACTION_HOLD);
       }
       scheduleAction();
     }, delay);
@@ -368,6 +368,51 @@
       }, { threshold: 0.4 });
       io.observe(rsTarget);
     }
+  }
+
+  // ── 8. China Ready Score 联动：宠物心情 = 清单进度 ─────────
+  // getready.js（较晚加载）把勾选进度存进 localStorage('rc_ready_done')，
+  // 并在每次打勾 / 复访还原时派发 'rc:progress' 事件（detail.pct = 0~100）。
+  // 映射：0% sleep · 1–39% idle · 40–79% wave · 80–99% jump · 100% cute
+  function currentReadyPct() {
+    try {
+      var saved = JSON.parse(localStorage.getItem('rc_ready_done') || '[]');
+      if (!Array.isArray(saved) || !saved.length) return 0;
+      return Math.min(100, Math.round(saved.length / 10 * 100)); // 10-step checklist
+    } catch (err) { return 0; }
+  }
+  function petStateFor(pct) {
+    if (pct <= 0) return 'sleep';
+    if (pct < 40) return 'idle';
+    if (pct < 80) return 'wave';
+    if (pct < 100) return 'jump';
+    return 'cute';
+  }
+  // 基准状态：随机小动作结束 / 从瞌睡唤醒后回落到这里，
+  // 而不是永远 idle —— 这样"瞄一眼宠物心情"就等于看进度。
+  function baseState() {
+    var pct = currentReadyPct();
+    if (pct >= 100) return 'cute';
+    if (pct >= 80) return 'jump';
+    if (pct >= 40) return 'wave';
+    return 'idle';
+  }
+  // 打勾 → 实时换心情；复访（returning: true）→ 欢迎气泡
+  document.addEventListener('rc:progress', function (e) {
+    var pct = (e.detail && typeof e.detail.pct === 'number') ? e.detail.pct : 0;
+    setState(petStateFor(pct));
+    if (e.detail && e.detail.returning && bubble && bubble.classList.contains('hidden')) {
+      bubble.querySelector('.kat-pet-bubble-title').textContent = 'Welcome back! 🎒';
+      bubble.querySelector('.kat-pet-bubble-body').textContent = "You're " + pct + "% China-ready — let's keep going.";
+      bubble.classList.remove('hidden');
+      setTimeout(function () { bubble.classList.add('hidden'); }, 7000);
+    }
+  });
+  // 进页面时按已存进度设定初始心情（仅首页有清单；0% 保持原有 idle 行为，
+  // 其他没有清单的页面宠物行为完全不变）
+  if (document.getElementById('ready-container')) {
+    var initPct = currentReadyPct();
+    if (initPct > 0) setState(petStateFor(initPct));
   }
 
 })();

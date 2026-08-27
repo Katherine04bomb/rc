@@ -27,13 +27,13 @@ const visaDB = {
   },
   de: {
     flag:'🇩🇪', name:'Germany', type:'✅ Visa-Free (30 days)',
-    detail:`German passport holders enjoy <strong>30-day visa-free entry</strong>for tourism, business, family visits, or transit (updated Nov 2025). No application needed for short stays. Staying longer? Apply at the Chinese Embassy in Berlin or consulates in Frankfurt, Hamburg, or Munich.`,
+    detail:`German passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits, or transit (updated Nov 2025). No application needed for short stays. Staying longer? Apply at the Chinese Embassy in Berlin or consulates in Frankfurt, Hamburg, or Munich.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
     embassyUrl:'https://de.china-embassy.gov.cn/det/'
   },
   fr: {
     flag:'🇫🇷', name:'France', type:'✅ Visa-Free (30 days)',
-    detail:`French passport holders enjoy <strong>30-day visa-free entry</strong>for tourism, business, family visits, or transit (updated Nov 2025). For longer stays, apply at the Chinese Embassy in Paris or consulate in Lyon.`,
+    detail:`French passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits, or transit (updated Nov 2025). For longer stays, apply at the Chinese Embassy in Paris or consulate in Lyon.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
     embassyUrl:'http://www.china.org.cn/english/Embassies/'
   },
@@ -51,13 +51,13 @@ const visaDB = {
   },
   jp: {
     flag:'🇯🇵', name:'Japan', type:'✅ Visa-Free (30 days)',
-    detail:`Japanese passport holders enjoy <strong>30-day visa-free entry</strong>for tourism, business, family visits, or transit. This unilateral visa-free policy remains in effect through December 31, 2026 (updated Nov 2025). For stays longer than 30 days, apply at the Chinese Embassy in Tokyo or consulates in Osaka, Nagoya, Fukuoka, or Sapporo.`,
+    detail:`Japanese passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits, or transit. This unilateral visa-free policy remains in effect through December 31, 2026 (updated Nov 2025). For stays longer than 30 days, apply at the Chinese Embassy in Tokyo or consulates in Osaka, Nagoya, Fukuoka, or Sapporo.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
     embassyUrl:'http://www.china-embassy.or.jp/jpn/'
   },
   kr: {
     flag:'🇰🇷', name:'South Korea', type:'✅ Visa-Free (30 days)',
-    detail:`South Korean passport holders enjoy <strong>30-day visa-free entry</strong>for tourism, for tourism, business, family visits, or transit. This unilateral visa-free policy remains in effect through December 31, 2026(updated Nov 2025). For longer stays, apply at the Chinese Embassy in Seoul or consulates in Busan.`,
+    detail:`South Korean passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits, or transit. This unilateral visa-free policy remains in effect through December 31, 2026 (updated Nov 2025). For longer stays, apply at the Chinese Embassy in Seoul or consulates in Busan.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
     embassyUrl:'http://kr.china-embassy.gov.cn/kor/'
   },
@@ -99,13 +99,13 @@ const visaDB = {
   },
   it: {
     flag:'🇮🇹', name:'Italy', type:'✅ Visa-Free (30 days)',
-    detail:`Italian passport holders enjoy <strong>30-day visa-free entry</strong>for tourism, business,family visits or transit through December 31, 2026 (updated Nov 2025). For longer trips, apply at the Chinese Embassy in Rome or consulates in Milan or Florence.`,
+    detail:`Italian passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits or transit through December 31, 2026 (updated Nov 2025). For longer trips, apply at the Chinese Embassy in Rome or consulates in Milan or Florence.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
     embassyUrl:'https://it.china-embassy.gov.cn/ita/'
   },
   es: {
     flag:'🇪🇸', name:'Spain', type:'✅ Visa-Free (30 days)',
-    detail:`Spanish passport holders enjoy <strong>30-day visa-free entry</strong>for tourism, business, family visits, or transit through December 31, 2026 (updated Nov 2025). For longer trips, apply at the Chinese Embassy in Madrid or Consulate General in Barcelona.`,
+    detail:`Spanish passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits, or transit through December 31, 2026 (updated Nov 2025). For longer trips, apply at the Chinese Embassy in Madrid or Consulate General in Barcelona.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
     embassyUrl:'https://es.china-embassy.gov.cn/esp/'
   },
@@ -289,6 +289,23 @@ const statusMsgs = [
 
 let lastClickedStepIdx = -1;
 
+// ── PERSISTENCE (localStorage) ───────────────────────────────
+// Saves checked steps so returning visitors keep their progress,
+// and broadcasts progress ('rc:progress' event) so other widgets
+// (e.g. the desk pet in kat-pet.js) can react in real time.
+function saveProgress() {
+  try {
+    const done = steps.filter(s => {
+      const el = document.getElementById(s);
+      return el && el.classList.contains('done');
+    });
+    localStorage.setItem('rc_ready_done', JSON.stringify(done));
+    document.dispatchEvent(new CustomEvent('rc:progress', {
+      detail: { pct: Math.round((done.length / steps.length) * 100) }
+    }));
+  } catch (err) {}
+}
+
 function toggleStep(id) {
   const el = document.getElementById(id);
   el.classList.toggle('done');
@@ -298,6 +315,7 @@ function toggleStep(id) {
   document.querySelectorAll('.check-step').forEach(s => s.classList.remove('last-clicked'));
   if (el.classList.contains('done')) el.classList.add('last-clicked');
   updateProgress();
+  saveProgress();
 }
 
 function updateProgress() {
@@ -320,8 +338,8 @@ function updateProgress() {
   const resetBtn = document.getElementById('reset-btn');
   if (resetBtn) resetBtn.style.display = done > 0 ? '' : 'none';
 
-  // 🎆 Celebration — fires EVERY time all steps are complete (no localStorage lock)
-  if (done === steps.length) {
+  // 🎆 Celebration — fires when all steps complete (suppressed while restoring saved progress)
+  if (done === steps.length && !window.__rcRestoring) {
     triggerFireworks();
     setTimeout(() => openModal('celebrate-modal'), 1200);
   }
@@ -896,8 +914,31 @@ function loadGetReady() {
     @keyframes bounce { from { transform:translateY(0); } to { transform:translateY(-8px); } }
   </style>`;
 
-  // No localStorage — fresh start every page load
-  updateProgress();
+  // ── Restore saved progress (localStorage) ──
+  // Returning visitors see their ticks restored — no more fresh start.
+  let savedDone = [];
+  try { savedDone = JSON.parse(localStorage.getItem('rc_ready_done') || '[]'); } catch (err) {}
+  if (Array.isArray(savedDone) && savedDone.length) {
+    savedDone.forEach(id => {
+      if (steps.indexOf(id) !== -1) {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('done');
+      }
+    });
+    window.__rcRestoring = true;   // don't re-fire fireworks/celebration on page load
+    updateProgress();
+    window.__rcRestoring = false;
+    // Let the pet (and anything listening) greet the returning visitor
+    const restoredPct = Math.round(steps.filter(s => {
+      const el = document.getElementById(s);
+      return el && el.classList.contains('done');
+    }).length / steps.length * 100);
+    if (restoredPct > 0 && restoredPct < 100) {
+      document.dispatchEvent(new CustomEvent('rc:progress', { detail: { pct: restoredPct, returning: true } }));
+    }
+  } else {
+    updateProgress();
+  }
 }
 
 loadGetReady();
@@ -918,6 +959,7 @@ function resetChecklist() {
   });
   lastClickedStepIdx = -1;
   updateProgress();
+  saveProgress();
 }
 
 // ── CANVAS FIREWORKS (5-second show) ─────────────────────────
