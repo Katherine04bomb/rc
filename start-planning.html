@@ -73,11 +73,28 @@
   .planner-cta:hover { background: var(--accent2); box-shadow: 0 8px 24px rgba(192,57,43,.25); }
   .planner-cta.disabled { background: #cbb9b5; cursor: not-allowed; box-shadow: none; }
   .planner-note { text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 12px; }
+
+  .planner-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-muted); max-width: 820px; margin: 0 auto; padding: 24px 20px 0; }
+  .planner-breadcrumb a { color: var(--text-muted); text-decoration: none; }
+  .planner-breadcrumb a:hover { color: var(--accent); }
+  .planner-breadcrumb .sep { opacity: .4; }
+  .planner-breadcrumb .cur { color: var(--text-mid); }
+  textarea { resize: vertical; min-height: 96px; line-height: 1.6; }
+  .counter { font-size: 11px; color: var(--text-muted); text-align: right; margin-top: 4px; }
+  .counter.over { color: var(--accent); font-weight: 600; }
 </style>
 </head>
 <body>
 
 <header id='site-header'></header>
+
+<nav class='planner-breadcrumb'>
+  <a href='/'>Home</a>
+  <span class='sep'>›</span>
+  <a href='/services.html'>All Services</a>
+  <span class='sep'>›</span>
+  <span class='cur'>Customised itinerary services</span>
+</nav>
 
 <main>
   <section class='planner-hero'>
@@ -90,9 +107,18 @@
   <section class='planner-wrap'>
     <div class='planner-progress' id='progress'></div>
 
+    <!-- 0. NAME -->
+    <div class='planner-group' data-group='name'>
+      <h2>1 · May I ask your name?</h2>
+      <div class='field'>
+        <label>First name or nickname</label>
+        <input type='text' id='name' placeholder='e.g. Sarah'>
+      </div>
+    </div>
+
     <!-- 1. DATES -->
     <div class='planner-group' data-group='dates'>
-      <h2>1 · When are you going?</h2>
+      <h2>2 · When are you going?</h2>
       <div class='sub'>Pick your rough arrival &amp; departure - we'll count the days for you.</div>
       <div class='input-row'>
         <div class='field'>
@@ -109,7 +135,7 @@
 
     <!-- 2. HOW MANY PEOPLE -->
     <div class='planner-group' data-group='travelers'>
-      <h2>2 · How many people?</h2>
+      <h2>3 · How many people?</h2>
       <div class='sub'>A real number helps size hotels, tables and tickets.</div>
       <div class='input-row'>
         <div class='field'>
@@ -125,8 +151,12 @@
 
     <!-- 3. BUDGET -->
     <div class='planner-group' data-group='budget'>
-      <h2>3 · What's your budget per person?</h2>
-      <div class='sub'>Rough number is fine - it shapes where we stay &amp; eat.</div>
+      <h2>4 · What's your budget per person?</h2>
+      <div class='sub'>Rough number is fine - it shapes where we stay &amp; eat. If your budget covers the whole trip including flights, tell me where you're flying from so I can split the math.</div>
+      <div class='field' style='margin-bottom:14px;'>
+        <label>Flying from <span class='hint'>(city or country - optional)</span></label>
+        <input type='text' id='origin' placeholder='e.g. London, Sydney, Mexico City'>
+      </div>
       <div class='input-row'>
         <div class='field'>
           <label>Amount <span class='hint'>(per person, excl. flights)</span></label>
@@ -156,29 +186,50 @@
 
     <!-- 4. DESTINATION -->
     <div class='planner-group' data-group='destinations'>
-      <h2>4 · Anywhere you already want to go?</h2>
-      <div class='sub'>Tap popular picks, type your own, or leave it to Kat ✨</div>
+      <h2>5 · Anywhere you already want to go?</h2>
+      <div class='sub'>Tap popular picks, type your own, or leave it to Kat</div>
       <div class='chips' id='destChips'>
         <span class='chip' data-city='Beijing'>Beijing</span>
         <span class='chip' data-city='Shanghai'>Shanghai</span>
-        <span class='chip' data-city='Chongqing'>Chongqing</span>
         <span class='chip' data-city='Chengdu'>Chengdu</span>
-        <span class='chip' data-city='Zhangjiajie'>Zhangjiajie</span>
-        <span class='chip' data-city='Guilin'>Guilin</span>
         <span class='chip' data-city="Xi'an">Xi'an</span>
+        <span class='chip' data-city='Chongqing'>Chongqing</span>
+        <span class='chip' data-city='Guilin'>Guilin</span>
+        <span class='chip' data-city='Quanzhou'>Quanzhou</span>
         <span class='chip' data-city='Hangzhou'>Hangzhou</span>
+        <span class='chip' data-city='Guangzhou'>Guangzhou</span>
+        <span class='chip' data-city='Shenzhen'>Shenzhen</span>
+        <span class='chip' data-city='Harbin'>Harbin</span>
+        <span class='chip' data-city='Changxing'>Changxing</span>
+        <span class='chip' data-city='Dunhuang'>Dunhuang</span>
+        <span class='chip' data-city='Hengqin'>Hengqin</span>
+        <span class='chip' data-city='Kashgar'>Kashgar</span>
+        <span class='chip' data-city='Lijiang'>Lijiang</span>
+        <span class='chip' data-city='Ordos'>Ordos</span>
+        <span class='chip' data-city='Pingwu Baima'>Pingwu Baima</span>
+        <span class='chip' data-city='Yiwu'>Yiwu</span>
+        <span class='chip' data-city='Zhangjiajie'>Zhangjiajie</span>
+        <span class='chip' data-city='Kunming'>Kunming</span>
+        <span class='chip' data-city='Dali'>Dali</span>
+        <span class='chip' data-city='Suzhou'>Suzhou</span>
+        <span class='chip' data-city='Nanjing'>Nanjing</span>
+        <span class='chip' data-city='Lhasa'>Lhasa</span>
+        <span class='chip' data-city='Huangshan'>Huangshan</span>
+        <span class='chip' data-city='Xiamen'>Xiamen</span>
+        <span class='chip' data-city='Sanya'>Sanya</span>
         <span class='chip' data-city='Xinjiang'>Xinjiang</span>
         <span class='chip surprise' data-city='__surprise__'>🎲 No idea yet - you pick!</span>
       </div>
-      <div class='field' style='margin-top:14px;'>
-        <label>Anywhere else? <span class='hint'>(separate with commas)</span></label>
-        <input type='text' id='destText' placeholder='e.g. Great Wall, pandas, a cooking class in Chengdu'>
+      <div class='field' style='margin-top:16px;'>
+        <label>Anywhere else? <span class='hint'>(specific spots, themes, or "no idea" - anything you want Kat to know)</span></label>
+        <textarea id='destText' placeholder='e.g. Great Wall, panda base in Chengdu, a cooking class, anywhere off the beaten path. The more you tell me, the more tailored the plan.'></textarea>
+        <div class='counter' id='destCounter'>0 / 500</div>
       </div>
     </div>
 
     <!-- 5. STYLE -->
     <div class='planner-group' data-group='style'>
-      <h2>5 · What's your travel style?</h2>
+      <h2>6 · What's your travel style?</h2>
       <div class='sub'>Pick the one that feels most like you.</div>
       <div class='planner-cards'>
         <div class='planner-card' data-value='Culture &amp; History'><div class='ic'>🏯</div><div class='t'>Culture &amp; History</div></div>
@@ -191,7 +242,7 @@
 
     <!-- 6. CARE ABOUT -->
     <div class='planner-group' data-group='care' data-multi='1'>
-      <h2>6 · Anything you care about? <span style='font-weight:400;color:var(--text-muted)'>(pick any)</span></h2>
+      <h2>7 · Anything you care about? <span style='font-weight:400;color:var(--text-muted)'>(pick any)</span></h2>
       <div class='sub'>Tap all that apply.</div>
       <div class='planner-cards'>
         <div class='planner-card' data-value='Great food'><div class='ic'>🍜</div><div class='t'>Great food</div></div>
@@ -221,9 +272,9 @@
 (function(){
   var WA_NUMBER = '8613799200367';
   var state = {
-    arrival:'', departure:'',
+    name:'', arrival:'', departure:'',
     total:'', kids:'',
-    budget:'', currency:'USD',
+    budget:'', currency:'USD', origin:'',
     cities:[], surprise:false, custom:[],
     style:'', care:[]
   };
@@ -238,7 +289,7 @@
   $('arrival').min = today;
   $('departure').min = today;
 
-  ['dates','travelers','budget','destinations','style'].forEach(function(){
+  ['name','dates','travelers','budget','destinations','style','care'].forEach(function(){
     var d = document.createElement('span'); d.className='dot'; progress.appendChild(d);
   });
 
@@ -262,12 +313,19 @@
     return true;
   }
 
+  ['name','origin'].forEach(function(id){
+    $(id).addEventListener('input', function(){ state[id]=this.value; refresh(); });
+  });
   ['arrival','departure','total','kids','budget'].forEach(function(id){
     $(id).addEventListener('input', function(){ state[id]=this.value; refresh(); });
   });
   $('currency').addEventListener('change', function(){ state.currency=this.value; refresh(); });
   $('destText').addEventListener('input', function(){
-    state.custom = this.value.split(',').map(function(s){return s.trim();}).filter(function(s){return s;});
+    state.custom = this.value.split(/[,\n]/).map(function(s){return s.trim();}).filter(function(s){return s;});
+    var len = this.value.length;
+    var c = $('destCounter');
+    c.textContent = len + ' / 500';
+    c.className = 'counter' + (len>500?' over':'');
     refresh();
   });
 
@@ -317,9 +375,10 @@
 
   function refresh(){
     var parts=[];
+    if(state.name) parts.push('<b>Hi, '+state.name+'!</b>');
     if(state.arrival&&state.departure) parts.push('<b>Dates:</b> '+fmtDate(state.arrival)+' – '+fmtDate(state.departure)+' ('+dayCount(state.arrival,state.departure)+' days)');
     if(state.total) parts.push('<b>Travelers:</b> '+state.total+(state.kids?(' ('+state.kids+' kid'+(state.kids>1?'s':'')+' under 12)'):''));
-    if(state.budget) parts.push('<b>Budget:</b> ~'+Number(state.budget).toLocaleString()+' '+state.currency+' / person');
+    if(state.budget) parts.push('<b>Budget:</b> ~'+Number(state.budget).toLocaleString()+' '+state.currency+' / person'+(state.origin?' (incl. flights from '+state.origin+')':''));
     var dl=destList();
     if(dl) parts.push('<b>Destinations:</b> '+dl);
     if(state.style) parts.push('<b>Style:</b> '+state.style);
@@ -327,7 +386,7 @@
     if(parts.length) summary.innerHTML = parts.join(' &nbsp;·&nbsp; ');
     else summary.innerHTML = "<span class='empty'>Fill in the details above and your plan will show up here ✨</span>";
 
-    var checks = [dateValid(), !!state.total, !!state.budget, !!destList(), !!state.style];
+    var checks = [!!state.name, dateValid(), !!state.total, !!state.budget, !!destList(), !!state.style, state.care.length>0];
     var dots = progress.querySelectorAll('.dot');
     dots.forEach(function(d,i){ d.classList.toggle('done', !!checks[i]); });
     var coreDone = checks.every(Boolean);
@@ -335,9 +394,10 @@
     if(coreDone){
       cta.classList.remove('disabled');
       var lines = ['Hi Kat! 🇨🇳 I\'d love a custom China itinerary built around these details:',''];
+      if(state.name) lines.push('Name: '+state.name);
       if(state.arrival&&state.departure) lines.push('📅 Dates: '+fmtDate(state.arrival)+' – '+fmtDate(state.departure)+' ('+dayCount(state.arrival,state.departure)+' days)');
       if(state.total) lines.push('👥 Travelers: '+state.total+(state.kids?(' total, '+state.kids+' kid'+(state.kids>1?'s':'')+' under 12'):' total'));
-      if(state.budget) lines.push('💰 Budget: ~'+Number(state.budget).toLocaleString()+' '+state.currency+' per person');
+      if(state.budget) lines.push('💰 Budget: ~'+Number(state.budget).toLocaleString()+' '+state.currency+' per person'+(state.origin?' (incl. flights from '+state.origin+')':''));
       var dl2=destList();
       if(dl2) lines.push('📍 Destinations: '+dl2);
       if(state.style) lines.push('🎨 Style: '+state.style);

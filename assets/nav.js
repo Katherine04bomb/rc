@@ -236,7 +236,7 @@ function buildNav(rootPath) {
             <li><a href="${rootPath}#ready-container">Get Ready Checklist</a></li>
             <li><a href="${rootPath}cities.html">City Guides</a></li>
             <li><a href="${rootPath}map.html">Explore China</a></li>
-            <li><a href="${rootPath}#community-container">Community</a></li>
+            <li><a href="${rootPath}#community-container">Kat's Tips</a></li>
             <li><a href="${rootPath}guides.html">All Guides</a></li>
             <li><a href="${rootPath}alipay">Alipay Setup</a></li>
             <li><a href="${rootPath}wechat">WeChat Setup</a></li>
