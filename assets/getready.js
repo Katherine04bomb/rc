@@ -895,16 +895,18 @@ function loadGetReady() {
         <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;line-height:1.7">
           Get your free <strong>China Ready Checklist PDF</strong> — a printable version of everything you've just completed, perfect for offline reference during your trip. <strong>Instant download — no email required.</strong>
         </p>
-        <a href="assets/pdf/china-ready-checklist.pdf" download
-           style="display:inline-block;background:var(--accent);color:#fff;padding:13px 30px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;margin-bottom:18px">⬇️ Download free PDF</a>
-        <form id="celebrate-form" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:10px;max-width:400px;margin-left:auto;margin-right:auto"
-          action="https://formspree.io/f/mnjypvzn" method="POST"
-          onsubmit="handleCelebForm(event)">
-          <input type="hidden" name="guide" value="china-ready-checklist">
-          <input type="email" name="email" placeholder="your@email.com (optional)"
-            style="flex:1;min-width:200px;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;background:var(--surface);color:var(--text)">
-          <button type="submit" style="background:var(--accent);color:white;border:none;padding:10px 20px;border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;white-space:nowrap">Email it to me 💌</button>
-        </form>
+        <div style="display:flex;gap:12px;align-items:stretch;margin-bottom:14px">
+          <a href="assets/pdf/china-ready-checklist.pdf" download
+             style="flex:1;display:flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;padding:13px 18px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap">⬇️ Download free PDF</a>
+          <form id="celebrate-form" style="flex:1;display:flex;gap:6px;margin:0"
+            action="https://formspree.io/f/mnjypvzn" method="POST"
+            onsubmit="handleCelebForm(event)">
+            <input type="hidden" name="guide" value="china-ready-checklist">
+            <input type="email" name="email" placeholder="your@email.com (optional)"
+              style="flex:1;min-width:0;padding:10px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;background:var(--surface);color:var(--text)">
+            <button type="submit" style="background:var(--accent);color:white;border:none;padding:10px 14px;border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;cursor:pointer;white-space:nowrap">💌 Email me</button>
+          </form>
+        </div>
         <div id="celebrate-ok" style="display:none;font-size:13px;color:var(--gold);margin-bottom:10px">✅ Sent! Check your inbox.</div>
         <p style="font-size:11px;color:var(--text-muted)">Email is optional — download above works instantly. No spam, Kat reads everything personally.</p>
       </div>

@@ -467,9 +467,6 @@ main { padding-top: 70px; position: relative; z-index: 1; }
   flex-wrap: wrap;
   margin-bottom: 48px;
 }
-/* Mobile-only primary CTA (hidden on desktop, shown ≤640px) */
-.hero-cta-mobile { display: none; }
-
 .hero-story {
   background: white;
   border: 1px solid var(--border);
@@ -553,6 +550,7 @@ main { padding-top: 70px; position: relative; z-index: 1; }
   cursor: pointer;
   border: 1px solid var(--border);
   font-family: 'DM Sans', sans-serif;
+  text-decoration: none;
   transition: all .2s;
 }
 .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
@@ -1522,15 +1520,6 @@ footer {
   header { padding: 12px 16px; }
   .hero { padding: 30px 16px 50px; }
     .hero-actions { display: none; }
-  .hero-cta-mobile {
-    display: inline-flex; align-items: center; justify-content: center;
-    margin: 0 auto 36px; width: 100%; max-width: 320px;
-    background: var(--accent); color: #fff; padding: 15px 28px;
-    border-radius: 8px; font-family: 'DM Sans', sans-serif;
-    font-size: 15px; font-weight: 600; border: none; cursor: pointer;
-    text-decoration: none;
-  }
-  .hero-cta-mobile:hover { background: var(--accent2); }
   .section { padding: 40px 16px; }
   #rc-search-overlay { padding: 8vh 12px 12px; }
   .rc-search-input-row .rc-search-brand { display: none; }
