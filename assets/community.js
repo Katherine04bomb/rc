@@ -22,7 +22,35 @@
 // ============================================================
 
 const POSTS = [
-  // ── ADD NEW POSTS AT THE TOP ──────────────────────────────
+  // ── ADD NEW POSTS AT THE TOP ────────────────────────────── 
+ {
+    id: 'post-020',
+    slug: 'shigatse-border-permit-suspended',
+    category: 'news',
+    date: 'August 2026',
+    tag: 'news',
+    title: '📰 Shigatse border permits suspended after Gyirong Port mudslide (Aug 2026)',
+    body: `📰 China News — Shigatse (Xizang / Tibet) border permits suspended after the Gyirong Port mudslide
+    
+    Heads-up if you were planning to cross into the Tibet region overland from Nepal, or travel to the Shigatse border area: China's National Immigration Administration has suspended electronic border administration area permits for Shigatse City, Xizang (Tibet) Autonomous Region.
+    
+    What happened
+    On 26 August 2026, a large mudslide hit the Nepalese side near Gyirong Port (吉隆口岸) — the main road crossing between Nepal and China's Tibet region. Roads and communications at the port are cut, and further landslides are still possible. Rescue and relief work is ongoing.
+    
+    What changed for travelers
+     From 00:00 on 28 August 2026, new electronic border administration area permits listing Shigatse as the destination are no longer being issued.
+      If you already hold a valid e-permit with Shigatse as your destination, authorities are asking you NOT to travel to that area for now.
+      No restart date yet — issuance will resume "when conditions allow," announced separately.
+
+      Do you need to worry?
+      This specifically affects the border administration zone around Shigatse and the Nepal–China overland route — not regular entry into China, and not the standard Tibet Travel Permit (入藏函) you'd arrange through a registered Tibetan tour operator for Lhasa or Everest Base Camp.
+      If you were planning the Kathmandu → Gyirong → Shigatse → Lhasa overland route, expect it to be disrupted for now. Build in flexibility, watch for the official reopening notice, and keep a flying-in alternative (Lhasa has flights from several Chinese cities) as backup.
+      
+      Official source: National Immigration Administration (Exit and Entry Administration of the PRC), Announcement No. 5 of 2026, issued 27 August 2026.
+      
+      Kat's note: my heart goes out to everyone affected by the Gyirong Port mudslide. This is just the practical travel update — please keep the people there in your thoughts. 🤍`
+  },
+  
   {
     id: 'post-019',
     slug: 'rolling-suitcases-vs-backpacks-china',

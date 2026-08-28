@@ -38,7 +38,7 @@
     }
   })();
 
-  // ── 1. 动作帧（已接入 ChatGPT 生成的 6 帧素材）────
+  // ── 1. 动作帧（已接入 ChatGPT 生成的 10 帧素材）────
   var FALLBACK = (window.RC_CONFIG && RC_CONFIG.katAvatar) || RC_ROOT + 'assets/kat-avatar.PNG';
   var KAT_FRAMES = {
     idle:  RC_ROOT + 'assets/kat/kat-idle.png',
@@ -46,7 +46,11 @@
     jump:  RC_ROOT + 'assets/kat/kat-jump.png',
     sleep: RC_ROOT + 'assets/kat/kat-sleep.png',
     cute:  RC_ROOT + 'assets/kat/kat-cute.png',
-    wait:  RC_ROOT + 'assets/kat/kat-wait.png'
+    wait:  RC_ROOT + 'assets/kat/kat-wait.png',
+    map:   RC_ROOT + 'assets/kat/kat-map.png',
+    curiosity:   RC_ROOT + 'assets/kat/kat-curiosity.png',
+    eat:   RC_ROOT + 'assets/kat/kat-eat.png',
+    lungaage:   RC_ROOT + 'assets/kat/kat-lungaage.png'
   };
 
   // ── 2. 行为参数 ──────────────────────────────────────────

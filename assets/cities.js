@@ -49,8 +49,8 @@ function openFlipCard(city) {
   // ── Populate FRONT ──
   front.innerHTML =
     '<div class="flip-front-emoji">' + city.emoji + '</div>' +
-    '<div class="flip-front-name-zh">' + city.nameZh + '</div>' +
     '<div class="flip-front-name-en">' + city.nameEn + '</div>' +
+    '<div class="flip-front-name-zh">' + city.nameZh + '</div>' +
     '<div class="flip-front-teaser">' + city.bestFor + '</div>' +
     '<div class="flip-front-tap">\uD83D\uDC46 Tap to flip</div>';
 
@@ -64,8 +64,8 @@ function openFlipCard(city) {
     photoStripHTML +
     '<div class="flip-back-body">' +
       '<div class="flip-back-row">' +
-        '<span class="flip-back-name-zh">' + city.nameZh + '</span>' +
         '<span class="flip-back-name-en">' + city.nameEn + '</span>' +
+        '<span class="flip-back-name-zh">' + city.nameZh + '</span>' +
       '</div>' +
       '<div class="flip-back-stats">' +
         '<span class="flip-back-stat"><span class="flip-back-stars">' + city.difficulty + '</span></span>' +

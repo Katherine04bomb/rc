@@ -271,7 +271,7 @@ function buildNav(rootPath) {
         </div>
       </div>
       <div class="rc-footer-bottom">
-        <span>© 2026 Ready? China! · Made with ❤️ by Kat</span>
+        <span>© 2026 Ready? China! · Made by Kat</span>
         <span>
           <a href="${rootPath}privacy">Privacy Policy</a>
           <span> · </span>
