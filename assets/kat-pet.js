@@ -38,7 +38,7 @@
     }
   })();
 
-  // ── 1. 动作帧（已接入 ChatGPT 生成的 10 帧素材）────
+  // ── 1. 动作帧（已接入 ChatGPT 生成的 6 帧素材）────
   var FALLBACK = (window.RC_CONFIG && RC_CONFIG.katAvatar) || RC_ROOT + 'assets/kat-avatar.PNG';
   var KAT_FRAMES = {
     idle:  RC_ROOT + 'assets/kat/kat-idle.png',
@@ -47,10 +47,11 @@
     sleep: RC_ROOT + 'assets/kat/kat-sleep.png',
     cute:  RC_ROOT + 'assets/kat/kat-cute.png',
     wait:  RC_ROOT + 'assets/kat/kat-wait.png',
-    map:   RC_ROOT + 'assets/kat/kat-map.png',
-    curiosity:   RC_ROOT + 'assets/kat/kat-curiosity.png',
-    eat:   RC_ROOT + 'assets/kat/kat-eat.png',
-    lungaage:   RC_ROOT + 'assets/kat/kat-lungaage.png'
+    luggage:   RC_ROOT + 'assets/kat/kat-luggage.png',
+    walk:      RC_ROOT + 'assets/kat/kat-walk.png',
+    map:       RC_ROOT + 'assets/kat/kat-map.png',
+    curiosity: RC_ROOT + 'assets/kat/kat-curiosity.png',
+   computer:   RC_ROOT + 'assets/kat/kat-computer.png'
   };
 
   // ── 2. 行为参数 ──────────────────────────────────────────
@@ -157,6 +158,13 @@
   document.body.appendChild(pet);
 
   var img    = pet.querySelector('.kat-pet-img');
+  // 兜底：帧图加载失败（如新帧未上传/命名不符）时，退化到上次成功加载的照片，避免破图
+  var lastGoodSrc = img.getAttribute('src') || KAT_FRAMES.idle;
+  img.addEventListener('load', function () { lastGoodSrc = img.src; });
+  img.addEventListener('error', function () {
+    if (img.src === lastGoodSrc) return; // 兜底帧本身若也失败则不再循环
+    img.src = lastGoodSrc;
+  });
   var badge  = pet.querySelector('.kat-pet-badge');
   var bubble = pet.querySelector('.kat-pet-bubble');
   var menu   = pet.querySelector('.kat-pet-menu');
@@ -172,16 +180,19 @@
 
   // ── 5. 状态机 ───────────────────────────────────────────
   var state = 'idle';
+  var forcingFrame = false;
   var lastActivity = Date.now();
 
   function setState(next) {
-    if (state === next) return;
+    if (state === next && !forcingFrame) return;
     state = next;
     img.src = KAT_FRAMES[next] || FALLBACK;
     pet.classList.toggle('kat-sleep', next === 'sleep');
     pet.classList.toggle('kat-wave', next === 'wave' || next === 'jump');
     pet.classList.toggle('kat-cute', next === 'cute');
     pet.classList.toggle('kat-wait', next === 'wait');
+    var POSE = ['luggage', 'walk', 'map', 'curiosity'];
+    pet.classList.toggle('kat-pose', POSE.indexOf(next) >= 0);
   }
 
   function wake() {
@@ -193,7 +204,7 @@
   function scheduleAction() {
     var delay = ACTION_MIN + Math.random() * (ACTION_MAX - ACTION_MIN);
     setTimeout(function () {
-      if (state === 'idle') {
+      if (state === 'idle' && !activeSection && !seqTimer) {
         var r = Math.random();
         var pick = r < 0.4 ? 'wave' : (r < 0.7 ? 'jump' : 'cute');
         setState(pick);
@@ -260,7 +271,7 @@
       fin = petClamp(fin.left, fin.top);
       petSetPos(fin.left, fin.top);
       petSavePos(fin.left, fin.top);
-      setState('idle');
+      setState(baseState());
     } else {
       // 没移动 → 当作点击：弹菜单
       wake();
@@ -272,7 +283,7 @@
         setState('wait');
       } else {
         setState('wave');
-        setTimeout(function () { if (state === 'wave') setState('idle'); }, ACTION_HOLD);
+        setTimeout(function () { if (state === 'wave') setState(baseState()); }, ACTION_HOLD);
       }
     }
   }
@@ -301,7 +312,7 @@
       try { localStorage.setItem('kat_pet_hidden', '1'); } catch (err) {}
     }
     menu.classList.add('hidden');
-    setState('idle');
+    setState(baseState());
   });
 
   // 点页面其他地方 → 关菜单 + 回 idle
@@ -333,51 +344,136 @@
     window.addEventListener(ev, wake, { passive: true });
   });
 
-  // 首次访问：显示欢迎气泡 10s（仅一次）
-  try {
-    if (!localStorage.getItem('kat_pet_hidden') && !localStorage.getItem('kat_bubble_seen')) {
-      bubble.classList.remove('hidden');
-      localStorage.setItem('kat_bubble_seen', '1');
-      setTimeout(function () { bubble.classList.add('hidden'); }, 10000);
-    }
-  } catch (err) {}
-
   // 之前藏过 → 不再显示
   try { if (localStorage.getItem('kat_pet_hidden')) pet.classList.add('kat-hidden'); } catch (err) {}
 
-  // ── 7. 简单情境感知：滚动到 Ready Score 区域时提醒一次 ──
-  // FIX: 原选择器找 #ready-score，但页面上不存在该 id。
-  // 首页真实结构是 index.html 里静态的 <div id="ready-container">，
-  // getready.js 稍后把 <section id="ready-section"> 注入其中
-  // （kat-pet.js 在 getready.js 之前加载，只能观察到静态容器）。
-  // IntersectionObserver 会在容器被填充后自动重新计算，滚动到位即触发。
-  var rsTarget = document.querySelector('#ready-container, #ready-section, [data-ready-score], a[href*="getready"]');
-  if (rsTarget) {
-    var rsShown = false;
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) {
-          if (en.isIntersecting && !rsShown) {
-            rsShown = true;
-            bubble.querySelector('.kat-pet-bubble-title').textContent = 'Ready Score time? ✅';
-            bubble.querySelector('.kat-pet-bubble-body').textContent = '10 steps to get China-ready. Start now →';
-            bubble.classList.remove('hidden');
-            setState('wave');
-            setTimeout(function () {
-              bubble.classList.add('hidden');
-              if (state === 'wave') setState('idle');
-            }, 6000);
-          }
-        });
-      }, { threshold: 0.4 });
-      io.observe(rsTarget);
+  // ── 7. 单气泡状态机：全站任何时刻只可能有一个 Kat 气泡 ──
+  // 所有"让 Kat 说话"的地方都必须走 say()，绝不直接操作 bubble 显隐。
+  // 这从结构上消灭了"打开网站看到两个对话框"的问题。
+  var bubbleTimer = null;
+  function hideBubble() {
+    if (bubbleTimer) { clearTimeout(bubbleTimer); bubbleTimer = null; }
+    bubble.classList.add('hidden');
+  }
+  function say(title, body, opts) {
+    opts = opts || {};
+    if (bubbleTimer) { clearTimeout(bubbleTimer); bubbleTimer = null; }
+    bubble.querySelector('.kat-pet-bubble-title').textContent = title || '';
+    bubble.querySelector('.kat-pet-bubble-body').textContent = body || '';
+    bubble.classList.remove('hidden');
+    if (opts.duration !== 0) {
+      bubbleTimer = setTimeout(hideBubble, opts.duration || 8000);
     }
   }
 
-  // ── 8. China Ready Score 联动：宠物心情 = 清单进度 ─────────
-  // getready.js（较晚加载）把勾选进度存进 localStorage('rc_ready_done')，
-  // 并在每次打勾 / 复访还原时派发 'rc:progress' 事件（detail.pct = 0~100）。
-  // 映射：0% sleep · 1–39% idle · 40–79% wave · 80–99% jump · 100% cute
+  // ── 8. 分区情境感知：Kat 随页面区块切换台词与动作帧 ──
+  // index.html 的各 section 被观察；进入视口即触发对应行为。
+  // 也可在 HTML 加 data-kat-section="home|ready|cities|map|community|services" 显式标记（优先级更高）。
+  var activeSection = null;
+  var seqTimer = null;
+  function playSequence(frames, hold, done) {
+    if (seqTimer) { clearTimeout(seqTimer); seqTimer = null; }
+    var i = 0;
+    function step() {
+      if (i >= frames.length) { if (done) done(); return; }
+      forcingFrame = true;
+      setState(frames[i]);
+      forcingFrame = false;
+      i++;
+      seqTimer = setTimeout(step, hold);
+    }
+    step();
+  }
+  var SECTION_MAP = {
+    home: {
+      frames: ['wave'],
+      line: "Hey, I'm Kat \u2014 your friend in China. Let's get you ready \u{1F1E8}\u{1F1F3}",
+      returningLine: function (pct) { return "Welcome back! You're " + pct + '% ready \u2014 continue?'; }
+    },
+    ready: {
+      sequence: ['idle', 'cute', 'luggage', 'jump'],
+      rest: 'cute',
+      line: 'Tick these off \u2014 I get happier as you go \u{1F392}'
+    },
+    cities: {
+      frames: ['walk'],
+      line: 'Which city are you most excited about? Let me show you around.'
+    },
+    map: {
+      frames: ['map'],
+      line: "Let's explore China together \u2014 where to first?"
+    },
+    community: {
+      frames: ['computer'],
+      line: "Stick with me and you'll be a China master \u2014 \u{1F1E8}\u{1F1F3}"
+    },
+    services: {
+      frames: ['cute'],
+      line: "Want me to plan the whole trip? That's what I'm here for \u2192"
+    }
+  };
+  // 区块选择器（与 index.html 实际结构对齐；data-kat-section 优先）
+  var SECTION_TARGETS = [
+    { sel: '[data-kat-section="home"], .hero', key: 'home' },
+    { sel: '[data-kat-section="ready"], #ready-container, #ready-section', key: 'ready' },
+    { sel: '[data-kat-section="cities"], #cities-section', key: 'cities' },
+    { sel: '[data-kat-section="map"], #map-container', key: 'map' },
+    { sel: '[data-kat-section="community"], #community-container', key: 'community' },
+    { sel: '[data-kat-section="services"], #products-section', key: 'services' }
+  ];
+  var homeGreeted = false;
+  function handleSection(key) {
+    var cfg = SECTION_MAP[key];
+    if (!cfg) return;
+    activeSection = key;
+    if (cfg.sequence) {
+      say('', cfg.line, { duration: 9000 });
+      playSequence(cfg.sequence, 700, function () { if (cfg.rest) setState(cfg.rest); });
+      return;
+    }
+    var frames = cfg.frames || ['idle'];
+    if (key === 'home') {
+      setState('wave');
+      if (!homeGreeted) {
+        homeGreeted = true;
+        var pct = currentReadyPct();
+        if (pct > 0) say('Welcome back!', cfg.returningLine(pct), { duration: 9000 });
+        else say("Hey, I'm Kat \u{1F44B}", cfg.line, { duration: 9000 });
+      }
+      return;
+    }
+    setState(frames[0]);
+    say('', cfg.line, { duration: 9000 });
+  }
+  if ('IntersectionObserver' in window) {
+    SECTION_TARGETS.forEach(function (t) {
+      try {
+        var el = document.querySelector(t.sel);
+        if (!el) return;
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting && en.intersectionRatio >= 0.35) {
+              handleSection(t.key);
+            } else if (activeSection === t.key) {
+              activeSection = null;
+              if (seqTimer) { clearTimeout(seqTimer); seqTimer = null; }
+              hideBubble();
+              setState(baseState());
+            }
+          });
+        }, { threshold: [0.35] });
+        obs.observe(el);
+      } catch (e) {}
+    });
+  }
+
+  // ── 8. China Ready Score 联动：宠物心情 = 清单进度（全站）──
+  // getready.js 把勾选进度存进 localStorage('rc_ready_done')，并在每次打勾 /
+  // 复访还原时派发 'rc:progress' 事件（detail.pct = 0~100）。
+  // 映射（按 Kat 的心智模型：做了一些就该开心）：
+  //   0%        → idle（还没开始，正常待机）
+  //   1–39%     → wave（招手鼓励）
+  //   40–100%   → cute（开心：你都做了这么多了）
   function currentReadyPct() {
     try {
       var saved = JSON.parse(localStorage.getItem('rc_ready_done') || '[]');
@@ -385,38 +481,26 @@
       return Math.min(100, Math.round(saved.length / 10 * 100)); // 10-step checklist
     } catch (err) { return 0; }
   }
+  // 宠物“安定”下来的基准状态 = 当前进度心情，而不是永远 idle。
+  // 随机小动作结束 / 从瞌睡唤醒 / 关菜单后都回落到这里 —— 瞄一眼宠物 = 看进度。
   function petStateFor(pct) {
-    if (pct <= 0) return 'sleep';
-    if (pct < 40) return 'idle';
-    if (pct < 80) return 'wave';
-    if (pct < 100) return 'jump';
+    if (pct <= 0) return 'idle';
+    if (pct < 40) return 'wave';
     return 'cute';
   }
-  // 基准状态：随机小动作结束 / 从瞌睡唤醒后回落到这里，
-  // 而不是永远 idle —— 这样"瞄一眼宠物心情"就等于看进度。
   function baseState() {
     var pct = currentReadyPct();
-    if (pct >= 100) return 'cute';
-    if (pct >= 80) return 'jump';
-    if (pct >= 40) return 'wave';
+    if (pct >= 40) return 'cute';
+    if (pct > 0)   return 'wave';
     return 'idle';
   }
-  // 打勾 → 实时换心情；复访（returning: true）→ 欢迎气泡
+  // 全站：每页加载即按已存进度设定初始心情（不再卡在 #ready-container）。
+  var initPct = currentReadyPct();
+  if (initPct > 0) setState(petStateFor(initPct));
+  // 清单进度 → 仅在无区块激活时更新心情（分区台词优先；首页问候由 home 区块负责）
   document.addEventListener('rc:progress', function (e) {
     var pct = (e.detail && typeof e.detail.pct === 'number') ? e.detail.pct : 0;
-    setState(petStateFor(pct));
-    if (e.detail && e.detail.returning && bubble && bubble.classList.contains('hidden')) {
-      bubble.querySelector('.kat-pet-bubble-title').textContent = 'Welcome back! 🎒';
-      bubble.querySelector('.kat-pet-bubble-body').textContent = "You're " + pct + "% China-ready — let's keep going.";
-      bubble.classList.remove('hidden');
-      setTimeout(function () { bubble.classList.add('hidden'); }, 7000);
-    }
+    if (!activeSection) setState(petStateFor(pct));
   });
-  // 进页面时按已存进度设定初始心情（仅首页有清单；0% 保持原有 idle 行为，
-  // 其他没有清单的页面宠物行为完全不变）
-  if (document.getElementById('ready-container')) {
-    var initPct = currentReadyPct();
-    if (initPct > 0) setState(petStateFor(initPct));
-  }
 
 })();
