@@ -25,6 +25,13 @@ jobs:
         with:
           python-version: '3.12'
 
+      # 第一步必须先跑这个：把 community.js 里的新帖子生成成真实 HTML 页面。
+      # build_all.py 不负责这件事（它只扫描已存在的 HTML），所以漏了这步，
+      # 新帖子就只有卡片、没有独立页面，Google 永远搜不到。
+      - name: Generate community post pages
+        run: python _builder/community_generator.py
+
+      # 第二步再跑 build_all.py：重建 sitemap + 搜索索引（此时新帖页面已存在，会被扫进去）
       - name: Run build_all.py
         run: python _builder/build_all.py
 
@@ -35,6 +42,7 @@ jobs:
           # 注意：搜索索引输出在 data/ 下，不在根目录
           git add sitemap.xml guides.html
           git add data/search-index.json
+          git add community/
           if git diff --cached --quiet; then
             echo "No changes to commit"
             exit 0

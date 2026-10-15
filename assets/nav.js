@@ -80,11 +80,16 @@ const PREPARE_ITEMS = [
   { label: 'Insurance',           anchor: 'step-insurance' },
 ];
 
+
 const KNOW_ITEMS = [
   { label: 'Kat\'s Tips', href: 'community.html', type: 'highlight', icon: '👥' },
   { label: 'Tips', tab: 'lifehacks', icon: '💡' },
   { label: 'Q&A',  tab: 'qa',        icon: '❓' },
   { label: 'News', tab: 'news',      icon: '📢' },
+  { type: 'divider' },
+  { label: 'Food & Eating',   href: 'food-guide/',  type: 'link', icon: '🍜' },
+  { label: 'Useful Phrases',  href: 'phrases/',     type: 'link', icon: '🗣️' },
+  { label: 'Booking Tickets', href: 'attractions/', type: 'link', icon: '🎟️' },
 ];
 
 const SERVICES_ITEMS = [
@@ -122,8 +127,14 @@ function buildNav(rootPath) {
     }).join('');
 
     const knowLinks = KNOW_ITEMS.map(i => {
+      if (i.type === 'divider') {
+        return `<div style="height:1px;background:var(--border);margin:6px 10px"></div>`;
+      }
       if (i.type === 'highlight') {
         return `<a class="nav-dd-link nav-dd-highlight" href="${rootPath}${i.href}">${i.icon} ${i.label}</a>`;
+      }
+      if (i.type === 'link') {
+        return `<a class="nav-dd-link" href="${rootPath}${i.href}">${i.icon} ${i.label}</a>`;
       }
       return `<button class="nav-dd-link" onclick="rcGoKnow('${i.tab}','${rootPath}')">${i.icon} ${i.label}</button>`;
     }).join('');
