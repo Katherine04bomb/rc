@@ -23,7 +23,136 @@
 
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ────────────────────────────── 
+  {
+    id: 'post-024',
+    slug: 'shared-power-bank-rental-china',
+    category: 'lifehacks',
+    date: '15 Oct 2026',
+    tag: 'tip',
+    title: '🪫 Forgot Your Power Bank? How to Rent One in China in 60 Seconds',
+    body: `Forgot yours, or drained it before the flight even landed? Don't buy one — rent one. Shared power bank cabinets are everywhere in China: shopping malls, restaurants, metro stations, convenience stores. The main operator is Meituan, and renting takes about a minute.
+    HOW TO RENT
+    
+    Open the Meituan app and tap "Power Bank", or in WeChat search for the 美团充电宝 mini program.
+    
+    Tap "Nearby stores" to see a map of cabinets with free slots.
+    
+    Tap "Scan to charge" and point your camera at the QR code on the cabinet — or just use Meituan's own scanner on the code.
+    
+    Agree to the terms, allow location access, and pick either deposit-free rental or pay with WeChat Pay / Alipay.
+
+The slot pops open. Take the bank and plug in your own cable.
+
+You can skip the app entirely too: walk up to any cabinet, open Meituan or WeChat, scan the QR code on it, confirm the free-rental coupon if one shows up, and the bank comes out by itself.
+
+HOW TO RETURN IT
+
+You do NOT have to go back to the same cabinet. Open the map in the mini program, find any cabinet of the same brand with a free slot, and push the bank in the direction shown on screen. Payment settles automatically.
+
+WHAT IT COSTS
+
+First 5 minutes: free
+Then roughly 1.5 RMB per 30 minutes
+Deposit: usually 99 RMB — but with a WeChat Pay score of about 550 or higher you can rent deposit-free
+Daily cap: usually around 40 RMB, so you will never get an unlimited bill
+
+Prices run slightly higher in first-tier cities.
+
+ALSO WORTH KNOWING
+
+Coffee shops, shopping malls and high-speed rail stations often have USB ports built right into the seating. And hotel front desks usually keep spare adapters and chargers that guests can borrow — just ask.`
+  },
  {
+    id: 'post-023',
+    slug: 'power-bank-china-flight-rules',
+    category: 'lifehacks',
+    date: '15 Oct 2026',
+    tag: 'tip',
+    title: '🔋 Can I Take My Power Bank on a Chinese Flight? Check Watt-Hours, Not mAh',
+    body: `You have probably heard this: "if it has the CCC mark and it is under 20,000 mAh, it is fine." That is not always true — and getting it wrong means watching your power bank go into a confiscation bin at security.
+
+Chinese aviation security does not check milliamp-hours. It checks watt-hours (Wh).
+
+THE THREE BANDS
+
+Below 100 Wh   — ✅ Allowed. Straight through, no approval needed.
+100 to 160 Wh  — ⚠️ Needs airline approval. Ask at the check-in counter BEFORE security. Without the permit you can be sent back.
+Above 160 Wh   — ❌ Banned entirely. Confiscated or refused.
+
+WHY 20,000 mAh CAN STILL BE TOO BIG
+
+mAh alone does not tell you the energy — you need the voltage too.
+
+Wh = (mAh ÷ 1000) × Voltage
+
+At 3.7V (the usual cell voltage), 20,000 mAh = 74 Wh, safely in the green zone.
+
+But plenty of newer fast-charge and laptop-rated banks run at 5.1V. The same 20,000 mAh at 5.1V = 102 Wh — that crosses into the yellow zone and needs a permit.
+
+So the "under 20,000 mAh" rule of thumb quietly fails on exactly the power banks people are most likely to own.
+
+HOW TO CHECK YOURS
+
+Look at the label on the back. Most decent units print the Wh value directly — use that number first, do not calculate. If Wh is not printed, use the formula with the voltage shown on the label.
+
+One more thing people miss: the label has to be legible. Even a power bank well under the limit can be refused if the printing is faded, blurry or missing. Check yours before you leave home.
+
+BEFORE YOU FLY
+
+Carry power banks in hand luggage only — they are banned from checked bags.
+
+If yours is large or fast-charge, ask at check-in: "Does this one need a permit?" Sorting it out at the counter takes a minute; being turned back at the security line can cost you the flight.
+
+On board, keep it switched off, do not bury it under thick bedding, and do not use it while it is charging.
+
+WHAT ABOUT THE CCC MARK?
+
+CCC (China Compulsory Certification) means the product meets Chinese safety standards for sale in China. It does NOT override the Wh limit. A certified 180 Wh bank is still banned; an uncertified 50 Wh one may still get questioned.
+
+Two things decide whether you board: the Wh number, and a readable label.`
+  },
+ {
+    id: 'post-022',
+    slug: 'china-plug-adapter-voltage-guide',
+    category: 'lifehacks',
+    date: '15 Oct 2026',
+    tag: 'tip',
+    title: '🔌 Do I Need a Plug Adapter for China? Voltage, Sockets and What to Buy',
+    body: `China runs on 220V / 50Hz — not the 110V you get in the US or Japan. Before you pack, flip over your phone charger and read the tiny print: if it says "100-240V" you are fine with just a cheap plug adapter. If it says a single voltage like "110V", you need a converter, or the device may fry.
+
+Most phone and laptop chargers are dual-voltage these days, so for most travellers the answer is simple: bring a universal adapter, skip the converter.
+
+THE THREE PLUG SHAPES YOU WILL MEET
+
+Type A — two flat pins — phone chargers and small devices
+Type C — two round pins (same as Europe) — laptop and camera chargers
+Type I — three flat pins (same as Australia) — air conditioners and high-power appliances
+
+Good news: Chinese wall sockets are usually combo units that swallow both two-pin and three-pin plugs in one faceplate, so you rarely get caught out.
+
+WHAT TO BUY
+
+Get a universal adapter that switches between US, EU, UK and Australian pin types, and accepts both 2-pin and 3-pin plugs so it fits China's new national-standard sockets.
+
+Choose one that sits firmly. Cheap loose adapters wobble out of the socket mid-charge and are genuinely annoying. Budget 15 to 50 RMB if you buy inside China.
+
+Bringing several devices? Pack one adapter plus a small Chinese power strip, then charge everything off a single wall socket.
+
+FORGOT ONE?
+
+No need to panic-buy at the airport. Large supermarkets stock adapters, and online shops deliver fast — search 万能转换插头 ("universal travel adapter") on JD, Taobao, Pinduoduo or Meituan. On Meituan or Ele.me it can arrive in about 30 minutes.
+
+THE ONE REAL TRAP
+
+Hair dryers and curling irons. Many US and Japanese models are single-voltage AND high-wattage. Either bring a transformer rated for the wattage, or just buy a cheap one in China.
+
+WHERE TO CHARGE WHEN YOU ARE OUT
+
+Coffee shops, shopping malls and high-speed rail stations often have USB ports or shared power banks you rent by scanning a code. Hotel front desks usually keep spare adapters and chargers guests can borrow.
+
+PS — if you grew up in Hong Kong, Singapore or Malaysia, you already use the British BS1363 plug, which electrical engineers rate as one of the safest domestic plugs in the world: a fuse inside every plug, child-proof shutters, and insulated pins. The one known downside is how much it hurts if you step on it barefoot in the dark. Reportedly worse than Lego.`
+  },
+  {
     id: 'post-021',
     slug: 'how-to-claim-your-vat-back-in-china',
     category: 'qa',
