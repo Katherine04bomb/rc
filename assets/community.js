@@ -27,7 +27,7 @@ const POSTS = [
     id: 'post-024',
     slug: 'shared-power-bank-rental-china',
     category: 'lifehacks',
-    date: '15 Oct 2026',
+    date: '24 Sep 2026',
     tag: 'tip',
     title: '🪫 Forgot Your Power Bank? How to Rent One in China in 60 Seconds',
     body: `Forgot yours, or drained it before the flight even landed? Don't buy one — rent one. Shared power bank cabinets are everywhere in China: shopping malls, restaurants, metro stations, convenience stores. The main operator is Meituan, and renting takes about a minute.
@@ -64,7 +64,7 @@ Coffee shops, shopping malls and high-speed rail stations often have USB ports b
     id: 'post-023',
     slug: 'power-bank-china-flight-rules',
     category: 'lifehacks',
-    date: '15 Oct 2026',
+    date: '24 Sep 2026',
     tag: 'tip',
     title: '🔋 Can I Take My Power Bank on a Chinese Flight? Check Watt-Hours, Not mAh',
     body: `You have probably heard this: "if it has the CCC mark and it is under 20,000 mAh, it is fine." That is not always true — and getting it wrong means watching your power bank go into a confiscation bin at security.
@@ -113,7 +113,7 @@ Two things decide whether you board: the Wh number, and a readable label.`
     id: 'post-022',
     slug: 'china-plug-adapter-voltage-guide',
     category: 'lifehacks',
-    date: '15 Oct 2026',
+    date: '16 Sep 2026',
     tag: 'tip',
     title: '🔌 Do I Need a Plug Adapter for China? Voltage, Sockets and What to Buy',
     body: `China runs on 220V / 50Hz — not the 110V you get in the US or Japan. Before you pack, flip over your phone charger and read the tiny print: if it says "100-240V" you are fine with just a cheap plug adapter. If it says a single voltage like "110V", you need a converter, or the device may fry.
