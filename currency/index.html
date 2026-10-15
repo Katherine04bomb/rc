@@ -144,7 +144,7 @@
     <p class="guide-hero-sub">China's currency is the Yuan (元), also called RMB (人民币 Rénmínbì). While China is mostly cashless, you'll still want ¥300–500 as backup. Here's everything you need to know about money in China.</p>
     <div class="guide-meta">
       <span>⏱ 5 min read</span>
-      <span>📅 Updated September 2026</span>
+      <span>📅 Updated October 2026 September 2026</span>
       <span>💱 Live rates below</span>
     </div>
   </div>
@@ -331,7 +331,7 @@ async function loadLiveRates() {
       if (perCNY && perCNY > 0) rates[code] = +(1 / perCNY).toFixed(4);
     }
     liveRates = rates;
-    note.textContent = 'Live rates · source: European Central Bank · updated ' +
+    note.textContent = 'Live rates · source: European Central Bank · Updated October 2026 ' +
       new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
   } catch (e) {
     liveRates = null; // fall back to RATES silently

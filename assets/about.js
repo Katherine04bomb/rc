@@ -36,17 +36,17 @@ function loadAbout() {
             <div class="about-story">
               Born in the Philippines, I grew up between Hong Kong and Fujian China, and I have studied and traveled all around Australia, New Zealand and Asia countries. Safe to say I’ve lived in many different places and have carried a little piece of each with me.
 <br><br>
-              Now I'm back in China, and I keep inviting my friends to come visit me.
+              Now I'm back in China, and I keep hosting people to come visit China.
               The problem? Every single one of them panics when they start planning.
               "I don't know where to start." "Will I survive without Google?"
               "Can I actually pay for things?" "Is it safe?"<br><br>
-              So I built this — a website I wish existed when my friends first asked me
+              So I built this — a website I wish existed when people first asked me
               those questions. I'll be their guide, and yours too, step by step.
             </div>
             <div class="about-examples">
               <div class="about-ex">
                 <div class="about-ex-icon">📶</div>
-                <div class="about-ex-text">My Australian friend Michael landed in Shanghai and spent
+                <div class="about-ex-text">My Aussie friend Michael landed in Shanghai and spent
                   <strong>2 hours at the airport</strong> trying to get wifi. His phone had
                   no signal and he couldn't contact the hotel. He was stuck.</div>
               </div>

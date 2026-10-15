@@ -206,13 +206,13 @@ function buildNav(rootPath) {
         <div class="nav-dropdown-panel">${knowLinks}</div>
       </div>
 
-      <div class="nav-item" data-nav="services">
+      <!--<div class="nav-item" data-nav="services">
         <button class="nav-link-btn" aria-haspopup="true" aria-expanded="false" onclick="rcToggleDropdown(this)">
           What Kat Can Help
           <svg class="nav-caret" width="9" height="6" viewBox="0 0 9 6" fill="none"><path d="M1 1L4.5 5L8 1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
        </button>
        <div class="nav-dropdown-panel">${servicesLinks}</div>
-      </div>
+      </div>-->
 
       <button class="nav-search-btn" aria-label="Search Ready? China!" onclick="rcOpenSearch()">
         <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><circle cx="7.2" cy="7.2" r="5.7" stroke="currentColor" stroke-width="1.6"/><line x1="11.3" y1="11.3" x2="15.5" y2="15.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>

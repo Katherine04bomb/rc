@@ -27,19 +27,19 @@ const visaDB = {
   },
   de: {
     flag:'🇩🇪', name:'Germany', type:'✅ Visa-Free (30 days)',
-    detail:`German passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits, or transit (updated Nov 2025). No application needed for short stays. Staying longer? Apply at the Chinese Embassy in Berlin or consulates in Frankfurt, Hamburg, or Munich.`,
+    detail:`German passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits, or transit (Updated October 2026 Nov 2025). No application needed for short stays. Staying longer? Apply at the Chinese Embassy in Berlin or consulates in Frankfurt, Hamburg, or Munich.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
     embassyUrl:'https://de.china-embassy.gov.cn/det/'
   },
   fr: {
     flag:'🇫🇷', name:'France', type:'✅ Visa-Free (30 days)',
-    detail:`French passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits, or transit (updated Nov 2025). For longer stays, apply at the Chinese Embassy in Paris or consulate in Lyon.`,
+    detail:`French passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits, or transit (Updated October 2026 Nov 2025). For longer stays, apply at the Chinese Embassy in Paris or consulate in Lyon.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
     embassyUrl:'http://www.china.org.cn/english/Embassies/'
   },
   ca: {
     flag:'🇨🇦', name:'Canada', type:'✅ Visa-Free (30 days)',
-    detail:`Canadian ordinary passport holders do not need a visa to enter mainland China for stays of up to <strong>30 days</strong>, under a temporary visa-waiver program active until December 31, 2026 (updated Feb 2026). This applies to tourism, business, family visits, exchanges, and transit.`,
+    detail:`Canadian ordinary passport holders do not need a visa to enter mainland China for stays of up to <strong>30 days</strong>, under a temporary visa-waiver program active until December 31, 2026 (Updated October 2026 Feb 2026). This applies to tourism, business, family visits, exchanges, and transit.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
     embassyUrl:'https://vancouver.china-consulate.gov.cn/eng/'
   },
@@ -51,13 +51,13 @@ const visaDB = {
   },
   jp: {
     flag:'🇯🇵', name:'Japan', type:'✅ Visa-Free (30 days)',
-    detail:`Japanese passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits, or transit. This unilateral visa-free policy remains in effect through December 31, 2026 (updated Nov 2025). For stays longer than 30 days, apply at the Chinese Embassy in Tokyo or consulates in Osaka, Nagoya, Fukuoka, or Sapporo.`,
+    detail:`Japanese passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits, or transit. This unilateral visa-free policy remains in effect through December 31, 2026 (Updated October 2026 Nov 2025). For stays longer than 30 days, apply at the Chinese Embassy in Tokyo or consulates in Osaka, Nagoya, Fukuoka, or Sapporo.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
     embassyUrl:'http://www.china-embassy.or.jp/jpn/'
   },
   kr: {
     flag:'🇰🇷', name:'South Korea', type:'✅ Visa-Free (30 days)',
-    detail:`South Korean passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits, or transit. This unilateral visa-free policy remains in effect through December 31, 2026 (updated Nov 2025). For longer stays, apply at the Chinese Embassy in Seoul or consulates in Busan.`,
+    detail:`South Korean passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits, or transit. This unilateral visa-free policy remains in effect through December 31, 2026 (Updated October 2026 Nov 2025). For longer stays, apply at the Chinese Embassy in Seoul or consulates in Busan.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
     embassyUrl:'http://kr.china-embassy.gov.cn/kor/'
   },
@@ -69,7 +69,7 @@ const visaDB = {
   },
   my: {
     flag:'🇲🇾', name:'Malaysia', type:'✅ Visa-Free (30 days)',
-    detail:`Malaysian passport holders enjoy <strong>30-day visa-free entry</strong> (updated July 17, 2025). For longer stays, apply at the Chinese Embassy in Kuala Lumpur or consulates in Johor Bahru or Penang.`,
+    detail:`Malaysian passport holders enjoy <strong>30-day visa-free entry</strong> (Updated October 2026 July 17, 2025). For longer stays, apply at the Chinese Embassy in Kuala Lumpur or consulates in Johor Bahru or Penang.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
     embassyUrl:'http://my.china-embassy.gov.cn/mya/'
   },
@@ -81,7 +81,7 @@ const visaDB = {
   },
   th: {
     flag:'🇹🇭', name:'Thailand', type:'✅ Visa-Free (30 days)',
-    detail:`Thai passport holders enjoy <strong>30-day visa-free entry</strong> (updated May 21, 2026). For longer stays, apply at the Chinese Embassy in Bangkok or consulates in Chiang Mai or Phuket.`,
+    detail:`Thai passport holders enjoy <strong>30-day visa-free entry</strong> (Updated October 2026 May 21, 2026). For longer stays, apply at the Chinese Embassy in Bangkok or consulates in Chiang Mai or Phuket.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
     embassyUrl:'http://th.china-embassy.gov.cn/tha/'
   },
@@ -93,31 +93,31 @@ const visaDB = {
   },
   nz: {
     flag:'🇳🇿', name:'New Zealand', type:'✅ Visa-Free (30 days)',
-    detail:`New Zealand passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits, or transit (updated Nov 2025). For longer stays, apply at the Chinese Embassy in Wellington or the Consulate in Auckland.`,
+    detail:`New Zealand passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits, or transit (Updated October 2026 Nov 2025). For longer stays, apply at the Chinese Embassy in Wellington or the Consulate in Auckland.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
     embassyUrl:'https://nz.china-embassy.gov.cn/eng/'
   },
   it: {
     flag:'🇮🇹', name:'Italy', type:'✅ Visa-Free (30 days)',
-    detail:`Italian passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits or transit through December 31, 2026 (updated Nov 2025). For longer trips, apply at the Chinese Embassy in Rome or consulates in Milan or Florence.`,
+    detail:`Italian passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits or transit through December 31, 2026 (Updated October 2026 Nov 2025). For longer trips, apply at the Chinese Embassy in Rome or consulates in Milan or Florence.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
     embassyUrl:'https://it.china-embassy.gov.cn/ita/'
   },
   es: {
     flag:'🇪🇸', name:'Spain', type:'✅ Visa-Free (30 days)',
-    detail:`Spanish passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits, or transit through December 31, 2026 (updated Nov 2025). For longer trips, apply at the Chinese Embassy in Madrid or Consulate General in Barcelona.`,
+    detail:`Spanish passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits, or transit through December 31, 2026 (Updated October 2026 Nov 2025). For longer trips, apply at the Chinese Embassy in Madrid or Consulate General in Barcelona.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
     embassyUrl:'https://es.china-embassy.gov.cn/esp/'
   },
   nl: {
     flag:'🇳🇱', name:'Netherlands', type:'✅ Visa-Free (30 days)',
-    detail:`Dutch passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits, or transit (updated Nov 2025). For longer stays, apply at the Chinese Embassy in The Hague.`,
+    detail:`Dutch passport holders enjoy <strong>30-day visa-free entry</strong> for tourism, business, family visits, or transit (Updated October 2026 Nov 2025). For longer stays, apply at the Chinese Embassy in The Hague.`,
     officialUrl:'https://www.visaforchina.cn/globle/',
     embassyUrl:'https://nl.china-embassy.gov.cn/eng/'
   },
   se: {
     flag:'🇸🇪', name:'Sweden', type:'✅ Visa-Free (30 days)',
-    detail:`Swedish passport holders enjoy <strong>30-day visa-free entry</strong> for business, tourism, family visits, or transit through December 31, 2026. For longer stays, apply at the Chinese Embassy in Stockholm.(updated Nov 2025)`,
+    detail:`Swedish passport holders enjoy <strong>30-day visa-free entry</strong> for business, tourism, family visits, or transit through December 31, 2026. For longer stays, apply at the Chinese Embassy in Stockholm.(Updated October 2026 Nov 2025)`,
     officialUrl:'https://www.visaforchina.cn/globle/',
     embassyUrl:'https://se.china-embassy.gov.cn/eng/'
   },
@@ -135,7 +135,7 @@ const visaDB = {
   },
   in: {
     flag:'🇮🇳', name:'India', type:'Visa Required',
-    detail:`You need an <strong>L (Tourist) visa</strong>. The process starts online through the Chinese Visa Application Service Center where you fill out forms and upload documents. After online review, you must visit a application center in person to submit your physical passport and provide fingerprints(updated Aug 20, 2024).`,
+    detail:`You need an <strong>L (Tourist) visa</strong>. The process starts online through the Chinese Visa Application Service Center where you fill out forms and upload documents. After online review, you must visit a application center in person to submit your physical passport and provide fingerprints(Updated October 2026 Aug 20, 2024).`,
     officialUrl:'https://www.visaforchina.cn/globle/',
     embassyUrl:'https://embassies.net/china-in-india'
   },
