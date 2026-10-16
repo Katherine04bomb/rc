@@ -24,6 +24,174 @@
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ────────────────────────────── 
   {
+    id: 'post-027',
+    slug: 'winter-tibet-free-attractions-2026',
+    category: 'news',
+    date: '16 October 2026',
+    tag: 'news',
+    title: '🏔️ Winter Tibet 2026–27: Free Entry Deals and What Foreigners Need First',
+    body: `🇨🇳 China News — If Lhasa has been on your list but peak-season prices and crowds put you off, winter is the window. Here's what's on offer and the one thing foreigners must sort out first.
+
+THE DEAL
+
+The "Winter Tibet" promotion runs from 15 October 2026 to 15 March 2027. During this period, A-level attractions across the Tibet Autonomous Region are free to enter, except temple and monastery sites. Flights are cheaper too. Deals seen so far include Chongqing to Lhasa around ¥409 one-way, Kunming about ¥499 and Xi'an about ¥529, compared with roughly ¥1,800 for a direct flight in July and August.
+
+Free means the ticket only. Shuttle buses (for example at Namtso) and extras are still paid, and big sites like the Potala Palace still require advance, passport-based booking. The Potala Palace has been free to enter in past winter seasons, and the Lhasa Tourism notices point the same way this year. Check the official Potala ticketing mini program before you finalise dates, because rules and hours change.
+
+FIRST, THE PERMIT (FOREIGNERS ONLY)
+
+Foreign passport holders need a Tibet Travel Permit to enter the region, and you cannot apply for it yourself. It must be arranged through a licensed travel agency, and in practice you travel with a pre-booked itinerary and a guide. Without the permit, airlines and trains won't let you board for Lhasa. Start at least three weeks before you fly, get quotes from two or three agencies, and ask exactly what is included.
+
+WHAT TO SEE
+
+Potala Palace — The icon. Winter light on the white and red walls against a deep blue sky is the shot. Winter hours are about 9:30 to 15:20, closed Mondays. No same-day tickets. No photos inside.
+
+Jokhang Temple and Barkhor Street — The heart of old Lhasa. Barkhor Street is free to walk, and in winter it is mostly locals and prayer wheels. Temples like the Jokhang are generally excluded from the free list, so expect to pay at the door.
+
+Norbulingka and the Tibet Museum — Next-door neighbours. The museum is the fastest way to understand everything else, and it's warm and quiet in winter.
+
+Namtso — About two hours from Lhasa. The lake freezes into deep blue ice in winter. Go with a driver or tour and confirm road conditions first.
+
+A SIMPLE 4-DAY PLAN
+
+Day 1 — Land and rest. Easy walk only.
+Day 2 — Potala Palace with your booked slot, then Jokhang and Barkhor.
+Day 3 — Tibet Museum and Norbulingka.
+Day 4 — Namtso, only if you feel fine and the road is open.
+
+WHAT NOT TO DO
+
+- Don't try to book Tibet like a normal city trip. No permit, no Lhasa.
+- Don't fly in and go straight to Namtso. Lhasa is at 3,650 m, so give yourself one to two days to adjust first.
+- Don't believe "free on the 15th of every month" rumours. The real free window is the winter promotion, and you still have to reserve.
+- Don't underestimate the weather. Winter days in Lhasa can reach 10 to 15°C in the sun, but nights are freezing and the wind at the lakes is brutal.
+
+WHAT TO PACK
+
+- A windproof layer, hat and gloves
+- Strong sunscreen, sunglasses and lip balm (the UV is serious)
+- Flat, grippy shoes for the Potala steps
+- Modest clothing for temples: no shorts or bare shoulders
+- Your passport, for every booking and checkpoint
+
+Updated October 2026. Policies and hours change, so confirm with the official notice for each site before you travel.
+
+— Kat
+`
+  },
+  {
+    id: 'post-026',
+    slug: 'autumn-after-golden-week-china-2026',
+    category: 'lifehacks',
+    date: '7 October 2026',
+    tag: 'lifehacks',
+    title: '🍂 Missed Golden Week? Late October Is Actually Better',
+    body: `🇨🇳 Kat's Hacks — Golden Week is over. The crowds have gone home, the sky is clear, and this is quietly one of the best times of the year to be in China. If you missed the holiday, you didn't miss much.
+
+WHY LATE OCTOBER TO NOVEMBER IS GREAT
+
+- Domestic flights and hotels in popular cities usually drop back sharply once the holiday ends.
+- Most of the country is dry, cool and comfortable for walking all day.
+- Train tickets are easy to get again, and big sights are back to normal queues.
+
+WHERE TO GO RIGHT NOW
+
+Beijing — Clear blue skies and autumn colour. Fragrant Hills Park turns red in late October to early November. Layer up for chilly mornings and evenings.
+
+Shanghai — Hairy crab season runs through the autumn. The weather is mild and perfect for walking the Bund and old streets.
+
+Sichuan and Chengdu — Pandas are more active in cooler weather. Mountain areas like Jiuzhaigou show their autumn colours around mid to late October, so go soon.
+
+Yunnan (Kunming, Dali, Lijiang) — Dry season, sunny days, almost no rain. Cold nights in the mountains, so bring a jacket.
+
+Guilin and Yangshuo — Osmanthus flowers bloom through early autumn and the heat has finally lifted, which is perfect for the river and the karst hills.
+
+Xi'an — Cool and dry, and the ginkgo trees turn gold in November. Good weather for cycling the city wall.
+
+Sanya (Hainan) — Beach season starts to open up as the rest of the country cools.
+
+Planning something else? Our Cities page has difficulty ratings and best-for tags for all 17 cities.
+
+WHAT NOT TO DO
+
+- Don't pack for summer. Northern China can fall to around 0°C at night by November.
+- Don't assume the south is warm all the way through. Guilin and Chengdu get cool and damp in late November.
+- Don't forget the weekends. Chinese people still travel on weekends, so book popular sights ahead.
+- Don't leave your phone setup until you land. Get your eSIM, payments and VPN sorted before the flight.
+
+THE QUICK VERSION
+
+If you have flexible dates, aim for the weeks right after Golden Week. You get the same China with fewer crowds, lower prices and better weather. If you are planning this window, tell me where you are heading and I'll tell you what to pack.
+
+— Kat
+`
+  },
+  {
+    id: 'post-025',
+    slug: 'golden-week-2027-survival-guide',
+    category: 'lifehacks',
+    date: '30 Sep 2026',
+    tag: 'lifehacks',
+    title: '📅 Golden Week 2027: What It Is and How Not to Get Crushed by It',
+    body: `🇨🇳 Kat's Hacks — Every China guide says "avoid Golden Week." Almost none explain what that actually means. Here's the real version, so you can plan 2027 properly.
+
+WHAT GOLDEN WEEK ACTUALLY IS
+
+China has seven public holidays. Three of them are long enough that the whole country travels at the same time: Spring Festival (Chinese New Year), Labour Day (around 1 May) and National Day (from 1 October). National Day is the one most people mean by "Golden Week."
+
+The problem isn't the length. It's that everyone is off in the same window, so train seats, flights and hotel rooms run out at the same moment. Attractions stay open. You are not locked out. You are just fighting for space and paying peak prices.
+
+2027 WINDOWS TO PLAN AROUND
+
+Spring Festival — Chinese New Year is 6 February 2027. Crowd level: extreme. The biggest movement of people on earth.
+Labour Day — around 1 to 5 May. Crowd level: extreme.
+National Day — starts 1 October, usually a full week. Crowd level: extreme.
+The small ones — New Year's Day, Qingming (early April), Dragon Boat (June), Mid-Autumn (mid-September). Crowd level: moderate.
+
+China usually confirms the official calendar for the next year in November, including the weekend swaps that stretch or shift the break. Treat these dates as a guide and check the confirmed ones before you book anything.
+
+WHAT IT ACTUALLY COSTS YOU
+
+- Hotels in tourist cities are often two to three times the normal price.
+- High-speed rail tickets go on sale about 15 days ahead. The first and last days of a holiday sell out within minutes. Foreigners can book with a passport on Trip.com or 12306.
+- Popular museums and sights use timed, passport-based reservations. Slots vanish as fast as train seats.
+- Domestic flights spike in the same way.
+
+THE FIVE THINGS THAT GO WRONG AT FAMOUS SITES
+
+1. Getting separated. Huge sites, many entrances, thick crowds. Agree a meeting point at every site and screenshot it.
+2. Falls on the Great Wall. The steps are uneven and steep. Slow down, especially in wind or rain, and don't lean over railings for photos.
+3. Crowd crush. It happens at entrances, stairways and photo spots. Keep to the side, don't stop in the middle of a walkway, and if the flow suddenly speeds up, plant your feet.
+4. Exhaustion. 15,000 to 20,000 steps a day is normal at big sites. Split the day in two, drink often, carry blister plasters.
+5. Theft. Phone in a zipped front pocket, backpack on your front, passport kept separate from your photocopy.
+
+WHAT NOT TO DO
+
+- Don't book the first or last day of the holiday. Those are the worst days for trains and roads.
+- Don't follow influencers to unofficial "hidden" viewpoints. No rescue, no safety management, no signal.
+- Don't arrive at a major site at noon. Be there at opening, rest in the afternoon, go back out late.
+- Don't rely on one payment method. Set up Alipay or WeChat Pay before you land and keep a backup card.
+
+MY PLAYBOOK IF YOU CAN'T AVOID IT
+
+Shift your dates if you can. The week before or after is dramatically calmer: about five days either side for National Day, ten for Spring Festival.
+
+Book the day tickets open, both directions at once.
+
+Swap the famous site for its less-famous twin. Almost every big attraction has one. Ask me and I'll tell you which.
+
+Save the numbers: 110 police, 120 ambulance, 119 fire.
+
+THE HONEST BOTTOM LINE
+
+Golden Week isn't a trap. It's a date. If you can be flexible, go in the shoulder weeks and you get the best version of China. If those are your only dates, don't cancel. Book early, start early, and plan around the crowds instead of fighting them.
+
+Not sure whether your dates hit a Chinese holiday? Send me your itinerary before you book and I'll check it for you.
+
+— Kat
+`
+  },
+  {
     id: 'post-024',
     slug: 'shared-power-bank-rental-china',
     category: 'lifehacks',
