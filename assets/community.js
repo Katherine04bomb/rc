@@ -68,7 +68,7 @@ const POSTS = [
   
   Halloween in China is not about the street. It is about the party you choose to go to. Pick one venue, check its rules, dress up properly, and you will have a much better night than wandering around hoping for trick-or-treating that was never going to happen.
   
-  — Kat`,
+  — Kat`
   },{
 
     
