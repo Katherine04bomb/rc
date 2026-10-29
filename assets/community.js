@@ -24,6 +24,54 @@
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ────────────────────────────── 
   {
+      id: 'post-028',
+      slug: 'halloween-in-china-party-not-holiday',
+      category: 'lifehacks',
+      date: '29 October 2026',
+      tag: 'lifehacks',
+      title: '🎃 Halloween in China is a party, not a holiday — go to the party, don't knock on doors',
+  body: `🇨🇳 Kat's Hacks — If you are in China on Saturday 31 October, do not plan your night around trick-or-treating. It works differently here, and it can still be a brilliant night out if you go where the party actually is.
+  
+  
+  NOT A HOLIDAY
+  Halloween is not a public holiday in mainland China. Shops, transport and services run normally on 31 October, so plan it as a night out, not a day off. That is also why it feels quieter than you might expect during the day: most people are at work or school, and the costumes only come out in the evening.
+  
+  
+  WHERE THE FUN ACTUALLY IS
+  Go to the organised events: theme parks, malls, and bars in big cities like Beijing, Shanghai and Guangzhou. That is where the costumes, parties and treat trails are. Theme parks usually run seasonal decorations and evening shows, malls often have family-friendly activities and photo spots, and bars in the big-city nightlife areas are where adults dress up and go out in groups.
+  
+  Check the venue's official app or page for that night's schedule before you go, and check its costume rules too. Some parks do not allow full-face masks, and some venues have their own rules about props, face paint, or entry after a certain time. A quick check saves you a wasted trip in costume.
+  
+  
+  WHAT A NIGHT OUT LOOKS LIKE
+  Expect a Saturday-night crowd, especially after dinner. Arrive a little early if you want photos without a queue, and expect to queue for popular rides, photo spots and bars. If you are going to a theme park, buy tickets in advance through the official app if you can, and keep your booking confirmation and ID handy. If you are heading to a mall event with children, go in the late afternoon or early evening, when family activities are usually running and it is easier to get around.
+  
+  
+  THE TRAP TO AVOID
+  Do not expect door-to-door trick-or-treating in an ordinary neighbourhood. That is not how it works here, and knocking on strangers' doors will just confuse everyone. Children in China usually experience Halloween at school, at a mall event, or at a theme park, not on their own street. If you see a treat trail advertised, that is the organised version: follow the venue's route, not a random residential block.
+  
+  
+  COSTUME TIPS THAT WORK HERE
+  Pick a costume you can actually walk, sit and queue in for hours, and wear comfortable shoes. Late October evenings can be cool in the north and mild but damp in the south, so layer up underneath if you are out late. Choose a mask you can lift easily for security checks and ID checks, and leave anything that looks like a uniform or a weapon at home. Keep face paint simple enough that you can still be recognised if staff need to check your ticket or ID.
+  
+  
+  GETTING THERE
+  Travel in your normal clothes and carry your costume, mask and props in a bag until you reach the venue. Metro security checks still apply, and anything that looks like a uniform or a weapon is a bad idea on public transport. Pack light, keep your phone charged for maps and ride-hailing, and agree a meeting point with friends before you go in, because big venues get crowded and phone signal can be patchy inside.
+  
+  
+  IF YOU ARE WITH KIDS
+  Stick to the organised options. A mall or theme park event gives children the dress-up, treats and photos without the awkwardness of knocking on doors. Bring a small bag for treats, a change of layers for the evening, and snacks and water, because queues and walking add up fast. If your child is in a school in China, ask the school first: many schools run their own Halloween activity, and that is often the easiest and most local way to join in.
+  
+  
+  A SIMPLE PLAN FOR 31 OCTOBER
+  In the afternoon, check your venue's official page for that night's hours, costume rules and ticket situation. In the early evening, head to a mall or theme park event if you are with kids, or meet friends for dinner first if you are going out later. Travel in normal clothes, change at the venue, and plan your way home before the night gets late, especially if you are relying on the metro.
+  
+  Halloween in China is not about the street. It is about the party you choose to go to. Pick one venue, check its rules, dress up properly, and you will have a much better night than wandering around hoping for trick-or-treating that was never going to happen.
+  
+  — Kat`,
+  },{
+
+    
     id: 'post-027',
     slug: 'winter-tibet-free-attractions-2026',
     category: 'news',
