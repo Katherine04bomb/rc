@@ -675,7 +675,21 @@ PS — if you grew up in Hong Kong, Singapore or Malaysia, you already use the B
     date: 'June 2026',
     tag: 'tip',
     title: '☀️ Summer in China — what to pack for June–August',
-    body: `It gets HOT. Beijing and Shanghai regularly hit 35°C+ in summer. My honest packing list: light cotton clothes for nights, a small portable fan (or you can buy one in China :p), sunscreen, and a pair of walking shoes. Try to avoid being outside between 12pm and 3pm. The good news? Everything indoors is air-conditioned — sometimes aggressively so. Bring a light layer for museums and the metro.`
+    body: `It gets HOT. Beijing and Shanghai regularly hit 35°C+ in summer. My honest packing list: light cotton clothes for nights, a small portable fan (or you can buy one in China :p), sunscreen, and a pair of walking shoes. Try to avoid being outside between 12pm and 3pm. The good news? Everything indoors is air-conditioned — sometimes aggressively so. Bring a light layer for museums and the metro.
+    
+    REGIONAL DIFFERENCES
+    The south is humid, so light, breathable clothes dry faster and feel cooler. The north is drier, so the same light layers work, but bring lip balm and drink more water.
+    
+    RAIN AND TYPHOON SEASON
+    Summer is also the rainy season, with sudden downpours and, in coastal areas, typhoons. Pack a small foldable umbrella or a light rain jacket, and keep electronics in a waterproof pouch.
+    
+    WHAT NOT TO PACK
+    Leave heavy layers at home. Do not bring too many shoes: one comfortable pair of walking shoes, plus sandals if you like them, is enough for most trips.
+    
+    PACK IN YOUR DAY BAG
+    Water, sunscreen, your portable fan, a light layer for air-conditioned rooms, tissues, and a power bank for your phone.
+    
+    - Kat`
   },
   {
     id: 'post-002',
