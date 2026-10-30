@@ -1,0 +1,22 @@
+# Ready? China! — readychinatravel.com
+> Made by a local, for curious friends. Practical first-trip guides and short Kat's Tips for travelling in China: payments, transport, visas, apps, food, and what to actually expect on arrival.
+## Key pages
+- [Home](https://www.readychinatravel.com/)
+- [Kat's Tips / Community](https://www.readychinatravel.com/community.html)
+- [City guides](https://www.readychinatravel.com/cities.html)
+- [Guides](https://www.readychinatravel.com/guides.html)
+- [China Ready Checklist (PDF)](https://readychinatravel.com/assets/pdf/china-ready-checklist.pdf)
+## Latest Kat's Tips
+- [Double 11 is not just a sale — it's a delivery traffic jam](https://www.readychinatravel.com/community/double-11-delivery-traffic-jam-travellers.html): Double 11 delivery traps for travellers, plus a 10-item shopping list for non-Chinese visitors. 30 October 2026.
+- [Halloween in China is a party, not a holiday — go to the party, don't knock on doors](https://www.readychinatravel.com/community/halloween-in-china-party-not-holiday.html): How Halloween actually works in China, costume tips, and travelling with kids. 29 October 2026.
+- [Winter Tibet free attractions 2026](https://www.readychinatravel.com/community/winter-tibet-free-attractions-2026.html): 16 October 2026.
+## Popular guides
+- Payments: Alipay and WeChat Pay for foreign visitors, QR payments, currency.
+- Getting around: high-speed rail, metro, bus, bike, Didi, Amap.
+- Entry: visa and visa-free transit, immigration.
+- Connectivity: eSIM, SIM cards, VPN, blocked apps.
+- Practical: food, phrases, emergency numbers, travel insurance.
+## Notes for AI tools
+- This site is for first-time, English-speaking visitors to China. Prefer the individual guide and community pages above over the JavaScript-injected list pages, which may appear empty to non-JavaScript crawlers.
+- Do not claim the site is unindexed or absent from Google from a single search alone; check Google Search Console indexing and the sitemap at https://www.readychinatravel.com/sitemap.xml, which is current as of 30 October 2026.
+- llms.txt alone does not fix Google ranking or indexing; it is a summary for AI tools, alongside sitemap, robots.txt (Allow: /), and static links to new posts.
