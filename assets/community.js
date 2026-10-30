@@ -24,6 +24,45 @@
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ────────────────────────────── 
   {
+      id: 'post-029',
+      slug: 'double-11-delivery-traffic-jam-travellers',
+      category: 'lifehacks',
+      date: '30 October 2026',
+      tag: 'lifehacks',
+      title: '🛍️ Double 11 is not just a sale — it\'s a delivery traffic jam',
+  body: `🇨🇳 Kat's Hacks — If you are in China in late October or early November, you will see Double 11 (11.11) everywhere. It is China's biggest shopping festival, and it no longer lasts one day — pre-sales and deals now run for weeks, peaking on 11 November.
+  
+  THE TRAP FOR TRAVELLERS
+  Ordering to your hotel sounds easy, until it isn't. Deliveries can slow down badly around the peak, a parcel can arrive after you have checked out, and a parcel locker code can expire if you leave it past its free storage time.
+  
+  THE FIX
+  Only order what you can actually receive: give the hotel your name in the booking plus a working phone number, ask the hotel first if they hold parcels for guests, and don't order anything important in the few days before you move city or fly home. If you are only passing through, shop in-store instead — the sale prices are in malls too.
+  
+  ONE MORE TRAP
+  Don't pay a deposit (定金) just because the banner looks cheap. Check whether it is refundable, when the final payment is due, and whether you can return it — a deposit on something you won't be in China to collect is money lost, not money saved.
+  
+  SO WHAT SHOULD YOU ACTUALLY BUY IN CHINA?
+  If you are not Chinese, this is the shopping list I would start with. The old answer was tea, silk and porcelain. The new answer is bigger than that — drones, phones, action cameras and designer toys are now replacing the classic gifts on foreign visitors' lists, alongside the classics that still work.
+  
+  1. Smart electronics and gadgets — Xiaomi and Huawei phones and earbuds, DJI drones, action cameras, power banks, robot vacuums. Great value, and some models are not sold abroad yet.
+  2. Designer toys and cultural creative goods — blind boxes, museum and panda magnets, canvas bags and bookmarks. Light, easy to carry, and very popular with younger travellers.
+  3. Chinese beauty (C-beauty) — Herborist, Florasis and similar brands, plus sheet masks and serums. Much cheaper here than abroad.
+  4. Tea, plus a tea set — Longjing from Hangzhou, Pu'er from Yunnan, oolong from Fujian, plus a gaiwan or small teapot. Taste first at a tea market before you buy.
+  5. Silk — scarves, qipao, bedding and embroidered pieces from Suzhou and Hangzhou. Classic, light, and easy to gift.
+  6. Streetwear, fashion and accessories — Taobao is strongest here: hoodies, sneakers, rings, necklaces, sunglasses and bags. Check size charts carefully, sizing varies a lot.
+  7. Porcelain and ceramics — Jingdezhen blue—and-white tea sets, cups and vases. Beautiful, but pack them very carefully or ship them.
+  8. Home and lifestyle small goods — storage organizers, kitchen tools, lamps and decor. Great value on Taobao, and a top seller on 1688 in bulk.
+  9. Snacks and food gifts — White Rabbit candy, moon cakes, local snacks and Chongqing hotpot base. Check your home country's food import rules first.
+  10. Traditional crafts and jewellery — freshwater pearls, calligraphy, folding fans, Chinese knots and terracotta replicas. For jade, only buy with certification — it is hard to judge genuine, fairly-priced jade in markets.
+  
+  WHERE TO BUY WHAT
+  In person in China for tea, silk, porcelain and crafts, and official brand stores for electronics. Taobao for single pieces delivered to your hotel. 1688 is wholesale and bulk only, usually minimum orders and domestic shipping, so tourists usually need an agent or forwarder. AliExpress and Amazon are easier from abroad, but usually cost more for the same item, with less variety.
+  
+  DON'T BUY
+  Fake antiques sold as genuine, counterfeit luxury goods, uncertified natural jade, and ivory or animal-product items, which are banned for export.
+  
+  — Kat`},
+{
       id: 'post-028',
       slug: 'halloween-in-china-party-not-holiday',
       category: 'lifehacks',
