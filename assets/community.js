@@ -24,6 +24,26 @@
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ────────────────────────────── 
   {
+        id: 'post-030',
+        slug: 'china-big-sights-winter-hours-1-november',
+        category: 'lifehacks',
+        date: '1 November 2026',
+        tag: 'lifehacks',
+        title: '🕰️ On 1 November, China\'s big sights switch to winter hours — don\'t trust the summer timetable',
+        body: `🇨🇳 Kat's Hacks — If you are in China this weekend, check the date on any opening-hours page before you plan around it. 1 November is the switch-over day.
+        
+        THE TRAP
+        Take the Forbidden City in Beijing: from 1 November it closes at 16:30, not 17:00, and the ticket drops from ¥60 to ¥40. Arrive on a summer timetable and you can lose the last, quietest hour of the day — or arrive too late altogether. Other parks and museums shorten their hours around the same date, so one old blog post can throw off a whole day's plan.
+        
+        THE FIX
+        Check the venue's own page or your booking confirmation for the exact date you are going, not just the season. Book the big sights online in advance with your passport — there is no guaranteed ticket at the gate — and go in the morning, when you have the full day in hand.
+        
+        ONE MORE TRAP
+        The Forbidden City is closed every Monday. That means Monday 2 November is a no-go, even though Sunday 1 November is open. Don't put your one Beijing palace day on a Monday.
+        
+        — Kat`
+  },
+  {
       id: 'post-029',
       slug: 'double-11-delivery-traffic-jam-travellers',
       category: 'lifehacks',
