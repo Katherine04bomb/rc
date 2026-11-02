@@ -24,6 +24,23 @@
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ────────────────────────────── 
   {
+        id: 'post-031',
+        slug: 'beijing-ginkgo-avenue-monday',
+        category: 'lifehacks',
+        date: '2 November 2026',
+        tag: 'lifehacks',
+        title: '🍂 In Beijing this week? Go golden — while it lasts',
+        body: `🇨🇳 Kat's Hacks — Beijing's ginkgo avenues turn gold in early to mid-November, and the famous one outside the east wall of the Diaoyutai State Guesthouse (Sanlihe Road, Haidian) is the classic: a street of golden leaves, not a ticketed museum.
+
+            THE MONDAY FIX
+                Monday is the awkward day in Beijing — the Forbidden City and many museums close. This avenue is a street outside, so a Monday stroll still works. Save the palace for another day.
+
+                    THE TRAP
+                        Don't leave it for a weekend afternoon. Go on a weekday morning, when the light is best and the crowds are thinner.
+
+                            — Kat`
+  },
+  {
         id: 'post-030',
         slug: 'china-big-sights-winter-hours-1-november',
         category: 'lifehacks',
@@ -1114,3 +1131,4 @@ if (document.getElementById('community-container')) {
     }, 50);
   }
 })();
+eekday
