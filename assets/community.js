@@ -24,6 +24,27 @@
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ────────────────────────────── 
   {
+        id: 'post-032',
+    
+        slug: 'test-alipay-wechat-pay-before-you-fly',
+        category: 'lifehacks',
+        date: '3 November 2026',
+        tag: 'lifehacks',
+        title: '💳 Test Alipay and WeChat Pay before you fly — not on arrival day',
+        body: `🇨🇳 Kat's Hacks — If you're going to China, don't let your first payment be at a shop counter.
+        
+        THE TRAP
+        One card is not enough, and one app is not enough. In the comments on a recent first-timer trip report, a reader failed on both Alipay and WeChat Pay with only one card linked, getting “payment failed, not available in your region”. And a shop may only take one of the two apps — the traveller in that report paid with Alipay 95% of the time, but twice only WeChat Pay worked.
+        
+        THE FIX
+        Months before you fly, link two cards to both apps and do a small test transaction (the example in that thread was 1 RMB). If a card or region fails, you want to find out at home, not at the till. The same traveller found no need to turn off an eSIM to pay, and the metro QR inside Alipay worked throughout.
+        
+        ONE MORE TRAP
+        A successful test at home is the point — don't skip it because the apps look set up. Test both, with two cards, before you fly.
+        
+        — Kat`
+  },
+  {
         id: 'post-031',
         slug: 'beijing-ginkgo-avenue-monday',
         category: 'lifehacks',
