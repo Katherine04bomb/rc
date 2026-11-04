@@ -24,6 +24,26 @@
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ────────────────────────────── 
   {
+    id: 'post-033',
+    slug: '12306-train-tickets-passport-15-days',
+    category: 'lifehacks',
+    date: '4 November 2026',
+    tag: 'lifehacks',
+    title: '12306 train tickets: verify your passport first, then count back 15 days',
+    body: `🚆 12306 train tickets: verify your passport first, then count back 15 days
+    
+    If you're planning China trains, don't start on ticket day.
+    
+    THE TRAP
+    Tickets on the official 12306 system normally go on sale only 15 days before departure — so a booking site offering a confirmed seat months ahead is holding a request, not a ticket. And you cannot buy until your identity is verified, which is not instant.
+    
+    THE FIX
+    Register on the English site (12306.cn/en) with your foreign passport well before sale day, and let the verification clear — sources report anything from same-day to a few working days for a manual photo review. Use the name exactly as on your passport, and bring that same original passport to travel: on domestic routes it is your ticket, with no paper ticket to collect. If an automatic gate won't read it, use the staffed lane beside it.
+    
+    ONE MORE TRAP
+    Online sales run roughly 05:00 to 01:00 Beijing time (to 23:30 on Tuesdays), so don't assume you can buy at any hour. Check the date calendar inside 12306 itself for the last day on sale for your route.
+    — Kat`},
+  {
         id: 'post-032',
     
         slug: 'test-alipay-wechat-pay-before-you-fly',
