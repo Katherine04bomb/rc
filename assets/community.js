@@ -24,6 +24,26 @@
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ────────────────────────────── 
   {
+    id: 'post-034',
+    slug: 'metro-qr-changes-city-to-city',
+    category: 'lifehacks',
+    date: '5 November 2026',
+    tag: 'lifehacks',
+    title: 'Your metro QR stops working when you change city — switch it first',
+    body: `🚇 Your metro QR stops working when you change city — switch it first
+    
+    If you're travelling between Chinese cities, don't assume the code that opened the last metro gate will open the next one.
+    
+    THE TRAP
+    The code you use at a metro gate is not your normal shop-payment code — it's a separate Transport QR, and it's city-specific. The Beijing code doesn't work in Shanghai, and vice versa. Open the old city's code at a new city's gate and you'll be stuck at the barrier, not just delayed.
+    
+    THE FIX
+    In Alipay, go to Transport (出行) and switch the city at the top before you ride, then activate that city's code. Do it before you get to the station, not underground with no signal, and open the code live at the gate — don't rely on a screenshot. Bus and metro can need separate codes in some cities, so check both if you plan to ride both.
+    
+    ONE MORE TRAP
+    Not every smaller city is in the network, and a card that pays fine in a shop won't automatically work for every city's transport. Keep a little cash or be ready to buy a single-journey ticket at the station machine as backup, and keep WeChat Pay set up too — if one app's transport code fails, the other is your fallback.
+    — Kat`},
+  {
     id: 'post-033',
     slug: '12306-train-tickets-passport-15-days',
     category: 'lifehacks',
