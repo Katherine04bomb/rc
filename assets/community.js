@@ -24,6 +24,26 @@
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ────────────────────────────── 
   {
+        id: 'post-035',
+    slug: 'set-up-vpn-before-you-land',
+    category: 'lifehacks',
+    date: '6 November 2026',
+    tag: 'lifehacks',
+    title: 'Set up your VPN before you land — you can’t download it in China',
+    body: `📵 Set up your VPN before you land — you can’t download it in China
+    
+    If you use Google, WhatsApp, Instagram or Gmail, don’t leave your VPN until arrival day.
+    
+    THE TRAP
+    VPN websites and the app-store pages for VPN apps mostly won’t load once you’re in China — so landing and trying to download one leaves you stuck with no Google Maps, no WhatsApp and no Instagram. Google Play needs a VPN to work there too, so any missing Android app has the same problem.
+    
+    THE FIX
+    Subscribe, install and sign in at home, on every device you’re taking — then connect once before you board and load a page, to prove it works. If your app offers an obfuscation or stealth mode, switch it on before you travel: plain VPN traffic is spotted and dropped more easily. Before you fly, also download your offline maps, your hotel address in Chinese, and the Google Translate offline Chinese pack — all the things you’ll want on arrival day when the connection is at its worst.
+    
+    ONE MORE TRAP
+    No single VPN works all the time — hotel Wi-Fi, mobile data and sensitive dates all behave differently, and even the best-known ones drop. Keep a second VPN from a different company installed as backup, and save its setup steps and support contact offline: password-reset emails usually go to the Gmail you can’t open without the VPN working.
+    — Kat`},
+  {
     id: 'post-034',
     slug: 'metro-qr-changes-city-to-city',
     category: 'lifehacks',
