@@ -24,6 +24,27 @@
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ────────────────────────────── 
   {
+      id: 'post-036',
+      slug: 'forbidden-city-tickets-8pm-7-days-ahead',
+      category: 'lifehacks',
+      date: '2026-11-08',
+      tag: 'lifehacks',
+      title: 'Forbidden City tickets: book at 8pm, exactly 7 days ahead — or you don’t get in',
+      body: `🏯 Forbidden City tickets: book at 8pm, exactly 7 days ahead — or you don’t get in
+      
+      If the Forbidden City is on your Beijing list, don’t leave the ticket until arrival day.
+      
+      **THE TRAP**
+      There are no tickets at the gate and no same-day tickets. Every date goes on sale at 20:00 Beijing time, exactly 7 days before — so if you want next Sunday, your moment is 8pm this Sunday. Turn up without a booking and you will spend the morning on Tiananmen Square instead.
+      
+      **THE FIX**
+      Set an alarm for 19:58, seven days before your visit, and book on the official Palace Museum site (English version) or its WeChat mini-program, with a passport number for every visitor — then bring that same original passport to the gate. Pick the morning or afternoon session when you book, and note the morning session must enter by 12:00. In winter the ticket is ¥40.
+      
+      **ONE MORE TRAP**
+      The Forbidden City is closed every Monday, so don’t burn your 8pm booking on a Monday visit. And if your date shows sold out at 20:02, check again around 20:20 — unpaid orders time out and come back. If it is still gone, pick another day rather than paying a reseller a big markup: the museum says it has authorised no third-party seller.
+      — Kat`
+  },
+  {
         id: 'post-035',
     slug: 'set-up-vpn-before-you-land',
     category: 'lifehacks',
