@@ -24,6 +24,27 @@
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ────────────────────────────── 
   {
+      id: 'post-037',
+      slug: '240-hour-visa-free-transit-china-middle-stop',
+      category: 'lifehacks',
+      date: '2026-11-09',
+      tag: 'lifehacks',
+      title: '240-hour visa-free transit: 10 days in China — but only if China is the middle stop',
+      body: `🛂 240-hour visa-free transit: 10 days in China — but only if China is the middle stop
+
+      If you are flying through China on the way somewhere else, you may not need a visa at all — but get the route wrong and the airline can stop you at check-in.
+
+      **THE TRAP**
+      The 240-hour transit lets passport holders from 57 countries stay in China up to 10 days without a visa — but China has to be the middle stop. Fly home the way you came, with China as a return leg to the same country, and it does not count as transit. And the 240 hours do not start when you land: the clock starts at midnight on the day after you arrive.
+
+      **THE FIX**
+      Before you book, check three things: your passport is on the 57-country list, your onward ticket goes to a third country or region (US → China → Japan works; US → China → US does not), and you enter through one of the 65 eligible ports. Bring a passport valid for at least three months and a confirmed onward ticket with a date and a seat, and keep your trip inside the 24 provinces the scheme covers.
+
+      **ONE MORE TRAP**
+      Do not confuse this with the 30-day visa-free entry — if your passport is on that list, you do not need the transit route at all. The transit route matters most if you are American, Canadian, Mexican, Brazilian, Chilean or Argentine. And check the list again close to departure: it changed as recently as August 2026, when Kyrgyzstan and Vietnam were added. Border control decides on arrival, so confirm your route before you book.
+      — Kat`
+  },
+  {
       id: 'post-036',
       slug: 'forbidden-city-tickets-8pm-7-days-ahead',
       category: 'lifehacks',
