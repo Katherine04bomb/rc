@@ -24,7 +24,28 @@
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ────────────────────────────── 
   {
-      id: 'post-037',
+    id: 'post-038',
+    slug: 'tiananmen-square-free-but-book-it',
+    category: 'lifehacks',
+    date: '2026-11-12',
+    tag: 'lifehacks',
+    title: 'Tiananmen Square is free — but you still need to book it',
+    body: `🏛️ Tiananmen Square is free — but you still need to book it
+
+You booked the Forbidden City, so you can walk across the square to get there — right? Not without a second booking.
+
+**THE TRAP**
+Tiananmen Square has no ticket, but entry needs a free real-name reservation, made 1 to 7 days ahead — and there is no same-day booking. A Forbidden City ticket does not get you into the square, and a square reservation does not get you into the Forbidden City or the National Museum. Book each one separately, or you can be turned away at the security perimeter before you even reach the gate you came for.
+
+**THE FIX**
+Book in the official WeChat mini-program 天安门广场预约参观, under Personal Reservation, with the name and passport number exactly as printed on your passport. Pick the time slot that matches when you actually want to be there — dawn for the flag-raising, then morning, afternoon or evening — and follow the date, slot and entrance on your booking. The web platform does not accept overseas phone numbers, so use the mini-program; if you have no WeChat, someone else can book for you with your passport details. Bring the physical passport you booked with — digital copies are not accepted at the checkpoints.
+
+**ONE MORE TRAP**
+Set up WeChat at home, before you travel: a brand-new account that suddenly appears in Beijing can be restricted, and you do not want to be sorting that out the night before your visit. And allow plenty of time — there are several ID and security checks before you set foot on the square, so do not plan a tight connection to your Forbidden City entry time.
+— Kat`
+  },
+  {
+    id: 'post-037',
       slug: '240-hour-visa-free-transit-china-middle-stop',
       category: 'lifehacks',
       date: '2026-11-09',
