@@ -24,6 +24,27 @@
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ────────────────────────────── 
   {
+      id: 'post-039',
+      slug: '12306-seat-map-check-before-you-pay',
+     category: 'lifehacks',
+      date: '2026-11-15',
+      tag: 'lifehacks',
+      title: '12306 seat choice is not always random — check for the seat map before you pay',
+      body: `🚆 12306 seat choice is not always random — check for the seat map before you pay
+
+      You booked your train in English and got the seat you did not want — not bad luck, just the English version.
+
+      **THE TRAP**
+      The English version used to assign your seat at random, and on some trains it still does. But it now shows a Select Seat grid on many high-speed trains — so "English = no choice" is no longer true for every train.
+
+      **THE FIX**
+      At checkout, look for "Select Seat" (选座) before you pay. If the grid is there, tap A or F for a window, C or D for an aisle (B is the middle seat). If it is greyed out or missing, switch to the Chinese version (标准版) in Settings — that still shows the preference most reliably. Either way it is a request, not a guarantee: if your preferred spot is gone, the system assigns one at random.
+
+      **ONE MORE TRAP**
+      One traveller reported the payment button stalling on 12306 at the last step. If it happens to you, do not keep tapping it — try Trip.com as a backup (check the fee line at checkout, it varies) or use browser translation on the Chinese site instead.
+      — Kat`},
+
+  {
     id: 'post-038',
     slug: 'tiananmen-square-free-but-book-it',
     category: 'lifehacks',
