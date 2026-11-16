@@ -24,6 +24,27 @@
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ────────────────────────────── 
   {
+      id: 'post-040',
+      slug: 'outlook-works-in-china-no-vpn-needed',
+      category: 'lifehacks',
+      date: '2026-11-16',
+      tag: 'lifehacks',
+      title: 'Outlook works in China — no VPN needed',
+      body: `📧 Outlook works in China — no VPN needed
+      
+      Outlook went down worldwide a few days ago — and that is exactly why this one matters for your trip.
+      
+      **THE TRAP**
+      Your flight, hotel and ticket confirmations all live in your inbox. If the only way you can reach them in China is through a VPN, and the VPN will not connect on hotel Wi-Fi — or you never set it up before you landed — those confirmations are out of reach right when you need them most.
+      
+      **THE FIX**
+      Outlook is not blocked on mainland China networks. It opens on hotel Wi-Fi and on a local SIM with no VPN needed. Before you fly, move your travel bookings to an Outlook address — forward the confirmations while you are still at home — sign in once, and check they are there. Then you can open your inbox on arrival like normal.
+      
+      **ONE MORE TRAP**
+      That outage is the exception that proves the rule: it was on Microsoft's side, not a China block — and it still left people locked out of their inboxes for hours. And Outlook can be slow in China at busy times, so do not rely on a live inbox at the gate — screenshot your tickets and save offline copies before you leave the hotel.
+      — Kat`
+  },
+  {
       id: 'post-039',
       slug: '12306-seat-map-check-before-you-pay',
      category: 'lifehacks',
