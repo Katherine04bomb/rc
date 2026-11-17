@@ -24,6 +24,27 @@
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ────────────────────────────── 
   {
+      id: 'post-041',
+      slug: 'google-maps-amap-baidu-maps-china',
+      category: 'lifehacks',
+      date: '2026-11-17',
+      tag: 'lifehacks',
+      title: 'Do not use Google Maps in China — use Amap or Baidu Maps',
+      body: `🗺️ Do not use Google Maps in China — use Amap or Baidu Maps
+      
+      You land in China, open the map app you always use — and it does not work.
+      
+      **THE TRAP**
+      Google Maps is blocked on mainland China networks, so it will not load properly when you arrive. Even with a VPN, the places are outdated, the metro routes are thin, and your location dot can sit hundreds of metres from where you actually are. The app you trust at home is the one to leave behind.
+      
+      **THE FIX**
+      Before you fly, download Amap — Gaode Maps (高德地图), listed as AMap Global in overseas app stores. It has had an English version since January 2025: install it, switch Me > Settings > General > Language > English, and the main services work without logging in. It covers walking, metro, bus and driving in one place. Save your hotel with its Chinese name before you go, and test one route at home so you know it works. Baidu Maps is the other big local app and a good backup, but its search and reviews stay mostly Chinese — so start with Amap. On iPhone, Apple Maps works as a second backup.
+      
+      **ONE MORE TRAP**
+      Do not rely on typing English place names — search in these apps works best in Chinese. Save the places you plan to visit with their Chinese names, or screenshot them before you go. And download the app before you fly: Google Play will not load once you are in China.
+      — Kat`
+  },
+  {
       id: 'post-040',
       slug: 'outlook-works-in-china-no-vpn-needed',
       category: 'lifehacks',
