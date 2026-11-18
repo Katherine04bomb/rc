@@ -24,6 +24,27 @@
 const POSTS = [
   // ── ADD NEW POSTS AT THE TOP ────────────────────────────── 
   {
+      id: 'post-042',
+      slug: 'zhangjiajie-fog-keep-nights-flexible',
+      category: 'lifehacks',
+      date: '2026-11-18',
+      tag: 'lifehacks',
+      title: 'Do not lock all your Zhangjiajie nights — fog can wipe the views out',
+      body: `🌫️ Do not lock all your Zhangjiajie nights — fog can wipe the views out
+      
+      You booked four nights in Zhangjiajie for the Avatar mountains — and fog takes all four.
+      
+      **THE TRAP**
+      Zhangjiajie is fog-sensitive: the pillar views and Tianmen Mountain can be a complete washout. One first-timer on a 20-day trip cut Zhangjiajie from 4 nights to 1 because of heavy fog — he could not see Heaven's Gate from Tianmen Mountain at all, skipped the Avatar mountains entirely, and moved on early. If every night is locked in one place, there is nowhere to move to.
+      
+      **THE FIX**
+      Give Zhangjiajie 2–3 nights in good weather, but keep the rest flexible. Book somewhere you can cancel, and keep Wulong or Chongqing as your fallback — the same traveller found both only cloudy, not fogged out, and 4 nights in Chongqing worked well. Check the mountain forecast the morning you go, not the week before, and go up on the clearest day you have.
+      
+      **ONE MORE TRAP**
+      Do not try to rescue a fogged-out day by staying longer in the same place and hoping it clears — move on, and come back to the mountains on a clear day if your route allows it. A fog plan matters more than the day count.
+      — Kat`
+  },
+  {
       id: 'post-041',
       slug: 'google-maps-amap-baidu-maps-china',
       category: 'lifehacks',
