@@ -333,7 +333,7 @@ Set up WeChat at home, before you travel: a brand-new account that suddenly appe
       category: 'lifehacks',
       date: '29 October 2026',
       tag: 'lifehacks',
-      title: '🎃 Halloween in China is a party, not a holiday — go to the party, don't knock on doors',
+      title: '🎃 Halloween in China is a party, not a holiday — go to the party, don\'t knock on doors',
   body: `🇨🇳 Kat's Hacks — If you are in China on Saturday 31 October, do not plan your night around trick-or-treating. It works differently here, and it can still be a brilliant night out if you go where the party actually is.
   
   
