@@ -1,0 +1,178 @@
+{
+  "planId": "demo-chengdu",
+  "travelerName": "Sarah",
+  "destination": "Chengdu",
+  "arrival": "2027-03-26",
+  "departure": "2027-03-29",
+  "travelers": "2 adults",
+  "style": "Food first",
+  "estCost": "~¥3,200 per person · excl. flights",
+  "katNote": "I kept one big sight per day and left room for snacking - Chengdu is a city you taste, not a checklist you race. Book the panda base early, everything else is walk-in friendly.",
+  "climate": {
+    "label": "10–18°C",
+    "note": "March in Chengdu: mild days, chilly nights, mostly cloudy with occasional light rain. Bring a light jacket - no umbrella needed most years.",
+    "liveFrom": "2027-03-12"
+  },
+  "hotel": {
+    "name": "Boutique hotel near Chunxi Road 春熙路",
+    "area": "city centre, metro Line 2/3",
+    "lat": 30.6560,
+    "lng": 104.0820,
+    "tip": "Walkable to tonight food street, 2 metro stops from the panda bus hub."
+  },
+  "days": [
+    {
+      "title": "Day 1 · Arrival + old town lanes",
+      "note": "Landing day - keep it light, shake off the jetlag with tea and noodles.",
+      "color": "#c0392b",
+      "stops": [
+        {
+          "name": "Kuanzhai Alleys 宽窄巷子",
+          "cn": "kuān zhǎi xiàng zi",
+          "time": "15:00",
+          "lat": 30.6634,
+          "lng": 104.0530,
+          "desc": "Qing-dynasty lanes restored into teahouses and snack streets. Touristy but genuinely pretty - go late afternoon when day-trippers leave.",
+          "pay": ["alipay", "wechat", "cash-exact"],
+          "budget": "Free entry · snacks ¥10–30 each",
+          "tips": "Skip the restaurants inside the alley - overpriced. Buy a 糖油果子 (fried sugar rice balls, ¥10) from the street cart near the west exit instead."
+        },
+        {
+          "name": "Shufeng Yayun Teahouse 蜀风雅韵",
+          "cn": "shǔ fēng yǎ yùn",
+          "time": "19:30",
+          "lat": 30.6570,
+          "lng": 104.0430,
+          "desc": "Classic Sichuan opera night: face-changing, hand shadows, tea served mid-show. The tourist-friendly intro to Sichuan culture.",
+          "pay": ["alipay", "wechat"],
+          "budget": "¥150–320 per seat",
+          "mustBook": true,
+          "mustBookNote": "Book tickets 3+ days ahead - front rows sell out",
+          "tips": "Sit rows 2–4: close enough for face-changing, far enough to see the whole stage. Arrive 30 min early for the free tea-pouring performance outside."
+        }
+      ]
+    },
+    {
+      "title": "Day 2 · Pandas + Three Kingdoms",
+      "note": "Early start for pandas (they nap after 11am), history in the afternoon.",
+      "color": "#9a7b2f",
+      "stops": [
+        {
+          "name": "Chengdu Panda Base 大熊猫繁育研究基地",
+          "cn": "dà xióng māo jī dì",
+          "time": "08:00",
+          "lat": 30.7330,
+          "lng": 104.1440,
+          "desc": "The world's best place to see giant pandas awake and eating. Morning feeding time is the whole show - go at opening.",
+          "pay": ["alipay", "wechat"],
+          "budget": "¥55 entry · metro + shuttle ¥10",
+          "mustBook": true,
+          "mustBookNote": "Entry tickets release online and sell out on holidays",
+          "tips": "Take metro Line 3 to Panda Avenue, then the free shuttle. Head straight to Moonlight Nursery first - babies before the crowds arrive at 9:30."
+        },
+        {
+          "name": "Wuhou Shrine 武侯祠",
+          "cn": "wǔ hóu cí",
+          "time": "14:00",
+          "lat": 30.6440,
+          "lng": 104.0460,
+          "desc": "Three Kingdoms history in a cypress-shaded garden - the Zhuge Liang memorial. Quiet, atmospheric, easy 90 minutes.",
+          "pay": ["alipay", "wechat", "cash-exact"],
+          "budget": "¥50 entry",
+          "tips": "Rent the audio guide (¥20, has English). The red-walled bamboo corridor on the east side is the photo everyone takes - go before 4pm when tour groups hit it."
+        },
+        {
+          "name": "Jinli Old Street 锦里",
+          "cn": "jǐn lǐ",
+          "time": "16:00",
+          "lat": 30.6453,
+          "lng": 104.0475,
+          "desc": "Right next door to Wuhou Shrine - lantern-lined snack street. Dinner here is a snack crawl, not a sit-down meal.",
+          "pay": ["alipay", "wechat"],
+          "budget": "Snack crawl ¥40–60 per person",
+          "tips": "Work the edges: 三大炮 sticky rice balls at the entrance, then walk to the back canal for quieter stalls. Skip anything that says '网红' - it's a tourist trap signal."
+        }
+      ]
+    },
+    {
+      "title": "Day 3 · Local life + city lights",
+      "note": "A slow day: morning tea with the locals, shopping, riverside night views.",
+      "color": "#4a3c28",
+      "stops": [
+        {
+          "name": "People's Park 人民公园",
+          "cn": "rén mín gōng yuán",
+          "time": "09:30",
+          "lat": 30.6598,
+          "lng": 104.0550,
+          "desc": "The real Chengdu: retirees dancing, mahjong clacking, and the famous Heming Teahouse pouring jasmine tea since 1923.",
+          "pay": ["wechat", "cash-exact"],
+          "budget": "Tea ¥20–30, all morning",
+          "tips": "Sit outside at Heming, order a bottomless jasmine refill (¥25). Ear-cleaning masters wander with tuning forks - ¥40 for the experience if you're brave."
+        },
+        {
+          "name": "Chen Mapo Tofu 陈麻婆豆腐",
+          "cn": "chén má pó dòu fu",
+          "time": "12:30",
+          "lat": 30.6660,
+          "lng": 104.0600,
+          "desc": "The original 1862 shop behind mapo tofu. Loud, fast, delicious - the definitive Sichuan lunch.",
+          "pay": ["alipay", "wechat", "cash-exact"],
+          "budget": "¥60–80 for two, plenty",
+          "tips": "Order: mapo tofu (微辣 mild-spicy is still spicy here), 蒜泥白肉 cold pork in garlic sauce, rice. Point at neighbours' tables if the menu photo wall confuses you - staff are used to it."
+        },
+        {
+          "name": "Taikoo Li & IFS 太古里",
+          "cn": "tài gǔ lǐ",
+          "time": "16:30",
+          "lat": 30.6570,
+          "lng": 104.0810,
+          "desc": "Heritage courtyard blocks rebuilt into open-air shopping. The climbing panda sculpture on IFS is Chengdu's selfie landmark.",
+          "pay": ["alipay", "wechat"],
+          "budget": "Free to wander · brands are brands",
+          "tips": "Go up to the IFS 7th-floor garden for the panda's face - no queue like the ground-floor crowd. Fangsuo Bookstore inside the mall looks like a cave, worth 10 minutes."
+        },
+        {
+          "name": "Anshun Bridge 安顺廊桥",
+          "cn": "ān shùn láng qiáo",
+          "time": "20:00",
+          "lat": 30.6530,
+          "lng": 104.0830,
+          "desc": "Illuminated Ming-style bridge over the Jinjiang River - the postcard night view. Riverside bars underneath if the night is young.",
+          "pay": ["alipay", "wechat"],
+          "budget": "Free",
+          "tips": "Best photo is from the south bank, 100m east of the bridge. The restaurant ON the bridge is overpriced - eat elsewhere."
+        }
+      ]
+    },
+    {
+      "title": "Day 4 · Last tastes + departure",
+      "note": "Slow morning, one proper breakfast, then off to the airport.",
+      "color": "#e74c3c",
+      "stops": [
+        {
+          "name": "Jinjiang riverside walk 锦江",
+          "cn": "jǐn jiāng",
+          "time": "09:00",
+          "lat": 30.6540,
+          "lng": 104.0760,
+          "desc": "A gentle hour along the river where locals do morning tai chi. Feeling brave? Join the back-stretching group at the willow corner.",
+          "pay": ["alipay", "wechat", "metro"],
+          "budget": "Free",
+          "tips": "Bike-share (Meituan app, scan with Alipay/WeChat) works great along this stretch - ¥1.5 per ride, unlocks with the same apps you set up before flying."
+        },
+        {
+          "name": "Chengdu Shuangliu Airport 双流机场 T1/T2",
+          "cn": "shuāng liú jī chǎng",
+          "time": "12:00",
+          "lat": 30.5785,
+          "lng": 103.9470,
+          "desc": "Metro Line 10 goes straight there from town (30 min). Leave the city centre 3 hours before your flight - security is thorough but fast.",
+          "pay": ["alipay", "wechat", "metro"],
+          "budget": "Metro ¥5",
+          "tips": "Airport food is fine but flat - grab a last 蛋烘糕 egg pancake from a street stall near your hotel BEFORE the metro. They don't exist past security."
+        }
+      ]
+    }
+  ]
+}

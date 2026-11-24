@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Your China itinerary · Ready? China!</title>
+<meta name='description' content='Your custom China itinerary from Kat - day-by-day plan with map, navigation and payment reality checks.'>
+<meta name='robots' content='noindex'>
+<link rel='canonical' href='https://www.readychinatravel.com/plan-result.html'>
+<script src='assets/consent-gate.js'></script>
+
+<script async src='https://www.googletagmanager.com/gtag/js?id=G-3G3C5T1WRB'></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3G3C5T1WRB');
+</script>
+
+<link rel='preconnect' href='https://fonts.googleapis.com'>
+<link href='https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap' rel='stylesheet'>
+<link rel='stylesheet' href='assets/style.css'>
+<link rel='stylesheet' href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css' integrity='sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=' crossorigin=''/>
+<style>
+  /* ── plan result page · engine styles (self-contained) ── */
+  .pr-hero { padding: 130px 24px 26px; text-align: center; background: linear-gradient(180deg, var(--bg2) 0%, var(--bg) 100%); }
+  .pr-hero .eyebrow { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .pr-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4.5vw, 44px); color: var(--text); margin-bottom: 10px; }
+
+  .pr-wrap { max-width: 900px; margin: 0 auto; padding: 24px 20px 80px; }
+
+  /* Kat bubble */
+  .pr-kat { display: flex; gap: 14px; align-items: flex-start; background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 18px 20px; box-shadow: 0 6px 20px rgba(154,123,47,.08); }
+  .pr-kat img { width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--gold-light); flex-shrink: 0; object-fit: cover; }
+  .pr-kat .bubble { font-size: 14px; line-height: 1.7; color: var(--text-mid); }
+  .pr-kat .bubble b { color: var(--text); }
+  .pr-kat .bubble .sig { display: block; margin-top: 6px; color: var(--gold); font-weight: 600; font-size: 13px; }
+
+  /* trip meta chips */
+  .pr-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 20px; }
+  .pr-meta .chip { background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 7px 14px; font-size: 12.5px; color: var(--text-mid); }
+  .pr-meta .chip b { color: var(--accent); font-weight: 600; }
+  .pr-meta .chip.countdown { background: var(--gold-soft); border-color: var(--gold-border); color: var(--text-mid); }
+
+  /* map */
+  .pr-map { height: 320px; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; margin-bottom: 18px; background: var(--bg2); }
+  .leaflet-container { font-family: 'DM Sans', sans-serif; }
+
+  /* tabs */
+  .pr-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .pr-tab { border: 1.5px solid var(--border); background: #fff; border-radius: 22px; padding: 9px 18px; font-size: 13px; font-weight: 500; color: var(--text-mid); cursor: pointer; transition: all .15s; font-family: 'DM Sans', sans-serif; }
+  .pr-tab:hover { border-color: var(--accent); color: var(--accent); }
+  .pr-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  /* day panel */
+  .pr-day { display: none; }
+  .pr-day.active { display: block; }
+  .pr-day h2 { font-family: 'Playfair Display', serif; font-size: 21px; color: var(--text); margin-bottom: 4px; }
+  .pr-day .day-note { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.6; }
+
+  /* timeline */
+  .pr-timeline { position: relative; margin-left: 10px; padding-left: 22px; border-left: 2px solid var(--border); }
+  .pr-stop { position: relative; background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; margin-bottom: 14px; }
+  .pr-stop::before { content: ''; position: absolute; left: -31px; top: 20px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--accent); }
+  .pr-stop .time { font-size: 11px; font-weight: 600; letter-spacing: 1px; color: var(--gold); text-transform: uppercase; }
+  .pr-stop h3 { font-size: 15.5px; color: var(--text); margin: 4px 0 2px; font-weight: 600; }
+  .pr-stop h3 .cn { font-weight: 400; color: var(--text-muted); font-size: 14px; }
+  .pr-stop .desc { font-size: 13px; color: var(--text-mid); line-height: 1.65; margin-bottom: 10px; }
+
+  .pr-pay { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+  .pay-chip { font-size: 11px; font-weight: 600; border-radius: 12px; padding: 3px 10px; background: #eef4ee; color: #2e6b3e; border: 1px solid #cfe0d2; }
+  .pay-chip.warn { background: #fdf3e4; color: #9a6b1f; border: 1px solid #ecd9b5; }
+
+  .pr-stop .budget { font-size: 12.5px; color: var(--text-muted); }
+  .pr-stop .budget b { color: var(--text); }
+
+  /* must-book flag */
+  .mustbook { display: block; margin: 10px 0; padding: 9px 12px; background: #fdf1ef; border: 1px dashed var(--accent); border-radius: 10px; font-size: 12.5px; color: var(--accent); text-decoration: none; line-height: 1.5; }
+  .mustbook:hover { background: var(--red-soft); }
+
+  /* Kat tips collapsible */
+  .tips-toggle { font-size: 12.5px; background: none; border: none; color: var(--gold); font-weight: 600; cursor: pointer; padding: 0; font-family: 'DM Sans', sans-serif; }
+  .tips-body { display: none; margin-top: 8px; font-size: 12.5px; color: var(--text-mid); line-height: 1.65; background: var(--gold-soft); border-left: 3px solid var(--gold-light); padding: 10px 12px; border-radius: 0 8px 8px 0; }
+  .tips-body.open { display: block; }
+
+  .pr-actions { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
+  .btn-nav { background: var(--accent); color: #fff; border: none; border-radius: 10px; padding: 10px 18px; font-size: 13.5px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background .15s; }
+  .btn-nav:hover { background: var(--accent2); }
+
+  /* action sheet */
+  .pr-sheet-mask { position: fixed; inset: 0; background: rgba(26,18,8,.4); display: none; z-index: 1000; }
+  .pr-sheet-mask.open { display: block; }
+  .pr-sheet { position: fixed; left: 0; right: 0; bottom: 0; background: #fff; border-radius: 18px 18px 0 0; padding: 18px 20px 26px; z-index: 1001; transform: translateY(100%); transition: transform .25s; max-width: 520px; margin: 0 auto; }
+  .pr-sheet.open { transform: translateY(0); }
+  .pr-sheet h4 { font-size: 14px; color: var(--text); margin-bottom: 4px; }
+  .pr-sheet .sub { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; }
+  .sheet-btn { display: flex; align-items: center; justify-content: space-between; width: 100%; background: var(--bg); border: 1.5px solid var(--border); border-radius: 12px; padding: 13px 16px; font-size: 14px; font-weight: 600; color: var(--text); text-decoration: none; margin-bottom: 10px; font-family: 'DM Sans', sans-serif; transition: border-color .15s; }
+  .sheet-btn:hover { border-color: var(--accent); }
+  .sheet-btn .badge { font-size: 10px; font-weight: 600; background: var(--gold-soft); color: var(--gold); border: 1px solid var(--gold-border); padding: 2px 8px; border-radius: 10px; margin-left: 8px; }
+  .sheet-cancel { width: 100%; background: none; border: none; color: var(--text-muted); font-size: 13px; padding: 8px; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .sheet-fallback { font-size: 11px; color: var(--text-muted); margin: -4px 0 10px; }
+  .sheet-fallback a { color: var(--gold); }
+
+  /* overview extras */
+  .pr-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; margin-bottom: 16px; }
+  .pr-card h3 { font-size: 14px; color: var(--text); margin-bottom: 10px; font-weight: 600; }
+  .climate { display: flex; gap: 16px; align-items: center; }
+  .climate .big { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--accent); white-space: nowrap; }
+  .climate .sm { font-size: 12.5px; color: var(--text-mid); line-height: 1.6; }
+  .climate .sm .live { color: var(--text-muted); font-size: 11.5px; }
+
+  .money-line { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 10px; padding-left: 22px; position: relative; }
+  .money-line .no { position: absolute; left: 0; top: 1px; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 10px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+  .money-line a { color: var(--accent); font-weight: 600; text-decoration: underline; }
+
+  .hotel-line { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+  .hotel-line b { color: var(--text); }
+
+  .wa-card { background: #eef7f0; border: 1px solid #cfe0d2; border-radius: 14px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; margin-top: 6px; }
+  .wa-card .wa-icon { font-size: 26px; }
+  .wa-card p { font-size: 13px; color: #2e5c3a; line-height: 1.6; flex: 1; }
+  .wa-card a { display: inline-block; background: #2e6b3e; color: #fff; text-decoration: none; font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 10px; white-space: nowrap; font-family: 'DM Sans', sans-serif; }
+  .wa-card a:hover { background: #255a33; }
+
+  .day-wa { font-size: 12.5px; color: var(--text-muted); margin-top: 4px; }
+  .day-wa a { color: #2e6b3e; font-weight: 600; }
+
+  /* empty state */
+  .pr-empty { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 40px 30px; text-align: center; }
+  .pr-empty .ic { font-size: 44px; margin-bottom: 14px; }
+  .pr-empty h2 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--text); margin-bottom: 10px; }
+  .pr-empty p { font-size: 14px; color: var(--text-muted); line-height: 1.7; max-width: 460px; margin: 0 auto 18px; }
+  .pr-empty a { display: inline-block; background: var(--accent); color: #fff; text-decoration: none; font-weight: 600; padding: 12px 24px; border-radius: 10px; font-size: 14px; font-family: 'DM Sans', sans-serif; }
+
+  @media (max-width: 640px) {
+    .pr-map { height: 260px; }
+    .wa-card { flex-direction: column; text-align: center; }
+    .pr-hero { padding-top: 110px; }
+  }
+</style>
+</head>
+<body>
+
+<header id='site-header'></header>
+
+<main>
+  <section class='pr-hero'>
+    <div class='eyebrow'>🐱 Kat · Custom itinerary</div>
+    <h1>Your China plan is ready</h1>
+  </section>
+
+  <div class='pr-wrap' id='prWrap'>
+
+    <!-- empty / no plan state -->
+    <div class='pr-empty' id='prEmpty' style='display:none'>
+      <div class='ic'>🗺️</div>
+      <h2>No plan loaded yet</h2>
+      <p>This page delivers your personal itinerary - Kat sends the direct link in WhatsApp after you chat with her. Haven't started? Tell her your dates, crew size and budget first.</p>
+      <a href='start-planning.html'>Start planning with Kat →</a>
+      <p style='font-size:11.5px;margin-top:16px'>Just exploring? <a href='?plan=demo-chengdu' style='background:none;padding:0;color:var(--gold);text-decoration:underline;font-weight:500'>View a sample Chengdu plan</a></p>
+    </div>
+
+    <!-- error state -->
+    <div class='pr-empty' id='prError' style='display:none'>
+      <div class='ic'>😿</div>
+      <h2>Plan not found</h2>
+      <p>This plan link looks broken or expired. Double-check the link Kat sent you, or message her on WhatsApp and she'll resend it.</p>
+      <a href='start-planning.html'>Back to start planning →</a>
+    </div>
+
+    <!-- loaded plan -->
+    <div id='prPlan' style='display:none'>
+      <div class='pr-kat'>
+        <img src='assets/kat-avatar.PNG' alt='Kat'>
+        <div class='bubble' id='katBubble'></div>
+      </div>
+
+      <div class='pr-meta' id='prMeta'></div>
+
+      <div class='pr-map' id='prMap'></div>
+
+      <div class='pr-tabs' id='prTabs'></div>
+
+      <div id='prPanels'></div>
+    </div>
+
+  </div>
+</main>
+
+<!-- navigate action sheet -->
+<div class='pr-sheet-mask' id='sheetMask'></div>
+<div class='pr-sheet' id='sheet'>
+  <h4 id='sheetTitle'>Open in maps</h4>
+  <div class='sub'>Pick the app you have - all three will find this place.</div>
+  <a class='sheet-btn' id='shApple' target='_blank' rel='noopener'>🍎 Apple Maps</a>
+  <a class='sheet-btn' id='shGoogle' target='_blank' rel='noopener'>🌐 Google Maps</a>
+  <a class='sheet-btn' id='shAmap'>🧭 AMap / 高德地图 <span class='badge'>🇨🇳 Recommended inside China</span></a>
+  <div class='sheet-fallback' id='shAmapFallback'></div>
+  <button class='sheet-cancel' onclick='closeSheet()'>Cancel</button>
+</div>
+
+<footer id='site-footer'></footer>
+
+<script src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js' integrity='sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=' crossorigin=''></script>
+<script src='assets/nav.js'></script>
+<script>buildNav();</script>
+
+<script>
+(function(){
+  'use strict';
+  var WA_NUMBER = '8613799200367';
+
+  var PAY_LABELS = {
+    'alipay':      ['Alipay',            ''],
+    'wechat':      ['WeChat Pay',        ''],
+    'metro':       ['Metro card',        ''],
+    'cash-exact':  ['Cash (exact change)','warn'],
+    'cash-ok':     ['Cash usually fine', 'warn']
+  };
+
+  var $ = function(id){ return document.getElementById(id); };
+  var esc = function(s){
+    return String(s||'').replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  };
+
+  var map, markersLayer, routeLine, PLAN = null;
+
+  // ── load plan ──────────────────────────────────────────────
+  var planId = new URLSearchParams(location.search).get('plan');
+  if(!planId){
+    $('prEmpty').style.display = 'block';
+    return;
+  }
+  fetch('data/plans/' + encodeURIComponent(planId) + '.json')
+    .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+    .then(function(data){ PLAN = data; render(data); })
+    .catch(function(){ $('prError').style.display = 'block'; });
+
+  // ── render ─────────────────────────────────────────────────
+  function fmtDate(d){
+    if(!d) return '';
+    var p = d.split('-');
+    var m = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return m[parseInt(p[1],10)-1] + ' ' + parseInt(p[2],10) + ', ' + p[0];
+  }
+  function daysUntil(d){
+    var now = new Date(); now.setHours(0,0,0,0);
+    return Math.round((new Date(d) - now) / 86400000);
+  }
+
+  function render(P){
+    $('prPlan').style.display = 'block';
+
+    // Kat bubble
+    var bubble = '<b>All set' + (P.travelerName ? ', ' + esc(P.travelerName) : '') + '!</b> ' +
+      'Here\u2019s your ' + esc(P.destination) + ' plan - every stop is local-checked, not a generic AI guess. ' +
+      esc(P.katNote || 'Read each card, and if anything doesn\u2019t feel right, just message me.') +
+      '<span class="sig">— Kat 🐱</span>';
+    $('katBubble').innerHTML = bubble;
+
+    // meta chips
+    var chips = [];
+    chips.push('<span class="chip">📍 <b>' + esc(P.destination) + '</b></span>');
+    if(P.arrival && P.departure) chips.push('<span class="chip">📅 ' + fmtDate(P.arrival) + ' – ' + fmtDate(P.departure) + '</span>');
+    if(P.travelers) chips.push('<span class="chip">👥 ' + esc(P.travelers) + '</span>');
+    if(P.estCost) chips.push('<span class="chip">💰 ' + esc(P.estCost) + '</span>');
+    if(P.style) chips.push('<span class="chip">🎨 ' + esc(P.style) + '</span>');
+    var du = daysUntil(P.arrival);
+    if(du > 0) chips.push('<span class="chip countdown">🗓️ ' + du + ' days to go</span>');
+    $('prMeta').innerHTML = chips.join('');
+
+    // tabs
+    var tabs = ['<button class="pr-tab active" data-tab="overview">Overview</button>'];
+    (P.days||[]).forEach(function(d, i){
+      tabs.push('<button class="pr-tab" data-tab="day' + i + '">' + esc(d.title.split('·')[0].trim() || ('Day ' + (i+1))) + '</button>');
+    });
+    $('prTabs').innerHTML = tabs.join('');
+
+    // panels
+    var panels = [overviewHTML(P)];
+    (P.days||[]).forEach(function(d, i){ panels.push(dayHTML(d, i)); });
+    $('prPanels').innerHTML = panels.join('');
+
+    // tab switching
+    document.querySelectorAll('.pr-tab').forEach(function(t){
+      t.addEventListener('click', function(){
+        document.querySelectorAll('.pr-tab').forEach(function(x){ x.classList.remove('active'); });
+        document.querySelectorAll('.pr-day').forEach(function(x){ x.classList.remove('active'); });
+        t.classList.add('active');
+        $('tab-' + t.dataset.tab).classList.add('active');
+        if(t.dataset.tab === 'overview'){ showDay(null); }
+        else { showDay(parseInt(t.dataset.tab.slice(3),10)); }
+        window.scrollTo({ top: document.getElementById('prMap').offsetTop - 90, behavior: 'smooth' });
+      });
+    });
+
+    initMap(P);
+    showDay(null);
+    bindTips();
+  }
+
+  // ── overview panel ─────────────────────────────────────────
+  function overviewHTML(P){
+    var h = '<div class="pr-day active" id="tab-overview">';
+
+    // climate card
+    if(P.climate){
+      h += '<div class="pr-card"><h3>🌡️ Weather to expect</h3><div class="climate">' +
+        '<div class="big">' + esc(P.climate.label) + '</div>' +
+        '<div class="sm">' + esc(P.climate.note) +
+        (P.climate.liveFrom ? '<div class="live">📊 Live forecast unlocks ' + fmtDate(P.climate.liveFrom) + ' (16 days out) - Kat will ping you then.</div>' : '') +
+        '</div></div></div>';
+    }
+
+    // money reality check
+    h += '<div class="pr-card"><h3>💳 Money reality check</h3>' +
+      '<div class="money-line"><span class="no">1</span>Most places in China <b>don\u2019t take Apple Pay or foreign cards at the till</b> - daily payment runs on Alipay &amp; WeChat Pay. Link your foreign card to both apps before you fly. ' +
+      '<a href="https://www.readychinatravel.com/alipay/">📖 Set up Alipay</a> &nbsp;·&nbsp; <a href="https://www.readychinatravel.com/wechat/">📖 Set up WeChat Pay</a></div>' +
+      '<div class="money-line"><span class="no">2</span><b>Cash is legal tender</b> and shops shouldn\u2019t refuse it - but with China going cashless, many small shops simply have no change for big notes. Bring small bills (¥1 / ¥5 / ¥10) and pay exact amounts to save yourself the awkward moment 🙂</div>' +
+      '</div>';
+
+    // hotel
+    if(P.hotel){
+      h += '<div class="pr-card"><h3>🏨 Where you\u2019re staying</h3><div class="hotel-line"><b>' + esc(P.hotel.name) + '</b>' +
+        (P.hotel.area ? ' · ' + esc(P.hotel.area) : '') +
+        (P.hotel.tip ? '<br>' + esc(P.hotel.tip) : '') +
+        '</div></div>';
+    }
+
+    // day summaries
+    h += '<div class="pr-card"><h3>🗺️ The plan at a glance</h3>' +
+      (P.days||[]).map(function(d){
+        return '<div class="money-line"><span class="no" style="background:var(--gold)">' + d.title.split('·')[0].trim().replace(/\D/g,'') + '</span><b>' + esc(d.title.split('·')[1] ? d.title.split('·')[1].trim() : d.title) + '</b> - ' + d.stops.length + ' stops</div>';
+      }).join('') + '</div>';
+
+    // WhatsApp CTA
+    var waText = 'Hi Kat! 🇨🇳 I\u2019ve read my ' + P.destination + ' plan (' + (P.planId||'') + ') - a few things I\u2019d love to tweak:';
+    h += '<div class="wa-card"><div class="wa-icon">💬</div>' +
+      '<p><b>Not quite your trip?</b><br>Tell me what feels off and I\u2019ll rebuild this plan by hand - no bots, just me.</p>' +
+      '<a href="https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(waText) + '" target="_blank" rel="noopener">WhatsApp Kat</a></div>';
+
+    h += '</div>';
+    return h;
+  }
+
+  // ── day panel ──────────────────────────────────────────────
+  function dayHTML(D, di){
+    var h = '<div class="pr-day" id="tab-day' + di + '">';
+    h += '<h2>' + esc(D.title) + '</h2>';
+    if(D.note) h += '<div class="day-note">' + esc(D.note) + '</div>';
+    h += '<div class="pr-timeline">';
+
+    (D.stops||[]).forEach(function(s){
+      var pays = (s.pay||[]).map(function(k){
+        var m = PAY_LABELS[k] || [k, ''];
+        return '<span class="pay-chip ' + m[1] + '">' + esc(m[0]) + '</span>';
+      }).join('');
+
+      h += '<div class="pr-stop">' +
+        '<div class="time">' + esc(s.time || '') + '</div>' +
+        '<h3>' + esc(s.name) + (s.cn ? ' <span class="cn">' + esc(s.cn) + '</span>' : '') + '</h3>' +
+        '<div class="desc">' + esc(s.desc || '') + '</div>' +
+        (pays ? '<div class="pr-pay">' + pays + '</div>' : '') +
+        (s.budget ? '<div class="budget">💰 <b>' + esc(s.budget) + '</b></div>' : '') +
+        (s.mustBook ? '<a class="mustbook" href="index.html#ready-section">⚠️ ' + esc(s.mustBookNote || 'Needs booking ahead') + ' → Ready Score has this step</a>' : '') +
+        (s.tips ? '<button class="tips-toggle" type="button">🐱 Kat\u2019s tips · show</button><div class="tips-body">' + esc(s.tips) + '</div>' : '') +
+        '<div class="pr-actions"><button class="btn-nav" type="button" onclick="openAS(this)" ' +
+          'data-name="' + esc(s.name) + '" data-lat="' + s.lat + '" data-lng="' + s.lng + '">📍 Navigate</button></div>' +
+        '</div>';
+    });
+
+    h += '</div>';
+
+    var waText = 'Hi Kat! 🇨🇳 About my plan - Day ' + (di+1) + ' (' + (D.title||'') + ') doesn\u2019t feel right. Can you redo it by hand?';
+    h += '<div class="day-wa">Not feeling this day? <a href="https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(waText) + '" target="_blank" rel="noopener">WhatsApp Kat</a> - I\u2019ll redo it by hand →</div>';
+
+    h += '</div>';
+    return h;
+  }
+
+  // ── tips toggle ────────────────────────────────────────────
+  function bindTips(){
+    document.querySelectorAll('.tips-toggle').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var body = btn.nextElementSibling;
+        var open = body.classList.toggle('open');
+        btn.textContent = open ? '🐱 Kat\u2019s tips · hide' : '🐱 Kat\u2019s tips · show';
+      });
+    });
+  }
+
+  // ── map ────────────────────────────────────────────────────
+  function initMap(P){
+    map = L.map('prMap', { scrollWheelZoom: false });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
+      subdomains: 'abcd', maxZoom: 18
+    }).addTo(map);
+    markersLayer = L.layerGroup().addTo(map);
+
+    // hotel pin
+    if(P.hotel && P.hotel.lat){
+      L.marker([P.hotel.lat, P.hotel.lng], {
+        icon: L.divIcon({ className:'', html:'<div style="font-size:22px;filter:drop-shadow(0 2px 2px rgba(0,0,0,.3))">🏨</div>', iconSize:[24,24], iconAnchor:[12,22] })
+      }).addTo(markersLayer).bindPopup('🏨 ' + P.hotel.name);
+    }
+
+    if(P.days && P.days.length && P.days[0].stops.length){
+      var all = [];
+      P.days.forEach(function(d){ d.stops.forEach(function(s){ all.push([s.lat, s.lng]); }); });
+      if(all.length) map.fitBounds(all, { padding: [30, 30] });
+    } else {
+      map.setView([30.66, 104.06], 12);
+    }
+  }
+
+  function showDay(di){
+    if(!map) return;
+    markersLayer.clearLayers();
+    if(routeLine) routeLine.remove();
+    if(PLAN.hotel && PLAN.hotel.lat){
+      L.marker([PLAN.hotel.lat, PLAN.hotel.lng], {
+        icon: L.divIcon({ className:'', html:'<div style="font-size:22px;filter:drop-shadow(0 2px 2px rgba(0,0,0,.3))">🏨</div>', iconSize:[24,24], iconAnchor:[12,22] })
+      }).addTo(markersLayer).bindPopup('🏨 ' + PLAN.hotel.name);
+    }
+
+    if(di === null){ // overview → all stops
+      var all = [];
+      (PLAN.days||[]).forEach(function(d){
+        d.stops.forEach(function(s){
+          all.push([s.lat, s.lng]);
+          addStopMarker(s, '#9a7b2f', null);
+        });
+      });
+      if(all.length) map.fitBounds(all, { padding: [30, 30] });
+      return;
+    }
+
+    var D = PLAN.days[di], pts = [];
+    D.stops.forEach(function(s, i){
+      pts.push([s.lat, s.lng]);
+      addStopMarker(s, D.color || '#c0392b', i + 1);
+    });
+    if(pts.length > 1){
+      routeLine = L.polyline(pts, { color: D.color || '#c0392b', dashArray: '6,8', weight: 3, opacity: .7 }).addTo(map);
+    }
+    if(pts.length) map.fitBounds(pts, { padding: [40, 40] });
+  }
+
+  function addStopMarker(s, color, num){
+    var html = num
+      ? '<div style="width:26px;height:26px;border-radius:50%;background:' + color + ';color:#fff;font:600 13px/26px \'DM Sans\',sans-serif;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.3)">' + num + '</div>'
+      : '<div style="width:14px;height:14px;border-radius:50%;background:' + color + ';opacity:.8;box-shadow:0 1px 4px rgba(0,0,0,.3)"></div>';
+    L.marker([s.lat, s.lng], { icon: L.divIcon({ className:'', html: html, iconSize:[26,26], iconAnchor:[13,13] }) })
+      .addTo(markersLayer)
+      .bindPopup('<b>' + esc(s.name) + '</b>' + (s.cn ? ' ' + esc(s.cn) : ''));
+  }
+
+  // ── navigate action sheet ──────────────────────────────────
+  window.openAS = function(btn){
+    var name = btn.dataset.name, lat = btn.dataset.lat, lng = btn.dataset.lng;
+    var q = encodeURIComponent(name);
+    $('sheetTitle').textContent = 'Navigate to ' + name;
+    $('shApple').href = 'https://maps.apple.com/?q=' + q + '&ll=' + lat + ',' + lng;
+    $('shGoogle').href = 'https://www.google.com/maps/search/?api=1&query=' + lat + ',' + lng;
+    $('shAmap').href = 'iosamap://viewMap?sourceApplication=readychinatravel&poiname=' + q + '&lat=' + lat + '&lon=' + lng + '&dev=0';
+    $('shAmapFallback').innerHTML = 'No AMap app? <a href="https://uri.amap.com/marker?position=' + lng + ',' + lat + '&name=' + q + '" target="_blank" rel="noopener">Open AMap in browser</a>';
+    $('sheetMask').classList.add('open');
+    $('sheet').classList.add('open');
+  };
+  window.closeSheet = function(){
+    $('sheetMask').classList.remove('open');
+    $('sheet').classList.remove('open');
+  };
+  $('sheetMask').addEventListener('click', closeSheet);
+})();
+</script>
+
+</body>
+</html>
